@@ -148,7 +148,8 @@ nav > ul {
       background-size: 100% 100%;
       width: 150px;
       height: 150px;
-      position: relative; }
+      position: relative;
+      cursor: pointer; }
       .container .content .second-row li div {
         position: absolute;
         top: 87px;
@@ -281,5 +282,13 @@ ul.clearfix > li {
 
 .centerBottom {
   display: none; }
+
+#canvasContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -200;
+  width: 100%;
+  height: 1000px; }
 
 /*# sourceMappingURL=index.css.map */
