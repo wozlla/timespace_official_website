@@ -1,0 +1,359 @@
+@mixin absolute($width, $height, $top, $left:null, $right:null){
+  @if($left != null){
+   left:$left;
+  }
+  @if($right != null){
+    right:$right;
+  }
+  top:$top;
+  width:$width;
+  height:$height;
+  position:absolute;
+}
+
+@mixin backImg($url, $width, $height){
+  background-image: url('#{$url}');
+  background-size: 100% 100%;
+  width:$width;
+  height:$height;
+}
+
+@mixin backImgWithPosition($url, $width, $height, $top:0px, $left:0px, $zIndex:0){
+  background-image: url('#{$url}');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  @include absolute($width, $height, $top, $left);
+  z-index:$zIndex;
+}
+
+@mixin arrow($color, $top:40px, $left:20px, $size:10px){
+  display: block;
+  width: 0; height:0; border:$size solid;
+  border-color: transparent $color transparent transparent;
+  position: absolute;
+  top: $top;
+  left: $left;
+}
+@mixin rightArrow($color, $top:40px, $left:20px, $size:10px){
+  display: block;
+  width: 0; height:0; border:$size solid;
+  border-color: transparent transparent transparent $color ;
+  position: absolute;
+  top: $top;
+  left: $left;
+}
+
+@mixin radius($radius, $color){
+  $rad: $radius + 10;
+  -webkit-border-radius: $rad;
+  -moz-border-radius: $rad;
+  border-radius: $rad;
+  width: $radius * 2;
+  height: $radius * 2;
+  border:2px solid $color;
+}
+
+h3 {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  padding: 0;
+  margin:0;
+  font-size: 16px;
+  background-image: url("");
+  background-repeat: no-repeat;
+  top: 0;
+  left: 0;
+  z-index: -100;
+  background-size: 100% 100%;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav{
+  >ul {
+    > li {
+      width: 210px;
+      height: 85px;
+      text-align: center;
+      display: table;
+      margin-right: 20px;
+      float: left;
+      cursor:pointer;
+    }
+  }
+  >ul{
+    height:100%;
+  }
+}
+
+.container{
+  width: 920px;
+  border: 1px solid red;
+  margin: 300px auto 0 auto;
+}
+
+.container {
+  > header {
+    position: relative;
+    nav{
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .bird{
+    @include backImgWithPosition('ornament/bird.png', 100px, 100px, -20px, -30px);
+  }
+  .download{
+    @include backImgWithPosition('batton/download.png', 220px, 100px, -10px, 700px);
+    cursor:pointer;
+  }
+  .banner{
+    @include backImgWithPosition('banner/bg.png', 1160px, 437px, -350px, -80px, -90);
+    .title{
+      @include backImgWithPosition('banner/game_name.png', 500px, 350px, 0px, -100px, -80);
+    }
+  }
+
+  .content {
+    margin-top: 20px;
+
+    .first-row {
+      >li{
+        float:left;
+      }
+
+      .left {
+        width: 210px;
+        margin-right: 20px;
+        height: 300px;
+        position: relative;
+
+        ul {
+          max-height: 200px;
+          overflow: auto;
+        }
+        img {
+          width: 100%;
+          height: 100px;
+          position: absolute;
+          bottom: 0;
+        }
+      }
+
+      .middle {
+        @include backImg('pic/1.png', 464px, 300px);
+      }
+
+      .right {
+        width: 220px;
+
+        li {
+          position: relative;
+          background-size: 100% 100%;
+          width: 100%;
+          height: 100px;
+        }
+
+        .first {
+          background-image: url('batton/play.jpg');
+
+          i {
+            @include arrow(rgb(97, 110, 194));
+          }
+        }
+
+        .second {
+          background-image: url('batton/feature_h.jpg');
+
+          i {
+            @include arrow(#ffffff);
+          }
+        }
+
+        .third {
+          background-image: url('');
+
+          i {
+            @include arrow(#ffffff);
+          }
+        }
+      }
+
+    }
+
+    .second-row{
+      margin-top: 10px;
+
+      li{
+        background-size: 100% 100%;
+        width: 150px;
+        height: 150px;
+        position: relative;
+
+        div{
+          position: absolute;
+          top: 87px;
+          left: 66px;
+          z-index: 10;
+          font-weight: bold;
+          text-decoration: underline;
+        }
+      }
+      .first{
+        background-image:url('batton/first.png');
+
+        div{
+          color: rgb(230,207,255);
+        }
+      }
+      .second{
+        background-image: url('batton/second.png');
+
+        div{
+          color: rgb(255,199,101);
+        }
+      }
+      .third{
+        background-image: url('batton/third.png');
+
+        div{
+          color: rgb(255,167,49);
+        }
+      }
+      .fourth{
+        background-image: url('batton/fourth.png');
+
+        div{
+          color: rgb(19,255,145);
+        }
+      }
+
+      .contact-us{
+        background-image:url('batton/contact_us.png');
+
+        width: 290px;
+        height: 100px;
+        margin-left: 20px;
+        margin-top: 34px;
+
+        .left{
+          @include absolute(150px, 40px, -30px, -57px);
+        }
+
+        .right{
+          @include absolute(230px, 86px, 29px, null, -82px);
+        }
+      }
+    }
+    .shared{
+      display: table;
+      margin: 30px auto 0px auto;
+      font-size: 0;
+      -webkit-text-size-adjust:none;
+      span,.jiathis_style_32x32{
+        font-size:12px;
+        display:inline-block;
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+.pop-window{
+  position: fixed;
+  width:300px;
+  height:200px;
+  top: 45%;
+  right: -200px;
+  background-image: url('pop_box/suspend.png');
+
+  $color:rgb(136,153,222);
+  div{
+    @include radius(10px, $color);
+    position: relative;
+    top: 4px;
+    left: 3px;
+  }
+  .pop-out{
+    i{
+      @include arrow($color, 2px, -3px, 8px);
+    }
+  }
+  .pop-in{
+    i{
+      @include rightArrow($color, 2px, 7px, 8px);
+    }
+  }
+}
+
+.petal{
+  display:none;
+}
+
+
+footer{
+  background-color: rgb(242,242,242);
+  text-align: center;
+
+  ul{
+    height: 70px;
+    display: table;
+    margin: 30px auto 0 auto;
+
+    .logo{
+      background-image: url('bottom/logo.png');
+      width: 120px;
+      height: 100%;
+      background-size: 100% 100%;
+    }
+    .spliter{
+      border-left: 1px solid rgb(183,183,183);
+      height: 80%;
+      /* vertical-align: middle; */
+      /* margin-top: 6px; */
+      margin: 6px 30px;
+
+    }
+    .game-name{
+      background-image: url('bottom/game_name.png');
+      width: 170px;
+      height: 100%;
+      background-size: 100% 100%;
+    }
+  }
+}
+
+
+
+.clearfix:after{
+  content:"";
+  clear:both;
+  display:table;
+}
+ul.clearfix>li{
+  float:left;
+}
+
+.ellipsis{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+.ckepopBottom{
+  display:none;
+}
+.centerBottom{
+  display:none;
+}
