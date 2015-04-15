@@ -128,11 +128,11 @@ nav{
     }
 
     .title{
-      @include absolute(500px, 350px, -21px, 0, 0, -80);
+      @include absolute(500px, 350px, -21px, 0, null, -80);
     }
 
     .bg{
-      @include absolute(1160px, 385px, 0, -80px, 0, -90);
+      @include absolute(1160px, 385px, 0, -80px, null, -90);
     }
   }
 
@@ -164,6 +164,15 @@ nav{
 
       .middle {
         @include backImg('pic/1.png', 464px, 300px);
+        width:464px;
+        height:300px;
+
+        img{
+            background-image: url("pic/1.png");
+            background-size: 464px 300px;
+            width:464px;
+            height:300px;
+        }
       }
 
       .right {
@@ -323,12 +332,12 @@ footer{
     .logo{
       background-image: url('bottom/logo.png');
       width: 120px;
-      height: 100%;
+      height:70px;
       background-size: 100% 100%;
     }
     .spliter{
       border-left: 1px solid rgb(183,183,183);
-      height: 80%;
+      height:56px;
       /* vertical-align: middle; */
       /* margin-top: 6px; */
       margin: 6px 30px;
@@ -337,7 +346,7 @@ footer{
     .game-name{
       background-image: url('bottom/game_name.png');
       width: 170px;
-      height: 100%;
+      height:70px;
       background-size: 100% 100%;
     }
   }
@@ -377,3 +386,50 @@ width:100%;
   //todo redefine
 height:1000px;
 }
+
+
+
+
+
+
+
+
+
+
+//.container .content .first-row .middle {
+//  width: 464px;
+//  height: 300px; }
+//.container .content .first-row .middle img{
+//  background-image: url("pic/1.png");
+//  background-size: 464px 300px;
+//  width:464px;
+//  height:300px;
+//}
+//
+//
+//
+//
+//
+//
+//.container .banner {
+//  position: relative;
+//  top: -385px; }
+//.container .banner img {
+//  width: 100%;
+//  height: 100%; }
+//.container .banner .title {
+//  left: 0;
+//  right: 0;
+//  top: -21px;
+//  width: 500px;
+//  height: 350px;
+//  position: absolute;
+//  z-index: -80; }
+//.container .banner .bg {
+//  left: -80px;
+//  right: 0;
+//  top: 0;
+//  width: 1160px;
+//  height: 385px;
+//  position: absolute;
+//  z-index: -90; }

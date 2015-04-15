@@ -1,7 +1,8 @@
 $(function(){
     var animation = {
         moveRight: function(dom, distance, speed){
-            var total = 0;
+            var total = 0,
+                left = dom.position().left;
 
             function _move(){
                 total = total + speed;
@@ -11,7 +12,7 @@ $(function(){
                 }
 
 
-                dom.css("left", dom.position().left + speed + "px");
+                dom.css("left", left + total);
 
                 setTimeout(function(){
                     _move();
@@ -21,7 +22,8 @@ $(function(){
             _move();
         },
         moveLeft: function(dom, distance, speed){
-            var total = 0;
+            var total = 0,
+            left = dom.position().left;
 
             function _move(){
                 total = total - speed;
@@ -31,7 +33,7 @@ $(function(){
                 }
 
 
-                dom.css("background-position-x", total + "px");
+                dom.css("left", left + total);
 
                 setTimeout(function(){
                     _move();
@@ -129,7 +131,8 @@ $(function(){
         select: function(imgDom, titles, index){
             this._restoreTitle(titles);
 
-            imgDom.css("background-image", "url('" + this._data[index][0] + "')");
+            imgDom.attr("src", this._data[index][0] );
+            //imgDom.css("background-image", "url('" + this._data[index][0] + "')");
             $(titles.get(index)).css("background-image", "url('" + this._data[index][1] + "')");
         }
     };
@@ -146,7 +149,6 @@ $(function(){
         isMove = true;
     }, function(){
     });
-
 
     var isAnimating = false;
 
@@ -179,12 +181,12 @@ $(function(){
     });
 
     var titles = $("#switch-title").find("li");
-    //todo can click title?
-    //titles.on("click", function(){
-    //    animation.select($("#switch-img"), titles, index);
-    //});
 
-    animation.switchImg($("#switch-img"), titles);
+    //todo click
+    titles.on("click", function(){
+    });
+
+    animation.switchImg($("#switch-img").children("img"), titles);
 
 
 

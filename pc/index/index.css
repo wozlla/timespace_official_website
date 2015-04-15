@@ -69,7 +69,6 @@ nav > ul {
     height: 100%; }
   .container .banner .title {
     left: 0;
-    right: 0;
     top: -21px;
     width: 500px;
     height: 350px;
@@ -77,7 +76,6 @@ nav > ul {
     z-index: -80; }
   .container .banner .bg {
     left: -80px;
-    right: 0;
     top: 0;
     width: 1160px;
     height: 385px;
@@ -104,7 +102,14 @@ nav > ul {
     background-image: url("pic/1.png");
     background-size: 100% 100%;
     width: 464px;
+    height: 300px;
+    width: 464px;
     height: 300px; }
+    .container .content .first-row .middle img {
+      background-image: url("pic/1.png");
+      background-size: 464px 300px;
+      width: 464px;
+      height: 300px; }
   .container .content .first-row .right {
     width: 220px; }
     .container .content .first-row .right li {
@@ -250,18 +255,18 @@ footer {
     footer ul .logo {
       background-image: url("bottom/logo.png");
       width: 120px;
-      height: 100%;
+      height: 70px;
       background-size: 100% 100%; }
     footer ul .spliter {
       border-left: 1px solid #b7b7b7;
-      height: 80%;
+      height: 56px;
       /* vertical-align: middle; */
       /* margin-top: 6px; */
       margin: 6px 30px; }
     footer ul .game-name {
       background-image: url("bottom/game_name.png");
       width: 170px;
-      height: 100%;
+      height: 70px;
       background-size: 100% 100%; }
 
 .clearfix:after {
