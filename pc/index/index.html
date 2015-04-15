@@ -4,7 +4,8 @@
     <meta charset="UTF-8" content="text/html"/>
     <title>时空召唤官网</title>
 
-    <link href="index.css" type="text/css" rel="stylesheet">
+    <link href="../content/css/app.css" type="text/css" rel="stylesheet">
+    <link href="../content/css/index.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 <div id="canvasContainer" style="
@@ -19,18 +20,18 @@ height:1000px;">
     </div>
 </div>
 
-<div class="container">
+<section class="container">
     <header>
         <nav>
             <ul class="clearfix">
                 <li>
-                    <img src="batton/hotnews.png" alt="">
+                    <img src="../content/image/nav/hotnews.png" alt="">
                 </li>
                 <li>
-                    <img src="batton/descripion.png" alt="">
+                    <img src="../content/image/nav/descripion.png" alt="">
                 </li>
                 <li>
-                    <img src="batton/comment.png" alt="">
+                    <img src="../content/image/nav/comment.png" alt="">
                 </li>
             </ul>
         </nav>
@@ -68,28 +69,32 @@ height:1000px;">
         </ul>
         <!--not use background-image for hover,use img instead(for work in ie)-->
 
-        <ul class="second-row clearfix">
-            <li class="first">
-                <img src="batton/first.png"/>
-                <div>入门</div>
-            </li>
-            <li class="second">
-                <img src="batton/second.png"/>
-                <div>进阶</div>
-            </li>
-            <li class="third">
-                <img src="batton/third.png"/>
-                <div>装备</div>
-            </li>
-            <li class="fourth">
-                <img src="batton/fourth.png"/>
-                <div>组合</div>
-            </li>
-            <li class="contact-us">
-                <img class="left" src="ornament/left.png">
-                <img class="right" src="ornament/right.png">
-            </li>
-        </ul>
+        <div class="second-row clearfix">
+            <ul>
+                <li class="first">
+                    <img src="batton/first.png"/>
+                    <div>入门</div>
+                </li>
+                <li class="second">
+                    <img src="batton/second.png"/>
+                    <div>进阶</div>
+                </li>
+                <li class="third">
+                    <img src="batton/third.png"/>
+                    <div>装备</div>
+                </li>
+                <li class="fourth">
+                    <img src="batton/fourth.png"/>
+                    <div>组合</div>
+                </li>
+            </ul>
+
+            <div class="contact-us">
+                <img class="left" src="../content/image/ornament/left.png">
+                <img class="right" src="../content/image/ornament/right.png">
+            </div>
+        </div>
+
         <div class="shared">
             <span> 分享： </span>
             <!-- JiaThis Button BEGIN -->
@@ -115,7 +120,7 @@ height:1000px;">
 
 
     </section>
-</div>
+</section>
 
 <section class="pop-window">
     <div class="pop-out">
@@ -137,11 +142,11 @@ height:1000px;">
 
 
 
-<script src="lib/fss.min.js"></script>
-<script src="lib/example.js"></script>
+<script src="../lib/fss.min.js"></script>
+<script src="../lib/example.js"></script>
 
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/jquery-snowfall/src/snowfall.jquery.js"></script>
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../bower_components/jquery-snowfall/src/snowfall.jquery.js"></script>
 
 <script src="index.js"></script>
 

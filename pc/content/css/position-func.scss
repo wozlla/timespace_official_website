@@ -1,0 +1,13 @@
+@mixin absolute($width, $height, $top, $left:null, $right:null, $zIndex:0){
+  @if($left != null){
+    left:$left;
+  }
+  @if($right != null){
+    right:$right;
+  }
+  top:$top;
+  width:$width;
+  height:$height;
+  position:absolute;
+  z-index: $zIndex;
+}

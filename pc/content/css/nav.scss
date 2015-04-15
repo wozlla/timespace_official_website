@@ -1,0 +1,56 @@
+@import "image-func.scss";
+
+nav{
+  >ul {
+    > li {
+      width: 210px;
+      height: 85px;
+      text-align: center;
+      display: table;
+      margin-right: 20px;
+      float: left;
+      cursor:pointer;
+    }
+  }
+  >ul{
+    height:100%;
+  }
+}
+
+.container {
+  > header {
+    position: relative;
+    nav {
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .bird{
+    @include backImgWithPosition('../image/nav/bird.png', 100px, 100px, -20px, -30px);
+  }
+  .download{
+    @include backImgWithPosition('../image/nav/download.png', 220px, 100px, -10px, 700px);
+    cursor:pointer;
+  }
+  .banner {
+    position: relative;
+    top: -385px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .title {
+      @include absolute(500px, 350px, -21px, 0, null, -80);
+    }
+
+    .bg {
+      @include absolute(1160px, 385px, 0, -80px, null, -90);
+    }
+  }
+}
+

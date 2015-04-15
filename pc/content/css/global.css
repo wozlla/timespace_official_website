@@ -1,0 +1,71 @@
+h3 {
+  padding: 0;
+  margin: 0; }
+
+body {
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  top: 0;
+  left: 0;
+  z-index: -100;
+  background-size: 100% 100%; }
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+.container {
+  width: 920px;
+  margin: 300px auto 0 auto; }
+  .container .contact-us {
+    background-image: url("../image/button/contact_us.png");
+    width: 290px;
+    height: 100px;
+    margin-left: 20px;
+    margin-top: 34px; }
+    .container .contact-us .left {
+      left: -57px;
+      top: -30px;
+      width: 150px;
+      height: 40px;
+      position: absolute;
+      z-index: 0; }
+    .container .contact-us .right {
+      right: -82px;
+      top: 29px;
+      width: 230px;
+      height: 86px;
+      position: absolute;
+      z-index: 0; }
+  .container .shared {
+    display: table;
+    margin: 30px auto 0px auto;
+    font-size: 0;
+    -webkit-text-size-adjust: none; }
+    .container .shared span, .container .shared .jiathis_style_32x32 {
+      font-size: 12px;
+      display: inline-block;
+      vertical-align: middle; }
+
+.clearfix:after {
+  content: "";
+  clear: both;
+  display: table; }
+
+ul.clearfix > li {
+  float: left; }
+
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
+
+.ckepopBottom {
+  display: none; }
+
+.centerBottom {
+  display: none; }
+
+/*# sourceMappingURL=global.css.map */

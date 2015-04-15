@@ -1,0 +1,6 @@
+.list-header:after {
+  content: "";
+  border: 1px solid #d2d2d2;
+  width: 100%; }
+
+/*# sourceMappingURL=list.css.map */
