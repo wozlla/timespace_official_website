@@ -8,7 +8,12 @@
 </head>
 <body>
 <div id="canvasContainer" style="
-">
+position:absolute;
+top:0;
+left:0;
+z-index:-200;
+width:100%;
+height:1000px;">
     <div id="canvasOutput" class="">
         <!--<canvas style="width:900px;height:300px;"></canvas>-->
     </div>
@@ -31,8 +36,13 @@
         </nav>
         <div class="bird"></div>
         <div class="download"></div>
-        <div id="banner-bg"  class="banner">
-            <div id="banner-title" class="title" ></div>
+        <div class="banner">
+            <div id="banner-title" class="title" >
+                <img src="banner/game_name.png"/>
+            </div>
+            <div id="banner-bg" class="bg" >
+                <img src="banner/bg.png"/>
+            </div>
         </div>
     </header>
 
@@ -54,18 +64,23 @@
                 </ul>
             </li>
         </ul>
+        <!--not use background-image for hover,use img instead(for work in ie)-->
 
         <ul class="second-row clearfix">
             <li class="first">
+                <img src="batton/first.png"/>
                 <div>入门</div>
             </li>
             <li class="second">
+                <img src="batton/second.png"/>
                 <div>进阶</div>
             </li>
             <li class="third">
+                <img src="batton/third.png"/>
                 <div>装备</div>
             </li>
             <li class="fourth">
+                <img src="batton/fourth.png"/>
                 <div>组合</div>
             </li>
             <li class="contact-us">

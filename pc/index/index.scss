@@ -1,4 +1,4 @@
-@mixin absolute($width, $height, $top, $left:null, $right:null){
+@mixin absolute($width, $height, $top, $left:null, $right:null, $zIndex:0){
   @if($left != null){
    left:$left;
   }
@@ -9,6 +9,7 @@
   width:$width;
   height:$height;
   position:absolute;
+  z-index: $zIndex;
 }
 
 @mixin backImg($url, $width, $height){
@@ -95,7 +96,7 @@ nav{
 
 .container{
   width: 920px;
-  border: 1px solid red;
+  //border: 1px solid red;
   margin: 300px auto 0 auto;
 }
 
@@ -118,9 +119,20 @@ nav{
     cursor:pointer;
   }
   .banner{
-    @include backImgWithPosition('banner/bg.png', 1160px, 437px, -350px, -80px, -90);
+    position:relative;
+    top:-385px;
+
+    img{
+      width:100%;
+      height:100%;
+    }
+
     .title{
-      @include backImgWithPosition('banner/game_name.png', 500px, 350px, 0px, -100px, -80);
+      @include absolute(500px, 350px, -21px, 0, 0, -80);
+    }
+
+    .bg{
+      @include absolute(1160px, 385px, 0, -80px, 0, -90);
     }
   }
 
@@ -201,6 +213,11 @@ nav{
         position: relative;
         cursor:pointer;
 
+        img{
+          width:100%;
+          height:100%;
+        }
+
         div{
           position: absolute;
           top: 87px;
@@ -211,29 +228,21 @@ nav{
         }
       }
       .first{
-        background-image:url('batton/first.png');
-
         div{
           color: rgb(230,207,255);
         }
       }
       .second{
-        background-image: url('batton/second.png');
-
         div{
           color: rgb(255,199,101);
         }
       }
       .third{
-        background-image: url('batton/third.png');
-
         div{
           color: rgb(255,167,49);
         }
       }
       .fourth{
-        background-image: url('batton/fourth.png');
-
         div{
           color: rgb(19,255,145);
         }

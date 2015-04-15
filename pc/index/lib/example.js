@@ -345,11 +345,11 @@
     }
   }
 
-  function addEventListeners() {
-    window.addEventListener('resize', onWindowResize);
-    container.addEventListener('click', onMouseClick);
-    container.addEventListener('mousemove', onMouseMove);
-  }
+  //function addEventListeners() {
+  //  window.addEventListener('resize', onWindowResize);
+  //  container.addEventListener('click', onMouseClick);
+  //  container.addEventListener('mousemove', onMouseMove);
+  //}
   //
   //function addControls() {
   //  var i, l, light, folder, controller;
