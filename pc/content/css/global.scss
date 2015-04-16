@@ -45,29 +45,6 @@ ul {
   }
 }
 
-.contact-us{
-  background-image:url('../image/button/contact_us.png');
-
-  width: 250px;
-  height: 100px;
-  margin-left: 20px;
-  margin-top: 34px;
-  position: relative;
-  background-size: 100% 100%;
-
-  .left{
-    @include absolute(150px, 40px, -30px, -57px);
-  }
-
-  .right{
-    @include absolute(230px, 86px, 29px, null, -82px);
-  }
-}
-
-
-
-
-
 .clearfix>*{
   float:left;
 }
@@ -94,8 +71,9 @@ ul.footer{
 
   .logo{
     background-image: url('../../index/bottom/logo.png');
-    width: 120px;
-    height:70px;
+    width: 80px;
+    height:50px;
+    margin-top:10px;
     background-size: 100% 100%;
   }
   .spliter{
@@ -125,7 +103,7 @@ ul.footer{
 
   $color:rgb(136,153,222);
   div{
-    @include radius(10px, $color);
+    @include radius(12px, $color);
     position: relative;
     top: 4px;
     left: 3px;
@@ -143,6 +121,44 @@ ul.footer{
 }
 
 
+.contact-us-big{
+  background-image:url("../image/button/contact_us.png");
+  background-size:100% 100%;
+  position:relative;
+
+    width: 250px;
+    height: 100px;
+    margin-left: 20px;
+    margin-top: 34px;
+    position: relative;
+    background-size: 100% 100%;
+
+    .left{
+      @include absolute(150px, 40px, -30px, -57px);
+    }
+
+    .right{
+      @include absolute(230px, 86px, 29px, null, -82px);
+    }
+}
+.contact-us-small{
+  background-image:url("../image/button/contact_us.png");
+  background-size:100% 100%;
+  position:relative;
+
+  width: 215px;
+  height:90px;
+  left: 0;
+  margin-top: 64px;
+
+  .left{
+    @include absolute(130px, 30px, -20px, -57px);
+  }
+
+  .right{
+    @include absolute(200px, 76px, 30px, null, -75px);
+  }
+}
 
 
 

@@ -31,29 +31,6 @@ ul {
     display: inline-block;
     vertical-align: middle; }
 
-.contact-us {
-  background-image: url("../image/button/contact_us.png");
-  width: 250px;
-  height: 100px;
-  margin-left: 20px;
-  margin-top: 34px;
-  position: relative;
-  background-size: 100% 100%; }
-  .contact-us .left {
-    left: -57px;
-    top: -30px;
-    width: 150px;
-    height: 40px;
-    position: absolute;
-    z-index: 0; }
-  .contact-us .right {
-    right: -82px;
-    top: 29px;
-    width: 230px;
-    height: 86px;
-    position: absolute;
-    z-index: 0; }
-
 .clearfix > * {
   float: left; }
 
@@ -73,8 +50,9 @@ ul.footer {
   margin: 0 auto 0 auto; }
   ul.footer .logo {
     background-image: url("../../index/bottom/logo.png");
-    width: 120px;
-    height: 70px;
+    width: 80px;
+    height: 50px;
+    margin-top: 10px;
     background-size: 100% 100%; }
   ul.footer .spliter {
     border-left: 1px solid #b7b7b7;
@@ -96,11 +74,11 @@ ul.footer {
   right: -250px;
   background-image: url("../../index/pop_box/suspend.png"); }
   .pop-window div {
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    border-radius: 20px;
-    width: 20px;
-    height: 20px;
+    -webkit-border-radius: 22px;
+    -moz-border-radius: 22px;
+    border-radius: 22px;
+    width: 24px;
+    height: 24px;
     border: 2px solid #8899de;
     position: relative;
     top: 4px;
@@ -123,6 +101,54 @@ ul.footer {
     position: absolute;
     top: 2px;
     left: 7px; }
+
+.contact-us-big {
+  background-image: url("../image/button/contact_us.png");
+  background-size: 100% 100%;
+  position: relative;
+  width: 250px;
+  height: 100px;
+  margin-left: 20px;
+  margin-top: 34px;
+  position: relative;
+  background-size: 100% 100%; }
+  .contact-us-big .left {
+    left: -57px;
+    top: -30px;
+    width: 150px;
+    height: 40px;
+    position: absolute;
+    z-index: 0; }
+  .contact-us-big .right {
+    right: -82px;
+    top: 29px;
+    width: 230px;
+    height: 86px;
+    position: absolute;
+    z-index: 0; }
+
+.contact-us-small {
+  background-image: url("../image/button/contact_us.png");
+  background-size: 100% 100%;
+  position: relative;
+  width: 215px;
+  height: 90px;
+  left: 0;
+  margin-top: 64px; }
+  .contact-us-small .left {
+    left: -57px;
+    top: -20px;
+    width: 130px;
+    height: 30px;
+    position: absolute;
+    z-index: 0; }
+  .contact-us-small .right {
+    right: -75px;
+    top: 30px;
+    width: 200px;
+    height: 76px;
+    position: absolute;
+    z-index: 0; }
 
 .ckepopBottom {
   display: none; }
