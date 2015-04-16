@@ -4,6 +4,7 @@
     <meta charset="UTF-8" content="text/html"/>
     <title>时空召唤官网</title>
 
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.css" type="text/css" rel="stylesheet">
     <link href="../content/css/app.css" type="text/css" rel="stylesheet">
     <link href="../content/css/index.css" type="text/css" rel="stylesheet">
 </head>
@@ -16,7 +17,6 @@ z-index:-200;
 width:100%;
 height:1000px;">
     <div id="canvasOutput" class="">
-        <!--<canvas style="width:900px;height:300px;"></canvas>-->
     </div>
 </div>
 
@@ -67,7 +67,6 @@ height:1000px;">
                 </ul>
             </li>
         </ul>
-        <!--not use background-image for hover,use img instead(for work in ie)-->
 
         <div class="second-row clearfix">
             <ul>
@@ -106,14 +105,6 @@ height:1000px;">
                 <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
                 <!--<a class="jiathis_counter_style"></a>-->
             </div>
-            <script type="text/javascript" >
-                var jiathis_config={
-                    summary:"",
-                    shortUrl:false,
-                    hideMore:false
-                }
-            </script>
-            <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
             <!-- JiaThis Button END -->
         </div>
 
@@ -132,7 +123,7 @@ height:1000px;">
 <section class="petal"><img src=""/></section>
 
 <footer>
-    <ul class="clearfix">
+    <ul class="footer clearfix">
         <li class="logo"> </li>
         <li class="spliter"> </li>
         <li class="game-name"> </li>
@@ -141,6 +132,14 @@ height:1000px;">
 
 
 
+<script type="text/javascript" >
+    var jiathis_config={
+        summary:"",
+        shortUrl:false,
+        hideMore:false
+    }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
 
 <script src="../lib/fss.min.js"></script>
 <script src="../lib/example.js"></script>

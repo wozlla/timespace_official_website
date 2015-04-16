@@ -3,13 +3,13 @@
 nav{
   >ul {
     > li {
-      width: 210px;
-      height: 85px;
+      width: 175px;
+      height: 68px;
       text-align: center;
       display: table;
       margin-right: 20px;
       float: left;
-      cursor:pointer;
+      cursor: pointer;
     }
   }
   >ul{
@@ -32,12 +32,12 @@ nav{
     @include backImgWithPosition('../image/nav/bird.png', 100px, 100px, -20px, -30px);
   }
   .download{
-    @include backImgWithPosition('../image/nav/download.png', 220px, 100px, -10px, 700px);
-    cursor:pointer;
+    @include backImgWithPosition('../image/nav/download.png', 215px, 85px, -10px, 585px);
+    cursor: pointer;
   }
   .banner {
     position: relative;
-    top: -385px;
+    top: -398px;
 
     img {
       width: 100%;
@@ -49,7 +49,7 @@ nav{
     }
 
     .bg {
-      @include absolute(1160px, 385px, 0, -80px, null, -90);
+      @include absolute(1000px, 398px, 0, -100px, null, -90);
     }
   }
 }

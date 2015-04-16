@@ -2,14 +2,12 @@
 @import "image-func.scss";
 @import "position-func.scss";
 
-
-
-
-
 .container {
+  margin-top:398px;
+  
   .banner{
     position:relative;
-    top:-385px;
+    top:-468px;
 
     img{
       width:100%;
@@ -21,7 +19,7 @@
     }
 
     .bg{
-      @include absolute(1160px, 385px, 0, -80px, null, -90);
+      @include absolute(1000px, 468px, 0, -100px, null, -90);
     }
   }
 
@@ -29,14 +27,16 @@
     margin-top: 20px;
 
     .first-row {
+      height: 250px;
+
       >li{
         float:left;
       }
 
       .left {
-        width: 210px;
+        width: 175px;
         margin-right: 20px;
-        height: 300px;
+        height: 100%;
         position: relative;
 
         ul {
@@ -52,26 +52,25 @@
       }
 
       .middle {
-        @include backImg('pic/1.png', 464px, 300px);
-        width:464px;
-        height:300px;
+        width:390px;
+        height:100%;
 
         img{
             background-image: url("../../index/pic/1.png");
             background-size: 464px 300px;
-            width:464px;
-            height:300px;
+            width:390px;
+            height:250px;
         }
       }
 
       .right {
-        width: 220px;
+        width: 215px;
 
         li {
           position: relative;
           background-size: 100% 100%;
           width: 100%;
-          height: 100px;
+          height: 83.3px;
         }
 
         .first {
@@ -109,8 +108,8 @@
 
         li{
           background-size: 100% 100%;
-          width: 150px;
-          height: 150px;
+          width: 130px;
+          height: 130px;
           position: relative;
           cursor:pointer;
           float:left;
@@ -122,8 +121,8 @@
 
           div{
             position: absolute;
-            top: 87px;
-            left: 66px;
+            top: 75px;
+            left: 55px;
             z-index: 10;
             font-weight: bold;
             text-decoration: underline;
@@ -158,32 +157,6 @@
   }
 }
 
-.pop-window{
-  position: fixed;
-  width:300px;
-  height:200px;
-  top: 45%;
-  right: -200px;
-  background-image: url('../../index/pop_box/suspend.png');
-
-  $color:rgb(136,153,222);
-  div{
-    @include radius(10px, $color);
-    position: relative;
-    top: 4px;
-    left: 3px;
-  }
-  .pop-out{
-    i{
-      @include arrow($color, 2px, -3px, 8px);
-    }
-  }
-  .pop-in{
-    i{
-      @include rightArrow($color, 2px, 7px, 8px);
-    }
-  }
-}
 
 .petal{
   display:none;
@@ -193,33 +166,7 @@
 footer{
   background-color: rgb(242,242,242);
   text-align: center;
-
-  ul{
-    height: 70px;
-    display: table;
-    margin: 30px auto 0 auto;
-
-    .logo{
-      background-image: url('../../index/bottom/logo.png');
-      width: 120px;
-      height:70px;
-      background-size: 100% 100%;
-    }
-    .spliter{
-      border-left: 1px solid rgb(183,183,183);
-      height:56px;
-      /* vertical-align: middle; */
-      /* margin-top: 6px; */
-      margin: 6px 30px;
-
-    }
-    .game-name{
-      background-image: url('../../index/bottom/game_name.png');
-      width: 170px;
-      height:70px;
-      background-size: 100% 100%;
-    }
-  }
+  margin-top: 30px;
 }
 
 

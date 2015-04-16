@@ -11,9 +11,8 @@
 </head>
 <body>
 
-
 <header>
-    <ul class="clearfix">
+    <ul class="footer clearfix">
         <li class="game-name"> </li>
         <li class="spliter"> </li>
         <li class="logo"> </li>
@@ -50,8 +49,8 @@
     <section class="content" style="
     width: 600px;
 ">
-        <div class="list-header clearfix" style="
-    margin-top: 12px;
+        <div class="header clearfix" style="
+    /* margin-top: 12px; */
     /* height: 29px; */
     /* margin-bottom: 10px; */
 ">
@@ -78,24 +77,22 @@
     margin: 0;
 ">
                 <li><a href="#">最新消息</a></li>
-                <li class="active"><a href="#">消息列表</a></li>
+                <li class="active">消息列表</li>
             </ol>
         </div>
 
-        <div style="
-    padding: 0;
-    margin-top: 20px;
+        <div class="body" style="
 ">
             <ul>
-                <li style="
-    padding: 10px 20px;
-    background-color: rgb(255,255,255);
+                <li class="item" style="
 ">
                     <h3>标题</h3>
                     <p style="
     color: rgb(67,51,82);
     margin: 0;
-">正文</p>
+">
+                        在前端开发的过程中，一大部分的工作是写 HTML、CSS 代码。特别是手动编写 HTML 代码的时候，效率会特别低下，因为需要敲打很多尖括号，而且很多标签都需要闭合标签等。于是，就有了 Emmet，它可以极大的提高代码编写的效率，它提供了一种非常简练的语法规则，然后立刻生成对应的 HTML 结构或者 CSS 代码，同时还有多种实用的功能帮助进行前端开发。
+                    </p>
                     <span style="
     display: block;
     /* float: right; */
@@ -110,7 +107,7 @@
 
         </div>
 
-        <div style="
+        <div class="page" style="
     text-align: center;
 ">
             <ul class="pagination">
@@ -138,43 +135,102 @@
                 <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
                 <!--<a class="jiathis_counter_style"></a>-->
             </div>
-            <script type="text/javascript">
-                var jiathis_config={
-                    summary:"",
-                    shortUrl:false,
-                    hideMore:false
-                }
-            </script>
-            <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script><script type="text/javascript" src="http://v3.jiathis.com/code_mini/plugin.client.js" charset="utf-8"></script>
             <!-- JiaThis Button END -->
         </div>
 
     </section>
 
 
-</section>
-
-<section>
-    <img src="1.png" alt=""/>
-    <div class="contact-us clearfix">
+<section class="right-column">
+    <img src="1.png" alt="" style="
+    width: 215px;
+    height: 120px;
+">
+    <hr style="
+    /* margin: 0; */
+    margin-top: 40px;
+    margin-bootom: 40px;
+">
+    <div class="contact-us clearfix" style="
+    width: 215px;
+    left: -20px;
+    margin-top: 64px;
+">
         <img class="left" src="../content/image/ornament/left.png">
         <img class="right" src="../content/image/ornament/right.png">
     </div>
 
 </section>
+</section>
 
-<footer>
-    友情链接
+
+<section class="pop-window">
+    <div class="pop-out">
+        <i>
+        </i>
+    </div>
+</section>
+
+
+<footer style="
+    background-color: rgb(224,224,224);
+    text-align: center;
+    /* display: table; */
+    margin-top:50px;
+">
+    <ul class="clearfix">
+        <li style="
+    width: 380px;
+">
+            <dl class="clearfix">
+                <dt>友情链接：</dt>
+                <dd>
+                    <ul class="clearfix" style="
+    width: 300px;
+">
+                        <li>悟空间</li>
+                        <li>悟空间</li>
+                        <li>悟空间</li>
+                        <li>悟空间</li>
+                        <li>悟空间</li>
+                    </ul>
+                </dd>
+            </dl>
+        </li>
+        <li class="right" style="
+    margin-left: 100px;
+    /* width: 200px; */
+">
+            <ul class="clearfix">
+                <li>悟空间</li>
+                <li>悟团队</li>
+                <li>悟招聘</li>
+            </ul>
+        </li>
+    </ul>
 </footer>
 
 
+<script type="text/javascript">
+    var jiathis_config={
+        summary:"",
+        shortUrl:false,
+        hideMore:false
+    }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script><script type="text/javascript" src="http://v3.jiathis.com/code_mini/plugin.client.js" charset="utf-8"></script><script type="text/javascript" src="http://v3.jiathis.com/code_mini/plugin.client.js" charset="utf-8"></script><script type="text/javascript" src="http://v3.jiathis.com/code_mini/plugin.client.js" charset="utf-8"></script>
 
-
-
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script src="list.js"></script>
+
+
+
 
 
 
 
 </body>
+
 </html>

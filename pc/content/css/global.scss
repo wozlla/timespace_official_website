@@ -1,4 +1,5 @@
 @import "position-func.scss";
+@import "geometry-func.scss";
 
 h3 {
   padding: 0;
@@ -22,9 +23,10 @@ ul {
 }
 
 .container{
-  width: 920px;
+  width: 800px;
   //border: 1px solid red;
-  margin: 300px auto 0 auto;
+  margin: 0 auto 0 auto;
+  padding:0;
 
 
 
@@ -46,11 +48,12 @@ ul {
 .contact-us{
   background-image:url('../image/button/contact_us.png');
 
-  width: 290px;
+  width: 250px;
   height: 100px;
   margin-left: 20px;
   margin-top: 34px;
   position: relative;
+  background-size: 100% 100%;
 
   .left{
     @include absolute(150px, 40px, -30px, -57px);
@@ -63,13 +66,16 @@ ul {
 
 
 
+
+
+.clearfix>*{
+  float:left;
+}
+
 .clearfix:after{
   content:"";
-  clear:both;
   display:table;
-}
-ul.clearfix>li{
-  float:left;
+  clear:both;
 }
 
 .ellipsis{
@@ -79,6 +85,75 @@ ul.clearfix>li{
 }
 
 
+
+
+ul.footer{
+  height: 70px;
+  display: table;
+  margin: 0 auto 0 auto;
+
+  .logo{
+    background-image: url('../../index/bottom/logo.png');
+    width: 120px;
+    height:70px;
+    background-size: 100% 100%;
+  }
+  .spliter{
+    border-left: 1px solid rgb(183,183,183);
+    height:56px;
+    /* vertical-align: middle; */
+    /* margin-top: 6px; */
+    margin: 6px 30px;
+
+  }
+  .game-name{
+    background-image: url('../../index/bottom/game_name.png');
+    width: 170px;
+    height:70px;
+    background-size: 100% 100%;
+  }
+}
+
+
+.pop-window{
+  position: fixed;
+  width:300px;
+  height:200px;
+  top: 30%;
+  right: -250px;
+  background-image: url('../../index/pop_box/suspend.png');
+
+  $color:rgb(136,153,222);
+  div{
+    @include radius(10px, $color);
+    position: relative;
+    top: 4px;
+    left: 3px;
+  }
+  .pop-out{
+    i{
+      @include arrow($color, 2px, -3px, 8px);
+    }
+  }
+  .pop-in{
+    i{
+      @include rightArrow($color, 2px, 7px, 8px);
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//remove share plugin info
 .ckepopBottom{
   display:none;
 }

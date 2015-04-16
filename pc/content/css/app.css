@@ -17,8 +17,9 @@ ul {
   list-style: none; }
 
 .container {
-  width: 920px;
-  margin: 300px auto 0 auto; }
+  width: 800px;
+  margin: 0 auto 0 auto;
+  padding: 0; }
 
 .shared {
   display: table;
@@ -32,11 +33,12 @@ ul {
 
 .contact-us {
   background-image: url("../image/button/contact_us.png");
-  width: 290px;
+  width: 250px;
   height: 100px;
   margin-left: 20px;
   margin-top: 34px;
-  position: relative; }
+  position: relative;
+  background-size: 100% 100%; }
   .contact-us .left {
     left: -57px;
     top: -30px;
@@ -52,18 +54,75 @@ ul {
     position: absolute;
     z-index: 0; }
 
+.clearfix > * {
+  float: left; }
+
 .clearfix:after {
   content: "";
-  clear: both;
-  display: table; }
-
-ul.clearfix > li {
-  float: left; }
+  display: table;
+  clear: both; }
 
 .ellipsis {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis; }
+
+ul.footer {
+  height: 70px;
+  display: table;
+  margin: 0 auto 0 auto; }
+  ul.footer .logo {
+    background-image: url("../../index/bottom/logo.png");
+    width: 120px;
+    height: 70px;
+    background-size: 100% 100%; }
+  ul.footer .spliter {
+    border-left: 1px solid #b7b7b7;
+    height: 56px;
+    /* vertical-align: middle; */
+    /* margin-top: 6px; */
+    margin: 6px 30px; }
+  ul.footer .game-name {
+    background-image: url("../../index/bottom/game_name.png");
+    width: 170px;
+    height: 70px;
+    background-size: 100% 100%; }
+
+.pop-window {
+  position: fixed;
+  width: 300px;
+  height: 200px;
+  top: 30%;
+  right: -250px;
+  background-image: url("../../index/pop_box/suspend.png"); }
+  .pop-window div {
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #8899de;
+    position: relative;
+    top: 4px;
+    left: 3px; }
+  .pop-window .pop-out i {
+    display: block;
+    width: 0;
+    height: 0;
+    border: 8px solid;
+    border-color: transparent #8899de transparent transparent;
+    position: absolute;
+    top: 2px;
+    left: -3px; }
+  .pop-window .pop-in i {
+    display: block;
+    width: 0;
+    height: 0;
+    border: 8px solid;
+    border-color: transparent transparent transparent #8899de;
+    position: absolute;
+    top: 2px;
+    left: 7px; }
 
 .ckepopBottom {
   display: none; }
@@ -72,8 +131,8 @@ ul.clearfix > li {
   display: none; }
 
 nav > ul > li {
-  width: 210px;
-  height: 85px;
+  width: 175px;
+  height: 68px;
   text-align: center;
   display: table;
   margin-right: 20px;
@@ -102,17 +161,17 @@ nav > ul {
   background-image: url("../image/nav/download.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  left: 700px;
+  left: 585px;
   top: -10px;
-  width: 220px;
-  height: 100px;
+  width: 215px;
+  height: 85px;
   position: absolute;
   z-index: 0;
   z-index: 0;
   cursor: pointer; }
 .container .banner {
   position: relative;
-  top: -385px; }
+  top: -398px; }
   .container .banner img {
     width: 100%;
     height: 100%; }
@@ -124,10 +183,10 @@ nav > ul {
     position: absolute;
     z-index: -80; }
   .container .banner .bg {
-    left: -80px;
+    left: -100px;
     top: 0;
-    width: 1160px;
-    height: 385px;
+    width: 1000px;
+    height: 398px;
     position: absolute;
     z-index: -90; }
 

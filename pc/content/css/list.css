@@ -1,6 +1,56 @@
-.list-header:after {
-  content: "";
-  border: 1px solid #d2d2d2;
-  width: 100%; }
+@charset "UTF-8";
+.container {
+  position: relative;
+  margin-top: 328px; }
+  .container .header {
+    margin-top: 30px;
+    width: 550px; }
+    .container .header:after {
+      content: "";
+      border: 1px solid #d2d2d2;
+      width: 100%; }
+    .container .header .breadcrumb a {
+      color: #5f5667 !important; }
+    .container .header .breadcrumb > li + li:before {
+      content: ">" !important; }
+  .container .body {
+    padding: 0;
+    margin-top: 20px;
+    width: 550px; }
+    .container .body .item {
+      padding: 10px 35px;
+      background-color: white;
+      position: relative; }
+      .container .body .item:hover:after {
+        content: "》";
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 20px;
+        padding-left: 5px;
+        height: 100%;
+        line-height: 134px;
+        background-color: #eee9f2;
+        color: #8e8695;
+        font-size: 18px; }
+      .container .body .item:hover {
+        cursor: pointer; }
+  .container .right-column {
+    position: absolute;
+    left: 600px;
+    top: 100px;
+    width: 215px; }
+
+footer ul {
+  display: table;
+  margin: 0 auto; }
+  footer ul dl ul li {
+    margin-left: 20px; }
+  footer ul .right li:after {
+    content: "";
+    border-left: 1px solid #8b8e9a;
+    height: 10px;
+    margin-left: 20px;
+    margin-right: 20px; }
 
 /*# sourceMappingURL=list.css.map */
