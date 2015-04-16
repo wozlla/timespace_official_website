@@ -1,0 +1,69 @@
+.container {
+  position: relative;
+  margin-top: 328px; }
+  .container .content {
+    width: 600px; }
+    .container .content .header {
+      margin-top: 30px;
+      width: 550px; }
+      .container .content .header:after {
+        content: "";
+        border: 1px solid #d2d2d2;
+        width: 100%; }
+      .container .content .header > ul {
+        margin-left: 5px;
+        float: left; }
+        .container .content .header > ul .line {
+          border: 5px solid red;
+          width: 10px;
+          height: 32px; }
+        .container .content .header > ul h1 {
+          font-size: 28px;
+          margin: 0;
+          margin-left: 5px;
+          margin-top: 1px;
+          color: #de6666; }
+      .container .content .header .breadcrumb {
+        float: right;
+        background-color: transparent;
+        margin: 0; }
+        .container .content .header .breadcrumb a {
+          color: #5f5667 !important; }
+        .container .content .header .breadcrumb > li + li:before {
+          content: ">" !important; }
+  .container .right-column {
+    position: absolute;
+    left: 585px;
+    top: 100px;
+    width: 215px; }
+    .container .right-column > img {
+      width: 215px;
+      height: 120px; }
+    .container .right-column hr {
+      margin-top: 40px;
+      margin-bootom: 40px; }
+
+footer {
+  background-color: #e0e0e0;
+  text-align: center;
+  margin-top: 50px; }
+  footer > ul {
+    display: table;
+    margin: 0 auto;
+    padding-top: 10px; }
+    footer > ul dl dd ul {
+      width: 300px; }
+    footer > ul dl ul li {
+      margin-left: 20px; }
+    footer > ul dl ul .left {
+      width: 380px; }
+    footer > ul dl ul .right {
+      margin-left: 100px; }
+    footer > ul .right li:after {
+      content: "";
+      border-left: 1px solid #8b8e9a;
+      height: 10px;
+      margin-left: 20px;
+      margin-right: 20px; }
+
+/*# sourceMappingURL=page.css.map */

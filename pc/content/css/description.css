@@ -1,0 +1,19 @@
+.body .item {
+  padding: 10px 20px; }
+  .body .item h1 {
+    font-size: 28px;
+    color: #de6666;
+    padding-left: 20px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #de6666;
+    width: 150px; }
+  .body .item .list {
+    font-size: 16px; }
+    .body .item .list li {
+      border-right: 1px solid #d2d2d2;
+      padding-left: 10px;
+      padding-right: 10px; }
+    .body .item .list li:last-of-type {
+      border: 0; }
+
+/*# sourceMappingURL=description.css.map */
