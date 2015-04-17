@@ -1,5 +1,6 @@
-@import "position-func.scss";
-@import "geometry-func.scss";
+@import "mixin/position";
+@import "mixin/geometry";
+@import "mixin/global";
 
 h3 {
   padding: 0;
@@ -22,6 +23,9 @@ ul {
   list-style: none;
 }
 
+
+
+
 .container{
   width: 800px;
   //border: 1px solid red;
@@ -39,6 +43,7 @@ ul {
   font-size: 0;
   -webkit-text-size-adjust:none;
   span,.jiathis_style_32x32{
+    @include font-small;
     font-size:12px;
     display:inline-block;
     vertical-align: middle;

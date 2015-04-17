@@ -1,0 +1,19 @@
+@mixin font-header-big{
+  font-size:28px;
+}
+@mixin font-header-middle{
+  font-size:24px;
+}
+@mixin font-header-small{
+  font-size:20px;
+}
+
+@mixin font-big{
+  font-size:18px;
+}
+@mixin font-middle{
+  font-size:16px;
+}
+@mixin font-small{
+  font-size:12px;
+}

@@ -30,10 +30,20 @@
         width: 175px;
         margin-right: 20px;
         height: 100%;
-        position: relative; }
+        position: relative;
+        background-color: #231259;
+        color: #ffffff; }
         .container .content .first-row .left ul {
           max-height: 200px;
-          overflow: auto; }
+          overflow: auto;
+          padding: 10px 10px 0 10px; }
+          .container .content .first-row .left ul li {
+            margin-bottom: 15px; }
+            .container .content .first-row .left ul li h3 {
+              font-size: 20px; }
+            .container .content .first-row .left ul li span {
+              display: block;
+              font-size: 12px; }
         .container .content .first-row .left img {
           width: 100%;
           height: 100px;
@@ -97,7 +107,8 @@
           height: 130px;
           position: relative;
           cursor: pointer;
-          float: left; }
+          float: left;
+          font-size: 16px; }
           .container .content .second-row ul li img {
             width: 100%;
             height: 100%; }

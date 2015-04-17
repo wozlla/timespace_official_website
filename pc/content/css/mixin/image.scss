@@ -1,4 +1,4 @@
-@import "position-func.scss";
+@import "position";
 
 @mixin backImg($url, $width, $height){
   background-image: url('#{$url}');

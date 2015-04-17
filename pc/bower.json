@@ -6,7 +6,7 @@
   "private": true,
   "dependencies": {
     "jquery": "~1.9",
-    "bootstrap": "^",
-    "jquery-snowfall": "^"
+    "bootstrap": "*",
+    "jquery-snowfall": "*"
   }
 }

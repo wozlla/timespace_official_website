@@ -1,3 +1,5 @@
+@import "mixin/global";
+
 .container{
   position:relative;
   margin-top:328px;
@@ -27,11 +29,11 @@
         }
 
         h1{
-          font-size: 28px;
           margin: 0;
           margin-left: 5px;
           margin-top: 1px;
           color: rgb(222,102,102);
+          @include font-header-big;
         }
       }
 
@@ -40,7 +42,7 @@
         float: right;
         background-color: transparent;
         margin: 0;
-
+        
         a{
           color: rgb(95, 86, 103) !important;
         }

@@ -18,11 +18,11 @@
           width: 10px;
           height: 32px; }
         .container .content .header > ul h1 {
-          font-size: 28px;
           margin: 0;
           margin-left: 5px;
           margin-top: 1px;
-          color: #de6666; }
+          color: #de6666;
+          font-size: 28px; }
       .container .content .header .breadcrumb {
         float: right;
         background-color: transparent;

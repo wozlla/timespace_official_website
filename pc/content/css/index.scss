@@ -1,6 +1,7 @@
-@import "geometry-func.scss";
-@import "image-func.scss";
-@import "position-func.scss";
+@import "mixin/geometry";
+@import "mixin/image";
+@import "mixin/position";
+@import "mixin/global";
 
 .container {
   margin-top:398px;
@@ -38,10 +39,25 @@
         margin-right: 20px;
         height: 100%;
         position: relative;
+        background-color:rgb(35,18,89);
+        color:#ffffff;
 
         ul {
           max-height: 200px;
           overflow: auto;
+          padding:10px 10px 0 10px;
+
+          li{
+            margin-bottom:15px;
+
+            h3{
+              @include font-header-small;
+            }
+            span{
+              display:block;
+              @include font-small;
+            }
+          }
         }
         img {
           width: 100%;
@@ -113,6 +129,7 @@
           position: relative;
           cursor:pointer;
           float:left;
+          @include font-middle;
 
           img{
             width:100%;

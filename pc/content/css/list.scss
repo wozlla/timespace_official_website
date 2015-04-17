@@ -1,3 +1,5 @@
+@import "mixin/global";
+
 //todo add url
 body{
 
@@ -30,6 +32,10 @@ body{
     }
     &:hover{
       cursor:pointer;
+    }
+
+    h1{
+      @include font-header-middle;
     }
 
     p{

@@ -21,6 +21,8 @@
       font-size: 18px; }
     .body .item:hover {
       cursor: pointer; }
+    .body .item h1 {
+      font-size: 24px; }
     .body .item p {
       color: #433352;
       margin: 0; }
