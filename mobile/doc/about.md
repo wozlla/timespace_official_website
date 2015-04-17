@@ -27,5 +27,5 @@
 
 说明图：  
 
-![details](about/details.jpg =300x)
+![details](about/details.jpg)
 
