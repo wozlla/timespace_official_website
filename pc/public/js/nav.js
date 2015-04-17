@@ -7,5 +7,9 @@ $(function(){
     $(document).on("click", function(e){
         $("nav .dropdown").hide();
     });
+
+    $("nav .bird").on("click", function(){
+
+    });
 });
 

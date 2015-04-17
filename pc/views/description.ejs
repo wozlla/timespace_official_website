@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>游戏介绍</title>
+
+    <link href="/js/bower_components/bootstrap/dist/css/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="/css/app.css" type="text/css" rel="stylesheet">
+
+    <link href="/css/page.css" type="text/css" rel="stylesheet">
+
+    <link href="/css/description.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<% include logo2.ejs %>
+
+<section class="container">
+    <header>
+
+        <% include nav.ejs %>
+
+        <div class="banner">
+            <div id="banner-bg" class="bg">
+                <img src="/image/description/description.png">
+            </div>
+        </div>
+    </header>
+
+    <section class="content">
+        <div class="header clearfix">
+            <ul class="clearfix">
+                <li class="line"></li>
+                <li><h1>消息列表</h1></li>
+            </ul>
+            <ol class="breadcrumb">
+                <li><a href="#">最新消息</a></li>
+                <li class="active">消息列表</li>
+            </ol>
+        </div>
+
+        <div class="body">
+            <div class="item">
+                <h1>游戏背景</h1>
+                <ul class="list clearfix">
+                    <li>
+                        神秘故事
+                    </li>
+                    <li>
+                        故事2
+                    </li>
+                    <li>
+                        故事2
+                    </li>
+                    <li>
+                        故事2
+                    </li>
+                    <li>
+                        故事2
+                    </li>
+                    <li>
+                        故事2
+                    </li>
+                    <li>
+                        故事2
+                    </li>
+                    <li>
+                        故事2
+                    </li>
+                    <li>
+                        故事2
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+
+
+
+        <% include shared.ejs %>
+
+    </section>
+
+    <% include right_column.ejs %>
+
+</section>
+
+
+<% include pop_window.ejs %>
+
+
+<% include footer.ejs %>
+
+
+<script type="text/javascript">
+    var jiathis_config={
+        summary:"",
+        shortUrl:false,
+        hideMore:false
+    }
+</script>
+
+<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+
+<script src="/js/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/js/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script src="/js/animation.js"></script>
+<script src="/js/nav.js"></script>
+<script src="/js/global.js"></script>
+
+</body>
+
+</html>

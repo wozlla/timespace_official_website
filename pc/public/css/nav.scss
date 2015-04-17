@@ -59,22 +59,29 @@ nav{
         display:block;
       }
       li.hotnews a{
-        @include backImg("../image/nav/hotnews.png", 100%, 100%);
+        @include backImg("/image/nav/hotnews.png", 100%, 100%);
       }
       li.description a{
-        @include backImg("../image/nav/description.png", 100%, 100%);
+        @include backImg("/image/nav/description.png", 100%, 100%);
       }
       li.comment a{
-        @include backImg("../image/nav/comment.png", 100%, 100%);
+        @include backImg("/image/nav/comment.png", 100%, 100%);
       }
     }
   }
 
   .bird{
-    @include backImgWithPosition('../image/nav/bird.png', 100px, 100px, -20px, -30px);
+    display:block;
+    position:absolute;
+    @include absolute(100px, 100px, -20px, -30px);
+
+    img{
+      width:100%;
+      height:100%;
+    }
   }
   .download{
-    @include backImgWithPosition('../image/nav/download.png', 215px, 85px, -10px, 585px);
+    @include backImgWithPosition("/image/nav/download.png", 215px, 85px, -10px, 585px);
     cursor: pointer;
   }
   .banner {
