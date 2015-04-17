@@ -98,10 +98,10 @@ var animation = {
 
 
     _data: [
-        ["pic/1.png", "batton/play.jpg", "batton/play_h.jpg"],
-        ["pic/2.png", "batton/feature.jpg", "batton/feature_h.jpg"],
+        ["/image/index/pic/1.png", "/image/index/batton/play.jpg", "/image/index/batton/play_h.jpg"],
+        ["/image/index/pic/2.png", "/image/index/batton/feature.jpg", "/image/index/batton/feature_h.jpg"],
         //todo skill.png
-        ["pic/3.png", "batton/feature.jpg", "batton/feature_h.jpg"]
+        ["/image/index/pic/3.png", "/image/index/batton/feature.jpg", "/image/index/batton/feature_h.jpg"]
     ],
     switchImg: function(imgDom, titles){
         var self = this,

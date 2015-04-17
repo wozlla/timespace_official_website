@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8" content="text/html"/>
+  <title>时空召唤官网</title>
+
+  <link href="/js/bower_components/bootstrap/dist/css/bootstrap.css" type="text/css" rel="stylesheet">
+  <link href="/css/app.css" type="text/css" rel="stylesheet">
+  <link href="/css/index.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div id="canvasContainer" style="
+position:absolute;
+top:0;
+left:0;
+z-index:-200;
+width:100%;
+height:1000px;">
+  <div id="canvasOutput" class="">
+  </div>
+</div>
+
+<section class="container">
+  <header>
+    <% include nav.ejs %>
+
+    <div class="banner">
+      <div id="banner-title" class="title" >
+        <img src="/image/index/banner/game_name.png"/>
+      </div>
+      <div id="banner-bg" class="bg" >
+        <img src="/image/index/banner/bg.png"/>
+      </div>
+    </div>
+  </header>
+
+  <section class="content">
+    <ul class="first-row clearfix">
+      <li class="left">
+        <ul>
+          <li>
+            <h3 class="ellipsis">小标题要长长长长长长长长长长长长长长长长长长长长</h3>
+            <span class="ellipsis">内容一定要长长长长长长长长长长长长长长长长</span>
+          </li>
+        </ul>
+
+        <img src="/image/index/ornament/news.png"></li>
+      <li id="switch-img" class="middle">
+        <img src="/image/index/pic/1.png"/>
+      </li>
+      <li id="switch-title" class="right">
+        <ul>
+          <li class="first"><i></i></li>
+          <li class="second"><i></i></li>
+          <li class="third"><i></i></li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="second-row clearfix">
+      <ul>
+        <li class="first">
+          <img src="/image/index/batton/first.png"/>
+          <div>入门</div>
+        </li>
+        <li class="second">
+          <img src="/image/index/batton/second.png"/>
+          <div>进阶</div>
+        </li>
+        <li class="third">
+          <img src="/image/index/batton/third.png"/>
+          <div>装备</div>
+        </li>
+        <li class="fourth">
+          <img src="/image/index/batton/fourth.png"/>
+          <div>组合</div>
+        </li>
+      </ul>
+
+      <div class="contact-us-big">
+        <img class="left" src="/image/ornament/left.png">
+        <img class="right" src="/image/ornament/right.png">
+      </div>
+    </div>
+
+
+    <% include shared.ejs %>
+
+  </section>
+</section>
+
+<% include pop_window.ejs %>
+
+<% include logo1.ejs %>
+
+<script type="text/javascript" >
+  var jiathis_config={
+    summary:"",
+    shortUrl:false,
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+
+<script src="/js/lib/fss.min.js"></script>
+<script src="/js/lib/example.js"></script>
+
+<script src="/js/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/js/lib/snowfall.jquery.js"></script>
+
+<script src="/js/animation.js"></script>
+<script src="/js/nav.js"></script>
+<script src="/js/index/index.js"></script>
+
+</body>
+</html>
+
