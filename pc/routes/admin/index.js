@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var newsRouter = require("./news");
 var descriptionRouter = require("./description");
+var descriptionCategoryRouter = require("./descriptionCategory");
 //var descriptionRouter = require("./description");
 var formidable = require("formidable");
 //var User = require("../../models/User");
@@ -13,6 +14,7 @@ router.get("/", function(req, res, next) {
 
 router.use("/news", newsRouter);
 router.use("/description", descriptionRouter);
+router.use("/descriptionCategory", descriptionCategoryRouter);
 
 //router.get("/descriptionCategory", function(req, res, next) {
 //    res.render("admin/descriptionCategory/index");

@@ -17,16 +17,7 @@
 </form>
 
 <% include ../kindeditorJs.ejs %>
-<script>
-    var options = {
-        uploadJson: "/admin/upload"
-    };
-
-    KindEditor.ready(function(K) {
-        window.editor = K.create("#body", options);
-    });
-</script>
 
 <% include ../footer.ejs %>
 
-<script src="/js/admin/update.js"></script>
+<script src="/js/admin/news/update.js"></script>

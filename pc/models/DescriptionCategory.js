@@ -1,5 +1,6 @@
 var mongodb = require("./db");
 var ObjectId = require('mongodb').ObjectID;
+var Description = require("./Description");
 
 function DescriptionCategory(){
 }
@@ -65,27 +66,46 @@ DescriptionCategory.prototype.update = function(id, data, callback){
 };
 
 DescriptionCategory.prototype.remove = function(id, callback){
+    var self = this;
+
     mongodb.open(function (err, db) {
         if (err) {
             mongodb.close();
             return callback(err);
         }
-        db.collection("descriptionCategory", function (err, collection) {
+
+        //todo promise
+
+        //cascade delete description where description.category === descriptionCategory.name
+        //then delete descriptionCategory
+        self.get(id, function(err, model){
             if (err) {
                 mongodb.close();
                 return callback(err);
             }
-            var query = {};
-            if (id) {
-                query._id = new ObjectId(id);
-            }
 
-            collection.remove(query, null, function (err) {
-                mongodb.close();
-                if (err) {
-                    return callback(err);
-                }
-                callback(null);
+            var description = new Description();
+
+            description.removeByCategory(model.name, function(err){
+                db.collection("descriptionCategory", function (err, collection) {
+                    if (err) {
+                        mongodb.close();
+                        return callback(err);
+                    }
+
+                    var query = {};
+                    if (id) {
+                        query._id = new ObjectId(id);
+                    }
+
+                    collection.remove(query, null, function (err) {
+                        mongodb.close();
+                        if (err) {
+                            return callback(err);
+                        }
+                        callback(null);
+                    });
+                });
             });
         });
     });
