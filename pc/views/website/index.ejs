@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-  <meta charset="UTF-8" content="text/html"/>
-  <title>时空召唤官网</title>
+<% include header.ejs %>
 
-  <link href="/js/bower_components/bootstrap/dist/css/bootstrap.css" type="text/css" rel="stylesheet">
-  <link href="/css/app.css" type="text/css" rel="stylesheet">
-  <link href="/css/index.css" type="text/css" rel="stylesheet">
-</head>
-<body>
+<link href="/css/index.css" type="text/css" rel="stylesheet">
+
 <div id="canvasContainer" style="
 position:absolute;
 top:0;
@@ -93,26 +86,11 @@ height:1000px;">
 
 <% include logo1.ejs %>
 
-<script type="text/javascript" >
-  var jiathis_config={
-    summary:"",
-    shortUrl:false,
-    hideMore:false
-  }
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
 
-<script src="/js/lib/fss.min.js"></script>
-<script src="/js/lib/example.js"></script>
+<% include footer.ejs %>
 
-<script src="/js/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="/js/lib/snowfall.jquery.js"></script>
+<script src="/js/website/lib/fss.min.js"></script>
+<script src="/js/website/lib/example.js"></script>
 
-<script src="/js/animation.js"></script>
-<script src="/js/nav.js"></script>
-<script src="/js/global.js"></script>
-<script src="/js/index/index.js"></script>
-
-</body>
-</html>
-
+<script src="/js/website/lib/snowfall.jquery.js"></script>
+<script src="/js/website/index/index.js"></script>

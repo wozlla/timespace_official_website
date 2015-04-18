@@ -1,10 +1,11 @@
 function User(){
-  this.password = "111111";
 }
 
+User.prototype.isCorrect = function(name, pwd){
+  var name = "admin",
+  password = "111111";
 
-User.prototype.get = function(name, callback){
-  callback(null, this.password);
-};
+  return name === name && pwd === password;
+}
 
 module.exports = User;

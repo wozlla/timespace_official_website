@@ -1,0 +1,12 @@
+<% include ../header.ejs %>
+
+<form method="post" action="/admin/news">
+  标题：<br />
+  <input type="text" name="title" /><br />
+  正文：<br />
+  <textarea name="body" rows="20" cols="100"></textarea>
+  <br />
+  <input type="submit" value="添加" />
+</form>
+
+<% include ../footer.ejs %>
