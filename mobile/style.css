@@ -399,10 +399,9 @@ body {
 }
 
 .ts-about-content {
-    width: 300px;
     text-align: center;
     margin: 0 auto;
-    margin-top: 100px;
+    margin-top: 10px;
     color: white;
     font-size: 20px;
     height: 100%;
@@ -415,3 +414,200 @@ body {
 .swiper-slide {
     position: relative;
 }
+
+
+/*
+ * about-page-css
+ * written by chen_yan
+ * any problem please contact me -- tangsmail@yeah.net
+ */
+
+#view-about .actions-content {
+    width: 640px;
+    height: 100%;
+    margin: 0 auto;
+    margin-top: 10px;
+    position: relative;
+    -webkit-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
+#view-about .actions-content .accordion-item-one .left {
+    display: block;
+    position: absolute;
+    top: 20px;
+    left: 35px;
+}
+
+#view-about .actions-content .accordion-item-one .right {
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 105px;
+}
+
+#view-about .actions-content .accordion-item-one .discription {
+    position: absolute;
+    top: 100px;
+    left: 50px;
+    width: 540px;
+    font-family: Arial, 黑体, Helvetica;
+    color: #DD6833;
+    font-size: 14px;
+    text-align: left;
+}
+
+#view-about .actions-content .accordion-item-one .hr {
+    position: absolute;
+    border: 0;
+    border-top: 2px dashed #000;
+    border-bottom: 2px dashed #333;
+    top: 160px;
+    left: 30px;
+    width: 580px;
+}
+
+#view-about .actions-content .accordion-item-two .left {
+    display: block;
+    position: absolute;
+    top: 200px;
+    left: 10px;
+}
+
+#view-about .actions-content .accordion-item-two .right {
+    display: block;
+    position: absolute;
+    top: 205px;
+    left: 515px;
+}
+
+#view-about .actions-content .accordion-item-two .discription {
+    position: absolute;
+    top: 300px;
+    left: 50px;
+    width: 540px;
+    font-family: Arial, 黑体, Helvetica;
+    color: #7FA629;
+    font-size: 14px;
+    text-align: left;
+}
+
+#view-about .actions-content .accordion-item-two .hr {
+    position: absolute;
+    border: 0;
+    border-top: 2px dashed #000;
+    border-bottom: 2px dashed #333;
+    top: 360px;
+    left: 30px;
+    width: 580px;
+}
+
+#view-about .actions-content .accordion-item-three .left {
+    display: block;
+    position: absolute;
+    top: 400px;
+    left: 35px;
+}
+
+#view-about .actions-content .accordion-item-three .right {
+    display: block;
+    position: absolute;
+    top: 420px;
+    left: 75px;
+}
+
+#view-about .actions-content .accordion-item-three .discription {
+    position: absolute;
+    top: 645px;
+    left: 50px;
+    width: 540px;
+    font-family: Arial, 黑体, Helvetica;
+    color: #2E9FC9;
+    font-size: 14px;
+    text-align: left;
+}
+
+#view-about .actions-content .accordion-item-three .hr {
+    position: absolute;
+    border: 0;
+    border-top: 2px dashed #000;
+    border-bottom: 2px dashed #333;
+    top: 725px;
+    left: 30px;
+    width: 580px;
+}
+
+#view-about .actions-content .contact-info .shaky_icon {
+    display: block;
+    position: absolute;
+    top: 760px;
+    left: 186px;
+}
+
+#view-about .actions-content .contact-info .contact-info-container-one .code_one {
+    display: block;
+    position: absolute;
+    top: 870px;
+    left: 80px;
+    margin-bottom: 150px;
+}
+
+#view-about .actions-content .contact-info .contact-info-container-two .code_two {
+    display: block;
+    position: absolute;
+    top: 870px;
+    right: 80px;
+}
+
+#view-about .actions-content .contact-info .contact-info-container-one .title_one {
+    display: block;
+    position: absolute;
+    top: 1060px;
+    left: 113px;
+    font-family: Arial, 黑体, Helvetica;
+    font-weight: bold;
+    color: #EB8642;
+}
+
+#view-about .actions-content .contact-info .contact-info-container-two .title_two {
+    display: block;
+    position: absolute;
+    top: 1060px;
+    right: 120px;
+    font-family: Arial, 黑体, Helvetica;
+    font-weight: bold;
+    color: #EB8642;
+}
+
+.actions-content .accordion-item-one .left {
+    transform: translate(-700px, 0);
+    -webkit-transform: translate(-700px, 0);
+}
+
+.actions-content .accordion-item-one .right {
+    transform: translate(700px, 0);
+    -webkit-transform: translate(700px, 0);
+}
+
+.actions-content .accordion-item-one .discription, .actions-content .accordion-item-one .hr {
+    opacity: 0;
+}
+
+.actions-content .contact-info .shaky_icon {
+    transform: translate(0, 30px);
+    -webkit-transform: translate(0, 30px);
+}
+
+.actions-content .accordion-item-one .normal-position, .actions-content .contact-info .normal-position {
+    transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    opacity: 1;
+}
+
+/*
+ * about-page-css
+ * end
+ */

@@ -70,5 +70,42 @@
         });
     }
 
+    /*
+     * about-page-animation
+     * written by chen_yan
+     * any problem please contact me -- tangsmail@yeah.net
+     */
+
+     var intID;
+
+     $$('.tab-link').on('click', function () {
+        if($$(this).prop('href').indexOf('view-about') == -1 ) {
+            $$( ".ts-actions-item .left, " +
+                ".ts-actions-item .right, " +
+                ".ts-actions-item .discription, " +
+                ".ts-actions-item .hr").removeClass('normal-position');
+            clearInterval(intID);
+        } else {
+            setTimeout(function(){
+                $$( ".ts-actions-item .left, " +
+                    ".ts-actions-item .right").addClass('normal-position');
+            }, 500);
+            setTimeout(function(){
+                $$(".ts-actions-item .discription").addClass('normal-position');
+            }, 1000);
+            setTimeout(function(){
+                $$(".ts-actions-item .hr").addClass('normal-position');
+            }, 1800);
+            intID = setInterval(function(){
+                if( $$( ".shaky_icon").hasClass('normal-position') ) {
+                    $$( ".shaky_icon").removeClass('normal-position')
+                } else {
+                    $$( ".shaky_icon").addClass('normal-position')
+                }
+            }, 300);
+        }
+     });
+
+
 })();
 
