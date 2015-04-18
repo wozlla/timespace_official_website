@@ -11,7 +11,7 @@
             <div>
                 <!--<a class="update" onclick="index.update('/admin/news','<%= news[i]._id %>')">修改</a>-->
                 <a class="update" href="/admin/news/updatePage?id=<%= news[i]._id %>">修改</a>
-                <a class="delete" onclick="index.delete('/admin/news',<%= news[i]._id %>)">删除</a>
+                <a class="delete" href="#" onclick="index.delete('/admin/news','<%= news[i]._id %>')">删除</a>
             </div>
         </li>
         <% }%>

@@ -60,5 +60,22 @@ router.put("/", function(req, res, next) {
         res.send("/admin")
     });
 });
+router.delete("/", function(req, res, next) {
+    var news = new News();
+    news.remove(req.param("id"),function (err) {
+        if (err) {
+            //req.flash("error", err);
+
+            //todo error handle
+            res.send("error");
+            return;
+        }
+        //req.flash("success", "发布成功!");
+        //res.redirect("/");//发表成功跳转到主页
+        //res.redirect("/admin");
+        res.send("/admin")
+        //res.send("success");
+    });
+});
 
 module.exports = router;

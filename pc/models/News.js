@@ -79,6 +79,34 @@ News.prototype.update = function(id, data, callback){
     });
 };
 
+News.prototype.remove = function(id, callback){
+    mongodb.open(function (err, db) {
+        if (err) {
+            mongodb.close();
+            return callback(err);
+        }
+        //读取 posts 集合
+        db.collection("news", function (err, collection) {
+            if (err) {
+                mongodb.close();
+                return callback(err);
+            }
+            var query = {};
+            if (id) {
+                query._id = new ObjectId(id);
+            }
+
+            collection.remove(query, null, function (err) {
+                mongodb.close();
+                if (err) {
+                    return callback(err);
+                }
+                callback(null);
+            });
+        });
+    });
+};
+
 //读取文章及其相关信息
 News.prototype.get = function(id, callback) {
     //打开数据库

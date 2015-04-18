@@ -1,15 +1,17 @@
 var index = (function(){
     return {
-        //update: function(url, id){
-        //    $.put(url, {
-        //        id: id
-        //    }, function(data){
-        //    });
-        //},
         delete: function(url, id){
+            var isDelete = window.confirm("is it sure to delete?");
+
+            if(!isDelete){
+                return;
+            }
+
             $.delete(url, {
                 id: id
-            }, function(data){
+            }, function(url){
+                //refresh page
+               location.href = url;
             });
         }
     }
