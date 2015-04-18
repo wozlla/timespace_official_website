@@ -1,26 +1,14 @@
 var mongodb = require("./db");
 var ObjectId = require('mongodb').ObjectID;
 
-function News(){
+function Description(){
 }
 
 
 //存储一篇文章及其相关信息
-News.prototype.add = function(newsObj, callback) {
-    var date = new Date();
-    //存储各种时间格式，方便以后扩展
-    //todo use moment
-    var time = {
-        date: date,
-        year : date.getFullYear(),
-        month : date.getFullYear() + "." + (date.getMonth() + 1),
-        day : date.getFullYear() + "." + (date.getMonth() + 1) + "." + date.getDate(),
-        minute : date.getFullYear() + "." + (date.getMonth() + 1) + "." + date.getDate() + " " +
-        date.getHours() + ":" + (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes())
-    };
+Description.prototype.add = function(descriptionObj, callback) {
     //要存入数据库的文档
-    var news = newsObj;
-    news.time = time.day;
+    var description = descriptionObj;
 
     //打开数据库
     mongodb.open(function (err, db) {
@@ -29,13 +17,13 @@ News.prototype.add = function(newsObj, callback) {
             return callback(err);
         }
         //读取 posts 集合
-        db.collection("news", function (err, collection) {
+        db.collection("description", function (err, collection) {
             if (err) {
                 mongodb.close();
                 return callback(err);
             }
 
-            collection.insert(news, {
+            collection.insert(description, {
                 safe: true
             }, function (err) {
                 mongodb.close();
@@ -48,14 +36,14 @@ News.prototype.add = function(newsObj, callback) {
     });
 };
 
-News.prototype.update = function(id, data, callback){
+Description.prototype.update = function(id, data, callback){
     mongodb.open(function (err, db) {
         if (err) {
             mongodb.close();
             return callback(err);
         }
         //读取 posts 集合
-        db.collection("news", function (err, collection) {
+        db.collection("description", function (err, collection) {
             if (err) {
                 mongodb.close();
                 return callback(err);
@@ -66,7 +54,7 @@ News.prototype.update = function(id, data, callback){
             }
 
             collection.update(query, {
-                $set:data   //only set fields contained in data(e.g: not edit "time" field)
+                $set:data   //only set fields contained in data
             }, null, function (err) {
                 mongodb.close();
                 if (err) {
@@ -78,14 +66,14 @@ News.prototype.update = function(id, data, callback){
     });
 };
 
-News.prototype.remove = function(id, callback){
+Description.prototype.remove = function(id, callback){
     mongodb.open(function (err, db) {
         if (err) {
             mongodb.close();
             return callback(err);
         }
         //读取 posts 集合
-        db.collection("news", function (err, collection) {
+        db.collection("description", function (err, collection) {
             if (err) {
                 mongodb.close();
                 return callback(err);
@@ -107,7 +95,7 @@ News.prototype.remove = function(id, callback){
 };
 
 //读取文章及其相关信息
-News.prototype.get = function(id, callback) {
+Description.prototype.get = function(id, callback) {
     //打开数据库
     mongodb.open(function (err, db) {
         if (err) {
@@ -115,7 +103,7 @@ News.prototype.get = function(id, callback) {
             return callback(err);
         }
         //读取 posts 集合
-        db.collection("news", function(err, collection) {
+        db.collection("description", function(err, collection) {
             if (err) {
                 mongodb.close();
                 return callback(err);
@@ -125,32 +113,32 @@ News.prototype.get = function(id, callback) {
                 query._id = new ObjectId(id);
             }
             //根据 query 对象查询文章
-            collection.findOne(query, function (err, docs) {
+            collection.findOne(query, function (err, doc) {
                 mongodb.close();
                 if (err) {
                     return callback(err);//失败！返回 err
                 }
-                callback(null, docs);//成功！以数组形式返回查询的结果
+                callback(null, doc);//成功！以数组形式返回查询的结果
             });
         });
     });
 };
 
-News.prototype.getList = function(callback) {
+Description.prototype.getList = function(callback) {
     mongodb.open(function (err, db) {
         if (err) {
             mongodb.close();
             return callback(err);
         }
         //读取 posts 集合
-        db.collection("news", function(err, collection) {
+        db.collection("description", function(err, collection) {
             if (err) {
                 mongodb.close();
                 return callback(err);
             }
             //根据 query 对象查询文章
             collection.find().sort({
-                time: -1
+                category: -1
             }).toArray(function (err, docs) {
                 mongodb.close();
                 if (err) {
@@ -162,4 +150,4 @@ News.prototype.getList = function(callback) {
     });
 };
 
-module.exports = News;
+module.exports = Description;

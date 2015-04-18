@@ -1,0 +1,24 @@
+<% include ../header.ejs %>
+<h1>游戏介绍</h1>
+<ul>
+    <% for(var i = 0, len = description.length; i < len; i++){%>
+    <li class="clearfix">
+        <h3><%= description[i].title%></h3>
+            <span>
+                <%= description[i].category %>
+            </span>
+        <div>
+            <a class="update" href="#" onclick="index.showUpdatePage('/admin/description/updatePage','<%= description[i]._id %>')">修改</a>
+            <!--<a class="update" href="/admin/description/updatePage?id=<%= description[i]._id %>">修改</a>-->
+            <a class="delete" href="#" onclick="index.delete('/admin/description','<%= description[i]._id %>')">删除</a>
+        </div>
+    </li>
+    <% }%>
+</ul>
+<ul>
+    <li class="add">
+        <a href="/admin/description/addPage">添加</a>
+    </li>
+</ul>
+<% include ../footer.ejs %>
+<script src="/js/admin/index.js"></script>

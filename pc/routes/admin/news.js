@@ -3,6 +3,14 @@ var router = express.Router();
 var safe = require("../../bll/safe");
 var News = require("../../models/News");
 
+router.get("/", function(req, res, next) { var news = new News();
+
+    news.getList(function(error, list){
+        res.render("admin/news/index", {
+            news:list
+        });
+    });
+});
 router.get("/addPage", function(req, res, next) {
     res.render("admin/news/add");
 });

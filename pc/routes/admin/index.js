@@ -1,20 +1,23 @@
 var express = require("express");
 var router = express.Router();
+var newsRouter = require("./news");
+var descriptionRouter = require("./description");
+//var descriptionRouter = require("./description");
 var formidable = require("formidable");
-var User = require("../../models/User");
-var News = require("../../models/News");
+//var User = require("../../models/User");
+
 
 router.get("/", function(req, res, next) {
-    var news = new News();
-
-    news.getList(function(error, list){
-        var news = new News();
-
-        res.render("admin/index", {
-            news: list
-        });
-    });
+    res.render("admin/index");
 });
+
+router.use("/news", newsRouter);
+router.use("/description", descriptionRouter);
+
+//router.get("/descriptionCategory", function(req, res, next) {
+//    res.render("admin/descriptionCategory/index");
+//});
+
 router.post("/upload", function(req, res, next) {
     var form = new formidable.IncomingForm();
     form.keepExtensions = true;
