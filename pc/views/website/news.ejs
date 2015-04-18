@@ -1,7 +1,7 @@
 <% include header.ejs %>
 
     <link href="/css/website/page.css" type="text/css" rel="stylesheet">
-    <link href="/css/website/list.css" type="text/css" rel="stylesheet">
+    <link href="/css/website/news/list.css" type="text/css" rel="stylesheet">
 
 <% include logo2.ejs %>
 
@@ -31,16 +31,16 @@
 
         <div class="body">
             <ul>
-                <li class="item">
-                    <h3>标题</h3>
+                <% for(var i = 0, len = news.length; i < len; i++){%>
+                <li class="item" onclick="news.showDetail('/news/detailPage', '<%= news[i]._id %>')">
+                    <h3><%= news[i].title%></h3>
                     <p>
-                        在前端开发的过程中，一大部分的工作是写 HTML、CSS 代码。特别是手动编写 HTML 代码的时候，效率会特别低下，因为需要敲打很多尖括号，而且很多标签都需要闭合标签等。于是，就有了 Emmet，它可以极大的提高代码编写的效率，它提供了一种非常简练的语法规则，然后立刻生成对应的 HTML 结构或者 CSS 代码，同时还有多种实用的功能帮助进行前端开发。
+                        <%= news[i].body %>
                     </p>
-                    <span>2015.04.15</span>
+                    <span><%= news[i].time %></span>
                 </li>
-                <li></li>
+                <% }%>
             </ul>
-
         </div>
 
         <div class="page">
@@ -79,4 +79,5 @@
 
 
 <% include footer.ejs %>
+<script src="/js/website/news/news.js"></script>
 <script src="/js/website/news/index.js"></script>

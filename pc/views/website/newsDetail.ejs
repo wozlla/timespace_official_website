@@ -1,0 +1,59 @@
+<% include header.ejs %>
+
+<link href="/css/website/page.css" type="text/css" rel="stylesheet">
+<link href="/css/website/news/detail.css" type="text/css" rel="stylesheet">
+
+<% include logo2.ejs %>
+
+<section class="container">
+    <header>
+
+        <% include nav.ejs %>
+
+        <div class="banner">
+            <div id="banner-bg" class="bg">
+                <img src="/image/news/news.png">
+            </div>
+        </div>
+    </header>
+
+    <section class="content">
+        <div class="header clearfix">
+            <ul class="clearfix">
+                <li class="line"></li>
+                <li><h1><%= news.title %></h1></li>
+            </ul>
+            <ol class="breadcrumb">
+                <li><a href="#">最新消息</a></li>
+                <li><a href="#">消息列表</a></li>
+                <li class="active">正文</li>
+            </ol>
+        </div>
+
+        <div class="body">
+            <span><%= news.time%></span>
+            <p>
+                <%= news.body %>
+            </p>
+        </div>
+
+
+
+        <% include shared.ejs %>
+
+    </section>
+
+    <% include right_column.ejs %>
+
+</section>
+
+
+<% include pop_window.ejs %>
+
+
+<% include pageFooter.ejs %>
+
+
+<% include footer.ejs %>
+<script src="/js/website/news/news.js"></script>
+<script src="/js/website/news/index.js"></script>

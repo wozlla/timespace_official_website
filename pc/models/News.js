@@ -126,12 +126,12 @@ News.prototype.get = function(id, callback) {
                 query._id = new ObjectId(id);
             }
             //根据 query 对象查询文章
-            collection.findOne(query, function (err, docs) {
+            collection.findOne(query, function (err, doc) {
                 mongodb.close();
                 if (err) {
                     return callback(err);//失败！返回 err
                 }
-                callback(null, docs);//成功！以数组形式返回查询的结果
+                callback(null, doc);//成功！以数组形式返回查询的结果
             });
         });
     });
