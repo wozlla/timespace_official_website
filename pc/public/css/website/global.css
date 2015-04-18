@@ -1,0 +1,160 @@
+h3 {
+  padding: 0;
+  margin: 0; }
+
+body {
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  top: 0;
+  left: 0;
+  z-index: -100;
+  background-size: 100% 100%; }
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+.container {
+  width: 800px;
+  margin: 0 auto 0 auto;
+  padding: 0; }
+
+.shared {
+  display: table;
+  margin: 30px auto 0px auto;
+  font-size: 0;
+  -webkit-text-size-adjust: none; }
+  .shared span, .shared .jiathis_style_32x32 {
+    font-size: 12px;
+    font-size: 12px;
+    display: inline-block;
+    vertical-align: middle; }
+
+.clearfix > * {
+  float: left; }
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both; }
+
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
+
+ul.footer {
+  height: 70px;
+  display: table;
+  margin: 0 auto 0 auto; }
+  ul.footer .logo {
+    background-image: url("../../index/bottom/logo.png");
+    width: 80px;
+    height: 50px;
+    margin-top: 10px;
+    background-size: 100% 100%; }
+  ul.footer .spliter {
+    border-left: 1px solid #b7b7b7;
+    height: 56px;
+    /* vertical-align: middle; */
+    /* margin-top: 6px; */
+    margin: 6px 30px; }
+  ul.footer .game-name {
+    background-image: url("../../index/bottom/game_name.png");
+    width: 170px;
+    height: 70px;
+    background-size: 100% 100%; }
+
+.pop-window {
+  position: fixed;
+  width: 300px;
+  height: 200px;
+  top: 30%;
+  right: -250px;
+  background-image: url("../../index/pop_box/suspend.png"); }
+  .pop-window div {
+    -webkit-border-radius: 22px;
+    -moz-border-radius: 22px;
+    border-radius: 22px;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #8899de;
+    position: relative;
+    top: 4px;
+    left: 3px; }
+  .pop-window .pop-out i {
+    display: block;
+    width: 0;
+    height: 0;
+    border: 8px solid;
+    border-color: transparent #8899de transparent transparent;
+    position: absolute;
+    top: 2px;
+    left: -3px; }
+  .pop-window .pop-in i {
+    display: block;
+    width: 0;
+    height: 0;
+    border: 8px solid;
+    border-color: transparent transparent transparent #8899de;
+    position: absolute;
+    top: 2px;
+    left: 7px; }
+
+.contact-us-big {
+  background-image: url("../image/button/contact_us.png");
+  background-size: 100% 100%;
+  position: relative;
+  width: 250px;
+  height: 100px;
+  margin-left: 20px;
+  margin-top: 34px;
+  position: relative;
+  background-size: 100% 100%; }
+  .contact-us-big .left {
+    left: -57px;
+    top: -30px;
+    width: 150px;
+    height: 40px;
+    position: absolute;
+    z-index: 0; }
+  .contact-us-big .right {
+    right: -82px;
+    top: 29px;
+    width: 230px;
+    height: 86px;
+    position: absolute;
+    z-index: 0; }
+
+.contact-us-small {
+  background-image: url("../image/button/contact_us.png");
+  background-size: 100% 100%;
+  position: relative;
+  width: 215px;
+  height: 90px;
+  left: 0;
+  margin-top: 64px; }
+  .contact-us-small .left {
+    left: -57px;
+    top: -20px;
+    width: 130px;
+    height: 30px;
+    position: absolute;
+    z-index: 0; }
+  .contact-us-small .right {
+    right: -75px;
+    top: 30px;
+    width: 200px;
+    height: 76px;
+    position: absolute;
+    z-index: 0; }
+
+.ckepopBottom {
+  display: none; }
+
+.centerBottom {
+  display: none; }
+
+/*# sourceMappingURL=global.css.map */

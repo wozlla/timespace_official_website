@@ -3,15 +3,18 @@ var router = express.Router();
 var loginRouter = require("./login");
 var indexRouter = require("./index");
 var newsRouter = require("./news") ;
+var isDev = require("../../setting").isDev;
 
-router.use("/", function(req, res, next){
-    if(req.url === "/login" || req.session.user){
-        next();
-        return;
-    }
+if(!isDev){
+    router.use("/", function(req, res, next){
+        if(req.url === "/login" || req.session.user){
+            next();
+            return;
+        }
 
-    res.redirect("/admin/login");
-});
+        res.redirect("/admin/login");
+    });
+}
 
 router.use("/", indexRouter);
 router.use("/login", loginRouter);

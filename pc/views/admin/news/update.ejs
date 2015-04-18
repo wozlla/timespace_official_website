@@ -1,0 +1,32 @@
+<% include ../header.ejs %>
+
+<form action="/admin/news">
+    标题：<br />
+    <input type="text" id="title" name="title" value="<%=news.title%>" /><br />
+    正文：<br />
+  <textarea id="body" name="body" style="
+  width:600px;
+  height:400px;
+  ">
+     <%= news.body %>
+  </textarea>
+    <br />
+    <input type="submit" value="添加" />
+
+    <input id="id" type="hidden" value="<%=news._id%>"/>
+</form>
+
+<% include ../kindeditorJs.ejs %>
+<script>
+    var options = {
+        uploadJson: "/admin/upload"
+    };
+
+    KindEditor.ready(function(K) {
+        window.editor = K.create("#body", options);
+    });
+</script>
+
+<% include ../footer.ejs %>
+
+<script src="/js/admin/update.js"></script>

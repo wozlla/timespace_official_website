@@ -9,7 +9,7 @@ jQuery.each( [ "put", "delete" ], function( i, method ) {
         return jQuery.ajax({
             url: url,
             type: method,
-            dataType: type,
+            //dataType: type,
             data: data,
             success: callback
         });

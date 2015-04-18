@@ -2,7 +2,7 @@
 
 <form method="post" action="/admin/news">
   标题：<br />
-  <input type="text" name="title" /><br />
+  <input type="text" name="title"/><br />
   正文：<br />
   <textarea id="body" name="body" style="
   width:600px;
@@ -12,8 +12,7 @@
   <input type="submit" value="添加" />
 </form>
 
-<script charset="utf-8" src="/js/bower_components/kindeditor/kindeditor.js"></script>
-<script charset="utf-8" src="/js/bower_components/kindeditor/lang/zh_CN.js"></script>
+<% include ../kindeditorJs.ejs %>
 <script>
   var options = {
     uploadJson: "/admin/upload"
@@ -23,4 +22,5 @@
     window.editor = K.create("#body", options);
   });
 </script>
+
 <% include ../footer.ejs %>

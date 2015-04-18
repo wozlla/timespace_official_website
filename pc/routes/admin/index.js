@@ -2,9 +2,18 @@ var express = require("express");
 var router = express.Router();
 var formidable = require("formidable");
 var User = require("../../models/User");
+var News = require("../../models/News");
 
 router.get("/", function(req, res, next) {
-    res.render("admin/index");
+    var news = new News();
+
+    news.getList(function(error, list){
+        var news = new News();
+
+        res.render("admin/index", {
+            news: list
+        });
+    });
 });
 router.post("/upload", function(req, res, next) {
     var form = new formidable.IncomingForm();

@@ -1,4 +1,4 @@
-var safe = (function(){
+module.exports = (function(){
     var entityMap = {
         "&": "&amp;",
         "<": "&lt;",
@@ -17,4 +17,4 @@ var safe = (function(){
     return {
         escapeHTML:escapeHTML
     }
-});
+}());
