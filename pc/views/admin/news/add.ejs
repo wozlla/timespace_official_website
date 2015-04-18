@@ -4,9 +4,23 @@
   标题：<br />
   <input type="text" name="title" /><br />
   正文：<br />
-  <textarea name="body" rows="20" cols="100"></textarea>
+  <textarea id="body" name="body" style="
+  width:600px;
+  height:400px;
+  "></textarea>
   <br />
   <input type="submit" value="添加" />
 </form>
 
+<script charset="utf-8" src="/js/bower_components/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="/js/bower_components/kindeditor/lang/zh_CN.js"></script>
+<script>
+  var options = {
+    uploadJson: "/admin/upload"
+  };
+
+  KindEditor.ready(function(K) {
+    window.editor = K.create("#body", options);
+  });
+</script>
 <% include ../footer.ejs %>
