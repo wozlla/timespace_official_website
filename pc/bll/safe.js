@@ -14,7 +14,12 @@ module.exports = (function(){
         });
     }
 
+    function removeHtmlLabel(string){
+        return String(string).replace(/<[^>]+>|<\/[^>]+>/g, "");
+    }
+
     return {
-        escapeHTML:escapeHTML
+        escapeHTML:escapeHTML,
+        removeHtmlLabel: removeHtmlLabel
     }
 }());
