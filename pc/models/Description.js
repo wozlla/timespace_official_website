@@ -66,6 +66,44 @@ Description.prototype.update = function(id, data, callback){
     });
 };
 
+Description.prototype.updateByCategory = function(category, data, callback){
+    mongodb.open(function (err, db) {
+        if (err) {
+            mongodb.close();
+            return callback(err);
+        }
+        //读取 posts 集合
+        db.collection("description", function (err, collection) {
+            if (err) {
+                mongodb.close();
+                return callback(err);
+            }
+            var query = {};
+            if (category) {
+                query.category = category;
+            }
+
+            collection.update(query, {
+                $set:data   //only set fields contained in data
+            }, {
+                multi: true
+            }, function (err) {
+                /*!because this is used in cascade delete case,
+                 so close ouside!
+
+                 mongodb.close();
+                 */
+                if (err) {
+                    //if error, should close whether it's in cascade delete case or not;
+                    mongodb.close();
+                    return callback(err);
+                }
+                callback(null);
+            });
+        });
+    });
+};
+
 Description.prototype.remove = function(id, callback){
     mongodb.open(function (err, db) {
         if (err) {

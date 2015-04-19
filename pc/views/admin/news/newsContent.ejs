@@ -1,8 +1,8 @@
 <ul>
     <% for(var i = 0, len = news.length; i < len; i++){%>
     <li class="clearfix">
-        <h3><%= news[i].title%></h3>
-            <span>
+        <span class="title"><%= news[i].title%></span>
+            <span class="time">
                 <%= news[i].time %>
             </span>
         <div>

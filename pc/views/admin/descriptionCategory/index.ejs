@@ -3,7 +3,7 @@
 <ul>
     <% for(var i = 0, len = descriptionCategory.length; i < len; i++){%>
     <li class="clearfix">
-        <h3><%= descriptionCategory[i].name %></h3>
+        <span><%= descriptionCategory[i].name %></span>
         <div>
             <a class="update" href="#" onclick="index.showUpdatePage('/admin/descriptionCategory/updatePage','<%= descriptionCategory[i]._id %>')">修改</a>
             <!--<a class="update" href="/admin/descriptionCategory/updatePage?id=<%= descriptionCategory[i]._id %>">修改</a>-->

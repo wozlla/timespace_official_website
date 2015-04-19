@@ -156,7 +156,8 @@ News.prototype.getList = function(pageNumber, pageSize, callback) {
                 var pageCount = Math.ceil(count / pageSize);
 
                 collection.find().sort({
-                    time: -1
+                    time: -1,
+                    _id: -1
                 }).skip(skipCount).limit(limitCount)
                     .toArray(function (err, docs) {
                         mongodb.close();

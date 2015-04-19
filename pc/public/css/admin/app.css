@@ -1,5 +1,7 @@
 .clearfix > * {
-  float: left; }
+  float: left; 
+  /* vertical-align: middle; */
+}
 
 .clearfix:after {
   content: "";

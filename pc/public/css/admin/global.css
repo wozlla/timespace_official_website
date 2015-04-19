@@ -1,0 +1,11 @@
+ul {
+  list-style: none; }
+  ul span {
+    padding-right: 30px; }
+  ul div {
+    float: right !important; }
+
+h3 {
+  margin: 0; }
+
+/*# sourceMappingURL=global.css.map */

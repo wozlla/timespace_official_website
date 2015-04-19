@@ -37,29 +37,49 @@ DescriptionCategory.prototype.add = function(descriptionCategoryObj, callback) {
 };
 
 DescriptionCategory.prototype.update = function(id, data, callback){
+    var self = this;
+
     mongodb.open(function (err, db) {
         if (err) {
             mongodb.close();
             return callback(err);
         }
-        db.collection("descriptionCategory", function (err, collection) {
+
+        //todo promise
+
+        //cascade delete description where description.category === descriptionCategory.name
+        //then delete descriptionCategory
+        self.get(id, function (err, model) {
             if (err) {
                 mongodb.close();
                 return callback(err);
             }
-            var query = {};
-            if (id) {
-                query._id = new ObjectId(id);
-            }
 
-            collection.update(query, {
-                $set:data   //only set fields contained in data
-            }, null, function (err) {
-                mongodb.close();
-                if (err) {
-                    return callback(err);//失败！返回 err
-                }
-                callback(null);//返回 err 为 null
+            var description = new Description();
+
+            description.updateByCategory(model.name, {
+                category: data.name
+            }, function (err) {
+                db.collection("descriptionCategory", function (err, collection) {
+                    if (err) {
+                        mongodb.close();
+                        return callback(err);
+                    }
+                    var query = {};
+                    if (id) {
+                        query._id = new ObjectId(id);
+                    }
+
+                    collection.update(query, {
+                        $set: data   //only set fields contained in data
+                    }, null, function (err) {
+                        mongodb.close();
+                        if (err) {
+                            return callback(err);//失败！返回 err
+                        }
+                        callback(null);//返回 err 为 null
+                    });
+                });
             });
         });
     });
