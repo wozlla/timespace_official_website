@@ -3,7 +3,7 @@ var router = express.Router();
 var News = require("../../models/News");
 var DescriptionCategory = require("../../models/DescriptionCategory")
 var safe = require("../../bll/safe");
-var PAGESIZE = 1;
+var PAGESIZE = 10;
 
 
 router.get("/", function(req, res, next) {
@@ -11,9 +11,6 @@ router.get("/", function(req, res, next) {
     var category = new DescriptionCategory();
 
     news.getList(1, PAGESIZE, function(error, list, pageData){
-        //body
-        //show
-
         _removeHtmlLabel(list);
 
         category.getList(function(error, categorys){
@@ -27,16 +24,14 @@ router.get("/", function(req, res, next) {
 });
 
 router.get("/content", function(req, res, next) { var news = new News();
-    //if(req.param("pageNumber")){
-        news.getList(req.param("pageNumber"), PAGESIZE, function(error, list, pageData){
-            _removeHtmlLabel(list);
+    news.getList(req.param("pageNumber"), PAGESIZE, function(error, list, pageData){
+        _removeHtmlLabel(list);
 
-            res.render("website/newsContent", {
-                news:list,
-                pageData: pageData
-            });
+        res.render("website/newsContent", {
+            news:list,
+            pageData: pageData
         });
-    //}
+    });
 });
 router.get("/detailPage", function(req, res, next) {
     var news = new News();

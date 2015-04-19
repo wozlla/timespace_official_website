@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var safe = require("../../bll/safe");
 var News = require("../../models/News");
-var PAGESIZE = 1;
+var PAGESIZE = 10;
 
 router.get("/", function(req, res, next) { var news = new News();
     var news = new News();

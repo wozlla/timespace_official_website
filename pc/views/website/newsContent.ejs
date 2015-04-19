@@ -1,27 +1,29 @@
-<div class="body">
-    <ul>
-        <% for(var i = 0, len = news.length; i < len; i++){%>
-        <li class="item" onclick="news.showDetail('/news/detailPage', '<%= news[i]._id %>')">
-            <h3><%= news[i].title%></h3>
-            <p>
-                <%= news[i].body %>
-            </p>
-            <span><%= news[i].time %></span>
-        </li>
-        <% }%>
-    </ul>
-</div>
+<div class="news-content">
+    <div class="body">
+        <ul>
+            <% for(var i = 0, len = news.length; i < len; i++){%>
+            <li class="item" onclick="news.showDetail('/news/detailPage', '<%= news[i]._id %>')">
+                <h3><%= news[i].title%></h3>
+                <p>
+                    <%= news[i].body %>
+                </p>
+                <span><%= news[i].time %></span>
+            </li>
+            <% }%>
+        </ul>
+    </div>
 
-<div class="page">
-    <ul class="pagination">
-        <li onclick="news.getListByPage(event, 1)"><a href="#">首页</a></li>
-        <% for (var i = 1; i <= pageData.pageCount; i ++){%>
-        <% if(i === pageData.pageNumber){%>
-        <li class="active"><a><%=i%></a></li>
-        <%}else{%>
-        <li onclick="news.getListByPage(event, <%=i%>)"><a href="#"><%=i%></a></li>
-        <% }%>
-        <% }%>
-        <li onclick="news.getListByPage(event, <%=pageData.pageCount%>)"><a href="#">尾页</a></li>
-    </ul>
+    <div class="page">
+        <ul class="pagination">
+            <li onclick="news.getListByPage(event, 1)"><a href="#">首页</a></li>
+            <% for (var i = 1; i <= pageData.pageCount; i ++){%>
+            <% if(i === pageData.pageNumber){%>
+            <li class="active"><a><%=i%></a></li>
+            <%}else{%>
+            <li onclick="news.getListByPage(event, <%=i%>)"><a href="#"><%=i%></a></li>
+            <% }%>
+            <% }%>
+            <li onclick="news.getListByPage(event, <%=pageData.pageCount%>)"><a href="#">尾页</a></li>
+        </ul>
+    </div>
 </div>

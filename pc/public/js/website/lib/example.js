@@ -6,7 +6,7 @@
   var MESH = {
     width: 1.2,
     height: 1.2,
-    depth: 10,
+    depth: 0,
     segments: 16,
     slices: 8,
     xRange: 0.8,
@@ -21,11 +21,11 @@
   // Light Properties
   //------------------------------
   var LIGHT = {
-    count: 2,
+    count: 1,
     xyScalar: 1,
-    zOffset: 100,
-    ambient: '#880066',
-    diffuse: '#FF8800',
+    zOffset: 88,
+    ambient: '#100088',
+    diffuse: '#a400ff',
     speed: 0.001,
     gravity: 1200,
     dampening: 0.95,
@@ -46,13 +46,34 @@
   //------------------------------
   // Render Properties
   //------------------------------
+
+  function webglAvailable() {
+    try {
+      var canvas = document.createElement("canvas");
+      return !!
+              window.WebGLRenderingContext &&
+          (canvas.getContext("webgl") ||
+          canvas.getContext("experimental-webgl"));
+    } catch(e) {
+      return false;
+    }
+  }
+
+
   var WEBGL = 'webgl';
   var CANVAS = 'canvas';
   var SVG = 'svg';
-  //todo detect to decide!
   var RENDER = {
     renderer: CANVAS
   };
+
+  if(webglAvailable()){
+    RENDER.renderer = WEBGL;
+  }
+  else{
+    //show img instead!
+    RENDER.renderer = null;
+  }
 
   ////------------------------------
   //// Export Properties
@@ -482,6 +503,13 @@
 
 
   // Let there be light!
+  if(RENDER.renderer === null){
+    return;
+  }
+
+  //not show img, show webgl
+  container.style.backgroundImage = "";
+
   initialise();
 
 })();

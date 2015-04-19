@@ -5,8 +5,8 @@ $(function(){
         if(isMove){
             return;
         }
-        animation.moveRight($("#banner-title"), 100, 0.5);
-        animation.moveLeft($("#banner-bg"), 200, 0.2);
+        animation.moveRight($("#banner-title"), 50, 1.5);
+        animation.moveLeft($("#banner-bg"), 50, 1.2);
 
         isMove = true;
     }, function(){
