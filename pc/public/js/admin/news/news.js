@@ -1,16 +1,9 @@
 var news = (function(){
    return {
-       showDetail: function(url, id){
-           $.get(url, {
-               id: id
-           }, function(htmlContent){
-               $("#content-container").html(htmlContent);
-           });
-       },
        getListByPage:function(e, pageNumber){
            e = e || window.event;
 
-           $.get("/news/content", {
+           $.get("/admin/news/content", {
                pageNumber: pageNumber
            }, function(htmlContent){
                $("#content").html(htmlContent);

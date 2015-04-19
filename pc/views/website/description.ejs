@@ -20,34 +20,36 @@
     </header>
 
     <section class="content">
-        <div class="header clearfix">
-            <ul class="clearfix">
-                <li class="line"></li>
-                <li><h1>游戏介绍</h1></li>
-            </ul>
-            <ol class="breadcrumb">
-                <li><a href="#">游戏介绍</a></li>
-                <li class="active">介绍列表</li>
-            </ol>
-        </div>
-
-        <div class="body">
-            <% descriptions.forEach(function(categoryData){%>
-            <div class="item">
-                <h1><%= categoryData._id %></h1>
-
-                <ul class="list clearfix">
-                    <% categoryData.data.forEach(function(model){%>
-                    <li onclick="description.showDetail('/description/detailPage', '<%= model._id %>')">
-                        <%= model.title%>
-                    </li>
-                    <% })%>
+        <div id="content-container">
+            <div class="header clearfix">
+                <ul class="clearfix">
+                    <li class="line"></li>
+                    <li><h1>游戏介绍</h1></li>
                 </ul>
+                <ol class="breadcrumb">
+                    <li><a href="#">游戏介绍</a></li>
+                    <li class="active">介绍列表</li>
+                </ol>
             </div>
-            <% })%>
+
+            <div id="content">
+                <div class="body">
+                    <% descriptions.forEach(function(categoryData){%>
+                    <div class="item">
+                        <h1><%= categoryData._id %></h1>
+
+                        <ul class="list clearfix">
+                            <% categoryData.data.forEach(function(model){%>
+                            <li onclick="description.showDetail('/description/detailPage', '<%= model._id %>')">
+                                <%= model.title%>
+                            </li>
+                            <% })%>
+                        </ul>
+                    </div>
+                    <% })%>
+                </div>
+            </div>
         </div>
-
-
 
 
 

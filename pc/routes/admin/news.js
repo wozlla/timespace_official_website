@@ -2,12 +2,23 @@ var express = require("express");
 var router = express.Router();
 var safe = require("../../bll/safe");
 var News = require("../../models/News");
+var PAGESIZE = 1;
 
 router.get("/", function(req, res, next) { var news = new News();
+    var news = new News();
 
-    news.getList(function(error, list){
+    news.getList(1, PAGESIZE, function(error, list, pageData){
         res.render("admin/news/index", {
-            news:list
+            news:list,
+            pageData: pageData
+        });
+    });
+});
+router.get("/content", function(req, res, next) { var news = new News();
+    news.getList(req.param("pageNumber"), PAGESIZE, function(error, list, pageData){
+        res.render("admin/news/newsContent", {
+            news:list,
+            pageData: pageData
         });
     });
 });

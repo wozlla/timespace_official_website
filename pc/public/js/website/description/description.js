@@ -1,7 +1,11 @@
 var description = (function(){
    return {
        showDetail: function(url, id){
-           location.href = url + "?id=" + id;
+           $.get(url, {
+               id: id
+           }, function(htmlContent){
+               $("#content-container").html(htmlContent);
+           });
        }
    }
 }());

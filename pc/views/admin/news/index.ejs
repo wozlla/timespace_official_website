@@ -1,24 +1,18 @@
 <% include ../header.ejs %>
 <h1>最新消息</h1>
-<ul>
-    <% for(var i = 0, len = news.length; i < len; i++){%>
-    <li class="clearfix">
-        <h3><%= news[i].title%></h3>
-            <span>
-                <%= news[i].time %>
-            </span>
-        <div>
-            <a class="update" href="#" onclick="index.showUpdatePage('/admin/news/updatePage','<%= news[i]._id %>')">修改</a>
-            <!--<a class="update" href="/admin/news/updatePage?id=<%= news[i]._id %>">修改</a>-->
-            <a class="delete" href="#" onclick="index.delete('/admin/news','<%= news[i]._id %>')">删除</a>
-        </div>
-    </li>
-    <% }%>
-</ul>
+
+<div id="content">
+    <% include newsContent.ejs %>
+</div>
+
 <ul>
     <li class="add">
         <a href="/admin/news/addPage">添加</a>
     </li>
 </ul>
+
+
+
 <% include ../footer.ejs %>
 <script src="/js/admin/index.js"></script>
+<script src="/js/admin/news/news.js"></script>

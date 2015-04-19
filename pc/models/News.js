@@ -136,7 +136,10 @@ News.prototype.get = function(id, callback) {
     });
 };
 
-News.prototype.getList = function(callback) {
+News.prototype.getList = function(pageNumber, pageSize, callback) {
+    var skipCount = (pageNumber - 1) * pageSize,
+        limitCount = pageSize;
+
     mongodb.open(function (err, db) {
         if (err) {
             mongodb.close();
@@ -148,15 +151,23 @@ News.prototype.getList = function(callback) {
                 mongodb.close();
                 return callback(err);
             }
-            //根据 query 对象查询文章
-            collection.find().sort({
-                time: -1
-            }).toArray(function (err, docs) {
-                mongodb.close();
-                if (err) {
-                    return callback(err);//失败！返回 err
-                }
-                callback(null, docs);//成功！以数组形式返回查询的结果
+
+            collection.count(function(err, count){
+                var pageCount = Math.ceil(count / pageSize);
+
+                collection.find().sort({
+                    time: -1
+                }).skip(skipCount).limit(limitCount)
+                    .toArray(function (err, docs) {
+                        mongodb.close();
+                        if (err) {
+                            return callback(err);//失败！返回 err
+                        }
+                        callback(null, docs, {
+                            pageNumber: Number(pageNumber),
+                            pageCount: Number(pageCount)
+                        });//成功！以数组形式返回查询的结果
+                    });
             });
         });
     });
