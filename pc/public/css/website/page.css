@@ -15,8 +15,9 @@
         padding-bottom: 5px; }
         .container .content .header > ul .line {
           border: 5px solid red;
-          width: 10px;
-          height: 32px; }
+          width: 0px;
+          height: 32px;
+          height: 22px \9; }
         .container .content .header > ul h1 {
           margin: 0;
           margin-left: 5px;
@@ -33,6 +34,8 @@
           color: #5f5667 !important; }
         .container .content .header .breadcrumb > li + li:before {
           content: ">" !important; }
+    .container .content #content {
+      margin-top: 20px \9; }
   .container .right-column {
     position: absolute;
     left: 585px;

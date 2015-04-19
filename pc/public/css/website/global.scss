@@ -111,6 +111,8 @@ ul.footer{
   .pop-out{
     i{
       @include arrow($color, 2px, -3px, 8px);
+      top: 3px \9;
+      left:-2px \9;
     }
   }
   .pop-in{
