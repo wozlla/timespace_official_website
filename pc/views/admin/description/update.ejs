@@ -5,7 +5,7 @@
     <input type="text" id="title" name="title" value="<%=description.title%>" /><br />
 
     类别：<br/>
-    <select name="category">
+    <select id="category" name="category">
         <% for(var i = 0, len = categorys.length; i < len; i++){%>
         <% if(description.category === categorys[i].name){%>
         <option selected="selected" value="<%= categorys[i].name%>"><%=categorys[i].name%></option>

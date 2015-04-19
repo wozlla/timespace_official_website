@@ -3,7 +3,7 @@
 
     <link href="/css/website/page.css" type="text/css" rel="stylesheet">
 
-    <link href="/css/website/description/description.css" type="text/css" rel="stylesheet">
+    <link href="/css/website/description/list.css" type="text/css" rel="stylesheet">
 
 <% include logo2.ejs %>
 
@@ -23,47 +23,28 @@
         <div class="header clearfix">
             <ul class="clearfix">
                 <li class="line"></li>
-                <li><h1>消息列表</h1></li>
+                <li><h1>游戏介绍</h1></li>
             </ul>
             <ol class="breadcrumb">
-                <li><a href="#">最新消息</a></li>
-                <li class="active">消息列表</li>
+                <li><a href="#">游戏介绍</a></li>
+                <li class="active">介绍列表</li>
             </ol>
         </div>
 
         <div class="body">
+            <% descriptions.forEach(function(categoryData){%>
             <div class="item">
-                <h1>游戏背景</h1>
+                <h1><%= categoryData._id %></h1>
+
                 <ul class="list clearfix">
-                    <li>
-                        神秘故事
+                    <% categoryData.data.forEach(function(model){%>
+                    <li onclick="description.showDetail('/description/detailPage', '<%= model._id %>')">
+                        <%= model.title%>
                     </li>
-                    <li>
-                        故事2
-                    </li>
-                    <li>
-                        故事2
-                    </li>
-                    <li>
-                        故事2
-                    </li>
-                    <li>
-                        故事2
-                    </li>
-                    <li>
-                        故事2
-                    </li>
-                    <li>
-                        故事2
-                    </li>
-                    <li>
-                        故事2
-                    </li>
-                    <li>
-                        故事2
-                    </li>
+                    <% })%>
                 </ul>
             </div>
+            <% })%>
         </div>
 
 
@@ -85,4 +66,5 @@
 <% include pageFooter.ejs %>
 
 <% include footer.ejs %>
+<script src="/js/website/description/description.js"></script>
 

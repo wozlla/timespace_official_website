@@ -119,6 +119,8 @@ Description.prototype.removeByCategory = function(category, callback){
                  mongodb.close();
                  */
                 if (err) {
+                    //if error, should close whether it's in cascade delete case or not;
+                    mongodb.close();
                     return callback(err);
                 }
                 callback(null);
@@ -163,22 +165,32 @@ Description.prototype.getList = function(callback) {
             mongodb.close();
             return callback(err);
         }
-        //读取 posts 集合
         db.collection("description", function(err, collection) {
             if (err) {
                 mongodb.close();
                 return callback(err);
             }
-            //根据 query 对象查询文章
-            collection.find().sort({
-                category: -1
-            }).toArray(function (err, docs) {
-                mongodb.close();
-                if (err) {
-                    return callback(err);//失败！返回 err
+
+            collection.aggregate([{
+                $group:{
+                    _id:"$category",
+                    data:{
+                        $push:"$$ROOT"
+                    }
                 }
-                callback(null, docs);//成功！以数组形式返回查询的结果
+            },
+                {
+                    $sort:{
+                        category:-1
+                    }
+                    }]).toArray(function (err, docs) {
+                        mongodb.close();
+                        if (err) {
+                            return callback(err);//失败！返回 err
+                        }
+                        callback(null, docs);//成功！以数组形式返回查询的结果
             });
+
         });
     });
 };

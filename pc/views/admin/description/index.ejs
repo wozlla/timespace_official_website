@@ -1,19 +1,27 @@
 <% include ../header.ejs %>
 <h1>游戏介绍</h1>
 <ul>
-    <% for(var i = 0, len = description.length; i < len; i++){%>
+    <% descriptions.forEach(function(categoryData){%>
     <li class="clearfix">
-        <h3><%= description[i].title%></h3>
-            <span>
-                <%= description[i].category %>
-            </span>
-        <div>
-            <a class="update" href="#" onclick="index.showUpdatePage('/admin/description/updatePage','<%= description[i]._id %>')">修改</a>
-            <!--<a class="update" href="/admin/description/updatePage?id=<%= description[i]._id %>">修改</a>-->
-            <a class="delete" href="#" onclick="index.delete('/admin/description','<%= description[i]._id %>')">删除</a>
-        </div>
+
+        <h3><%= categoryData._id%></h3>
     </li>
-    <% }%>
+    <ul>
+
+        <% categoryData.data.forEach(function(model){%>
+        <li class="clearfix">
+            <span>
+                <%= model.title %>
+            </span>
+            <div>
+                <a class="update" href="#" onclick="index.showUpdatePage('/admin/description/updatePage','<%= model._id %>')">修改</a>
+                <!--<a class="update" href="/admin/description/updatePage?id=<%= model._id %>">修改</a>-->
+                <a class="delete" href="#" onclick="index.delete('/admin/description','<%= model._id %>')">删除</a>
+            </div>
+        </li>
+        <% })%>
+    </ul>
+    <% })%>
 </ul>
 <ul>
     <li class="add">

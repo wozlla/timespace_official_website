@@ -1,13 +1,18 @@
 var express = require("express");
 var router = express.Router();
 var News = require("../../models/News");
+var DescriptionCategory = require("../../models/DescriptionCategory")
 
 router.get("/", function(req, res, next) {
     var news = new News();
+    var category = new DescriptionCategory();
 
     news.getList(function(error, list){
-        res.render("website/news", {
-            news: list
+        category.getList(function(error, categorys){
+            res.render("website/news", {
+                news: list,
+                descriptionCategorys: categorys
+            });
         });
     });
 });

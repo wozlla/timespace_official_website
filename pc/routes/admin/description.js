@@ -9,7 +9,7 @@ router.get("/", function(req, res, next) {
 
     description.getList(function(error, list){
         res.render("admin/description/index", {
-            description:list
+            descriptions:list
         });
     });
 });
