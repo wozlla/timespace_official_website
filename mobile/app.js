@@ -82,6 +82,7 @@
         if($$(this).prop('href').indexOf('view-about') == -1 ) {
             $$( ".ts-actions-item .left, " +
                 ".ts-actions-item .right, " +
+                ".ts-actions-item .background, " +
                 ".ts-actions-item .discription, " +
                 ".ts-actions-item .hr").removeClass('normal-position');
             clearInterval(intID);
@@ -89,13 +90,14 @@
             setTimeout(function(){
                 $$( ".ts-actions-item .left, " +
                     ".ts-actions-item .right").addClass('normal-position');
+            }, 200);
+            setTimeout(function(){
+                $$( ".ts-actions-item .background, " +
+                    ".ts-actions-item .discription").addClass('normal-position');
             }, 500);
             setTimeout(function(){
-                $$(".ts-actions-item .discription").addClass('normal-position');
-            }, 1000);
-            setTimeout(function(){
                 $$(".ts-actions-item .hr").addClass('normal-position');
-            }, 1800);
+            }, 1000);
             intID = setInterval(function(){
                 if( $$( ".shaky_icon").hasClass('normal-position') ) {
                     $$( ".shaky_icon").removeClass('normal-position')

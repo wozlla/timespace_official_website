@@ -512,7 +512,7 @@ body {
     left: 35px;
 }
 
-#view-about .actions-content .accordion-item-three .right {
+#view-about .actions-content .accordion-item-three .background {
     display: block;
     position: absolute;
     top: 420px;
@@ -582,17 +582,17 @@ body {
     color: #EB8642;
 }
 
-.actions-content .accordion-item-one .left {
+.actions-content .accordion-item .left {
     transform: translate(-700px, 0);
     -webkit-transform: translate(-700px, 0);
 }
 
-.actions-content .accordion-item-one .right {
+.actions-content .accordion-item .right {
     transform: translate(700px, 0);
     -webkit-transform: translate(700px, 0);
 }
 
-.actions-content .accordion-item-one .discription, .actions-content .accordion-item-one .hr {
+.actions-content .accordion-item .discription, .actions-content .accordion-item .hr, .actions-content .accordion-item .background {
     opacity: 0;
 }
 
@@ -601,7 +601,7 @@ body {
     -webkit-transform: translate(0, 30px);
 }
 
-.actions-content .accordion-item-one .normal-position, .actions-content .contact-info .normal-position {
+.actions-content .accordion-item .normal-position, .actions-content .contact-info .normal-position {
     transform: translate(0, 0);
     -webkit-transform: translate(0, 0);
     opacity: 1;
