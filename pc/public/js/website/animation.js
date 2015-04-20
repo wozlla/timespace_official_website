@@ -1,5 +1,5 @@
 var animation = {
-    moveRight: function(dom, distance, speed){
+    moveRight: function(dom, distance, speed, onEndFunc){
         var total = 0,
             left = dom.position().left;
 
@@ -7,6 +7,7 @@ var animation = {
             total = total + speed;
 
             if(total >= distance){
+                onEndFunc && onEndFunc();
                 return;
             }
 
@@ -20,7 +21,7 @@ var animation = {
 
         _move();
     },
-    moveLeft: function(dom, distance, speed){
+    moveLeft: function(dom, distance, speed, onEndFunc){
         var total = 0,
             left = dom.position().left;
 
@@ -28,6 +29,7 @@ var animation = {
             total = total - speed;
 
             if(Math.abs(total) >= distance){
+                onEndFunc && onEndFunc();
                 return;
             }
 
@@ -41,8 +43,12 @@ var animation = {
 
         _move();
     },
+    place: function(dom, left, onEndFunc){
+        dom.css("left", left);
 
-    popOut: function(dom, onStartFunc, onEndFunc, width, speed){
+        onEndFunc && onEndFunc();
+    },
+    popOut: function(dom,  width, speed , onStartFunc, onEndFunc){
         var total = 0,
             right = null;
 
@@ -69,7 +75,7 @@ var animation = {
 
         _move();
     },
-    popIn: function(dom, onStartFunc, onEndFunc, speed){
+    popIn: function(dom,  speed, onStartFunc, onEndFunc){
         var total = 0,
             right = null,
             originTotal = this._originTotal;
@@ -94,6 +100,59 @@ var animation = {
 
         _move();
     },
+
+    //sequence: function(actionArr){
+    //    var self = this;
+    //
+    //    function init(){
+    //        var actionData = actionArr.pop();
+    //        var dataArr = actionData.slice(1);
+    //
+    //        dataArr.push(function(){
+    //            init();
+    //        });
+    //
+    //        actionData[0].apply(animation, dataArr);
+    //    }
+    //
+    //  actionArr.forEach(function(actionData){
+    //      var dataArr = actionData.slice(1);
+    //
+    //      dataArr.push(function(){
+    //          self.update(self.sequence());
+    //      });
+    //
+    //      actionData[0].apply(animation, dataArr);
+    //  });
+    //
+    //    actionArr.pop();
+    //},
+    //
+    //scrollText: function(textDom, left, right, speed){
+    //    var originLeft = textDom.position().left;
+    //
+    //
+    //    var total = 0,
+    //        right = null,
+    //        originTotal = this._originTotal;
+    //
+    //    function _move(){
+    //        total = total - speed;
+    //
+    //        if(Math.abs(total) >= distance){
+    //            return;
+    //        }
+    //
+    //
+    //        dom.css("left", left + total);
+    //
+    //        setTimeout(function(){
+    //            _move();
+    //        }, 100);
+    //    }
+    //
+    //    _move();
+    //},
 
 
 

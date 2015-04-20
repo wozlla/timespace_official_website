@@ -138,12 +138,24 @@
           }
 
           div{
+          height: 100px;
+            width: 115px;
             position: absolute;
-            top: 75px;
-            left: 55px;
-            z-index: 10;
-            font-weight: bold;
-            text-decoration: underline;
+            left: 14px;
+            top: 74px;
+            overflow:hidden;
+            z-index:100;
+
+            span{
+              width:50px;
+              display:block;
+              position: absolute;
+              //top: 75px;
+              left: 40px;
+              z-index: 10;
+              font-weight: bold;
+              text-decoration: underline;
+            }
           }
         }
         .first{

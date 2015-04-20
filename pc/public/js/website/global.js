@@ -12,23 +12,23 @@
 
 
         if(obj.hasClass("pop-out")){
-            animation.popOut(obj.parent(), function(){
+            animation.popOut(obj.parent(),width, speed, function(){
                 isAnimating = true;
                 obj.removeClass("pop-out");
                 obj.addClass("pop-in");
             }, function(){
                 isAnimating = false;
-            }, width, speed);
+            });
 
             return;
         }
 
-        animation.popIn(obj.parent(), function(){
+        animation.popIn(obj.parent(), speed, function(){
             isAnimating = true;
             obj.removeClass("pop-in");
             obj.addClass("pop-out");
         }, function(){
             isAnimating = false;
-        }, speed);
+        });
     });
 }());
