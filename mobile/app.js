@@ -56,6 +56,10 @@
     var scale = window.innerWidth/640;
     $$('.actions-content').transform("scale(" + scale + ',' + scale + ')');
 
+    $$('.activity-item').on('click', function(e) {
+        window.location = $$(this).data('url');
+    });
+
     if(isIOS) {
         snowFall.snow(document.body, {
             images: [
