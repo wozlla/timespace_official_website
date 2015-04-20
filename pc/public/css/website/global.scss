@@ -42,9 +42,11 @@ ul {
   margin: 30px auto 0px auto;
   font-size: 0;
   -webkit-text-size-adjust:none;
+  color:rgb(91,95,172);
+
   span,.jiathis_style_32x32{
-    @include font-small;
-    font-size:12px;
+    @include font-middle;
+    font-weight:900;
     display:inline-block;
     vertical-align: middle;
   }
