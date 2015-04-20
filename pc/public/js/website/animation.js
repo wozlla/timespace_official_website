@@ -135,9 +135,6 @@ var animation = {
             dom.css("left", left + total);
 
             requestNextAnimationFrame(_move);
-            //setTimeout(function(){
-            //    _move();
-            //}, 100);
         }
 
         _move();
@@ -155,7 +152,6 @@ var animation = {
             }
 
 
-            //console.log("aaa");
             dom.css("left", left + total);
 
             requestNextAnimationFrame(_move);

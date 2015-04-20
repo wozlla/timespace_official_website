@@ -68,5 +68,19 @@ $(function(){
     $(document).snowfall({
         images :["/image/index/banner/flower_1.png", "/image/index/banner/flower_2.png"],
         flakeCount: 10, minSize: 20, maxSize:32});
+
+
+
+
+    //still building modal mention
+    $("nav .hotnews,  nav .comment," +
+    "nav .dropdown, " +
+    ".download, .bird, " +
+    ".first-row .left li, .first-row .middle, .first-row .right," +
+    ".second-row ul li, .second-row .contact-us-big").on("click", function(e){
+      $("#myModal").modal();
+
+        e.preventDefault();
+    });
 });
 

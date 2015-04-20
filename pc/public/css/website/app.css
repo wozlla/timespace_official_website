@@ -41,7 +41,7 @@ ul {
 ul.footer {
   height: 70px;
   display: table;
-  margin: 0 auto 0 auto; }
+  margin: 0 auto; }
   ul.footer .logo {
     background-image: url("/image/logo/logo.png");
     width: 80px;
@@ -61,7 +61,10 @@ ul.footer {
     background-size: 100% 100%; }
 
 .logo-header {
-  background-color: #f2f2f2; }
+  background-color: #f2f2f2;
+  cursor: pointer; }
+  .logo-header .footer {
+    margin-left: 20% !important; }
 
 .pop-window {
   position: fixed;
@@ -78,8 +81,9 @@ ul.footer {
     height: 24px;
     border: 2px solid #8899de;
     position: relative;
-    top: 4px;
-    left: 3px; }
+    top: 10px;
+    left: 3px;
+    cursor: pointer; }
   .pop-window .pop-out i {
     display: block;
     width: 0;
@@ -100,11 +104,16 @@ ul.footer {
     position: absolute;
     top: 2px;
     left: 7px; }
+  .pop-window img {
+    width: 30px;
+    height: 110px;
+    position: relative;
+    top: 50px;
+    left: 13px; }
 
 .contact-us-big {
   background-image: url("/image/button/contact_us.png");
-  background-size: 100% 100%;
-  position: relative;
+  cursor: pointer;
   width: 250px;
   height: 100px;
   margin-left: 20px;
@@ -148,6 +157,23 @@ ul.footer {
     height: 76px;
     position: absolute;
     z-index: 0; }
+
+.modal .modal-dialog {
+  margin-top: 10%; }
+.modal .modal-content {
+  background-color: rgba(0, 0, 0, 0.6);
+  height: 400px; }
+  .modal .modal-content .modal-header {
+    border: 0 !important; }
+  .modal .modal-content .modal-body {
+    margin: 0 auto;
+    margin-top: 100px;
+    background-image: url("/image/index/pic/building.png");
+    background-size: 100% 100%;
+    width: 400px;
+    height: 120px; }
+  .modal .modal-content .close {
+    color: white; }
 
 .ckepopBottom {
   display: none; }

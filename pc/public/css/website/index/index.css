@@ -24,7 +24,7 @@
   .container .content {
     margin-top: 20px; }
     .container .content .first-row {
-      height: 250px; }
+      height: 200px; }
       .container .content .first-row > li {
         float: left; }
       .container .content .first-row .left {
@@ -35,11 +35,12 @@
         background-color: #231259;
         color: #ffffff; }
         .container .content .first-row .left ul {
-          max-height: 200px;
+          max-height: 100px;
           overflow: auto;
           padding: 10px 10px 0 10px; }
           .container .content .first-row .left ul li {
-            margin-bottom: 15px; }
+            margin-bottom: 15px;
+            cursor: pointer; }
             .container .content .first-row .left ul li h3 {
               font-size: 20px; }
             .container .content .first-row .left ul li span {
@@ -52,19 +53,21 @@
           bottom: 0; }
       .container .content .first-row .middle {
         width: 390px;
-        height: 100%; }
+        height: 100%;
+        cursor: pointer; }
         .container .content .first-row .middle img {
           background-image: url("/image/index/pic/1.png");
           background-size: 464px 300px;
           width: 390px;
-          height: 250px; }
+          height: 200px; }
       .container .content .first-row .right {
         width: 215px; }
         .container .content .first-row .right li {
           position: relative;
           background-size: 100% 100%;
           width: 100%;
-          height: 83.3px; }
+          height: 66.5px;
+          cursor: pointer; }
         .container .content .first-row .right .first {
           background-image: url("/image/index/batton/play.jpg"); }
           .container .content .first-row .right .first i {

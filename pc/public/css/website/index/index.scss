@@ -29,7 +29,7 @@
     margin-top: 20px;
 
     .first-row {
-      height: 250px;
+      height: 200px;
 
       >li{
         float:left;
@@ -44,12 +44,13 @@
         color:#ffffff;
 
         ul {
-          max-height: 200px;
+          max-height: 100px;
           overflow: auto;
           padding:10px 10px 0 10px;
 
           li{
             margin-bottom:15px;
+            cursor:pointer;
 
             h3{
               @include font-header-small;
@@ -71,12 +72,13 @@
       .middle {
         width:390px;
         height:100%;
+        cursor:pointer;
 
         img{
             background-image: url("/image/index/pic/1.png");
             background-size: 464px 300px;
             width:390px;
-            height:250px;
+            height:200px;
         }
       }
 
@@ -87,7 +89,8 @@
           position: relative;
           background-size: 100% 100%;
           width: 100%;
-          height: 83.3px;
+          height: 66.5px;
+          cursor:pointer;
         }
 
         .first {
