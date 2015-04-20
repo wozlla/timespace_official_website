@@ -14,7 +14,6 @@ nav .dropdown {
   left: 195px;
   top: 67px;
   width: 175px;
-  border: 1px solid red;
   display: none;
   background-image: url("/image/bg/dropdown.png");
   background-repeat: no-repeat;
