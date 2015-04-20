@@ -17,7 +17,7 @@ $(function(){
     var isTextMove = {
     }
 
-    $(".second-row li").hover(function(e){
+    $(".second-row li").on("mouseover", function(e){
         var dom = null,
             textFlag = null;
         var distance = 70,
@@ -38,7 +38,7 @@ $(function(){
 
 
         if(isTextMove[textFlag]){
-            return;
+           return;
         }
 
         isTextMove[textFlag] = true;
