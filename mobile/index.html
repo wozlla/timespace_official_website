@@ -7,21 +7,30 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <title>时空召唤：英雄计划</title>
     <script type="text/javascript">
-        var isSafari = (function() {
-            var ua = navigator.userAgent.toLowerCase();
-            if (ua.indexOf('safari') != -1 && ua.indexOf('chrome') === -1) {
-                return true;
+
+        (function(i){var e=/iPhone/i,n=/iPod/i,o=/iPad/i,t=/(?=.*\bAndroid\b)(?=.*\bMobile\b)/i,r=/Android/i,d=/BlackBerry/i,s=/Opera Mini/i,a=/IEMobile/i,b=/(?=.*\bFirefox\b)(?=.*\bMobile\b)/i,h=RegExp("(?:Nexus 7|BNTV250|Kindle Fire|Silk|GT-P1000)","i"),c=function(i,e){return i.test(e)},l=function(i){var l=i||navigator.userAgent;this.apple={phone:c(e,l),ipod:c(n,l),tablet:c(o,l),device:c(e,l)||c(n,l)||c(o,l)},this.android={phone:c(t,l),tablet:!c(t,l)&&c(r,l),device:c(t,l)||c(r,l)},this.other={blackberry:c(d,l),opera:c(s,l),windows:c(a,l),firefox:c(b,l),device:c(d,l)||c(s,l)||c(a,l)||c(b,l)},this.seven_inch=c(h,l),this.any=this.apple.device||this.android.device||this.other.device||this.seven_inch},v=i.isMobile=new l;v.Class=l})(window);
+        if(!isMobile.any) {
+            window.location = 'qrcode.html';
+        } else {
+
+            var isSafari = (function () {
+                var ua = navigator.userAgent.toLowerCase();
+                if (ua.indexOf('safari') != -1 && ua.indexOf('chrome') === -1) {
+                    return true;
+                }
+            })();
+
+            var isIOS = /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
+
+            if (isSafari && isIOS) {
+                window.location.href = 'https://itunes.apple.com/us/app/shi-kong-zhao-huan/id953706181?l=zh&ls=1&mt=8';
             }
-        })();
-
-        var isIOS = /(iPad|iPhone|iPod)/g.test( navigator.userAgent );
-
-        if(isSafari && isIOS) {
-            window.location.href = 'https://itunes.apple.com/us/app/shi-kong-zhao-huan/id953706181?l=zh&ls=1&mt=8';
         }
     </script>
+    <!-- CSS START -->
     <link rel="stylesheet" href="bower_components/framework7/dist/css/framework7.min.css">
     <link rel="stylesheet" href="style.css">
+    <!-- CSS END -->
 </head>
 <body>
 <div id="wrapper" class="views tabs toolbar-through">
@@ -288,15 +297,10 @@
 <div class="popup tablet-fullscreen ts-popup-download-tips close-popup">
     <img src="images/main/guidance.png" width="90%">
 </div>
-<script>
-    function onScroll() {
-    }
-    document.body.addEventListener('touchstart', onScroll, false);
-    document.body.addEventListener('touchmove', onScroll, false);
-    document.body.addEventListener('touchend', onScroll, false);
-</script>
+<!-- JS START -->
 <script type="text/javascript" src="snowfall.js"></script>
 <script type="text/javascript" src="bower_components/framework7/dist/js/framework7.min.js"></script>
 <script type="text/javascript" src="app.js"></script>
+<!-- JS END -->
 </body>
 </html>
