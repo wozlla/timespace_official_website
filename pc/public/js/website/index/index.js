@@ -12,8 +12,6 @@ $(function(){
     }, function(){
     });
 
-    var isAnimating = false;
-
 
     var titles = $("#switch-title").find("li");
 
@@ -25,8 +23,6 @@ $(function(){
 
 
 
-    //snow
-    //add multi images effect
     $(document).snowfall('clear');
     $(document).snowfall({
         images :["/image/index/banner/flower_1.png", "/image/index/banner/flower_2.png"],

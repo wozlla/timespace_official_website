@@ -6,7 +6,7 @@
   var MESH = {
     width: 1.2,
     height: 1.2,
-    depth: 0,
+    depth: 10,
     segments: 16,
     slices: 8,
     xRange: 0.8,

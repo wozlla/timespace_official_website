@@ -42,11 +42,12 @@ var animation = {
         _move();
     },
 
-    isAnimating: false,
-
     popOut: function(dom, onStartFunc, onEndFunc, width, speed){
         var total = 0,
             right = null;
+
+        right = Number(dom.css("right").slice(0, -2));
+        this._originTotal = right + dom.width();
 
         onStartFunc();
 
@@ -68,9 +69,10 @@ var animation = {
 
         _move();
     },
-    popIn: function(dom, onStartFunc, onEndFunc, width, speed){
+    popIn: function(dom, onStartFunc, onEndFunc, speed){
         var total = 0,
-            right = null;
+            right = null,
+            originTotal = this._originTotal;
 
         onStartFunc();
 
@@ -78,12 +80,10 @@ var animation = {
             right = Number(dom.css("right").slice(0, -2));
             total = right + dom.width();
 
-            if(Math.abs(total) <= width){
+            if(Math.abs(total) <= originTotal){
                 onEndFunc();
                 return;
             }
-
-            this.isAnimating = true;
 
             dom.css("right", right - speed);
 
