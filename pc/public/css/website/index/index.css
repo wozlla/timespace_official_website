@@ -141,6 +141,9 @@
         .container .content .second-row ul .fourth div {
           color: #13ff91; }
 
+.play {
+  display: none; }
+
 .petal {
   display: none; }
 

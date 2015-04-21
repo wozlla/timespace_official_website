@@ -3,7 +3,7 @@ function User(){
 
 User.prototype.isCorrect = function(name, pwd){
   var name = "admin",
-  password = "111111";
+  password = "wozlla@203";
 
   return name === name && pwd === password;
 }

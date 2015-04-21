@@ -75,12 +75,20 @@ $(function(){
     //still building modal mention
     $("nav .hotnews,  nav .comment," +
     "nav .dropdown, " +
-    ".download, .bird, " +
+        ".bird, " +
+    //".download," +
     ".first-row .left li, .first-row .middle, .first-row .right," +
     ".second-row ul li, .second-row .contact-us-big").on("click", function(e){
       $("#myModal").modal();
 
         e.preventDefault();
+    });
+
+    $(".download").on("click", function(e){
+        var playWindow = $("#play");
+
+        //playWindow.attr("src", "http://shikong.html5dw.com/mobile/qrcode.html");
+        playWindow.show();
     });
 });
 
