@@ -85,6 +85,10 @@ $(function(){
     });
 
     $(".download").on("click", function(e){
+        if(browser.versions.isIE){
+            alert("亲，ie浏览器不支持试玩，请使用chrome等webkit内核浏览器进行试玩。")
+            return;
+        }
         var playWindow = $("#play");
 
         //playWindow.attr("src", "http://shikong.html5dw.com/mobile/qrcode.html");
