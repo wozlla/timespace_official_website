@@ -67,7 +67,7 @@ body {
 }
 
 #view-main .main {
-    background: url("images/main/bg.jpg") no-repeat 0 100%;
+    background: url("images/main/bg.jpg") no-repeat 0 50%;
     background-size: 100%;
 }
 
@@ -300,6 +300,7 @@ body {
     position: relative;
     top: 80%;
     opacity: 0.6;
+    background-color: #8911de;
 }
 
 #view-main .download-btn-inner {
