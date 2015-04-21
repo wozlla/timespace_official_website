@@ -67,13 +67,16 @@
     renderer: CANVAS
   };
 
-  if(webglAvailable()){
-    RENDER.renderer = WEBGL;
-  }
-  else{
-    //show img instead!
-    RENDER.renderer = null;
-  }
+  //if(webglAvailable()){
+  //  RENDER.renderer = WEBGL;
+  //}
+  //else{
+  //  //show img instead!
+  //  RENDER.renderer = null;
+  //}
+
+  //show img instead!
+  RENDER.renderer = null;
 
   ////------------------------------
   //// Export Properties

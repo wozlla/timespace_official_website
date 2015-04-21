@@ -85,6 +85,7 @@ $(function(){
     });
 
     $(".try-play-button").on("click", function(e){
+        console.log(browser.versions.isIE);
         if(browser.versions.isIE){
             alert("亲，ie浏览器不支持试玩，请使用chrome等webkit内核浏览器进行试玩。")
             return;

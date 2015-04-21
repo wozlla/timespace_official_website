@@ -272,7 +272,8 @@ nav .dropdown {
     cursor: pointer; }
   .container > header .banner {
     position: relative;
-    top: -468px; }
+    top: -468px;
+    z-index: -100; }
     .container > header .banner img {
       width: 100%;
       height: 100%; }

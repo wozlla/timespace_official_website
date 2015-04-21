@@ -131,7 +131,6 @@ var animation = {
                 return;
             }
 
-
             dom.css("left", left + total);
 
             requestNextAnimationFrame(_move);
