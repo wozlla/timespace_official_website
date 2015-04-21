@@ -135,7 +135,6 @@ var snowFall = (function(){
 
                 var flakeObj = null;
 
-                console.log(defaults);
                 if(defaults.image){
                     flakeObj = new Image();
                     flakeObj.src = defaults.image;
