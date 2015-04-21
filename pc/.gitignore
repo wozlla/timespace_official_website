@@ -5,3 +5,4 @@ temp/
 .sass*
 node_modules/
 public/upload
+dist/

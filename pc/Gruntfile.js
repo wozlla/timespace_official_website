@@ -20,38 +20,42 @@ module.exports = function (grunt) {
                 banner: banner,
                 stripBanners:true
             },
-            dist: {
+            basic:{
                 src: [
-                    'public/js/browser.js',
-
                     'public/js/bower_components/jquery/dist/jquery.min.js',
                     'public/js/bower_components/bootstrap/dist/js/bootstrap.min.js',
 
-                    'public/js/*.js',
-
-
+                    'public/js/website/global.js',
+                    'public/js/website/animation.js',
+                    'public/js/website/nav.js'
+                ],
+                dest: 'dist/footer.js'
+            },
+            extra:{
+                src: [
                     'public/js/website/lib/fss.min.js',
                     'public/js/website/lib/example.js',
                     'public/js/website/lib/snowfall.jquery.js',
-
-                    'src/main.js',
-                    'src/import/jsExtend.js',
-                    'src/import/yeQuery.js' ,
-
-                    'src/base/Entity.js',
-                    'src/base/Node.js',
-                    'src/base/*.js',
-
-                    'src/action/Action.js',
-                    'src/action/ActionInstant.js',
-                    'src/action/ActionInterval.js',
-                    'src/action/Control.js',
-
-                    'src/loader/Loader.js',
-
-                    'src/**/*.js'
+                    'public/js/website/index/index.js'
                 ],
-                dest: 'dist/yEngine2D.js'
+                dest: 'dist/index.js'
+            },
+            builda:{
+                options:{
+                   //sourceMap:true
+                },
+                files: {
+                    'dist/header.css': ['public/js/bower_components/bootstrap/dist/css/bootstrap.css',
+                        'public/css/website/app.css']
+                }
+            },
+            buildb:{
+                options:{
+                    //sourceMap:true
+                },
+                files: {
+                    'dist/index.css': ['public/css/website/index/index.css']
+                }
             }
         },
         uglify: {
@@ -59,30 +63,54 @@ module.exports = function (grunt) {
                 banner: banner
             },
             build: {
-                src: 'dist/yEngine2D.js',
-                dest: 'dist/yEngine2D.min.js'
+                files: [{
+                    expand: true,
+                    cwd: 'dist',
+                    src: '*.js',
+                    dest: 'dist',
+                    ext:'.js'
+                }]
             }
         },
         cssmin: {
+            options:{
+                advanced:false
+            },
             target: {
                 files: [{
                     expand: true,
-                    cwd: 'public/css',
+                    cwd: 'dist',
                     src: ['*.css', '!*.min.css'],
-                    dest: 'dist/css',
-                    ext: '.min.css'
+                    dest: 'dist',
+                    ext: '.css'
                 }]
             }
         }
-//        jshint: {
-//            all: ['dist/*.js']
-//        },
+        //concat_css: {
+        //    options: {
+        //
+        //    },
+        //    builda:{
+        //        files: {
+        //            'dist/header.css': ['public/js/bower_components/bootstrap/dist/css/bootstrap.css',
+        //                'public/css/website/app.css']
+        //        }
+        //    },
+        //    buildb:{
+        //        files: {
+        //            'dist/index.css': ['public/css/website/index/index.css']
+        //        }
+        //    }
+        //}
     });
 
 
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-concat-css');
 //    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.registerTask('build', ['clean', 'concat', 'uglify']);
+//    grunt.registerTask('build', ['clean', 'concat']);
+    grunt.registerTask('build', ['clean', 'concat', 'uglify', 'cssmin']);
 };

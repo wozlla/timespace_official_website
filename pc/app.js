@@ -34,6 +34,7 @@ app.use(session({ secret: setting.cookieSecret,
 
 app.use(flash());
 app.use(express.static(path.join(__dirname, "public")));
+app.use("/dist", express.static(path.join(__dirname, "dist")));
 
 app.use("/", websiteRouter);
 app.use("/admin", adminRouter);
