@@ -4,7 +4,7 @@
 @import "../mixin/global";
 
 .container {
-  margin-top:398px;
+  padding-top:398px;
   
   .banner{
     position:relative;
@@ -200,16 +200,21 @@ footer{
   background-color: rgb(242,242,242);
   text-align: center;
   margin-top: 30px;
+  height:70px;
 }
 
 
 #canvasContainer{
-  position:absolute;
-top:0;
-left:0;
-z-index:-200;
-width:100%;
-height:1000px;
+background-image: url('/image/bg/bg.png');
+background-repeat: no-repeat;
+  background-size:100% 100%;
+
+  #canvasOutput{
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:-200;
+  }
 }
 
 

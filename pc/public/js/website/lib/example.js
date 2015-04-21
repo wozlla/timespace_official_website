@@ -508,7 +508,8 @@
   }
 
   //not show img, show webgl
-  container.style.backgroundImage = "";
+  container.style.backgroundImage = "none";
+  $(output).height($(window).height());
 
   initialise();
 

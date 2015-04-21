@@ -1,0 +1,25 @@
+{
+  "name": "official-website",
+  "description": "timespace website",
+  "version": "0.0.1",
+  "homepage": "",
+  "description": "2D HTML5 Game Engine",
+  "keywords": [
+    "HTML5",
+    "WebGL",
+    "game",
+    "official-website",
+    "timespace"
+  ],
+  "authors": {
+    "name": "WOZLLA"
+  },
+
+  "private": true,
+  "dependencies": {
+    "jquery": "~1.9",
+    "bootstrap": "*",
+    "jquery-snowfall": "*",
+    "kindeditor": "https://github.com/kindsoft/kindeditor.git#4.1.10"
+  }
+}
