@@ -424,8 +424,8 @@ body {
 
 #view-about .actions-content {
     width: 640px;
-    height: 100%;
-    margin: 0 auto;
+    height: 1300px;
+    margin: 0 auto 150px;
     margin-top: 10px;
     position: relative;
     -webkit-transform-origin: 0 0;
@@ -456,7 +456,7 @@ body {
     width: 540px;
     font-family: Arial, 黑体, Helvetica;
     color: #DD6833;
-    font-size: 14px;
+    font-size: 18px;
     text-align: left;
 }
 
@@ -465,7 +465,7 @@ body {
     border: 0;
     border-top: 2px dashed #000;
     border-bottom: 2px dashed #333;
-    top: 160px;
+    top: 200px;
     left: 30px;
     width: 580px;
 }
@@ -473,25 +473,25 @@ body {
 #view-about .actions-content .accordion-item-two .left {
     display: block;
     position: absolute;
-    top: 200px;
+    top: 240px;
     left: 10px;
 }
 
 #view-about .actions-content .accordion-item-two .right {
     display: block;
     position: absolute;
-    top: 205px;
+    top: 245px;
     left: 515px;
 }
 
 #view-about .actions-content .accordion-item-two .discription {
     position: absolute;
-    top: 300px;
+    top: 340px;
     left: 50px;
     width: 540px;
     font-family: Arial, 黑体, Helvetica;
     color: #7FA629;
-    font-size: 14px;
+    font-size: 18px;
     text-align: left;
 }
 
@@ -500,7 +500,7 @@ body {
     border: 0;
     border-top: 2px dashed #000;
     border-bottom: 2px dashed #333;
-    top: 360px;
+    top: 440px;
     left: 30px;
     width: 580px;
 }
@@ -508,25 +508,25 @@ body {
 #view-about .actions-content .accordion-item-three .left {
     display: block;
     position: absolute;
-    top: 400px;
+    top: 480px;
     left: 35px;
 }
 
 #view-about .actions-content .accordion-item-three .background {
     display: block;
     position: absolute;
-    top: 420px;
+    top: 500px;
     left: 75px;
 }
 
 #view-about .actions-content .accordion-item-three .discription {
     position: absolute;
-    top: 645px;
+    top: 725px;
     left: 50px;
     width: 540px;
     font-family: Arial, 黑体, Helvetica;
     color: #2E9FC9;
-    font-size: 14px;
+    font-size: 18px;
     text-align: left;
 }
 
@@ -535,7 +535,7 @@ body {
     border: 0;
     border-top: 2px dashed #000;
     border-bottom: 2px dashed #333;
-    top: 725px;
+    top: 845px;
     left: 30px;
     width: 580px;
 }
@@ -543,29 +543,28 @@ body {
 #view-about .actions-content .contact-info .shaky_icon {
     display: block;
     position: absolute;
-    top: 760px;
+    top: 880px;
     left: 186px;
 }
 
 #view-about .actions-content .contact-info .contact-info-container-one .code_one {
     display: block;
     position: absolute;
-    top: 870px;
+    top: 990px;
     left: 80px;
-    margin-bottom: 150px;
 }
 
 #view-about .actions-content .contact-info .contact-info-container-two .code_two {
     display: block;
     position: absolute;
-    top: 870px;
+    top: 990px;
     right: 80px;
 }
 
 #view-about .actions-content .contact-info .contact-info-container-one .title_one {
     display: block;
     position: absolute;
-    top: 1060px;
+    top: 1200px;
     left: 113px;
     font-family: Arial, 黑体, Helvetica;
     font-weight: bold;
@@ -575,7 +574,7 @@ body {
 #view-about .actions-content .contact-info .contact-info-container-two .title_two {
     display: block;
     position: absolute;
-    top: 1060px;
+    top: 1200px;
     right: 120px;
     font-family: Arial, 黑体, Helvetica;
     font-weight: bold;
