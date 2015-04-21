@@ -76,7 +76,7 @@ $(function(){
     $("nav .hotnews,  nav .comment," +
     "nav .dropdown, " +
         ".bird, " +
-    //".download," +
+    ".download," +
     ".first-row .left li, .first-row .middle, .first-row .right," +
     ".second-row ul li, .second-row .contact-us-big").on("click", function(e){
       $("#myModal").modal();
@@ -84,7 +84,7 @@ $(function(){
         e.preventDefault();
     });
 
-    $(".download").on("click", function(e){
+    $(".try-play-button").on("click", function(e){
         if(browser.versions.isIE){
             alert("亲，ie浏览器不支持试玩，请使用chrome等webkit内核浏览器进行试玩。")
             return;

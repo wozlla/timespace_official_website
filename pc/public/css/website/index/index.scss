@@ -75,7 +75,7 @@
         cursor:pointer;
 
         img{
-            background-image: url("/image/index/pic/1.png");
+            background-image: url("/image/index/pic/1.jpg");
             background-size: 464px 300px;
             width:390px;
             height:200px;
@@ -189,6 +189,13 @@
 
 .play{
   display:none;
+  height:640px;
+  top:468px;
+  left: 50%;
+  margin-left: -480px;
+  position:absolute;
+  width:960px;
+  margin-bottom:100px;
 }
 
 .petal{
@@ -208,6 +215,8 @@ footer{
 background-image: url('/image/bg/bg.png');
 background-repeat: no-repeat;
   background-size:100% 100%;
+  position: relative;
+  z-index: -200;
 
   #canvasOutput{
     position:absolute;

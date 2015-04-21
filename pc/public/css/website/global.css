@@ -15,7 +15,9 @@ ul {
 .container {
   width: 800px;
   margin: 0 auto 0 auto;
-  padding: 0; }
+  padding: 0;
+  position: relative;
+  z-index: -199; }
 
 .shared {
   display: table;

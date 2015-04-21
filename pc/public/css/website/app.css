@@ -15,7 +15,9 @@ ul {
 .container {
   width: 800px;
   margin: 0 auto 0 auto;
-  padding: 0; }
+  padding: 0;
+  position: relative;
+  z-index: -199; }
 
 .shared {
   display: table;
@@ -239,55 +241,67 @@ nav .dropdown {
 
 .container > header {
   position: relative; }
-  .container > header nav a {
+  .container > header nav.normal-nav a, .container > header nav.try-play-nav a {
     display: block; }
-    .container > header nav a img {
+    .container > header nav.normal-nav a img, .container > header nav.try-play-nav a img {
       width: 100%;
       height: 100%; }
-.container .bird {
-  display: block;
-  position: absolute;
-  left: -30px;
-  top: -20px;
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  z-index: 0; }
-  .container .bird img {
-    width: 100%;
-    height: 100%; }
-.container .download {
-  background-image: url("/image/nav/download.png");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  left: 585px;
-  top: -10px;
-  width: 215px;
-  height: 85px;
-  position: absolute;
-  z-index: 0;
-  z-index: 0;
-  cursor: pointer; }
-.container .banner {
-  position: relative;
-  top: -398px; }
-  .container .banner img {
-    width: 100%;
-    height: 100%; }
-  .container .banner .title {
-    left: 0;
-    top: -21px;
-    width: 500px;
-    height: 350px;
+  .container > header .bird {
+    display: block;
     position: absolute;
-    z-index: -80; }
-  .container .banner .bg {
-    left: -100px;
-    top: 0;
-    width: 1000px;
-    height: 398px;
+    left: -30px;
+    top: -20px;
+    width: 100px;
+    height: 100px;
     position: absolute;
-    z-index: -90; }
+    z-index: 0; }
+    .container > header .bird img {
+      width: 100%;
+      height: 100%; }
+  .container > header .download {
+    background-image: url("/image/nav/download.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    left: 585px;
+    top: -10px;
+    width: 215px;
+    height: 85px;
+    position: absolute;
+    z-index: 0;
+    z-index: 0;
+    cursor: pointer; }
+  .container > header .banner {
+    position: relative;
+    top: -468px; }
+    .container > header .banner img {
+      width: 100%;
+      height: 100%; }
+    .container > header .banner .title {
+      left: 0;
+      top: 17px;
+      width: 500px;
+      height: 389px;
+      position: absolute;
+      z-index: -80; }
+    .container > header .banner .bg {
+      left: -100px;
+      top: 0;
+      width: 1000px;
+      height: 468px;
+      position: absolute;
+      z-index: -90; }
+  .container > header .try-play-button {
+    background-image: url("/image/try_play/Q&A.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    left: 585px;
+    top: -10px;
+    width: 215px;
+    height: 85px;
+    position: absolute;
+    z-index: 0;
+    z-index: 0;
+    cursor: pointer; }
 
 .clearfix > * {
   float: left; }
