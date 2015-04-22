@@ -8,7 +8,7 @@
     position: relative;
     z-index: 100; }
   .try-play .container {
-    padding-top: 199px; }
+    top: 199px; }
     .try-play .container .play {
       height: 640px;
       width: 960px;
@@ -16,6 +16,7 @@
       margin-top: 12px; }
   .try-play .page-footer {
     position: relative;
-    z-index: 100; }
+    z-index: 100;
+    margin-top: 300px; }
 
 /*# sourceMappingURL=tryPlay.css.map */

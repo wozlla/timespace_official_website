@@ -1,15 +1,15 @@
 $(function(){
     var isMove = false;
 
-    $(".banner").hover(function(e){
+    $(".banner-title, .banner-bg").hover(function(e){
         if(isMove){
             return;
         }
 
         isMove = true;
 
-        animation.moveRight($("#banner-title"), 50, 1.5);
-        animation.moveLeft($("#banner-bg"), 50, 1.2);
+        animation.moveRight($(".banner-title"), 50, 1.5);
+        animation.moveLeft($(".banner-bg"), 50, 1.2);
 
     }, function(){
     });

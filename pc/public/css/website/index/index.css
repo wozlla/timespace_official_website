@@ -5,7 +5,7 @@
   position: relative;
   z-index: 0; }
   .index .container {
-    padding-top: 460px; }
+    top: 460px; }
     .index .container .content {
       margin-top: 20px; }
       .index .container .content .first-row {
@@ -126,7 +126,7 @@
   .index .petal {
     display: none; }
   .index .logo1 {
-    margin-top: 60px;
+    margin-top: 500px;
     background-color: #f2f2f2;
     text-align: center;
     height: 82px; }
