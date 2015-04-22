@@ -42,7 +42,7 @@ module.exports = function (grunt) {
             },
             builda:{
                 src: [
-                    'public/js/website/index/tryPlay.js'
+                    'public/js/website/tryPlay/tryPlay.js'
                 ],
                 dest: 'dist/tryPlay.js'
             },
