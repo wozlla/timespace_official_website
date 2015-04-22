@@ -91,7 +91,8 @@ var snowFall = (function(){
                 collection : false,
                 image : false,
                 images: false,
-                collectionHeight : 40
+                collectionHeight : 40,
+                useTransform: false
             },
             flakes = [],
             element = {},
@@ -148,7 +149,31 @@ var snowFall = (function(){
                 }
 
                 flakeObj.className = 'snowfall-flakes';
-                setStyle(flakeObj, {'width' : this.size, 'height' : this.size, 'position' : defaults.flakePosition, 'top' : this.y, 'left' : this.x, 'fontSize' : 0, 'zIndex' : defaults.flakeIndex});
+
+                if(defaults.useTransform) {
+                    var translate = 'translate(x, y)'.replace('x', this.x + 'px').replace('y', this.y + 'px');
+                    setStyle(flakeObj, {
+                        'width': this.size,
+                        'height': this.size,
+                        'position': defaults.flakePosition,
+                        'top': 0,
+                        'left': 0,
+                        'transform': translate,
+                        '-webkit-transform' : translate,
+                        'fontSize': 0,
+                        'zIndex': defaults.flakeIndex
+                    });
+                } else {
+                    setStyle(flakeObj, {
+                        'width': this.size,
+                        'height': this.size,
+                        'position': defaults.flakePosition,
+                        'top': this.y,
+                        'left': this.x,
+                        'fontSize': 0,
+                        'zIndex': defaults.flakeIndex
+                    });
+                }
 
                 // This adds the style to make the snowflakes round via border radius property 
                 if(defaults.round){
@@ -177,8 +202,16 @@ var snowFall = (function(){
                         this.reset();
                     }
 
-                    this.element.style.top = this.y + 'px';
-                    this.element.style.left = this.x + 'px';
+                    if(defaults.useTransform) {
+                        var translate = 'translate(x, y)'.replace('x', this.x + 'px').replace('y', this.y + 'px');
+                        setStyle(this.element, {
+                            'transform': translate,
+                            '-webkit-transform' : translate
+                        });
+                    } else {
+                        this.element.style.top = this.y + 'px';
+                        this.element.style.left = this.x + 'px';
+                    }
 
                     this.step += this.stepSize;
                     this.x += Math.cos(this.step);

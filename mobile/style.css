@@ -404,6 +404,10 @@ body {
     margin: 0 auto;
 }
 
+.ts-popup-meng img {
+    width: 100%;
+}
+
 .ts-about-content {
     text-align: center;
     margin: 0 auto;
