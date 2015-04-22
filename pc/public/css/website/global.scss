@@ -28,7 +28,7 @@ ul {
 
 
 .container{
-  width: 800px;
+  width: 960px;
   //border: 1px solid red;
   margin: 0 auto 0 auto;
   padding:0;
@@ -63,20 +63,20 @@ ul {
 
 
 ul.footer{
-  height: 70px;
+  height: 82px;
   display: table;
   margin:0 auto;
 
   .logo{
     background-image: url("/image/logo/logo.png");
-    width: 80px;
-    height:50px;
-    margin-top:10px;
+    width: 130px;
+    height:75px;
+    margin-top:5px;
     background-size: 100% 100%;
   }
   .spliter{
     border-left: 1px solid rgb(183,183,183);
-    height:56px;
+    height:70px;
     /* vertical-align: middle; */
     /* margin-top: 6px; */
     margin: 6px 30px;
@@ -84,8 +84,8 @@ ul.footer{
   }
   .game-name{
     background-image: url("/image/logo/game_name.png");
-    width: 170px;
-    height:70px;
+    width: 160px;
+    height:82px;
     background-size: 100% 100%;
   }
 }
@@ -102,15 +102,15 @@ ul.footer{
 
 .pop-window{
   position: fixed;
-  width:300px;
-  height:200px;
+  width:400px;
+  height:330px;
   top: 30%;
-  right: -250px;
+  right: -330px;
   background-image: url("/image/pop_box/suspend.png");
 
   $color:rgb(136,153,222);
   div{
-    @include radius(12px, $color);
+    @include radius(16px, $color);
     position: relative;
     top: 10px;
     left: 3px;
@@ -118,20 +118,20 @@ ul.footer{
   }
   .pop-out{
     i{
-      @include arrow($color, 2px, -3px, 8px);
+      @include arrow($color, 2px, -4px, 11px);
       top: 3px \9;
       left:-2px \9;
     }
   }
   .pop-in{
     i{
-      @include rightArrow($color, 2px, 7px, 8px);
+      @include rightArrow($color, 2px, 11px, 11px);
     }
   }
 
   img{
-   width:30px;
-   height:110px;
+   width:50px;
+   height:213px;
    position:relative;
    top:50px;
    left:13px;
@@ -143,8 +143,8 @@ ul.footer{
   background-image:url("/image/button/contact_us.png");
   cursor:pointer;
 
-    width: 250px;
-    height: 100px;
+    width: 338px;
+    height: 110px;
     margin-left: 20px;
     margin-top: 34px;
     position: relative;
@@ -155,7 +155,7 @@ ul.footer{
     }
 
     .right{
-      @include absolute(230px, 86px, 29px, null, -82px);
+      @include absolute(255px, 86px, 34px, null, -82px);
     }
 }
 .contact-us-small{
@@ -190,7 +190,7 @@ ul.footer{
     //margin-top:150px !important;
     background-color:rgba(0,0,0,0.6);
     //height:400px;
-  
+
 
     .modal-header{
       border: 0 !important;
@@ -200,7 +200,7 @@ ul.footer{
       margin:0 auto;
       margin-top:100px;
       //height:300px !important;
-      
+
       @include backImg("/image/index/pic/building.png", 400px, 120px);
     }
 
