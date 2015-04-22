@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8" content="text/html"/>
+  <title>时空召唤：英雄计划</title>
+
+  <link href="public/image/icon.ico" rel="icon">
+  <link href="dist/header.css" type="text/css" rel="stylesheet">
+
+
+  <style>
+    footer {
+      background-color: #e0e0e0;
+      text-align: center;
+      margin-top: 50px;
+      padding-bottom: 30px; }
+    footer > ul {
+      display: table;
+      margin: 0 auto;
+      padding-top: 10px; }
+    footer > ul dl dd ul {
+      width: 300px; }
+    footer > ul dl ul li {
+      margin-left: 20px; }
+    footer > ul dl ul .left {
+      width: 380px; }
+    footer > ul dl ul .right {
+      margin-left: 100px; }
+    footer > ul .right {
+      margin-left: 80px; }
+    footer > ul .right li:after {
+      content: "";
+      border-left: 1px solid #8b8e9a;
+      height: 10px;
+      margin-left: 20px;
+      margin-right: 20px; }
+  </style>
+
+</head>
+<body id="canvasContainer">
+<script src="public/js/website/header/browser.js"></script>
+
+<link href="dist/index.css" type="text/css" rel="stylesheet">
+
+<header class="logo-header">
+  <ul class="footer clearfix">
+    <li class="game-name"> </li>
+    <li class="spliter"> </li>
+    <li class="logo"> </li>
+  </ul>
+</header>
+
+<section class="container" style="padding-top:180px;">
+  <header>
+    <nav class="try-play-nav">
+      <ul class="clearfix">
+        <li class="hotnews">
+          <a href=""><img src="public/image/try_play/beginner.png"/></a> </li>
+        <li class="hotnews">
+          <a href=""><img src="public/image/try_play/advance.png"/></a>
+        </li>
+        <li class="comment">
+          <a href=""><img src="public/image/try_play/combination.png"/></a>
+        </li>
+      </ul>
+    </nav>
+    <a style="
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    left: 585px;
+    top: -10px;
+    width: 215px;
+    height: 85px;
+    position: absolute;
+    z-index: 0;
+    " class="try-play-button">
+      <img style="width:100%;height:100%;" src="public/image/try_play/Q&A.png"/>
+    </a>
+
+    <div class="banner" style="top:-340px;">
+      <div id="banner-title" class="title" style="width:390px;height:290px;">
+        <img src="public/image/index/banner/game_name.png"/>
+      </div>
+      <div id="banner-bg" class="bg" >
+        <img src="public/image/index/banner/bg.png"/>
+      </div>
+    </div>
+  </header>
+
+  <iframe class="play"
+          style="margin:0 auto;display:block;position:static;width:800px;height:640px;"
+          frameborder="0" src="http://shikong.html5dw.com/tsweb/index.html" width="800" scrolling="no" id="play"></iframe>
+</section>
+
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close"
+                data-dismiss="modal" aria-hidden="true">
+          &times;
+        </button>
+        <!--<button type="button" class="close"-->
+        <!--data-dismiss="modal" aria-hidden="true">-->
+        <!--&times;-->
+        <!--</button>-->
+        <!--<h4 class="modal-title" id="myModalLabel">-->
+        <!--模态框（Modal）标题-->
+        <!--</h4>-->
+      </div>
+      <div class="modal-body">
+        <!--在这里添加一些文本-->
+      </div>
+      <div class="modal-footer">
+        <!--<button type="button" class="btn btn-default"-->
+        <!--data-dismiss="modal">关闭-->
+        <!--</button>-->
+        <!--<button type="button" class="btn btn-primary">-->
+        <!--提交更改-->
+        <!--</button>-->
+      </div>
+    </div><!-- /.modal-content -->
+  </div>
+</div>
+
+
+<footer>
+  <ul class="clearfix">
+    <li class="left">
+      <dl class="clearfix">
+        <dt>友情链接：</dt>
+        <dd>
+          <ul class="clearfix">
+            <li>悟空间</li>
+            <li>悟空间</li>
+            <li>悟空间</li>
+            <li>悟空间</li>
+            <li>悟空间</li>
+          </ul>
+        </dd>
+      </dl>
+    </li>
+    <li class="right">
+      <ul class="clearfix">
+        <li>悟空间</li>
+        <li>悟团队</li>
+        <li>悟招聘</li>
+      </ul>
+    </li>
+  </ul>
+</footer>
+
+
+<script src="dist/footer.js"></script>
+
+
+
+<script src="dist/index_tryPlay.js"></script>
+
+</body>
+</html>
+

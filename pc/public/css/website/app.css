@@ -14,10 +14,10 @@ ul {
 
 .container {
   width: 960px;
-  margin: 0 auto 0 auto;
+  margin: 0 auto;
   padding: 0;
   position: relative;
-  z-index: -199; }
+  z-index: 100; }
 
 .shared {
   display: table;
@@ -70,6 +70,7 @@ ul.footer {
   height: 330px;
   top: 30%;
   right: -330px;
+  z-index: 1000;
   background-image: url("/image/pop_box/suspend.png"); }
   .pop-window div {
     -webkit-border-radius: 26px;
@@ -203,52 +204,51 @@ share plugin
   background: url("/image/shared/6.png") no-repeat left !important;
   background-size: 32px 32px !important; }
 
-nav > ul > li {
-  width: 210px;
-  height: 90px;
-  text-align: center;
-  display: table;
-  margin-right: 20px;
-  float: left;
-  cursor: pointer; }
-  nav > ul > li a {
-    height: 90px; }
-nav > ul.clearfix {
-  height: 100%; }
-nav .dropdown {
-  position: absolute;
-  z-index: 1000;
-  left: 230px;
-  top: 80px;
-  width: 210px;
-  display: none;
-  background-image: url("/image/bg/dropdown.png");
-  background-repeat: no-repeat;
-  background-size: 100% 100%; }
-  nav .dropdown li {
-    width: 100%;
-    height: 50px;
-    line-height: 50px; }
-    nav .dropdown li:hover {
-      background-color: #5734ad; }
-    nav .dropdown li a {
-      font-weight: bolder;
-      display: block;
-      width: 100%;
-      height: 100%;
-      color: #2b235b; }
-      nav .dropdown li a:hover {
-        color: #ffffff;
-        text-decoration: none; }
-
-.container > header {
+.normal-nav {
   position: relative; }
-  .container > header nav.normal-nav a, .container > header nav.try-play-nav a {
+  .normal-nav nav a {
     display: block; }
-    .container > header nav.normal-nav a img, .container > header nav.try-play-nav a img {
+    .normal-nav nav a img {
       width: 100%;
       height: 100%; }
-  .container > header .bird {
+  .normal-nav nav > ul > li {
+    width: 210px;
+    height: 90px;
+    text-align: center;
+    display: table;
+    margin-right: 20px;
+    float: left;
+    cursor: pointer; }
+    .normal-nav nav > ul > li a {
+      height: 90px; }
+  .normal-nav nav > ul.clearfix {
+    height: 100%; }
+  .normal-nav nav .dropdown {
+    position: absolute;
+    z-index: 1000;
+    left: 230px;
+    top: 80px;
+    width: 210px;
+    display: none;
+    background-image: url("/image/bg/dropdown.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%; }
+    .normal-nav nav .dropdown li {
+      width: 100%;
+      height: 50px;
+      line-height: 50px; }
+      .normal-nav nav .dropdown li:hover {
+        background-color: #5734ad; }
+      .normal-nav nav .dropdown li a {
+        font-weight: bolder;
+        display: block;
+        width: 100%;
+        height: 100%;
+        color: #2b235b; }
+        .normal-nav nav .dropdown li a:hover {
+          color: #ffffff;
+          text-decoration: none; }
+  .normal-nav .bird {
     display: block;
     position: absolute;
     left: -30px;
@@ -257,10 +257,10 @@ nav .dropdown {
     height: 100px;
     position: absolute;
     z-index: 0; }
-    .container > header .bird img {
+    .normal-nav .bird img {
       width: 100%;
       height: 100%; }
-  .container > header .download {
+  .normal-nav .download {
     cursor: pointer;
     display: block;
     left: 705px;
@@ -269,40 +269,7 @@ nav .dropdown {
     height: 112px;
     position: absolute;
     z-index: 0; }
-    .container > header .download img {
-      width: 100%;
-      height: 100%; }
-  .container > header .banner {
-    position: relative;
-    top: -550px;
-    z-index: -100; }
-    .container > header .banner img {
-      width: 100%;
-      height: 100%; }
-    .container > header .banner .title {
-      left: 0;
-      top: 17px;
-      width: 530px;
-      height: 450px;
-      position: absolute;
-      z-index: -80; }
-    .container > header .banner .bg {
-      left: -115px;
-      top: 0;
-      width: 1200px;
-      height: 550px;
-      position: absolute;
-      z-index: -90; }
-  .container > header .try-play-button {
-    cursor: pointer;
-    display: block;
-    position: absolute;
-    top: 705px;
-    width: 254px;
-    height: 112px -10px;
-    position: absolute;
-    z-index: 0; }
-    .container > header .try-play-button img {
+    .normal-nav .download img {
       width: 100%;
       height: 100%; }
 
@@ -317,5 +284,60 @@ nav .dropdown {
 textarea {
   width: 600px;
   height: 400px; }
+
+footer.page-footer {
+  background-color: #e0e0e0;
+  text-align: center;
+  margin-top: 50px;
+  padding-bottom: 30px; }
+  footer.page-footer > ul {
+    display: table;
+    margin: 0 auto;
+    padding-top: 10px; }
+    footer.page-footer > ul dl dd ul {
+      width: 300px; }
+    footer.page-footer > ul dl ul li {
+      margin-left: 20px; }
+    footer.page-footer > ul dl ul .left {
+      width: 380px; }
+    footer.page-footer > ul dl ul .right {
+      margin-left: 100px; }
+    footer.page-footer > ul .right {
+      margin-left: 80px; }
+      footer.page-footer > ul .right li:after {
+        content: "";
+        border-left: 1px solid #8b8e9a;
+        height: 10px;
+        margin-left: 20px;
+        margin-right: 20px; }
+
+.banner-title {
+  position: absolute;
+  z-index: 6;
+  width: 530px;
+  height: 450px;
+  left: 50%;
+  margin-left: -565px;
+  top: 20px; }
+  .banner-title img {
+    width: 100%;
+    height: 100%; }
+  .banner-title .title {
+    width: 100%;
+    height: 100%; }
+
+.banner-bg {
+  position: absolute;
+  z-index: 2;
+  width: 1200px;
+  height: 550px;
+  left: 50%;
+  margin-left: -600px; }
+  .banner-bg img {
+    width: 100%;
+    height: 100%; }
+  .banner-bg .bg {
+    width: 100%;
+    height: 100%; }
 
 /*# sourceMappingURL=app.css.map */

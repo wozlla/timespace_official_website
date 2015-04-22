@@ -30,10 +30,11 @@ ul {
 .container{
   width: 960px;
   //border: 1px solid red;
-  margin: 0 auto 0 auto;
+  margin: 0 auto;
   padding:0;
   position: relative;
-  z-index: -199;
+  z-index:100;
+  //z-index: -199;
 }
 
 
@@ -106,6 +107,7 @@ ul.footer{
   height:330px;
   top: 30%;
   right: -330px;
+  z-index:1000;
   background-image: url("/image/pop_box/suspend.png");
 
   $color:rgb(136,153,222);

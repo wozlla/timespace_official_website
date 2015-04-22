@@ -1,6 +1,27 @@
 @import "mixin/image";
 
+.normal-nav{
+  position: relative;
+
 nav{
+  a{
+    display:block;
+
+    img{
+      width:100%;
+      height:100%;
+    }
+  }
+
+  li.hotnews a{
+    //@include backImg("/image/nav/hotnews.png", 100%, 100%);
+  }
+  li.description a{
+    //@include backImg("/image/nav/description.png", 100%, 100%);
+  }
+  li.comment a{
+    //@include backImg("/image/nav/comment.png", 100%, 100%);
+  }
   >ul {
     > li {
       width: 210px;
@@ -58,81 +79,24 @@ nav{
     }
 }
 
-.container {
-  > header {
-    position: relative;
-    nav.normal-nav {
-      a{
-        display:block;
+  .bird{
+    display:block;
+    position:absolute;
+    @include absolute(100px, 100px, -20px, -30px);
 
-        img{
-          width:100%;
-          height:100%;
-        }
-      }
-      li.hotnews a{
-        //@include backImg("/image/nav/hotnews.png", 100%, 100%);
-      }
-      li.description a{
-        //@include backImg("/image/nav/description.png", 100%, 100%);
-      }
-      li.comment a{
-        //@include backImg("/image/nav/comment.png", 100%, 100%);
-      }
+    img{
+      width:100%;
+      height:100%;
     }
-    .bird{
-      display:block;
-      position:absolute;
-      @include absolute(100px, 100px, -20px, -30px);
+  }
+  .download{
+    cursor: pointer;
+    display:block;
+    @include absolute(254px, 112px, -10px, 705px);
 
-      img{
-        width:100%;
-        height:100%;
-      }
-    }
-    .download{
-      cursor: pointer;
-      display:block;
-      @include absolute(254px, 112px, -10px, 705px);
-
-      img{
-        width:100%;
-        height:100%;
-      }
-    }
-    .banner {
-      position: relative;
-      top:-550px;
-      z-index:-100;
-
-      img {
-        width: 100%;
-        height: 100%;
-      }
-
-      .title {
-        @include absolute(530px, 450px, 17px, 0, null, -80);
-      }
-
-      .bg {
-        @include absolute(1200px, 550px, 0, -115px, null, -90);
-      }
-    }
-
-    nav.try-play-nav{
-      @extend .normal-nav;
-    }
-    .try-play-button{
-      cursor: pointer;
-
-      display:block;
-      position:absolute;
-      @include absolute(254px, 112px -10px, 705px);
-
-      img{
-        width:100%;
-        height:100%;
-      }
+    img{
+      width:100%;
+      height:100%;
     }
   }
 }

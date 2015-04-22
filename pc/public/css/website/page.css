@@ -48,30 +48,4 @@
       margin-top: 40px;
       margin-bootom: 40px; }
 
-footer {
-  background-color: #e0e0e0;
-  text-align: center;
-  margin-top: 50px;
-  padding-bottom: 30px; }
-  footer > ul {
-    display: table;
-    margin: 0 auto;
-    padding-top: 10px; }
-    footer > ul dl dd ul {
-      width: 300px; }
-    footer > ul dl ul li {
-      margin-left: 20px; }
-    footer > ul dl ul .left {
-      width: 380px; }
-    footer > ul dl ul .right {
-      margin-left: 100px; }
-    footer > ul .right {
-      margin-left: 80px; }
-      footer > ul .right li:after {
-        content: "";
-        border-left: 1px solid #8b8e9a;
-        height: 10px;
-        margin-left: 20px;
-        margin-right: 20px; }
-
 /*# sourceMappingURL=page.css.map */

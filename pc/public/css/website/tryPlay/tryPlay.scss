@@ -1,0 +1,39 @@
+@import "../mixin/position";
+
+.try-play{
+  background-image: url('/image/bg/bg.png');
+  background-repeat: no-repeat;
+  background-size:100% 100%;
+  position: relative;
+  z-index:0;
+
+  .logo-header{
+    position: relative;
+    z-index:100;
+  }
+  //.banner{
+  //  top:-127px;
+  //
+  //
+  //  .title {
+  //    @include absolute(420px, 288px, 71px, 118px, null, 3);
+  //    z-index:6;
+  //  }
+  //}
+  .container{
+    padding-top:199px;
+
+
+    .play{
+      height:640px;
+      width:960px;
+      left: 50%;
+      margin-top:12px;
+    }
+  }
+
+  .page-footer{
+    position:relative;
+    z-index:100;
+  }
+}

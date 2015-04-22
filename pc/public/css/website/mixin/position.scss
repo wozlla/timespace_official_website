@@ -1,4 +1,4 @@
-@mixin absolute($width, $height, $top, $left:null, $right:null, $zIndex:0){
+@mixin absolute($width:0, $height:0, $top:0, $left:null, $right:null, $zIndex:0){
   @if($left != null){
     left:$left;
   }

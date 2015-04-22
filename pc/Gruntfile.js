@@ -33,14 +33,20 @@ module.exports = function (grunt) {
             },
             extra:{
                 src: [
-                    'public/js/website/lib/fss.min.js',
-                    'public/js/website/lib/example.js',
+                    //'public/js/website/lib/fss.min.js',
+                    //'public/js/website/lib/example.js',
                     'public/js/website/lib/snowfall.jquery.js',
                     'public/js/website/index/index.js'
                 ],
                 dest: 'dist/index.js'
             },
             builda:{
+                src: [
+                    'public/js/website/index/tryPlay.js'
+                ],
+                dest: 'dist/tryPlay.js'
+            },
+            buildb:{
                 options:{
                    //sourceMap:true
                 },
@@ -49,12 +55,28 @@ module.exports = function (grunt) {
                         'public/css/website/app.css']
                 }
             },
-            buildb:{
+            buildc:{
                 options:{
                     //sourceMap:true
                 },
                 files: {
-                    'dist/index.css': ['public/css/website/index/index.css']
+                    'dist/index.css': ['public/css/website/index/index.css',
+                    'public/css/website/banner.css'
+                    ]
+                }
+            },
+
+            buildd:{
+                options:{
+                    //sourceMap:true
+                },
+                files: {
+                    'dist/tryPlay.css': [
+                        'public/css/website/tryPlay/mask.css',
+                        'public/css/website/tryPlay/tryPlay.css',
+                    'public/css/website/tryPlay/tryPlayNav.css',
+                        'public/css/website/tryPlay/banner.css'
+                    ]
                 }
             }
         },
@@ -111,6 +133,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-concat-css');
 //    grunt.loadNpmTasks('grunt-contrib-jshint');
-//    grunt.registerTask('build', ['clean', 'concat']);
-    grunt.registerTask('build', ['clean', 'concat', 'uglify', 'cssmin']);
+    grunt.registerTask('build', ['clean', 'concat']);
+    //grunt.registerTask('build', ['clean', 'concat', 'uglify', 'cssmin']);
 };

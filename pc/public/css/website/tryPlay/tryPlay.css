@@ -1,0 +1,21 @@
+.try-play {
+  background-image: url("/image/bg/bg.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: relative;
+  z-index: 0; }
+  .try-play .logo-header {
+    position: relative;
+    z-index: 100; }
+  .try-play .container {
+    padding-top: 199px; }
+    .try-play .container .play {
+      height: 640px;
+      width: 960px;
+      left: 50%;
+      margin-top: 12px; }
+  .try-play .page-footer {
+    position: relative;
+    z-index: 100; }
+
+/*# sourceMappingURL=tryPlay.css.map */

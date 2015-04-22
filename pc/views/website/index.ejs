@@ -2,98 +2,112 @@
 
 <link href="/dist/index.css" type="text/css" rel="stylesheet">
 
-<div id="canvasOutput" class="">
-</div>
+<div class="index">
+  <!--<div id="canvasOutput" class="">-->
+  <!--</div>-->
 
-<section  class="container">
-  <header>
-    <% include nav.ejs %>
-
-    <div class="banner">
-      <div id="banner-title" class="title" >
-        <img src="/image/index/banner/game_name.png"/>
-      </div>
-      <div id="banner-bg" class="bg" >
-        <img src="/image/index/banner/bg.png"/>
-      </div>
+  <!--<section class="banner">-->
+    <!--<div id="banner-title" class="title" >-->
+      <!--<img src="/image/index/banner/game_name.png"/>-->
+    <!--</div>-->
+    <!--<div id="banner-bg" class="bg" >-->
+      <!--<img src="/image/index/banner/bg.png"/>-->
+    <!--</div>-->
+  <!--</section>-->
+  <section class="banner-title">
+    <div id="banner-title" class="title" >
+      <img src="/image/index/banner/game_name.png"/>
     </div>
-  </header>
+  </section>
+  <section class="banner-bg" >
+    <div id="banner-bg" class="bg" >
+      <img src="/image/index/banner/bg.png"/>
+    </div>
+  </section>
 
-  <section class="content">
-    <ul class="first-row clearfix">
-      <li class="left">
-        <ul>
-          <li>
-            <h3 class="ellipsis">冰龙赛尔里斯 超还原手办模型</h3>
-            <span class="ellipsis">《地域之光》首款超还原手办－冰龙赛尔里斯霸气亮相。深藏在冰龙</span>
-          </li>
-        </ul>
+  <section class="container">
+    <header class="normal-nav">
+      <% include nav.ejs %>
 
-        <img src="/image/index/ornament/news.png"></li>
-      <li id="switch-img" class="middle">
-        <img src="/image/index/pic/1.jpg"/>
-      </li>
-      <li id="switch-title" class="right">
-        <ul>
-          <li class="first"><i></i></li>
-          <li class="second"><i></i></li>
-          <li class="third"><i></i></li>
-        </ul>
-      </li>
-    </ul>
+    </header>
 
-    <div class="second-row clearfix">
-      <ul>
-        <li class="first">
-          <img src="/image/index/batton/first.png"/>
-          <div>
-            <span>入门</span>
-          </div>
+    <section class="content">
+      <ul class="first-row clearfix">
+        <li class="left">
+          <ul>
+            <li>
+              <h3 class="ellipsis">冰龙赛尔里斯 超还原手办模型</h3>
+              <span class="ellipsis">《地域之光》首款超还原手办－冰龙赛尔里斯霸气亮相。深藏在冰龙</span>
+            </li>
+          </ul>
+
+          <img src="/image/index/ornament/news.png"></li>
+        <li id="switch-img" class="middle">
+          <img src="/image/index/pic/1.jpg"/>
         </li>
-        <li class="second">
-          <img src="/image/index/batton/second.png"/>
-          <div>
-            <span>进阶</span>
-          </div>
-        </li>
-        <li class="third">
-          <img src="/image/index/batton/third.png"/>
-          <div>
-            <span>装备</span>
-          </div>
-        </li>
-        <li class="fourth">
-          <img src="/image/index/batton/fourth.png"/>
-          <div>
-            <span>组合</span>
-          </div>
+        <li id="switch-title" class="right">
+          <ul>
+            <li class="first"><i></i></li>
+            <li class="second"><i></i></li>
+            <li class="third"><i></i></li>
+          </ul>
         </li>
       </ul>
 
-      <div class="contact-us-big">
-        <img class="left" src="/image/ornament/left.png">
-        <img class="right" src="/image/ornament/right.png">
+      <div class="second-row clearfix">
+        <ul>
+          <li class="first">
+            <img src="/image/index/batton/first.png"/>
+            <div>
+              <span>入门</span>
+            </div>
+          </li>
+          <li class="second">
+            <img src="/image/index/batton/second.png"/>
+            <div>
+              <span>进阶</span>
+            </div>
+          </li>
+          <li class="third">
+            <img src="/image/index/batton/third.png"/>
+            <div>
+              <span>装备</span>
+            </div>
+          </li>
+          <li class="fourth">
+            <img src="/image/index/batton/fourth.png"/>
+            <div>
+              <span>组合</span>
+            </div>
+          </li>
+        </ul>
+
+        <div class="contact-us-big">
+          <img class="left" src="/image/ornament/left.png">
+          <img class="right" src="/image/ornament/right.png">
+        </div>
       </div>
-    </div>
 
 
-    <% include shared.ejs %>
+      <% include shared.ejs %>
 
+    </section>
   </section>
-</section>
 
-<% include play_iframe.ejs %>
 
-<% include modal.ejs %>
+
+
+
+
+  <% include logoFooter.ejs %>
+
+
+</div>
 
 <% include pop_window.ejs %>
-
-
-<% include logo1.ejs %>
-
+<% include modal.ejs %>
 
 <% include footer.ejs %>
-
 <script src="/dist/index.js"></script>
 
 <% include footerHtml.ejs %>

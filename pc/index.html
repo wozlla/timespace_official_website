@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8" content="text/html"/>
+  <title>时空召唤：英雄计划</title>
+
+  <link href="public/image/icon.ico" rel="shortcut icon">
+  <link href="dist/header.css" type="text/css" rel="stylesheet">
+</head>
+<body id="canvasContainer">
+<script src="public/js/website/header/browser.js"></script>
+
+<link href="dist/index.css" type="text/css" rel="stylesheet">
+
+<div id="canvasOutput" class="">
+</div>
+
+<section  class="container">
+  <header>
+    <nav class="normal-nav">
+      <ul class="clearfix">
+        <li class="hotnews">
+          <a href="/news"><img src="public/image/nav/hotnews.png"/></a>
+        </li>
+        <li class="description">
+          <a href=""><img src="public/image/nav/description.png"/></a>
+        </li>
+        <li class="comment">
+          <a href=""><img src="public/image/nav/comment.png"/></a>
+        </li>
+      </ul>
+      <ul class="dropdown">
+        <li><a href="/description">神秘故事</a></li>
+        <li><a href="/description">技能介绍</a></li>
+        <li><a href="/description">世界探索</a></li>
+        <li><a href="/description">游戏入门</a></li>
+        <li><a href="/description">游戏进阶</a></li>
+        <li><a href="/description">游戏组合</a></li>
+        <li><a href="/description">游戏秘籍</a></li>
+      </ul>
+    </nav>
+    <a href="/news" class="bird">
+      <img src="public/image/nav/bird.png"/>
+    </a>
+    <a href="/news" style="
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    left: 585px;
+    top: -10px;
+    width: 215px;
+    height: 85px;
+    position: absolute;
+    z-index: 0;
+    " class="download">
+      <img style="width:100%;height:100%;" src="public/image/nav/download.png"/>
+    </a>
+
+    <div class="banner">
+      <div id="banner-title" class="title" >
+        <img src="public/image/index/banner/game_name.png"/>
+      </div>
+      <div id="banner-bg" class="bg" >
+        <img src="public/image/index/banner/bg.png"/>
+      </div>
+    </div>
+  </header>
+
+  <section class="content">
+    <ul class="first-row clearfix">
+      <li class="left">
+        <ul>
+          <li>
+            <h3 class="ellipsis">冰龙赛尔里斯 超还原手办模型</h3>
+            <span class="ellipsis">《地域之光》首款超还原手办－冰龙赛尔里斯霸气亮相。深藏在冰龙</span>
+          </li>
+        </ul>
+
+        <img src="public/image/index/ornament/news.png"></li>
+      <li id="switch-img" class="middle">
+        <img src="public/image/index/pic/1.jpg"/>
+      </li>
+      <li id="switch-title" class="right">
+        <ul>
+          <li class="first"><i></i></li>
+          <li class="second"><i></i></li>
+          <li class="third"><i></i></li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="second-row clearfix">
+      <ul>
+        <li class="first">
+          <img src="public/image/index/batton/first.png"/>
+          <div>
+            <span>入门</span>
+          </div>
+        </li>
+        <li class="second">
+          <img src="public/image/index/batton/second.png"/>
+          <div>
+            <span>进阶</span>
+          </div>
+        </li>
+        <li class="third">
+          <img src="public/image/index/batton/third.png"/>
+          <div>
+            <span>装备</span>
+          </div>
+        </li>
+        <li class="fourth">
+          <img src="public/image/index/batton/fourth.png"/>
+          <div>
+            <span>组合</span>
+          </div>
+        </li>
+      </ul>
+
+      <div class="contact-us-big">
+        <img class="left" src="public/image/ornament/left.png">
+        <img class="right" src="public/image/ornament/right.png">
+      </div>
+    </div>
+
+
+    <div class="shared">
+      <span> 分享： </span>
+      <!-- JiaThis Button BEGIN -->
+      <div class="jiathis_style_32x32">
+        <a class="jiathis_button_weixin"></a>
+        <a class="jiathis_button_t163"></a>
+        <a class="jiathis_button_xiaoyou"></a>
+        <a class="jiathis_button_tsina"></a>
+        <a class="jiathis_button_qzone"></a>
+        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+        <!--<a class="jiathis_counter_style"></a>-->
+      </div>
+      <!-- JiaThis Button END -->
+    </div>
+
+  </section>
+</section>
+
+<iframe class="play" frameborder="0" width="960" height="640" src="http://shikong.html5dw.com/tsweb/index.html" scrolling="no" id="play"></iframe>
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close"
+                data-dismiss="modal" aria-hidden="true">
+          &times;
+        </button>
+        <!--<button type="button" class="close"-->
+        <!--data-dismiss="modal" aria-hidden="true">-->
+        <!--&times;-->
+        <!--</button>-->
+        <!--<h4 class="modal-title" id="myModalLabel">-->
+        <!--模态框（Modal）标题-->
+        <!--</h4>-->
+      </div>
+      <div class="modal-body">
+        <!--在这里添加一些文本-->
+      </div>
+      <div class="modal-footer">
+        <!--<button type="button" class="btn btn-default"-->
+        <!--data-dismiss="modal">关闭-->
+        <!--</button>-->
+        <!--<button type="button" class="btn btn-primary">-->
+        <!--提交更改-->
+        <!--</button>-->
+      </div>
+    </div><!-- /.modal-content -->
+  </div>
+</div>
+
+<section class="pop-window">
+  <div class="pop-out">
+    <i>
+    </i>
+  </div>
+  <img src="public/image/pop_box/gift.png"/>
+</section>
+
+
+<footer>
+  <ul class="footer clearfix">
+    <li class="logo"> </li>
+    <li class="spliter"> </li>
+    <li class="game-name"> </li>
+  </ul>
+</footer>
+
+
+<script type="text/javascript" >
+  var jiathis_config={
+    summary:"",
+    shortUrl:false,
+    hideMore:false
+  }
+</script>
+
+<script src="dist/footer.js"></script>
+<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+
+
+
+<script src="dist/index.js"></script>
+
+</body>
+</html>
+
