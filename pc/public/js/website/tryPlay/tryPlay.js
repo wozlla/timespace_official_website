@@ -8,6 +8,7 @@ $(function(){
     });
 
 
+    //if(browser.versions.isIE7 || browser.versions.isIE8 || browser.versions.isIE9){
     if(browser.versions.isIE){
         var playWindow = $("#play");
 

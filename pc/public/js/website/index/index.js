@@ -1,18 +1,18 @@
 $(function(){
     var isMove = false;
 
-    $(".banner-title, .banner-bg").hover(function(e){
-        if(isMove){
-            return;
-        }
-
-        isMove = true;
-
-        animation.moveRight($(".banner-title"), 50, 1.5);
-        animation.moveLeft($(".banner-bg"), 50, 1.2);
-
-    }, function(){
-    });
+    //$(".banner-title, .banner-bg").hover(function(e){
+    //    if(isMove){
+    //        return;
+    //    }
+    //
+    //    isMove = true;
+    //
+    //    animation.moveRight($(".banner-title"), 50, 1.5);
+    //    animation.moveLeft($(".banner-bg"), 50, 1.2);
+    //
+    //}, function(){
+    //});
 
     var isTextMove = {
     }
@@ -66,7 +66,7 @@ $(function(){
 
     $(document).snowfall('clear');
     $(document).snowfall({
-        images :["/image/index/banner/flower_1.png", "/image/index/banner/flower_2.png"],
+        images :["/pc/image/index/banner/flower_1.png", "/pc/image/index/banner/flower_2.png"],
         flakeCount: 10, minSize: 20, maxSize:32});
 
 

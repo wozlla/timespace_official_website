@@ -9,7 +9,7 @@ router.get("/", function(req, res, next) {
     //        descriptionCategorys: list
     //    });
     //});
-    res.render("website/tryPlay");
+    res.render("website/try_play/tryPlay");
 });
 
 module.exports = router;

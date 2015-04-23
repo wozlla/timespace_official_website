@@ -6,6 +6,7 @@ var browser = {
             //不能用===，因为navigator.appVersion.match(/MSIE\s\d/i)为object类型，不是string类型
             isIE7: app.match(/MSIE\s\d/i) == "MSIE 7",
             isIE8: app.match(/MSIE\s\d/i) == "MSIE 8",
+            isIE9: app.match(/MSIE\s\d/i) == "MSIE 9",
             trident: u.indexOf('Trident') > -1, //IE内核
             presto: u.indexOf('Presto') > -1, //opera内核
             webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核

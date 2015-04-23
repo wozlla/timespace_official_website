@@ -213,10 +213,10 @@ var animation = {
     },
 
     _data: [
-        ["/image/index/pic/1.jpg", "/image/index/batton/play.jpg", "/image/index/batton/play_h.jpg"],
-        ["/image/index/pic/2.jpg", "/image/index/batton/feature.jpg", "/image/index/batton/feature_h.jpg"],
+        ["/pc/image/index/pic/1.jpg", "/pc/image/index/batton/play.jpg", "/pc/image/index/batton/play_h.jpg"],
+        ["/pc/image/index/pic/2.jpg", "/pc/image/index/batton/feature.jpg", "/pc/image/index/batton/feature_h.jpg"],
         //todo skill.jpg
-        ["/image/index/pic/3.jpg", "/image/index/batton/skill.jpg", "/image/index/batton/skill_h.jpg"]
+        ["/pc/image/index/pic/3.jpg", "/pc/image/index/batton/skill.jpg", "/pc/image/index/batton/skill_h.jpg"]
     ],
     switchImg: function(imgDom, titles){
         var self = this,

@@ -1,5 +1,5 @@
 .try-play {
-  background-image: url("/image/bg/bg.png");
+  background-image: url("/pc/image/bg/bg.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   position: relative;
@@ -7,6 +7,12 @@
   .try-play .logo-header {
     position: relative;
     z-index: 100; }
+    .try-play .logo-header .text {
+      height: 100%;
+      line-height: 82px;
+      margin-left: 400px;
+      font-size: 16px;
+      color: #636363; }
   .try-play .container {
     top: 199px; }
     .try-play .container .play {

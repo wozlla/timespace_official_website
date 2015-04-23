@@ -1,7 +1,7 @@
 @import "../mixin/position";
 
 .try-play{
-  background-image: url('/image/bg/bg.png');
+  background-image: url('/pc/image/bg/bg.png');
   background-repeat: no-repeat;
   background-size:100% 100%;
   position: relative;
@@ -10,6 +10,14 @@
   .logo-header{
     position: relative;
     z-index:100;
+
+    .text{
+      height: 100%;
+      line-height: 82px;
+      margin-left: 400px;
+      font-size: 16px;
+      color: rgb(99,99,99);
+    }
   }
   //.banner{
   //  top:-127px;

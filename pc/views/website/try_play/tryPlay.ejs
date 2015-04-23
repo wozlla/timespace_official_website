@@ -1,0 +1,41 @@
+<% include ../header.ejs %>
+
+
+<link href="/pc/dist/tryPlay.css" type="text/css" rel="stylesheet">
+
+<div class="try-play">
+    <% include ../logoHeader.ejs %>
+
+    <section class="banner-title">
+        <div id="banner-title" class="title" >
+            <img src="/pc/image/index/banner/game_name.png"/>
+        </div>
+    </section>
+    <section class="banner-bg" >
+        <div id="banner-bg" class="bg" >
+            <img src="/pc/image/index/banner/bg.png"/>
+        </div>
+    </section>
+
+    <section class="container">
+        <header class="try-play-nav">
+            <% include nav.ejs %>
+        </header>
+
+        <% include ../play_iframe.ejs %>
+    </section>
+
+
+    <div class="mask">
+    </div>
+
+    <% include ../pageFooter.ejs %>
+</div>
+
+
+<% include ../modal.ejs %>
+
+<script src="/pc/dist/footer.js"></script>
+<script src="/pc/dist/tryPlay.js"></script>
+
+<% include ../footerHtml.ejs %>
