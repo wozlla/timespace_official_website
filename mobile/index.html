@@ -22,11 +22,11 @@
             var isIOS = /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
 
             if (isSafari && isIOS) {
-                window.location.href = 'https://itunes.apple.com/us/app/shi-kong-zhao-huan/id953706181?l=zh&ls=1&mt=8';
+                window.location = 'https://itunes.apple.com/us/app/shi-kong-zhao-huan/id953706181?l=zh&ls=1&mt=8';
             }
         }
         var bgImgLoaded = false;
-        (function() {
+        setTimeout(function() {
             var img = new Image();
             img.src = 'images/main/bg.jpg';
             img.onload = function() {
@@ -34,7 +34,7 @@
                 document.getElementById('container').style.display = 'block';
                 bgImgLoaded = true;
             };
-        })();
+        }, 10);
     </script>
     <!-- CSS START -->
     <link rel="stylesheet" href="bower_components/framework7/dist/css/framework7.min.css">
@@ -45,7 +45,7 @@
 <span id="preloader" style="display: block; width:42px; height:42px; position: absolute; top: 50%; left: 50%; margin-left: -21px; margin-top: -21px;" class="preloader"></span>
 <div id="container" style="display: none;">
 <div id="wrapper" class="views tabs toolbar-through">
-    <div id="view-main" class="view view-main tab active">
+    <div id="view-main" class="view tab active">
         <div class="pages">
             <div class="page" data-page="home">
                 <div class="page-content">
@@ -57,53 +57,28 @@
                                     <div class="download-btn-inner"></div>
                                 </div>
                             </div>
-                            <div class="swiper-slide actions" style="display: none;">
+                            <div class="swiper-slide actions">
                                 <div class="actions-content">
-                                    <div class="actions-content-container transition-1s">
-                                    <div class="accordion-item accordion-item-one">
-                                        <div class="accordion-item-toggle">
-                                            <div class="ts-actions-item one">
-                                                <img class="bg transition-1s" src="images/actions/meng_bg.png">
-                                                <img class="one transition-1s" src="images/actions/mr.png">
-                                                <img class="two transition-1s" src="images/actions/jmz.png">
-                                                <img class="three transition-1s" src="images/actions/meng.png">
-                                                <img class="four transition-1s" src="images/actions/arrow1.png">
-                                            </div>
-                                        </div>
-                                        <div class="accordion-item-content">
-                                            <img src="images/main/guidance.png" width="80%">
-                                        </div>
+                                    <div class="ts-actions-item one">
+                                        <img class="bg transition-1s" src="images/actions/meng_bg.png">
+                                        <img class="one transition-1s" src="images/actions/mr.png">
+                                        <img class="two transition-1s" src="images/actions/jmz.png">
+                                        <img class="three transition-1s" src="images/actions/meng.png">
+                                        <img class="four transition-1s" src="images/actions/arrow1.png">
                                     </div>
-
-                                    <div class="accordion-item accordion-item-two">
-                                        <div class="accordion-item-toggle">
-                                            <div class="ts-actions-item two">
-                                                <img class="bg transition-2s" src="images/actions/jiang_bg.png">
-                                                <img class="one transition-2s" src="images/actions/jr.png">
-                                                <img class="two transition-2s" src="images/actions/yjp.png">
-                                                <img class="three transition-2s" src="images/actions/jiang.png">
-                                                <img class="four transition-2s" src="images/actions/arrow2.png">
-                                            </div>
-                                        </div>
-                                        <div class="accordion-item-content">
-                                            <img src="images/main/guidance.png" width="80%">
-                                        </div>
+                                    <div class="ts-actions-item two">
+                                        <img class="bg transition-2s" src="images/actions/jiang_bg.png">
+                                        <img class="one transition-2s" src="images/actions/jr.png">
+                                        <img class="two transition-2s" src="images/actions/yjp.png">
+                                        <img class="three transition-2s" src="images/actions/jiang.png">
+                                        <img class="four transition-2s" src="images/actions/arrow2.png">
                                     </div>
-
-                                    <div class="accordion-item accordion-item-three">
-                                        <div class="accordion-item-toggle">
-                                            <div class="ts-actions-item three">
-                                                <img class="bg transition-3s" src="images/actions/fan_bg.png">
-                                                <img class="one transition-3s" src="images/actions/fr.png">
-                                                <img class="two transition-3s" src="images/actions/fxj.png">
-                                                <img class="three transition-3s" src="images/actions/fan.png">
-                                                <img class="four transition-3s" src="images/actions/arrow3.png">
-                                            </div>
-                                        </div>
-                                        <div class="accordion-item-content">
-                                            <img src="images/main/guidance.png" width="80%">
-                                        </div>
-                                    </div>
+                                    <div class="ts-actions-item three">
+                                        <img class="bg transition-3s" src="images/actions/fan_bg.png">
+                                        <img class="one transition-3s" src="images/actions/fr.png">
+                                        <img class="two transition-3s" src="images/actions/fxj.png">
+                                        <img class="three transition-3s" src="images/actions/fan.png">
+                                        <img class="four transition-3s" src="images/actions/arrow3.png">
                                     </div>
                                 </div>
                             </div>
@@ -113,7 +88,7 @@
             </div>
         </div>
     </div>
-    <div id="view-activity" class="view tab">
+    <div id="view-activity" class="view tab view-main ">
         <div class="pages">
             <div class="page" data-page="activity">
                 <div class="page-content">
@@ -206,9 +181,9 @@
                     				<img class="code_one" src="images\about\wechat_offical_code.jpg">
                     				<p class="title_one">时空微信公众号</p>
                     			</div>
-                    			<div class="contact-info-container-two">
+                    			<div  class="contact-info-container-two">
                     				<img class="code_two" src="images\about\weibo_offical_code.jpg">
-                    				<p class="title_two">时空官方微博</p>
+                    				<p id="weibo-link" class="title_two">时空官方微博</p>
                     			</div>
                     		</div>
                     	</div>
@@ -222,7 +197,7 @@
             <a href="#view-main" class="tab-link active">
                 <span class="tabbar-label">首页</span>
             </a>
-            <a href="#" data-popover=".ts-data-popup" class="tab-link open-popover">
+            <a href="#view-library" data-noswitch="true" data-popover=".ts-data-popup" class="tab-link open-popover">
                 <span class="tabbar-label">资料</span>
             </a>
             <a href="#view-activity" class="tab-link">
@@ -239,19 +214,22 @@
     <div class="popover-inner">
         <div class="list-block">
             <ul>
-                <li><a href="#" class="list-button item-link ts-data-popup-item">游戏入门</a></li>
-                <li><a href="#" class="list-button item-link ts-data-popup-item">世界探索</a></li>
-                <li><a href="#" class="list-button item-link ts-data-popup-item">游戏进阶</a></li>
-                <li><a href="#" class="list-button item-link ts-data-popup-item">游戏组合</a></li>
-                <li><a href="#" class="list-button item-link ts-data-popup-item">游戏装备</a></li>
-                <li><a href="#" class="list-button item-link ts-data-popup-item">游戏背景</a></li>
-                <li><a href="#" class="list-button item-link ts-data-popup-item">游戏强化</a></li>
+                <li class="ts-data-popup-li"><a href="#" class="list-button item-link ts-data-popup-item">游戏入门</a></li>
+                <li class="ts-data-popup-li"><a href="#" class="list-button item-link ts-data-popup-item">世界探索</a></li>
+                <li class="ts-data-popup-li"><a href="#" class="list-button item-link ts-data-popup-item">游戏进阶</a></li>
+                <li class="ts-data-popup-li"><a href="#" class="list-button item-link ts-data-popup-item">游戏组合</a></li>
+                <li class="ts-data-popup-li"><a href="#" class="list-button item-link ts-data-popup-item">游戏装备</a></li>
+                <li class="ts-data-popup-li"><a href="#" class="list-button item-link ts-data-popup-item">游戏背景</a></li>
+                <li class="ts-data-popup-li"><a href="#" class="list-button item-link ts-data-popup-item">游戏强化</a></li>
             </ul>
         </div>
     </div>
 </div>
 <div class="popup tablet-fullscreen ts-popup-download-tips close-popup">
     <img src="images/main/guidance.png" width="90%">
+</div>
+<div class="popup tablet-fullscreen ts-popup-meng close-popup">
+    <img src="images/activity/meng.png">
 </div>
 </div>
 <!-- JS START -->
