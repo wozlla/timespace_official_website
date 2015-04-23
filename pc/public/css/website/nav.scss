@@ -14,13 +14,13 @@ nav{
   }
 
   li.hotnews a{
-    //@include backImg("/pc/image/nav/hotnews.png", 100%, 100%);
+    //@include backImg("/image/nav/hotnews.png", 100%, 100%);
   }
   li.description a{
-    //@include backImg("/pc/image/nav/description.png", 100%, 100%);
+    //@include backImg("/image/nav/description.png", 100%, 100%);
   }
   li.comment a{
-    //@include backImg("/pc/image/nav/comment.png", 100%, 100%);
+    //@include backImg("/image/nav/comment.png", 100%, 100%);
   }
   >ul {
     > li {
@@ -50,7 +50,7 @@ nav{
       width:210px;
       //border:1px solid red;
       display:none;
-      background-image:url("/pc/image/bg/dropdown.png");
+      background-image:url("/image/bg/dropdown.png");
       background-repeat: no-repeat;
       background-size:100% 100%;
 

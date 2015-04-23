@@ -1,5 +1,5 @@
 $(function(){
-    var isMove = false;
+    //var isMove = false;
 
     //$(".banner-title, .banner-bg").hover(function(e){
     //    if(isMove){
@@ -66,34 +66,22 @@ $(function(){
 
     $(document).snowfall('clear');
     $(document).snowfall({
-        images :["/pc/image/index/banner/flower_1.png", "/pc/image/index/banner/flower_2.png"],
+        images :["/image/index/banner/flower_1.png", "/image/index/banner/flower_2.png"],
         flakeCount: 10, minSize: 20, maxSize:32});
 
 
 
 
     //still building modal mention
-    $("nav .hotnews,  nav .comment," +
-    "nav .dropdown, " +
-        ".bird, " +
-    ".download," +
-    ".first-row .left li, .first-row .middle, .first-row .right," +
-    ".second-row ul li, .second-row .contact-us-big").on("click", function(e){
-      $("#myModal").modal();
-
-        e.preventDefault();
-    });
-
-    //$(".try-play-button").on("click", function(e){
-    //    console.log(browser.versions.isIE);
-    //    if(browser.versions.isIE){
-    //        alert("亲，ie浏览器不支持试玩，请使用chrome等webkit内核浏览器进行试玩。")
-    //        return;
-    //    }
-    //    var playWindow = $("#play");
+    //$("nav .hotnews,  nav .comment," +
+    //"nav .dropdown, " +
+    //    ".bird, " +
+    //".download," +
+    //".first-row .left li, .first-row .middle, .first-row .right," +
+    //".second-row ul li, .second-row .contact-us-big").on("click", function(e){
+    //  $("#myModal").modal();
     //
-    //    //playWindow.attr("src", "http://shikong.html5dw.com/mobile/qrcode.html");
-    //    playWindow.show();
+    //    e.preventDefault();
     //});
 });
 

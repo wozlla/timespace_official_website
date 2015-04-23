@@ -33,11 +33,11 @@ app.use(session({ secret: setting.cookieSecret,
 }));
 
 app.use(flash());
-app.use("/pc", express.static(path.join(__dirname, "public")));
-app.use("/pc/dist", express.static(path.join(__dirname, "dist")));
+app.use(express.static(path.join(__dirname, "public")));
+app.use("/dist", express.static(path.join(__dirname, "dist")));
 
-app.use("/pc", websiteRouter);
-app.use("/pc/admin", adminRouter);
+app.use("/", websiteRouter);
+app.use("/admin", adminRouter);
 //app.use("/admin", admin);
 
 //// catch 404 and forward to error handler

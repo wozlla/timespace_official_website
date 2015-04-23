@@ -5,6 +5,6 @@ var settings = require("../setting"),
 
 module.exports = new Db(
     settings.db,
-    new Server(settings.host, settings.port),
+    new Server(settings.host, settings.dbPort),
     {safe: true}
 );

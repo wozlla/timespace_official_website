@@ -69,7 +69,7 @@ ul.footer{
   margin:0 auto;
 
   .logo{
-    background-image: url("/pc/image/logo/logo.png");
+    background-image: url("/image/logo/logo.png");
     width: 130px;
     height:75px;
     margin-top:5px;
@@ -84,7 +84,7 @@ ul.footer{
 
   }
   .game-name{
-    background-image: url("/pc/image/logo/game_name.png");
+    background-image: url("/image/logo/game_name.png");
     width: 160px;
     height:82px;
     background-size: 100% 100%;
@@ -108,7 +108,7 @@ ul.footer{
   top: 30%;
   right: -330px;
   z-index:1000;
-  background-image: url("/pc/image/pop_box/suspend.png");
+  background-image: url("/image/pop_box/suspend.png");
   background-repeat:no-repeat;
   background-size:100% 100%;
 
@@ -153,7 +153,7 @@ ul.footer{
 
 
 .contact-us-big{
-  background-image:url("/pc/image/button/contact_us.png");
+  background-image:url("/image/button/contact_us.png");
   cursor:pointer;
 
     width: 338px;
@@ -172,7 +172,7 @@ ul.footer{
     }
 }
 .contact-us-small{
-  background-image:url("/pc/image/button/contact_us.png");
+  background-image:url("/image/button/contact_us.png");
   background-size:100% 100%;
   position:relative;
 
@@ -214,7 +214,7 @@ ul.footer{
       margin-top:100px;
       //height:300px !important;
 
-      @include backImg("/pc/image/index/pic/building.png", 400px, 120px);
+      @include backImg("/image/index/pic/building.png", 400px, 120px);
     }
 
     .modal-footer{
@@ -251,27 +251,27 @@ share plugin
   }
 
   .jiathis_button_weixin span{
-    background: url(/pc/image/shared/4_h.png) no-repeat left !important;
+    background: url(/image/shared/4_h.png) no-repeat left !important;
     background-size:32px 32px !important;
   }
   .jiathis_button_t163 span{
-    background: url("/pc/image/shared/5_h.png") no-repeat left !important;
+    background: url("/image/shared/5_h.png") no-repeat left !important;
     background-size:32px 32px !important;
   }
   .jiathis_button_xiaoyou span{
-    background: url("/pc/image/shared/1_h.png") no-repeat left !important;
+    background: url("/image/shared/1_h.png") no-repeat left !important;
     background-size:32px 32px !important;
   }
   .jiathis_button_tsina span{
-    background: url("/pc/image/shared/2_h.png") no-repeat left !important;
+    background: url("/image/shared/2_h.png") no-repeat left !important;
     background-size:32px 32px !important;
   }
   .jiathis_button_qzone span{
-    background: url("/pc/image/shared/3_h.png") no-repeat left !important;
+    background: url("/image/shared/3_h.png") no-repeat left !important;
     background-size:32px 32px !important;
   }
   .jtico_jiathis{
-    background: url("/pc/image/shared/6.png") no-repeat left !important;
+    background: url("/image/shared/6.png") no-repeat left !important;
     background-size:32px 32px !important;
   }
 }

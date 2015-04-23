@@ -9,6 +9,7 @@ var descriptionRouter = require("./description");
 router.use("/", indexRouter);
 router.use("/index", indexRouter);
 router.use("/indexTryPlay", indexTryPlayRouter);
+router.use("/play", indexTryPlayRouter);
 router.use("/tryPlay", tryPlayRouter);
 router.use("/news", newsRouter);
 router.use("/description", descriptionRouter);

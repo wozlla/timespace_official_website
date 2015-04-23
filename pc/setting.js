@@ -4,5 +4,6 @@ module.exports = {
     db: "timespace_website",
     maxAge: 1000 * 60 * 60 * 24,    //one day
     host: "localhost",
-    port: 27017
+    dbPort: 27017,
+    serverPort:3021
 };

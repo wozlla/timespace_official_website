@@ -1,5 +1,5 @@
 .try-play {
-  background-image: url("/pc/image/bg/bg.png");
+  background-image: url("/image/bg/bg.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   position: relative;
@@ -19,7 +19,8 @@
       height: 640px;
       width: 960px;
       left: 50%;
-      margin-top: 12px; }
+      margin-top: 12px;
+      border: 2px solid #342791; }
   .try-play .page-footer {
     position: relative;
     z-index: 100;
