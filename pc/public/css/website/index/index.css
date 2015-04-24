@@ -1,5 +1,5 @@
 .index {
-  background-image: url("/image/bg/bg.png");
+  background-image: url("/pc/image/bg/bg.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   position: relative;
@@ -52,7 +52,7 @@
             height: 90px;
             cursor: pointer; }
           .index .container .content .first-row .right .first {
-            background-image: url("/image/index/batton/play.jpg"); }
+            background-image: url("/pc/image/index/batton/play.jpg"); }
             .index .container .content .first-row .right .first i {
               display: block;
               width: 0;
@@ -63,7 +63,7 @@
               top: 24px;
               left: 20px; }
           .index .container .content .first-row .right .second {
-            background-image: url("/image/index/batton/feature_h.jpg"); }
+            background-image: url("/pc/image/index/batton/feature_h.jpg"); }
             .index .container .content .first-row .right .second i {
               display: block;
               width: 0;
@@ -74,7 +74,7 @@
               top: 24px;
               left: 20px; }
           .index .container .content .first-row .right .third {
-            background-image: url("/image/index/batton/skill_h.jpg"); }
+            background-image: url("/pc/image/index/batton/skill_h.jpg"); }
             .index .container .content .first-row .right .third i {
               display: block;
               width: 0;

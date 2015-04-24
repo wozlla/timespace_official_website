@@ -13,12 +13,15 @@
   "authors": {
     "name": "WOZLLA"
   },
-
   "private": true,
   "dependencies": {
     "jquery": "~1.9",
     "bootstrap": "*",
     "jquery-snowfall": "*",
-    "kindeditor": "https://github.com/kindsoft/kindeditor.git#4.1.10"
+    "kindeditor": "https://github.com/kindsoft/kindeditor.git#4.1.10",
+    "seajs": "~3.0.0",
+    "seajs-wrap": "https://github.com/seajs/seajs-wrap.git"
+  },
+  "devDependencies": {
   }
 }

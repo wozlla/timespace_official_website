@@ -35,7 +35,7 @@ module.exports = function (grunt) {
                 src: [
                     //'public/js/website/lib/fss.min.js',
                     //'public/js/website/lib/example.js',
-                    'public/js/website/lib/snowfall.jquery.js',
+                    //'public/js/website/lib/snowfall.jquery.js',
                     'public/js/website/index/index.js'
                 ],
                 dest: 'dist/index.js'
@@ -133,6 +133,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-concat-css');
 //    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.registerTask('build', ['clean', 'concat']);
-    //grunt.registerTask('build', ['clean', 'concat', 'uglify', 'cssmin']);
+//    grunt.registerTask('build', ['clean', 'concat']);
+    grunt.registerTask('build', ['clean', 'concat', 'uglify', 'cssmin']);
 };

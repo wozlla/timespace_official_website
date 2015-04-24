@@ -4,7 +4,7 @@
 @import "../mixin/global";
 
 .index{
-  background-image: url('/image/bg/bg.png');
+  background-image: url('/pc/image/bg/bg.png');
   background-repeat: no-repeat;
   background-size:100% 100%;
   position: relative;
@@ -102,7 +102,7 @@
           }
 
           .first {
-            background-image: url("/image/index/batton/play.jpg");
+            background-image: url("/pc/image/index/batton/play.jpg");
 
             i {
               @include arrow(rgb(97, 110, 194));
@@ -110,7 +110,7 @@
           }
 
           .second {
-            background-image: url("/image/index/batton/feature_h.jpg");
+            background-image: url("/pc/image/index/batton/feature_h.jpg");
 
             i {
               @include arrow(#ffffff);
@@ -118,7 +118,7 @@
           }
 
           .third {
-            background-image: url("/image/index/batton/skill_h.jpg");
+            background-image: url("/pc/image/index/batton/skill_h.jpg");
 
             i {
               @include arrow(#ffffff);
@@ -207,3 +207,4 @@
     height:82px;
   }
 }
+
