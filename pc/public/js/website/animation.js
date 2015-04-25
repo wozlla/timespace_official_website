@@ -245,9 +245,17 @@ var animation = {
     select: function(imgDom, titles, index){
         this._restoreTitle(titles);
 
-        imgDom.attr("src", this._data[index][0] );
-        //imgDom.css("background-image", "url('" + this._data[index][0] + "')");
-        $(titles.get(index)).css("background-image", "url('" + this._data[index][1] + "')");
+        var image = new Image();
+        image.src = this._data[index][0];
+        image.onload = function(){
+            imgDom.attr("src", this.src);
+        };
+
+        var image2 = new Image();
+        image2.src = this._data[index][1];
+        image2.onload = function(){
+            $(titles.get(index)).css("background-image", "url('" + this.src+ "')");
+        };
     }
 };
 
