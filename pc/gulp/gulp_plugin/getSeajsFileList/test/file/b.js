@@ -1,4 +1,0 @@
-exports.b = function(){
-
-};
-
