@@ -6,8 +6,8 @@ var through = require('through-gulp'),
 
 var errorFunc = null;
 
-var REGEX_BEGINE= /#build:js:([^\s]+)\s([^#]+)/gm,
-    REGEX_END = /#endbuild#/gm,
+var REGEX_BEGINE= /[^\r\n]+#build:js:([^\s]+)\s([^#]+)[^\r\n]+/gm,
+    REGEX_END = /[^\r\n]+#endbuild#[^\r\n]+/gm,
     PLUGIN_NAME = "createBuildMap";
 
 var result = {};

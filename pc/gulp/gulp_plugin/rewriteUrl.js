@@ -5,22 +5,6 @@ var errorFunc = null;
 
 
 function rewriteJs() {
-//    a.get js paths
-
-
-
-
-//    b.convert to relative path
-//    replace base
-//    c.concat and uglify js
-//    d.replace to produce path in view
-//    f.combo seajs to one file
-////g.replace seajs main path in view
-
-
-
-
-    // creating a stream through which each file will pass
     var stream = through(function(file, encoding,callback) {
         var self = this;
 
