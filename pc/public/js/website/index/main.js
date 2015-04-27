@@ -16,7 +16,7 @@ seajs.config({
 //    });
 
 //  }
-seajs.use('../public/js/website/index/index.js',function(index){
+seajs.use('./index.js',function(index){
     index.init();
 });
 
