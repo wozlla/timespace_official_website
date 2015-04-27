@@ -1,7 +1,5 @@
 .clearfix > * {
-  float: left; 
-  /* vertical-align: middle; */
-}
+  float: left; }
 
 .clearfix:after {
   content: "";
@@ -11,5 +9,3 @@
 textarea {
   width: 600px;
   height: 400px; }
-
-/*# sourceMappingURL=app.css.map */

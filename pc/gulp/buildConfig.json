@@ -1,0 +1,10 @@
+{
+  "urlMap": [{
+    "staticResourcePrefix": "/pc/js",
+    "relativePrefix": "../pulic/js"
+  },
+    {
+      "staticResourcePrefix": "/pc/dist",
+      "relativePrefix": "../dist"
+    }]
+}

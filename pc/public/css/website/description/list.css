@@ -1,5 +1,5 @@
 body {
-  background-image: url("/pc/image/bg/page_bg.png");
+  background-image: url('/pc/image/bg/page_bg.png');
   background-repeat: no-repeat;
   background-size: 100% 100%; }
 
@@ -29,5 +29,3 @@ body {
   padding: 10px 20px;
   margin-top: 20px;
   background-color: white; }
-
-/*# sourceMappingURL=list.css.map */

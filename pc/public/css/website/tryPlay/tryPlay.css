@@ -1,5 +1,5 @@
 .try-play {
-  background-image: url("/pc/image/bg/bg.png");
+  background-image: url('/pc/image/bg/bg.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
   position: relative;
@@ -25,5 +25,3 @@
     position: relative;
     z-index: 100;
     margin-top: 300px; }
-
-/*# sourceMappingURL=tryPlay.css.map */

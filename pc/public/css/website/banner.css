@@ -1,23 +1,28 @@
-.banner {
-  position: relative;
-  top: -550px;
-  z-index: -100; }
-  .banner img {
+.banner-title {
+  position: absolute;
+  z-index: 6;
+  width: 530px;
+  height: 450px;
+  left: 50%;
+  margin-left: -565px;
+  top: 20px; }
+  .banner-title img {
     width: 100%;
     height: 100%; }
-  .banner .title {
-    left: 0;
-    top: 17px;
-    width: 530px;
-    height: 450px;
-    position: absolute;
-    z-index: -80; }
-  .banner .bg {
-    left: -115px;
-    top: 0;
-    width: 1200px;
-    height: 550px;
-    position: absolute;
-    z-index: -90; }
+  .banner-title .title {
+    width: 100%;
+    height: 100%; }
 
-/*# sourceMappingURL=banner.css.map */
+.banner-bg {
+  position: absolute;
+  z-index: 2;
+  width: 1200px;
+  height: 550px;
+  left: 50%;
+  margin-left: -600px; }
+  .banner-bg img {
+    width: 100%;
+    height: 100%; }
+  .banner-bg .bg {
+    width: 100%;
+    height: 100%; }

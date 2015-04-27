@@ -1,3 +1,5 @@
+require("../animation.js");
+
 exports.init = function() {
 //var isMove = false;
 
