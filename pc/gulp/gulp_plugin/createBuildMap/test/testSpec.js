@@ -12,11 +12,25 @@ describe("createBuildMap", function () {
     var sandbox = null;
     var stream = null;
     var fileContent = null;
+    var buildConfig = null;
 
     beforeEach(function () {
         sandbox = sinon.sandbox.create();
         stream = plugin();
 
+        buildConfig =
+        {
+            "urlMap": [{
+            "staticResourcePrefix": "/pc/js",
+            "relativePrefix": "../pulic/js"
+        }]
+        };
+
+        sandbox.stub(fs, "readFileSync").returns(
+            JSON.stringify(
+                buildConfig
+            )
+        );
         fileContent = convertUtils.toString(function () {/*
          <script type="text/javascript" >
          var jiathis_config={
@@ -79,7 +93,7 @@ describe("createBuildMap", function () {
                     expect(json[filePath][0]).toEqual(
                         {
                             command: 'replace',
-                            dist: '../dist/no_cmd.js',
+                            dist: '/pc/dist/no_cmd.js',
                             fileUrlArr: ['../pulic/js/bower_components/jquery/dist/jquery.js', '../pulic/js/bower_components/bootstrap/dist/js/bootstrap.min.js', '../pulic/js/bower_components/seajs/dist/sea.js', '../pulic/js/bower_components/seajs-wrap/dist/seajs-wrap.js', '../pulic/js/website/global.js', '../pulic/js/website/animation.js', '../pulic/js/website/nav.js'],
                             startLine: 203,
                             endLine: 893
@@ -156,7 +170,7 @@ describe("createBuildMap", function () {
                     expect(json[filePath][1]).toEqual(
                         {
                             command: 'seajsMain',
-                            dist: '../dist/cmd.js ',
+                            dist: '/pc/dist/cmd.js ',
                             fileUrlArr: ['../pulic/js/website/index/main.js'],
                             startLine: 1007,
                             endLine: 1149

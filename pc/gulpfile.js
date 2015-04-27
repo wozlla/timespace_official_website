@@ -58,16 +58,18 @@ gulp.task('createBuildMap', function(){
         .pipe(createBuildMap());
 });
 
-//
-//var gulpRewriteUrl = require('./gulp_plugin/rewriteUrl');
-//
-//gulp.task('rewriteStaticeResource', function(){
-//    gulp.src('dist_views/footer.ejs')
-//        //read build map
-//        .pipe(gulpRewrite())
-//        //.pipe(gulp.dest('dist_views/'));
-//        .pipe(gulp.dest('test_views/'));
-//});
+
+
+
+
+var gulpRewrite= require('./gulp/gulp_plugin/rewriteStaticResourceUrl/index.js');
+
+
+gulp.task('rewriteStaticeResource',['createBuildMap'], function(){
+    gulp.src('dist_views/footer.ejs')
+        .pipe(gulpRewrite())
+        .pipe(gulp.dest('test_views/'));
+});
 //
 //var gulpGetSeajsMainFile = require('./gulp_plugin/getSeajsMainFile'),
 //    gulpConcat = require('gulp-concat'),
@@ -148,7 +150,10 @@ gulp.task('createBuildMap', function(){
 //});
 
 
-gulp.task('default', ['createBuildMap']);
+//gulp.task('default', ['createBuildMap']);
+
+//gulp.task('default', ['createBuildMap', 'rewriteStaticeResource']);
+gulp.task('default', ['rewriteStaticeResource']);
 
 //todo build css
 gulp.task('build', ['clean', 'compile',

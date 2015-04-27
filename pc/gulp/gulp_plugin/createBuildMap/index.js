@@ -36,9 +36,6 @@ function createBuildMap() {
             var configPath = path.join(process.cwd(), "gulp/buildConfig.json");
             var buildConfig = JSON.parse(fs.readFileSync(configPath));
 
-
-
-
             var pageMapArr = parse(fileContent, buildConfig);
 
             convertToGulpCanReadPath(pageMapArr, buildConfig);
@@ -71,20 +68,35 @@ function createBuildMap() {
         //callback();
     },function(callback) {
         var self = this;
-
-        fs.writeFile(
+        //
+        fs.writeFileSync(
             path.join(process.cwd(), "gulp/resourceMap.json"),
-            JSON.stringify(result), function(e){
-            if(e){
-                gutil.log(e.message);
-                self.emit('error', new gutil.PluginError(PLUGIN_NAME, e.message));
-            }
+            JSON.stringify(result));
+
+        //, function(e){
+        //    if(e){
+        //        gutil.log(e.message);
+        //        self.emit('error', new gutil.PluginError(PLUGIN_NAME, e.message));
+            //}
 
             callback();
-        });
-        // just pipe data next, just callback to indicate that the stream's over
-        //this.push(something);
-        //callback();
+        //}
+
+
+       //todo why it'll start rewrite task when not invoking callback here
+       // (mean not finishing createBuildMap task!)
+
+        //fs.writeFile(
+        //    path.join(process.cwd(), "gulp/resourceMap.json"),
+        //    JSON.stringify(result)
+        //, function(e){
+        //    if(e){
+        //        gutil.log(e.message);
+        //        self.emit('error', new gutil.PluginError(PLUGIN_NAME, e.message));
+        //}
+        //
+        //        callback();
+        //});
     });
 
     // returning the file stream
@@ -169,6 +181,7 @@ function convertToGulpCanReadPathByConfig(url, buildConfig){
             result = url.replace(map.staticResourcePrefix, map.relativePrefix);
             return false;
         }
+        result = url;
 
         return true;
     });

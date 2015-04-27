@@ -5,7 +5,7 @@ var through = require('through-gulp'),
 
 
 var errorFunc = null;
-var PLUGIN_NAME = "createBuildMap";
+var PLUGIN_NAME = "rewriteStaticResourceUrl";
 
 function rewrite() {
     // creating a stream through which each file will pass
