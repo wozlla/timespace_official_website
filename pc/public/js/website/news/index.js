@@ -1,4 +1,6 @@
-$(function(){
+define(function(require, exports, module) {
+    var global = require("../global");
+
     function limitText(){
         var MAXLENGTH = 100;
 
@@ -9,8 +11,12 @@ $(function(){
 
                 $(this).text(text.slice(0, MAXLENGTH) + "......");
             }
-                });
+        });
     }
 
-    limitText();
+    exports.init = function(){
+        global.init();
+
+        limitText();
+    };
 });

@@ -1,3 +1,4 @@
+//it's used in page, so should not put in seajs
 var news = (function(){
    return {
        showDetail: function(url, id){

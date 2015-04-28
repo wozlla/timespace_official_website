@@ -297,18 +297,14 @@ share plugin
     background-repeat: no-repeat;
     background-size: 100% 100%;
     font-size: 20px;
+    font-weight: bolder;
+    color: #2b235b;
     display: none; }
     .normal-nav nav .comment-dropdown li {
       width: 100%;
       height: 50px;
       line-height: 50px;
       text-align: center; }
-      .normal-nav nav .comment-dropdown li a {
-        font-weight: bolder;
-        display: block;
-        width: 100%;
-        height: 100%;
-        color: #2b235b; }
       .normal-nav nav .comment-dropdown li span {
         display: block; }
     .normal-nav nav .comment-dropdown .link {
