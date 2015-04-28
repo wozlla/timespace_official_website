@@ -6,3 +6,4 @@ temp/
 node_modules/
 public/upload
 dist/
+dist_views/

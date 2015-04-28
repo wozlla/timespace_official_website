@@ -10,6 +10,9 @@ var Promise = require( 'promise' ),
     through = require( 'through2' ),
     gutil = require( 'gulp-util' ),
     execPlugins = require( './lib/execplugins' ),
+    //by yyc
+    Vinyl = require('vinyl'),
+    path = require('path'),
 
     rFirstStr = /[\s\r\n\=]/,
     rDefine = /define\(\s*(['"](.+?)['"],)?/,
@@ -264,8 +267,7 @@ var filterIgnore = function( ignore, id, origId ){
 
                 // 处理特殊的模块，如 tpl 模块（需额外的插件支持）
                 // 根据模块后缀来匹配是否使用插件
-                //if( extName && !~extName.indexOf('.js') ){
-                    if( extName){
+                if( extName && !~extName.indexOf('.js') ){
                     if( options.plugins && options.plugins[extName] ){
                         plugins = options.plugins[extName];
 
@@ -283,15 +285,15 @@ var filterIgnore = function( ignore, id, origId ){
                     });
 
                     stream.pipe( through.obj(function( file, enc, _callback ){
-                        //parseDeps( options, file.contents.toString(), item );
+                        parseDeps( options, file.contents.toString(), item );
 
-                        contents = file.contents.toString();
-
-                        deps = parseDeps( options, contents, item );
-
-                        if( deps.length ){
-                            childDeps = childDeps.concat( deps );
-                        }
+                        //contents = file.contents.toString();
+                        //
+                        //deps = parseDeps( options, contents, item );
+                        //
+                        //if( deps.length ){
+                        //    childDeps = childDeps.concat( deps );
+                        //}
 
 
 
@@ -588,13 +590,111 @@ var filterIgnore = function( ignore, id, origId ){
             }
         }
 
+        //add by yyc
+        function extendDeep(parent, child) {
+            var i = null,
+                len = 0,
+                toStr = Object.prototype.toString,
+                sArr = "[object Array]",
+                sOb = "[object Object]",
+                type = "",
+                _child = null;
+
+            //数组的话，不获得Array原型上的成员。
+            if (toStr.call(parent) === sArr) {
+                _child = child || [];
+
+                for (i = 0, len = parent.length; i < len; i++) {
+                    type = toStr.call(parent[i]);
+                    if (type === sArr || type === sOb) {    //如果为数组或object对象
+                        _child[i] = type === sArr ? [] : {};
+                        arguments.callee(parent[i], _child[i]);
+                    } else {
+                        _child[i] = parent[i];
+                    }
+                }
+            }
+            //对象的话，要获得原型链上的成员。因为考虑以下情景：
+            //类A继承于类B，现在想要拷贝类A的实例a的成员（包括从类B继承来的成员），那么就需要获得原型链上的成员。
+            else if (toStr.call(parent) === sOb) {
+                _child = child || {};
+
+                for (i in parent) {
+                    type = toStr.call(parent[i]);
+                    if (type === sArr || type === sOb) {    //如果为数组或object对象
+                        _child[i] = type === sArr ? [] : {};
+                        arguments.callee(parent[i], _child[i]);
+                    } else {
+                        _child[i] = parent[i];
+                    }
+                }
+            }
+            else {
+                _child = parent;
+            }
+
+            return _child;
+        }
+
+        var backup = extendDeep(o);
+
         return through.obj(function( file, enc, callback ){
             if( file.isBuffer() ){
+                //edit by yyc
+                //should restore in multi invoke case
+                o = extendDeep(backup);
+
                 parseContent( o, file.contents.toString(), file.path )
                     .then(function(){
                         var contents = comboContent( o );
-                        file.contents = contents;
-                        callback( null, file );
+
+                        //edit by yyc
+
+                        //file.contents = contents;
+
+
+                        //path is dist path
+                        //writePath should be seajsMainData.dist
+
+                        //reference:
+                        // gulp.dest code:vinyl-fs/lib/dest/index.js:
+
+                        //function dest(outFolder, opt) {
+                        //    opt = opt || {};
+                        //    if (typeof outFolder !== 'string' && typeof outFolder !== 'function') {
+                        //        throw new Error('Invalid output folder');
+                        //    }
+                        //
+                        //    var options = defaults(opt, {
+                        //        cwd: process.cwd()
+                        //    });
+                        //
+                        //    if (typeof options.mode === 'string') {
+                        //        options.mode = parseInt(options.mode, 8);
+                        //    }
+                        //
+                        //    var cwd = path.resolve(options.cwd);
+                        //
+                        //    function saveFile (file, enc, cb) {
+                        //        var basePath;
+                        //        if (typeof outFolder === 'string') {
+                        //            basePath = path.resolve(cwd, outFolder);
+                        //        }
+                        //        if (typeof outFolder === 'function') {
+                        //            basePath = path.resolve(cwd, outFolder(file));
+                        //        }
+                        //        var writePath = path.resolve(basePath, file.relative);
+                        var newFile = new Vinyl({
+                            base: process.cwd(),
+                            path: path.join(process.cwd(), file.dist),
+                            contents: contents
+                        });
+                        //this.push(newFile);
+
+
+
+                        //callback( null, file );
+                        callback( null, newFile );
                     })
                     .catch(function( err ){
                         gutil.log( gutil.colors.red( PLUGIN_NAME + ' error: ' + err.message) );
@@ -605,6 +705,9 @@ var filterIgnore = function( ignore, id, origId ){
             else{
                 callback( null, file );
             }
+        }, function(callback){
+            var t = 1;
+            callback();
         });
     };
 

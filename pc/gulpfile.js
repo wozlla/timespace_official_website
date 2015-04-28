@@ -71,14 +71,15 @@ gulp.task('rewriteStaticeResource',['createBuildMap'], function(){
         .pipe(gulp.dest('test_views/'));
 });
 //
-//var gulpGetSeajsMainFile = require('./gulp_plugin/getSeajsMainFile/index.js'),
+var gulpGetSeajsMainFile = require('./gulp/gulp_plugin/getSeajsMainFile/index.js');
 //    gulpConcat = require('gulp-concat'),
 //    gulpUglify = require('gulp-uglify'),
 //    //gulpWrap = require('gulp-wrap'),
 //    gulpWrap = require('./gulp_plugin/gulpWrap.js'),
 
-//var  seajsCombo = require('gulp-seajs-combo');
+//var  gulpCombo = require('gulp-seajs-combo');
 var gulpCombo = require('./gulp/lib/gulp-seajs-combo/index.js');
+var gulpRename = require('gulp-rename');
 //
 //build seajs-combo dist.js
 gulp.task('packSeajs', function(){
@@ -94,14 +95,14 @@ gulp.task('packSeajs', function(){
     //    .pipe(gulp.dest('test_views'));
     //
     //
-    //gulp.src('gulp/resourceMap.json')
-    //    .pipe(gulpGetSeajsMainFile())
+    gulp.src('gulp/resourceMap.json')
+        .pipe(gulpGetSeajsMainFile())
         //.pipe(gulpWrap('define(function(require, exports, module) = { <%=content%> });'))
         //.pipe(gulp.dest('test_views'));
     //gulp.src('gulp/gulp_plugin/getSeajsFileList/test/main.js')
-    gulp.src(['gulp/gulp_plugin/getSeajsFileList/test/main.js',
-    'gulp/main.js'],
-        {base:'gulp/'})
+    //gulp.src(['gulp/gulp_plugin/getSeajsFileList/test/main.js',
+    //'gulp/main.js'],
+    //    {base:'gulp/'})
     //gulp.src('gulp/gulp_plugin/getSeajsFileList/test/a.js')
     //gulp.src('gulp/src/m.js')
         .pipe(gulpCombo({
@@ -110,6 +111,9 @@ gulp.task('packSeajs', function(){
             //name: 'footer.js',
 
 
+            //map:{
+            //    "./index.js": "../public/js/website/index/index.js"
+            //}
 
             //plugins : [{
             //    ext : [ '.js' ],
@@ -119,9 +123,21 @@ gulp.task('packSeajs', function(){
             //    }]
             //}]
         }))
+        //.pipe(gulpRename(function (path) {
+        //    path.dirname += "/ciao";
+        //    path.basename += "-goodbye";
+        //    path.extname = ".md"
+        //}))
+
         //use rename plugin
         //.pipe(gulpRename("footer.js"))
-        .pipe(gulp.dest('test_views/'));
+
+
+
+
+        //just set to cwd path,the dest path is set by dist attr in resourceMap.json
+
+        .pipe(gulp.dest('./'));
 });
 //
 //

@@ -13,6 +13,7 @@ describe("createBuildMap", function () {
     var stream = null;
     var fileContent = null;
     var buildConfig = null;
+    var cwd = null;
 
     beforeEach(function () {
         sandbox = sinon.sandbox.create();
@@ -22,7 +23,7 @@ describe("createBuildMap", function () {
         {
             "urlMap": [{
             "staticResourcePrefix": "/pc/js",
-            "relativePrefix": "../pulic/js"
+            "relativePrefix": "public/js"
         }]
         };
 
@@ -31,6 +32,11 @@ describe("createBuildMap", function () {
                 buildConfig
             )
         );
+        sandbox.stub(fs, "writeFileSync");
+
+        cwd = "/";
+        sandbox.stub(process, "cwd").returns(cwd);
+
         fileContent = convertUtils.toString(function () {/*
          <script type="text/javascript" >
          var jiathis_config={
@@ -41,11 +47,11 @@ describe("createBuildMap", function () {
          </script>
 
          <!--no-cmd-module-->
-         <!--#build:js:replace /pc/dist/no_cmd.js#-->
+         <!--#build:js:replace dist/no_cmd.js#-->
          <script src="/pc/js/bower_components/jquery/dist/jquery.js"></script>
          <script src="/pc/js/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
          <script src="/pc/js/bower_components/seajs/dist/sea.js"></script>
-         <script src="/pc/js/bower_components/seajs-wrap/dist/seajs-wrap.js"></script>
+         <script src='/pc/js/bower_components/seajs-wrap/dist/seajs-wrap.js'></script>
          <script src="/pc/js/website/global.js"></script>
          <script src="/pc/js/website/animation.js"></script>
          <script src="/pc/js/website/nav.js"></script>
@@ -56,7 +62,7 @@ describe("createBuildMap", function () {
          <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
 
 
-         <!--#build:js:seajsMain /pc/dist/cmd.js #-->
+         <!--#build:js:seajsMain dist/cmd.js #-->
          <script src="/pc/js/website/index/main.js"></script>
          <!--#endbuild#-->
          */
@@ -78,31 +84,23 @@ describe("createBuildMap", function () {
         var filePath = path.join(__dirname, "./file/footer.ejs");
 
         stream.on('end', function () {
-            fs.readFile(
-                path.join(process.cwd(), "gulp/resourceMap.json"),
-                function (e, data) {
-                    if (e) {
-                        gutil.log(e.message);
-                        //self.emit('error', new gutil.PluginError(PLUGIN_NAME, e.message));
-                        return;
-                    }
-
-                    var json = JSON.parse(data.toString());
-
-                    expect(json[filePath]).toBeArray();
-                    expect(json[filePath][0]).toEqual(
-                        {
-                            command: 'replace',
-                            dist: '/pc/dist/no_cmd.js',
-                            fileUrlArr: ['../pulic/js/bower_components/jquery/dist/jquery.js', '../pulic/js/bower_components/bootstrap/dist/js/bootstrap.min.js', '../pulic/js/bower_components/seajs/dist/sea.js', '../pulic/js/bower_components/seajs-wrap/dist/seajs-wrap.js', '../pulic/js/website/global.js', '../pulic/js/website/animation.js', '../pulic/js/website/nav.js'],
-                            startLine: 203,
-                            endLine: 893
-                        }
-                    );
-
-                    done();
+            var args = fs.writeFileSync.args[0];
+            expect(args[0]).toEqual(
+               path.join(cwd, "gulp/resourceMap.json")
+            );
+            var json = JSON.parse(args[1].toString());
+            expect(json[filePath]).toBeArray();
+            expect(json[filePath][0]).toEqual(
+                {
+                    command: 'replace',
+                    dist: 'dist/no_cmd.js',
+                    fileUrlArr: ['public/js/bower_components/jquery/dist/jquery.js', 'public/js/bower_components/bootstrap/dist/js/bootstrap.min.js', 'public/js/bower_components/seajs/dist/sea.js', 'public/js/bower_components/seajs-wrap/dist/seajs-wrap.js', 'public/js/website/global.js', 'public/js/website/animation.js', 'public/js/website/nav.js'],
+                    startLine: 203,
+                    endLine: 893
                 }
             );
+
+            done();
         });
 
 
@@ -139,7 +137,7 @@ describe("createBuildMap", function () {
          //            "command": "replace",
          //            "startLine": 10,
          //            "endLine": 18,
-         //            "dist": "/pc/dist/no_cmd_module.js",
+         //            "dist": "dist/no_cmd_module.js",
          //            "fileUrlArr": [
          //                "js/website/global.js",
          //                "js/website/animation.js"
@@ -170,8 +168,8 @@ describe("createBuildMap", function () {
                     expect(json[filePath][1]).toEqual(
                         {
                             command: 'seajsMain',
-                            dist: '/pc/dist/cmd.js ',
-                            fileUrlArr: ['../pulic/js/website/index/main.js'],
+                            dist: 'dist/cmd.js ',
+                            fileUrlArr: ['public/js/website/index/main.js'],
                             startLine: 1007,
                             endLine: 1149
                         }
@@ -211,7 +209,7 @@ describe("createBuildMap", function () {
     //
     //                expect(json[filePath]).toBeArray();
     //                expect(json[filePath][1]).toEqual(
-    //                    { command : 'seajsMain', dist : '../dist/cmd.js ', fileUrlArr : [ '../pulic/js/website/index/main.js' ], startLine : 854, endLine : 962 }
+    //                    { command : 'seajsMain', dist : '../dist/cmd.js ', fileUrlArr : [ 'public/js/website/index/main.js' ], startLine : 854, endLine : 962 }
     //                );
     //
     //                done();

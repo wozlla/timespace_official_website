@@ -12,6 +12,7 @@ var REGEX_BEGINE= /[^\r\n]+#build:js:([^\s]+)\s([^#]+)[^\r\n]+/gm,
 
 var result = {};
 
+//todo filter annotated script
 function createBuildMap() {
     // creating a stream through which each file will pass
     return through(function(file, encoding,callback) {
@@ -34,7 +35,7 @@ function createBuildMap() {
 
 
             var configPath = path.join(process.cwd(), "gulp/buildConfig.json");
-            var buildConfig = JSON.parse(fs.readFileSync(configPath));
+            var buildConfig = JSON.parse(fs.readFileSync(configPath, "utf8"));
 
             var pageMapArr = parse(fileContent, buildConfig);
 
@@ -67,8 +68,6 @@ function createBuildMap() {
         //this.push(file);
         //callback();
     },function(callback) {
-        var self = this;
-        //
         fs.writeFileSync(
             path.join(process.cwd(), "gulp/resourceMap.json"),
             JSON.stringify(result));
@@ -147,12 +146,15 @@ function parse(content, buildConfig){
 }
 
 function _getFileUrlArr(content){
-    var regex = /src="([^"]+)"/mg,
+    //[^\1] 匹配失败!!!why?
+    //var regex = /src=(['"])([^\1]+)\1/mg,
+
+    var regex = /src=(['"])(.+)\1/mg,
         dataArr = null,
         result = [];
 
     while((dataArr = regex.exec(content)) !== null) {
-        result.push(dataArr[1]);
+        result.push(dataArr[2]);
     }
 
     return result;

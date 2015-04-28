@@ -1,6 +1,8 @@
-require("../animation.js");
+define(function(require, exports, module) {
+    var animation = require("../animation");
+    var global = require("../global");
 
-exports.init = function() {
+    exports.init = function () {
 //var isMove = false;
 
 //$(".banner-title, .banner-bg").hover(function(e){
@@ -15,53 +17,54 @@ exports.init = function() {
 //
 //}, function(){
 //});
+        global.init();
 
-    var isTextMove = {}
+        var isTextMove = {}
 
-    $(".second-row li").on("mouseover", function (e) {
-        var dom = null,
-            textFlag = null;
-        var distance = 70,
-            placeLeftPos = 110,
-            speed = 2;
+        $(".second-row li").on("mouseover", function (e) {
+            var dom = null,
+                textFlag = null;
+            var distance = 70,
+                placeLeftPos = 110,
+                speed = 2;
 
-        if (e.target.tagName === "DIV") {
-            dom = $(e.target).children();
-        }
-        else if (e.target.tagName === "IMG") {
-            dom = $(e.target).next().children();
-        }
-        else if (e.target.tagName === "SPAN") {
-            dom = $(e.target);
-        }
+            if (e.target.tagName === "DIV") {
+                dom = $(e.target).children();
+            }
+            else if (e.target.tagName === "IMG") {
+                dom = $(e.target).next().children();
+            }
+            else if (e.target.tagName === "SPAN") {
+                dom = $(e.target);
+            }
 
-        textFlag = dom.html();
-
-
-        if (isTextMove[textFlag]) {
-            return;
-        }
-
-        isTextMove[textFlag] = true;
+            textFlag = dom.html();
 
 
-        animation.moveLeft(dom, distance, speed, function () {
-            animation.place(dom, placeLeftPos, function () {
-                animation.moveLeft(dom, 70, speed, function () {
-                    isTextMove[textFlag] = false;
+            if (isTextMove[textFlag]) {
+                return;
+            }
+
+            isTextMove[textFlag] = true;
+
+
+            animation.moveLeft(dom, distance, speed, function () {
+                animation.place(dom, placeLeftPos, function () {
+                    animation.moveLeft(dom, 70, speed, function () {
+                        isTextMove[textFlag] = false;
+                    });
                 });
             });
         });
-    });
 
 
-    var titles = $("#switch-title").find("li");
+        var titles = $("#switch-title").find("li");
 
 //todo click
-    titles.on("click", function () {
-    });
+        titles.on("click", function () {
+        });
 
-    animation.switchImg($("#switch-img").children("img"), titles);
+        animation.switchImg($("#switch-img").children("img"), titles);
 
 
 //$(document).snowfall('clear');
@@ -71,14 +74,15 @@ exports.init = function() {
 
 
 //still building modal mention
-    $("nav .hotnews,  nav .comment," +
-    "nav .dropdown, " +
-    ".bird, " +
-    ".download," +
-    ".first-row .left li, .first-row .middle, .first-row .right," +
-    ".second-row ul li, .second-row .contact-us-big").on("click", function (e) {
-        $("#myModal").modal();
+        $("nav .hotnews,  nav .comment," +
+            "nav .dropdown, " +
+            ".bird, " +
+            ".download," +
+            ".first-row .left li, .first-row .middle, .first-row .right," +
+            ".second-row ul li, .second-row .contact-us-big").on("click", function (e) {
+            $("#myModal").modal();
 
-        e.preventDefault();
-    });
-}
+            e.preventDefault();
+        });
+    }
+});

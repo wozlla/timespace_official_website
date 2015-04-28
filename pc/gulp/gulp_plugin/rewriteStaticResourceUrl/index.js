@@ -26,7 +26,7 @@ function rewrite() {
         if (file.isBuffer()) {
             var fileContent = file.contents.toString();
             var filePath = file.path;
-            var map = JSON.parse(fs.readFileSync(path.join(process.cwd(), "gulp/resourceMap.json")));
+            var map = JSON.parse(fs.readFileSync(path.join(process.cwd(), "gulp/resourceMap.json"), "utf8"));
 
             file.contents = new Buffer(handleContent(fileContent, map[filePath]));
 

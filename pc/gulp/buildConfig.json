@@ -1,6 +1,6 @@
 {
   "urlMap": [{
     "staticResourcePrefix": "/pc/js",
-    "relativePrefix": "../pulic/js"
+    "relativePrefix": "public/js"
   }]
 }

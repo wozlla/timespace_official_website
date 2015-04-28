@@ -26,7 +26,7 @@ describe("rewriteStaticResourceUrl", function () {
          </script>
 
          <!--no-cmd-module-->
-         <!--#build:js:replace /pc/dist/no_cmd.js#-->
+         <!--#build:js:replace dist/no_cmd.js#-->
          <script src="/pc/js/bower_components/jquery/dist/jquery.js"></script>
          <script src="/pc/js/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
          <script src="/pc/js/bower_components/seajs/dist/sea.js"></script>
@@ -41,7 +41,7 @@ describe("rewriteStaticResourceUrl", function () {
          <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
 
 
-         <!--#build:js:seajsMain /pc/dist/cmd.js #-->
+         <!--#build:js:seajsMain dist/cmd.js #-->
          <script src="/pc/js/website/index/main.js"></script>
          <!--#endbuild#-->
          */ });

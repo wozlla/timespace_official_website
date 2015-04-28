@@ -1,3 +1,4 @@
+define(function(require, exports, module) {
 window.requestNextAnimationFrame = (function () {
     var originalRequestAnimationFrame = undefined,
         wrapper = undefined,
@@ -118,7 +119,7 @@ window.cancelNextRequestAnimationFrame = window.cancelRequestAnimationFrame
 || window.msCancelRequestAnimationFrame
 || clearTimeout;
 
-var animation = {
+module.exports= {
     moveRight: function(dom, distance, speed, onEndFunc){
         var total = 0,
             left = dom.position().left;
@@ -259,3 +260,4 @@ var animation = {
     }
 };
 
+    });
