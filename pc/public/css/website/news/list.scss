@@ -45,12 +45,14 @@
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+        //width:100%;
       }
 
       p {
         color: rgb(67, 51, 82);
         margin: 0;
         word-wrap: break-word;
+        height:66px;
       }
 
       span {

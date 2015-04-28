@@ -36,7 +36,8 @@
       .news .body .item p {
         color: #433352;
         margin: 0;
-        word-wrap: break-word; }
+        word-wrap: break-word;
+        height: 66px; }
       .news .body .item span {
         display: block;
         text-align: right;

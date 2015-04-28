@@ -10,6 +10,21 @@ router.get("/", function(req, res, next) {
     var news = new News();
     var category = new DescriptionCategory();
 
+    //jump to detail from index.ejs
+    if(req.param("id")){
+        category.getList(function(error, categorys){
+            news.get(req.param("id"), function(error, model){
+                res.render("website/news", {
+                    descriptionCategorys: categorys,
+                    model: model
+                });
+            });
+        });
+
+        return;
+    }
+
+
     news.getList(1, PAGESIZE, function(error, list, pageData){
         //todo optimize!remove in front end
         _removeHtmlLabel(list);
@@ -18,6 +33,9 @@ router.get("/", function(req, res, next) {
             res.render("website/news", {
                 news: list,
                 pageData: pageData,
+                //if not set model attri, ejs will throw error in "<% if(model){ %>" code:model is not defined
+                model:null,
+                
                 descriptionCategorys: categorys
             });
         });

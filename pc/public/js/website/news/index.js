@@ -2,7 +2,7 @@ define(function(require, exports, module) {
     var global = require("../global");
 
     function limitText(){
-        var MAXLENGTH = 100;
+        var MAXLENGTH = 130;
 
         $(".body .item p").each(function(){
             var text = $(this).text();

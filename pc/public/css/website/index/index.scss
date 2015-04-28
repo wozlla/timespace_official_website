@@ -54,10 +54,12 @@
           color:#ffffff;
 
           ul {
-            max-height: 200px;
+            max-height: 190px;
             overflow: auto;
             scrollbar-face-color: #231259;
             padding:10px 10px 0 10px;
+            position:relative;
+            z-index:1;
 
             li{
               margin-bottom:15px;
@@ -79,6 +81,7 @@
             width: 100%;
             height: 100px;
             position: absolute;
+            z-index:0;
             bottom: 0;
           }
         }

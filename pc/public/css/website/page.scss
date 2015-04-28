@@ -20,6 +20,7 @@
       &>ul{
         margin-left: 5px;
         float:left;
+        //display:block;
         padding-bottom:5px;
 
         .line{
@@ -33,7 +34,7 @@
           margin: 0;
           margin-left: 5px;
           margin-top: 1px;
-          max-width:330px;
+          max-width:420px;
 
           color: rgb(222,102,102);
           @include font-header-big;
@@ -43,6 +44,7 @@
 
       .breadcrumb{
         float: right;
+        //display:block;
         background-color: transparent;
         margin: 0;
         @include font-small;
