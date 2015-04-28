@@ -134,14 +134,15 @@
   .normal-nav .download-dropdown {
     position: absolute;
     z-index: 1000;
-    right: 0;
+    right: 1px;
     top: 90px;
     width: 254px;
     background-image: url("/pc/image/bg/dropdown.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     padding-top: 10px;
-    display: none; }
+    display: none;
+    cursor: pointer; }
     .normal-nav .download-dropdown:hover {
       display: block; }
     .normal-nav .download-dropdown li {

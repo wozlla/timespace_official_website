@@ -1,34 +1,32 @@
-body {
+.description {
   background-image: url("/pc/image/bg/page_bg.png");
   background-repeat: no-repeat;
   background-size: 100% 100%; }
-
-.body {
-  background-color: white;
-  margin-top: 20px; }
-  .body .item {
-    padding: 10px 20px; }
-    .body .item h1 {
-      font-size: 24px;
-      color: #de6666;
-      padding-left: 20px;
-      padding-bottom: 5px;
-      border-bottom: 2px solid #de6666;
-      width: 150px; }
-    .body .item .list {
-      font-size: 16px;
-      word-wrap: break-word; }
-      .body .item .list li {
-        border-right: 1px solid #d2d2d2;
-        padding-left: 10px;
-        padding-right: 10px;
-        cursor: pointer; }
-      .body .item .list li:last-of-type {
-        border: 0; }
-
-.description-detail .body {
-  padding: 10px 10px;
-  margin-top: 20px;
-  background-color: white; }
+  .description .body {
+    background-color: white;
+    margin-top: 20px; }
+    .description .body .item {
+      padding: 10px 20px; }
+      .description .body .item h1 {
+        font-size: 24px;
+        color: #de6666;
+        padding-left: 20px;
+        padding-bottom: 5px;
+        border-bottom: 2px solid #de6666;
+        width: 150px; }
+      .description .body .item .list {
+        font-size: 16px;
+        word-wrap: break-word; }
+        .description .body .item .list li {
+          border-right: 1px solid #d2d2d2;
+          padding-left: 10px;
+          padding-right: 10px;
+          cursor: pointer; }
+        .description .body .item .list li:last-of-type {
+          border: 0; }
+  .description .description-detail .body {
+    padding: 10px 10px;
+    margin-top: 20px;
+    background-color: white; }
 
 /*# sourceMappingURL=list.css.map */

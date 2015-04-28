@@ -1,0 +1,18 @@
+.download {
+  background-image: url("/pc/image/bg/page_bg.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%; }
+  .download .body {
+    background-color: white;
+    margin-top: 20px;
+    padding: 20px 100px; }
+    .download .body img:first-of-type {
+      display: block;
+      float: left; }
+    .download .body img:last-of-type {
+      display: block;
+      float: right; }
+  .download .page-footer {
+    margin-top: 100px; }
+
+/*# sourceMappingURL=list.css.map */

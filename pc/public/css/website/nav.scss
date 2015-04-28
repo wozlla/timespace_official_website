@@ -201,7 +201,7 @@ nav{
   .download-dropdown {
     position: absolute;
     z-index: 1000;
-    right: 0;
+    right: 1px;
     top: 90px;
     width: 254px;
     background-image: url("/pc/image/bg/dropdown.png");
@@ -209,6 +209,7 @@ nav{
     background-size: 100% 100%;
     padding-top:10px;
     display:none;
+    cursor:pointer;
 
     &:hover{
       display:block;

@@ -177,9 +177,9 @@ ul.footer {
   left: 0;
   margin-top: 64px; }
   .contact-us-small .left {
-    left: -57px;
+    left: -47px;
     top: -20px;
-    width: 130px;
+    width: 120px;
     height: 30px;
     position: absolute;
     z-index: 0; }
@@ -374,14 +374,15 @@ share plugin
   .normal-nav .download-dropdown {
     position: absolute;
     z-index: 1000;
-    right: 0;
+    right: 1px;
     top: 90px;
     width: 254px;
     background-image: url("/pc/image/bg/dropdown.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     padding-top: 10px;
-    display: none; }
+    display: none;
+    cursor: pointer; }
     .normal-nav .download-dropdown:hover {
       display: block; }
     .normal-nav .download-dropdown li {
