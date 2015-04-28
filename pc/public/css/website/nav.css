@@ -17,16 +17,19 @@
       height: 90px; }
   .normal-nav nav > ul.clearfix {
     height: 100%; }
+  .normal-nav nav .description:hover > .dropdown {
+    display: block; }
   .normal-nav nav .dropdown {
     position: absolute;
     z-index: 1000;
     left: 230px;
-    top: 80px;
+    top: 90px;
     width: 210px;
     display: none;
     background-image: url("/pc/image/bg/dropdown.png");
     background-repeat: no-repeat;
-    background-size: 100% 100%; }
+    background-size: 100% 100%;
+    font-size: 20px; }
     .normal-nav nav .dropdown li {
       width: 100%;
       height: 50px;
@@ -42,6 +45,65 @@
         .normal-nav nav .dropdown li a:hover {
           color: #ffffff;
           text-decoration: none; }
+  .normal-nav nav .comment:hover > .comment-dropdown {
+    display: block; }
+  .normal-nav nav .comment-dropdown {
+    position: absolute;
+    z-index: 1000;
+    left: 460px;
+    top: 90px;
+    width: 210px;
+    background-image: url("/pc/image/bg/dropdown.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    font-size: 20px;
+    display: none; }
+    .normal-nav nav .comment-dropdown li {
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      text-align: center; }
+      .normal-nav nav .comment-dropdown li a {
+        font-weight: bolder;
+        display: block;
+        width: 100%;
+        height: 100%;
+        color: #2b235b; }
+      .normal-nav nav .comment-dropdown li span {
+        display: block; }
+    .normal-nav nav .comment-dropdown .link {
+      text-align: center;
+      padding-left: 40px;
+      cursor: pointer; }
+      .normal-nav nav .comment-dropdown .link:hover {
+        color: #ffffff;
+        text-decoration: none;
+        background-color: #5734ad; }
+      .normal-nav nav .comment-dropdown .link img {
+        float: left;
+        width: 30px;
+        height: 30px;
+        margin-top: 10px;
+        margin-right: 5px; }
+      .normal-nav nav .comment-dropdown .link span {
+        display: block;
+        float: left; }
+    .normal-nav nav .comment-dropdown .icon {
+      height: 100px; }
+      .normal-nav nav .comment-dropdown .icon img {
+        width: 100px;
+        height: 100px; }
+    .normal-nav nav .comment-dropdown .code {
+      height: 150px; }
+      .normal-nav nav .comment-dropdown .code img {
+        width: 140px;
+        height: 140px; }
+    .normal-nav nav .comment-dropdown .text {
+      height: 50px;
+      margin-top: 10px; }
+      .normal-nav nav .comment-dropdown .text span {
+        color: white;
+        font-weight: bold; }
   .normal-nav .bird {
     display: block;
     position: absolute;

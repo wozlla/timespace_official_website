@@ -36,23 +36,29 @@ nav{
         height:90px;
       }
     }
+
   }
   >ul.clearfix{
     height:100%;
   }
 
 
-    .dropdown{
+  .description:hover > .dropdown{
+    display:block;
+  }
+
+  .dropdown{
       position:absolute;
       z-index:1000;
       left:230px;
-      top:80px;
+      top:90px;
       width:210px;
       //border:1px solid red;
       display:none;
       background-image:url("/pc/image/bg/dropdown.png");
       background-repeat: no-repeat;
       background-size:100% 100%;
+      font-size:20px;
 
       li{
         width:100%;
@@ -77,6 +83,91 @@ nav{
         }
       }
     }
+
+  .comment:hover >.comment-dropdown {
+    display:block;
+  }
+
+  .comment-dropdown {
+    position: absolute;
+    z-index: 1000;
+    left: 460px;
+    top: 90px;
+    width: 210px;
+    background-image: url("/pc/image/bg/dropdown.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    //padding-top: 10px;
+    font-size:20px;
+    display: none;
+
+
+    li {
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+
+ 
+      a {
+        font-weight: bolder;
+        display: block;
+        width: 100%;
+        height: 100%;
+        color: rgb(43, 35, 91);
+      }
+      span {
+        display: block;
+      }
+    }
+    .link{
+      text-align:center;
+      padding-left:40px;
+      cursor:pointer;
+
+       &:hover{
+            color:#ffffff;
+            text-decoration:none;
+             background-color:rgb(87, 52, 173);
+          }
+
+      img{
+      float:left;
+      width:30px;
+      height:30px;
+      margin-top:10px;
+      margin-right:5px;
+    }
+    span{
+      display:block;
+      float:left;
+    }
+    }
+    .icon {
+      height: 100px;
+      img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+    .code {
+      height: 150px;
+      img {
+        width: 140px;
+        height: 140px;
+      }
+    }
+    .text {
+      height: 50px;
+      margin-top:10px;
+
+      span {
+        color: white;
+        //font-size: 20px;
+        font-weight: bold;
+      }
+    }
+  }
 }
 
   .bird{
