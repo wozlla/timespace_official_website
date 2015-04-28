@@ -22,6 +22,7 @@
           .index .container .content .first-row .left ul {
             max-height: 200px;
             overflow: auto;
+            scrollbar-face-color: #231259;
             padding: 10px 10px 0 10px; }
             .index .container .content .first-row .left ul li {
               margin-bottom: 15px;
