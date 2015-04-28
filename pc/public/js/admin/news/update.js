@@ -4,7 +4,7 @@ $(function(){
           body = $("#body").val(),
           id = $("#id").val();
 
-       $.put("/admin/news", {
+       $.put("/pc/admin/news", {
            id: id,
            title: title,
            body: body

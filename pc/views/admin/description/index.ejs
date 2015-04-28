@@ -14,9 +14,9 @@
                 <%= model.title %>
             </span>
             <div>
-                <a class="update" href="#" onclick="index.showUpdatePage('/admin/description/updatePage','<%= model._id %>')">修改</a>
-                <!--<a class="update" href="/admin/description/updatePage?id=<%= model._id %>">修改</a>-->
-                <a class="delete" href="#" onclick="index.delete('/admin/description','<%= model._id %>')">删除</a>
+                <a class="update" href="#" onclick="index.showUpdatePage('/pc/admin/description/updatePage','<%= model._id %>')">修改</a>
+                <!--<a class="update" href="/pc/admin/description/updatePage?id=<%= model._id %>">修改</a>-->
+                <a class="delete" href="#" onclick="index.delete('/pc/admin/description','<%= model._id %>')">删除</a>
             </div>
         </li>
         <% })%>
@@ -25,9 +25,9 @@
 </ul>
 <ul>
     <li class="add">
-        <a href="/admin/description/addPage">添加</a>
+        <a href="/pc/admin/description/addPage">添加</a>
     </li>
 </ul>
 <% include ../footer.ejs %>
-<script src="/js/admin/index.js"></script>
+<script src="/pc/js/admin/index.js"></script>
 <% include ../footerHtml.ejs %>

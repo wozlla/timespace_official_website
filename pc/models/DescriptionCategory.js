@@ -173,6 +173,7 @@ DescriptionCategory.prototype.getList = function(callback) {
             collection.find().sort({
                 name: -1
             }).toArray(function (err, docs) {
+                console.log(docs);
                 mongodb.close();
                 if (err) {
                     return callback(err);//失败！返回 err

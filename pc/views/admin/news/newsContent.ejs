@@ -6,9 +6,9 @@
                 <%= news[i].time %>
             </span>
         <div>
-            <a class="update" href="#" onclick="index.showUpdatePage('/admin/news/updatePage','<%= news[i]._id %>')">修改</a>
-            <!--<a class="update" href="/admin/news/updatePage?id=<%= news[i]._id %>">修改</a>-->
-            <a class="delete" href="#" onclick="index.delete('/admin/news','<%= news[i]._id %>')">删除</a>
+            <a class="update" href="#" onclick="index.showUpdatePage('/pc/admin/news/updatePage','<%= news[i]._id %>')">修改</a>
+            <!--<a class="update" href="/pc/admin/news/updatePage?id=<%= news[i]._id %>">修改</a>-->
+            <a class="delete" href="#" onclick="index.delete('/pc/admin/news','<%= news[i]._id %>')">删除</a>
         </div>
     </li>
     <% }%>

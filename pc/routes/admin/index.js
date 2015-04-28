@@ -33,7 +33,7 @@ router.post("/upload", function(req, res, next) {
         var image = files.imgFile;
         var path = image.path;
         path = path.replace("/\\/g", "/");
-        var url = "/upload" + path.substr(path.lastIndexOf("/"), path.length);
+        var url = "/pc/upload" + path.substr(path.lastIndexOf("/"), path.length);
 
         var info = {
             "error": 0,

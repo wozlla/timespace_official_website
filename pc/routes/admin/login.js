@@ -12,7 +12,7 @@ router.post("/", function(req, res, next) {
 
     if(!user.isCorrect(req.body.name, req.body.password)){
         req.flash("error", "name or pwd is error, please relogin");
-        res.redirect("/admin/login");
+        res.redirect("/pc/admin/login");
         return;
     }
 
@@ -20,7 +20,7 @@ router.post("/", function(req, res, next) {
         name: req.body.name
     };
     req.flash("success", "login success");
-    res.redirect("/admin");
+    res.redirect("/pc/admin");
 });
 
 module.exports = router;

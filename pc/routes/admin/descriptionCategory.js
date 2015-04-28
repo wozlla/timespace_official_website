@@ -42,7 +42,7 @@ router.post("/", function(req, res, next) {
             res.send("error");
             return;
         }
-        res.redirect("/admin");
+        res.redirect("/pc/admin");
     });
 });
 router.put("/", function(req, res, next) {
@@ -55,7 +55,7 @@ router.put("/", function(req, res, next) {
             res.send("error");
             return;
         }
-        res.send("/admin")
+        res.send("/pc/admin")
     });
 });
 router.delete("/", function(req, res, next) {
@@ -66,7 +66,7 @@ router.delete("/", function(req, res, next) {
             res.send("error");
             return;
         }
-        res.send("/admin")
+        res.send("/pc/admin")
     });
 });
 

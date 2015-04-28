@@ -56,7 +56,7 @@ router.post("/", function(req, res, next) {
         }
         //req.flash("success", "发布成功!");
         //res.redirect("/");//发表成功跳转到主页
-        res.redirect("/admin");
+        res.redirect("/pc/admin");
     });
 });
 router.put("/", function(req, res, next) {
@@ -75,8 +75,8 @@ router.put("/", function(req, res, next) {
         }
         //req.flash("success", "发布成功!");
         //res.redirect("/");//发表成功跳转到主页
-        //res.redirect("/admin");
-        res.send("/admin")
+        //res.redirect("/pc/admin");
+        res.send("/pc/admin")
     });
 });
 router.delete("/", function(req, res, next) {
@@ -91,8 +91,8 @@ router.delete("/", function(req, res, next) {
         }
         //req.flash("success", "发布成功!");
         //res.redirect("/");//发表成功跳转到主页
-        //res.redirect("/admin");
-        res.send("/admin")
+        //res.redirect("/pc/admin");
+        res.send("/pc/admin")
         //res.send("success");
     });
 });

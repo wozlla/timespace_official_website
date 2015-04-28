@@ -5,7 +5,7 @@ $(function(){
           category = $("#category").val(),
           id = $("#id").val();
 
-       $.put("/admin/description", {
+       $.put("/pc/admin/description", {
            id: id,
            category: category,
            title: title,

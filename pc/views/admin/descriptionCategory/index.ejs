@@ -5,18 +5,18 @@
     <li class="clearfix">
         <span><%= descriptionCategory[i].name %></span>
         <div>
-            <a class="update" href="#" onclick="index.showUpdatePage('/admin/descriptionCategory/updatePage','<%= descriptionCategory[i]._id %>')">修改</a>
-            <!--<a class="update" href="/admin/descriptionCategory/updatePage?id=<%= descriptionCategory[i]._id %>">修改</a>-->
-            <a class="delete" href="#" onclick="index.delete('/admin/descriptionCategory','<%= descriptionCategory[i]._id %>')">删除</a>
+            <a class="update" href="#" onclick="index.showUpdatePage('/pc/admin/descriptionCategory/updatePage','<%= descriptionCategory[i]._id %>')">修改</a>
+            <!--<a class="update" href="/pc/admin/descriptionCategory/updatePage?id=<%= descriptionCategory[i]._id %>">修改</a>-->
+            <a class="delete" href="#" onclick="index.delete('/pc/admin/descriptionCategory','<%= descriptionCategory[i]._id %>')">删除</a>
         </div>
     </li>
     <% }%>
 </ul>
 <ul>
     <li class="add">
-        <a href="/admin/descriptionCategory/addPage">添加</a>
+        <a href="/pc/admin/descriptionCategory/addPage">添加</a>
     </li>
 </ul>
 <% include ../footer.ejs %>
-<script src="/js/admin/index.js"></script>
+<script src="/pc/js/admin/index.js"></script>
 <% include ../footerHtml.ejs %>

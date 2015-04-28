@@ -74,15 +74,15 @@ define(function(require, exports, module) {
 
 
 //still building modal mention
-        $("nav .hotnews,  nav .comment," +
-            "nav .dropdown, " +
-            ".bird, " +
-            ".download," +
-            ".first-row .left li, .first-row .middle, .first-row .right," +
-            ".second-row ul li, .second-row .contact-us-big").on("click", function (e) {
-            $("#myModal").modal();
-
-            e.preventDefault();
-        });
+//        $("nav .hotnews,  nav .comment," +
+//            "nav .dropdown, " +
+//            ".bird, " +
+//            ".download," +
+//            ".first-row .left li, .first-row .middle, .first-row .right," +
+//            ".second-row ul li, .second-row .contact-us-big").on("click", function (e) {
+//            $("#myModal").modal();
+//
+//            e.preventDefault();
+//        });
     }
 });

@@ -27,7 +27,7 @@
                     <li><h1>游戏介绍</h1></li>
                 </ul>
                 <ol class="breadcrumb">
-                    <li><a href="/description">游戏介绍</a></li>
+                    <li><a href="/pc/description">游戏介绍</a></li>
                     <li class="active">介绍列表</li>
                 </ol>
             </div>
@@ -40,7 +40,7 @@
 
                         <ul class="list clearfix">
                             <% categoryData.data.forEach(function(model){%>
-                            <li onclick="description.showDetail('/description/detailPage', '<%= model._id %>')">
+                            <li onclick="description.showDetail('/pc/description/detailPage', '<%= model._id %>')">
                                 <%= model.title%>
                             </li>
                             <% })%>

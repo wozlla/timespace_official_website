@@ -2,7 +2,7 @@
     <div class="body">
         <ul>
             <% for(var i = 0, len = news.length; i < len; i++){%>
-            <li class="item" onclick="news.showDetail('/news/detailPage', '<%= news[i]._id %>')">
+            <li class="item" onclick="news.showDetail('/pc/news/detailPage', '<%= news[i]._id %>')">
                 <h3><%= news[i].title%></h3>
                 <p>
                     <%= news[i].body %>

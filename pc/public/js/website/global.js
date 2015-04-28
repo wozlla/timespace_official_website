@@ -6,13 +6,12 @@ define(function(require, exports, module) {
     exports.init = function(){
         $(".pop-window div").on("click", function () {
             var obj = $(this),
-                width = 200,
+                width = 210,
                 speed = 10;
 
             if (isAnimating) {
                 return;
             }
-
 
             if (obj.hasClass("pop-out")) {
                 animation.popOut(obj.parent(), width, speed, function () {

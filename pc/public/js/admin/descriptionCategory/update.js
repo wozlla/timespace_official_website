@@ -2,7 +2,7 @@ $(function(){
    $("form").on("submit", function(e){
        var name = $("#name").val();
 
-       $.put("/admin/descriptionCategory", {
+       $.put("/pc/admin/descriptionCategory", {
            name:name
       }, function(url){
          location.href = url;

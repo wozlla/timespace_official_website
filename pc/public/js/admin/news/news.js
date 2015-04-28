@@ -3,7 +3,7 @@ var news = (function(){
        getListByPage:function(e, pageNumber){
            e = e || window.event;
 
-           $.get("/admin/news/content", {
+           $.get("/pc/admin/news/content", {
                pageNumber: pageNumber
            }, function(htmlContent){
                $("#content").html(htmlContent);
