@@ -11,6 +11,7 @@ router.get("/", function(req, res, next) {
     var category = new DescriptionCategory();
 
     news.getList(1, PAGESIZE, function(error, list, pageData){
+        //todo optimize!remove in front end
         _removeHtmlLabel(list);
 
         category.getList(function(error, categorys){

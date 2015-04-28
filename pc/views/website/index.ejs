@@ -40,10 +40,15 @@
       <ul class="first-row clearfix">
         <li class="left">
           <ul>
+            <% for(var i = 0, len = newsList.length; i < len; i++){%>
             <li>
-              <h3 class="ellipsis"></h3>
-              <span class="ellipsis"></span>
+              <h3 class="ellipsis"><%= newsList[i].title%></h3>
+              <span class="ellipsis"><%= safe.removeHtmlLabel(newsList[i].body)%></span>
+              <!--todo jump to detail page-->
+              <!--<h3 class="ellipsis"><a href="/pc/news/detailPage?id=<%=newsList[i]._id%>"><%= newsList[i].title%></a></h3>-->
+              <!--<span class="ellipsis"><a href="/pc/news/detailPage?id=<%=newsList[i]._id%>"><%= safe.removeHtmlLabel(newsList[i].body)%></a></span>-->
             </li>
+            <% }%>
           </ul>
 
           <img src="/pc/image/index/ornament/news.png"></li>

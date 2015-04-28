@@ -55,7 +55,6 @@
       width: 100%;
       height: 100%; }
   .normal-nav .download, .normal-nav .go-try-play {
-    cursor: pointer;
     display: block;
     left: 705px;
     top: -10px;
@@ -66,3 +65,51 @@
     .normal-nav .download img, .normal-nav .go-try-play img {
       width: 100%;
       height: 100%; }
+  .normal-nav .go-try-play {
+    cursor: pointer; }
+  .normal-nav .download:hover + .download-dropdown {
+    display: block; }
+  .normal-nav .download-dropdown {
+    position: absolute;
+    z-index: 1000;
+    right: 0;
+    top: 90px;
+    width: 254px;
+    background-image: url("/pc/image/bg/dropdown.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding-top: 10px;
+    display: none; }
+    .normal-nav .download-dropdown:hover {
+      display: block; }
+    .normal-nav .download-dropdown li {
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      text-align: center; }
+      .normal-nav .download-dropdown li a {
+        font-weight: bolder;
+        display: block;
+        width: 100%;
+        height: 100%;
+        color: #2b235b; }
+      .normal-nav .download-dropdown li span {
+        display: block; }
+    .normal-nav .download-dropdown .icon {
+      height: 100px; }
+      .normal-nav .download-dropdown .icon img {
+        width: 100px;
+        height: 100px; }
+    .normal-nav .download-dropdown .code {
+      height: 100px; }
+      .normal-nav .download-dropdown .code img {
+        width: 100px;
+        height: 100px; }
+    .normal-nav .download-dropdown .text {
+      height: 50px; }
+      .normal-nav .download-dropdown .text span {
+        color: white;
+        font-size: 20px;
+        font-weight: bold; }
+
+/*# sourceMappingURL=nav.css.map */

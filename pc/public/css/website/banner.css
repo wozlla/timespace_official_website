@@ -2,7 +2,7 @@
   position: absolute;
   z-index: 6;
   width: 530px;
-  height: 450px;
+  height: 400px;
   left: 50%;
   margin-left: -565px;
   top: 20px; }
@@ -26,3 +26,5 @@
   .banner-bg .bg {
     width: 100%;
     height: 100%; }
+
+/*# sourceMappingURL=banner.css.map */
