@@ -1,20 +1,21 @@
 <% include header.ejs %>
 
-    <link href="/css/website/page.css" type="text/css" rel="stylesheet">
-    <link href="/css/website/news/list.css" type="text/css" rel="stylesheet">
+    <link href="/pc/css/website/page.css" type="text/css" rel="stylesheet">
+    <link href="/pc/css/website/news/list.css" type="text/css" rel="stylesheet">
 
-<% include logoHeader.ejs %>
+
+<div class="news">
+    <% include logoHeader.ejs %>
+
+    <section class="banner-bg" >
+        <div id="banner-bg" class="bg" >
+            <img src="/pc/image/news/news.png">
+        </div>
+    </section>
 
 <section class="container">
-    <header>
-
+    <header class="normal-nav">
         <% include nav.ejs %>
-
-        <div class="banner">
-            <div id="banner-bg" class="bg">
-                <img src="/pc/image/news/news.png">
-            </div>
-        </div>
     </header>
 
     <section class="content">
@@ -25,7 +26,7 @@
                     <li><h1>消息列表</h1></li>
                 </ul>
                 <ol class="breadcrumb">
-                    <li><a href="/news">最新消息</a></li>
+                    <li><a href="/pc/news">最新消息</a></li>
                     <li class="active">消息列表</li>
                 </ol>
             </div>
@@ -46,10 +47,11 @@
 </section>
 
 
+    <% include pageFooter.ejs %>
+    </div>
 <% include pop_window.ejs %>
 
 
-<% include pageFooter.ejs %>
 
 
 <% include footer.ejs %>

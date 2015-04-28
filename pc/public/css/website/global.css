@@ -67,6 +67,12 @@ ul.footer {
   cursor: pointer; }
   .logo-header .footer {
     margin-left: 20% !important; }
+  .logo-header .text {
+    height: 100%;
+    line-height: 82px;
+    margin-left: 400px;
+    font-size: 16px;
+    color: #636363; }
 
 .pop-window {
   position: fixed;
@@ -166,8 +172,8 @@ ul.footer {
   background-image: url("/pc/image/button/contact_us.png");
   background-size: 100% 100%;
   position: relative;
-  width: 215px;
-  height: 90px;
+  width: 254px;
+  height: 120px;
   left: 0;
   margin-top: 64px; }
   .contact-us-small .left {

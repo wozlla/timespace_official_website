@@ -1,22 +1,24 @@
 
 <% include header.ejs %>
 
-    <link href="/css/website/page.css" type="text/css" rel="stylesheet">
+    <link href="/pc/css/website/page.css" type="text/css" rel="stylesheet">
 
-    <link href="/css/website/description/list.css" type="text/css" rel="stylesheet">
+    <link href="/pc/css/website/description/list.css" type="text/css" rel="stylesheet">
+
+
+<div class="description">
 
 <% include logoHeader.ejs %>
 
-<section class="container">
-    <header>
-
-        <% include nav.ejs %>
-
-        <div class="banner">
-            <div id="banner-bg" class="bg">
-                <img src="/pc/image/description/description.png">
-            </div>
+    <section class="banner-bg" >
+        <div id="banner-bg" class="bg" >
+            <img src="/pc/image/description/description.png">
         </div>
+    </section>
+
+<section class="container">
+    <header class="normal-nav">
+        <% include nav.ejs %>
     </header>
 
     <section class="content">
@@ -61,11 +63,12 @@
 
 </section>
 
+    <% include pageFooter.ejs %>
+    </div>
 
 <% include pop_window.ejs %>
 
 
-<% include pageFooter.ejs %>
 
 <% include footer.ejs %>
 <script src="/pc/js/website/description/description.js"></script>

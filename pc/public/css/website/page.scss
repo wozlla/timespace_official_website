@@ -2,11 +2,10 @@
 
 .container{
   position:relative;
-  margin-top:328px;
-
+  margin-top:460px;
 
   .content{
-    width:550px;
+    width:658px;
 
     .header{
       margin-top:30px;
@@ -65,18 +64,19 @@
 
   .right-column{
     position: absolute;
-    left:585px;
-    top:100px;
-    width: 215px;
+    left:705px;
+    top:130px;
+    //width: 215px;
 
     >img{
-      width: 215px;
+      width: 254px;
       height: 120px;
     }
 
     hr{
       margin-top: 40px;
       margin-bootom: 40px;
+border-top: 1px solid rgb(210,210,210);
     }
   }
 }

@@ -1,8 +1,8 @@
 .container {
   position: relative;
-  margin-top: 328px; }
+  margin-top: 460px; }
   .container .content {
-    width: 550px; }
+    width: 658px; }
     .container .content .header {
       margin-top: 30px; }
       .container .content .header:after {
@@ -38,12 +38,14 @@
       margin-top: 20px \9; }
   .container .right-column {
     position: absolute;
-    left: 585px;
-    top: 100px;
-    width: 215px; }
+    left: 705px;
+    top: 130px; }
     .container .right-column > img {
-      width: 215px;
+      width: 254px;
       height: 120px; }
     .container .right-column hr {
       margin-top: 40px;
-      margin-bootom: 40px; }
+      margin-bootom: 40px;
+      border-top: 1px solid #d2d2d2; }
+
+/*# sourceMappingURL=page.css.map */
