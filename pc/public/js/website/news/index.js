@@ -5,7 +5,8 @@ $(function(){
         $(".body .item p").each(function(){
             var text = $(this).text();
 
-            if(text.length >= MAXLENGTH){
+            if(text.trim().length >= MAXLENGTH){
+
                 $(this).text(text.slice(0, MAXLENGTH) + "......");
             }
                 });
