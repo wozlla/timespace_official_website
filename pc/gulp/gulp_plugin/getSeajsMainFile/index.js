@@ -9,6 +9,7 @@ var through = require('through-gulp'),
 var errorFunc = null;
 var PLUGIN_NAME = "rewriteStaticResourceUrl";
 
+//todo seajs.use path can be other path(not only the "/pc/js/xxx", but also like "js/xxx"(use base or align config)
 function getFileContent() {
     // creating a stream through which each file will pass
     return through(function (file, encoding, callback) {

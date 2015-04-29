@@ -22,9 +22,9 @@ describe("createBuildMap", function () {
         buildConfig =
         {
             "urlMap": [{
-            "staticResourcePrefix": "/pc/js",
-            "relativePrefix": "public/js"
-        }]
+                "staticResourcePrefix": "/pc/js",
+                "relativePrefix": "public/js"
+            }]
         };
 
         sandbox.stub(fs, "readFileSync").returns(
@@ -81,12 +81,12 @@ describe("createBuildMap", function () {
     });
 
     it("can parse replace command", function (done) {
-        var filePath = path.join(__dirname, "./file/footer.ejs");
+        var filePath = "./file/footer.ejs";
 
         stream.on('end', function () {
             var args = fs.writeFileSync.args[0];
             expect(args[0]).toEqual(
-               path.join(cwd, "gulp/resourceMap.json")
+                path.join(cwd, "gulp/resourceMap.json")
             );
             var json = JSON.parse(args[1].toString());
             expect(json[filePath]).toBeArray();
@@ -96,7 +96,7 @@ describe("createBuildMap", function () {
                     dist: 'dist/no_cmd.js',
                     fileUrlArr: ['public/js/bower_components/jquery/dist/jquery.js', 'public/js/bower_components/bootstrap/dist/js/bootstrap.min.js', 'public/js/bower_components/seajs/dist/sea.js', 'public/js/bower_components/seajs-wrap/dist/seajs-wrap.js', 'public/js/website/global.js', 'public/js/website/animation.js', 'public/js/website/nav.js'],
                     startLine: 203,
-                    endLine: 893
+                    endLine: 889
                 }
             );
 
@@ -150,34 +150,27 @@ describe("createBuildMap", function () {
          */
     });
     it("can parse seajsMain command", function (done) {
-        var filePath = path.join(__dirname, "./file/footer.ejs");
+        var filePath = "./file/footer.ejs";
 
         stream.on('end', function () {
-            fs.readFile(
-                path.join(process.cwd(), "gulp/resourceMap.json"),
-                function (e, data) {
-                    if (e) {
-                        gutil.log(e.message);
-                        //self.emit('error', new gutil.PluginError(PLUGIN_NAME, e.message));
-                        return;
-                    }
+            var args = fs.writeFileSync.args[0];
+            expect(args[0]).toEqual(
+                path.join(cwd, "gulp/resourceMap.json")
+            );
+            var json = JSON.parse(args[1].toString());
 
-                    var json = JSON.parse(data.toString());
-
-                    expect(json[filePath]).toBeArray();
-                    expect(json[filePath][1]).toEqual(
-                        {
-                            command: 'seajsMain',
-                            dist: 'dist/cmd.js ',
-                            fileUrlArr: ['public/js/website/index/main.js'],
-                            startLine: 1007,
-                            endLine: 1149
-                        }
-                    );
-
-                    done();
+            expect(json[filePath]).toBeArray();
+            expect(json[filePath][1]).toEqual(
+                {
+                    command: 'seajsMain',
+                    dist: 'dist/cmd.js ',
+                    fileUrlArr: ['public/js/website/index/main.js'],
+                    startLine: 1003,
+                    endLine: 1141
                 }
             );
+
+            done();
         });
 
 
@@ -191,43 +184,93 @@ describe("createBuildMap", function () {
         });
 
         stream.write(testFile1);
+        stream.write(testFile1);
 
         stream.end();
     });
-    //it("can build multi page's build map", function(done){
-    //    stream.on('end', function(newFile) {
-    //        fs.readFile(
-    //            path.join(process.cwd(), "gulp/resourceMap.json"),
-    //            function(e, data){
-    //                if(e){
-    //                    gutil.log(e.message);
-    //                    //self.emit('error', new gutil.PluginError(PLUGIN_NAME, e.message));
-    //                    return;
-    //                }
-    //
-    //                var json = JSON.parse(data.toString());
-    //
-    //                expect(json[filePath]).toBeArray();
-    //                expect(json[filePath][1]).toEqual(
-    //                    { command : 'seajsMain', dist : '../dist/cmd.js ', fileUrlArr : [ 'public/js/website/index/main.js' ], startLine : 854, endLine : 962 }
-    //                );
-    //
-    //                done();
-    //            }
-    //        );
-    //    });
-    //
-    //
-    //    var testFile1 = new Vinyl({
-    //        //cwd: "./",
-    //        //base: "./file",
-    //        path: filePath,
-    //        contents: new Buffer(fs.readFileSync(filePath))
-    //    });
-    //
-    //    stream.write(testFile1);
-    //
-    //    stream.end();
-    //});
+    it("can build multi page's build map", function (done) {
+        var filePath = "./file/footer.ejs";
+        var fileContent2 = convertUtils.toString(function () {/*
+
+         <!--no-cmd-module-->
+         <!--#build:js:replace dist/no_cmd.js#-->
+         <script src="/pc/js/website/animation.js"></script>
+         <script src="/pc/js/website/nav.js"></script>
+         <!--#endbuild#-->
+         <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+
+
+         <!--#build:js:seajsMain dist/cmd.js #-->
+         <script src="/pc/js/website/news/main.js"></script>
+         <!--#endbuild#-->
+         */
+        });
+        var filePath2 = "./2.ejs";
+
+        stream.on('end', function () {
+            var args = fs.writeFileSync.args[0];
+            expect(args[0]).toEqual(
+                path.join(cwd, "gulp/resourceMap.json")
+            );
+            var json = JSON.parse(args[1].toString());
+
+
+            expect(json).toEqual(
+                {
+                    "./file/footer.ejs": [{
+                        command: 'replace',
+                        dist: 'dist/no_cmd.js',
+                        fileUrlArr: ['public/js/bower_components/jquery/dist/jquery.js', 'public/js/bower_components/bootstrap/dist/js/bootstrap.min.js', 'public/js/bower_components/seajs/dist/sea.js', 'public/js/bower_components/seajs-wrap/dist/seajs-wrap.js', 'public/js/website/global.js', 'public/js/website/animation.js', 'public/js/website/nav.js'],
+                        startLine: 203,
+                        endLine: 889
+                    }, {
+                        command: 'seajsMain',
+                        dist: 'dist/cmd.js ',
+                        fileUrlArr: ['public/js/website/index/main.js'],
+                        startLine: 1003,
+                        endLine: 1141
+                    }],
+                    "./2.ejs": [{
+                        command: 'replace',
+                        dist: 'dist/no_cmd.js',
+                        fileUrlArr: ['public/js/website/animation.js', 'public/js/website/nav.js'],
+                        startLine: 31,
+                        endLine: 223
+                    }, {
+                        command: 'seajsMain',
+                        dist: 'dist/cmd.js ',
+                        fileUrlArr: ['public/js/website/news/main.js'],
+                        startLine: 337,
+                        endLine: 474
+                    }]
+                }
+            );
+
+            done();
+        });
+
+
+        var testFile1 = new Vinyl({
+            //cwd: "./",
+            //base: "./file",
+            path: filePath,
+            contents: new Buffer(
+                fileContent
+            )
+        });
+        var testFile2 = new Vinyl({
+            //cwd: "./",
+            //base: "./file",
+            path: filePath2,
+            contents: new Buffer(
+                fileContent2
+            )
+        });
+
+        stream.write(testFile1);
+        stream.write(testFile2);
+
+        stream.end();
+    });
 });
 

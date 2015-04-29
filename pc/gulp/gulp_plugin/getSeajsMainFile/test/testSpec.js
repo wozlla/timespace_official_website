@@ -167,10 +167,9 @@ describe("getSeajsMainFile", function () {
         });
     });
 
-    describe("multi main file", function(){
+    describe("multi main file.", function(){
         var seajsMain1Content = null,
-            seajsMain2Content = null,
-            buildConfig = null;
+            seajsMain2Content = null;
 
         beforeEach(function(){
             seajsMain1Content = "main1 content";
@@ -181,27 +180,12 @@ describe("getSeajsMainFile", function () {
             fs.readFileSync.onCall(0).returns(
                 seajsMain1Content
             );
-            fs.readFileSync.onCall(2).returns(
-                seajsMain2Content
-            );
-
-            buildConfig = {
-                "seajsMainUrlMap":[
-                    {
-                        "staticResourcePrefix": "js",
-                        "relativePrefix": "../public/js"
-                    }
-                ]
-            };
             fs.readFileSync.onCall(1).returns(
-                JSON.stringify(buildConfig)
-            );
-            fs.readFileSync.onCall(3).returns(
-                JSON.stringify(buildConfig)
+                seajsMain2Content
             );
         });
 
-        it("get multi seajs main file content", function(done){
+        it("get multi seajs main file content.", function(done){
             var resourceMap =
             {
                 "./1.ejs": [
