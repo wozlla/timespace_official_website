@@ -23,15 +23,17 @@
 
         <section class="content">
             <div id="content-container">
-                <div class="header clearfix">
+                <div class="header">
+                    <div>
+                        <ol class="breadcrumb">
+                            <li><a href="/pc/download">游戏下载</a></li>
+                            <li class="active">下载地址</li>
+                        </ol>
+                    </div>
                     <ul class="clearfix">
                         <li class="line"></li>
                         <li><h1>下载地址</h1></li>
                     </ul>
-                    <ol class="breadcrumb">
-                        <li><a href="/pc/download">游戏下载</a></li>
-                        <li class="active">下载地址</li>
-                    </ol>
                 </div>
 
                 <div id="content">
@@ -56,6 +58,7 @@
 </div>
 
 <% include pop_window.ejs %>
+<% include modal.ejs %>
 
 
 

@@ -33,5 +33,18 @@ define(function(require, exports, module) {
                 isAnimating = false;
             });
         });
+
+
+
+//still building modal mention
+        $(
+            ".contact-us-small," +
+            ".first-row .middle, .first-row .right," +
+            ".second-row .contact-us-big"
+        ).on("click", function (e) {
+                $("#myModal").modal();
+
+                e.preventDefault();
+            });
     };
 });

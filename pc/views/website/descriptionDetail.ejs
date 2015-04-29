@@ -1,20 +1,22 @@
 <div class="description-detail">
-    <div class="header clearfix">
+    <div class="header">
+        <div>
+            <ol class="breadcrumb">
+                <li><a href="/pc/description">游戏介绍</a></li>
+                <li><%= model.title%></li>
+                <li class="active">正文</li>
+            </ol>
+        </div>
         <ul class="clearfix">
             <li class="line"></li>
-            <li><h1><%= description.title %></h1></li>
+            <li><h1><%= model.title %></h1></li>
         </ul>
-        <ol class="breadcrumb">
-            <li><a href="/pc/description">游戏介绍</a></li>
-            <li><%= description.title%></li>
-            <li class="active">正文</li>
-        </ol>
     </div>
 
     <div id="content">
         <div class="body">
             <p>
-                <%- description.body %>
+                <%- model.body %>
             </p>
         </div>
     </div>

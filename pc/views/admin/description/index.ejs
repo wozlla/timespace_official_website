@@ -11,7 +11,7 @@
         <% categoryData.data.forEach(function(model){%>
         <li class="clearfix">
             <span>
-                <%= model.title %>
+                <a href="/pc/description?id=<%=model._id%>" target="_blank"><%= model.title%></a></span>
             </span>
             <div>
                 <a class="update" href="#" onclick="index.showUpdatePage('/pc/admin/description/updatePage','<%= model._id %>')">修改</a>

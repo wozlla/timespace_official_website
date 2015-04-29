@@ -3,7 +3,10 @@ ul {
   ul span {
     padding-right: 30px; }
   ul div {
-    float: right !important; }
+    margin-left: 100px;
+    float: left; }
 
 h3 {
   margin: 0; }
+
+/*# sourceMappingURL=global.css.map */

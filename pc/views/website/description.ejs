@@ -23,15 +23,20 @@
 
     <section class="content">
         <div id="content-container">
-            <div class="header clearfix">
+            <% if(model){%>
+            <%include descriptionDetail.ejs%>
+            <% }else{%>
+            <div class="header">
+                <div>
+                    <ol class="breadcrumb">
+                        <li><a href="/pc/description">游戏介绍</a></li>
+                        <li class="active">介绍列表</li>
+                    </ol>
+                </div>
                 <ul class="clearfix">
                     <li class="line"></li>
                     <li><h1>游戏介绍</h1></li>
                 </ul>
-                <ol class="breadcrumb">
-                    <li><a href="/pc/description">游戏介绍</a></li>
-                    <li class="active">介绍列表</li>
-                </ol>
             </div>
 
             <div id="content">
@@ -53,6 +58,7 @@
             </div>
         </div>
 
+        <% }%>
 
 
         <% include shared.ejs %>
@@ -67,7 +73,7 @@
     </div>
 
 <% include pop_window.ejs %>
-
+<% include modal.ejs %>
 
 
 <% include footer.ejs %>

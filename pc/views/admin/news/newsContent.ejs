@@ -1,7 +1,8 @@
 <ul>
     <% for(var i = 0, len = news.length; i < len; i++){%>
     <li class="clearfix">
-        <span class="title"><%= news[i].title%></span>
+
+        <span class="title"><a href="/pc/news?id=<%=news[i]._id%>" target="_blank"><%= news[i].title%></a></span>
             <span class="time">
                 <%= news[i].time %>
             </span>
