@@ -1,21 +1,21 @@
 (function() {
 
-    if (isIOS) {
-        setTimeout(function() {
-            snowFall.snow(document.body, {
-                images: [
-                    "images/flower_1.png",
-                    "images/flower_2.png"
-                ],
-                shadow: false,
-                maxSpeed: 2,
-                flakeCount: 5,
-                minSize: 20,
-                maxSize: 50,
-                useTransform: true
-            });
-        }, 2000);
-    }
+    //if (isIOS) {
+    //    setTimeout(function() {
+    //        snowFall.snow(document.body, {
+    //            images: [
+    //                "images/flower_1.png",
+    //                "images/flower_2.png"
+    //            ],
+    //            shadow: false,
+    //            maxSpeed: 2,
+    //            flakeCount: 5,
+    //            minSize: 20,
+    //            maxSize: 50,
+    //            useTransform: true
+    //        });
+    //    }, 2000);
+    //}
 
     function init() {
         var $$ = Dom7;
@@ -71,10 +71,20 @@
 
         var scale = window.innerWidth / 640;
         $$('.actions-content').transform("scale(" + scale + ',' + scale + ')');
+        setTimeout(function() {
+            $$('.actions-content').css('display', 'block');
+        }, 100);
 
-        $$('.ts-actions-item').on('click', function() {
+        $$('.ts-good-activity').on('click', function() {
             if(sliderOk) {
-                timespace.popup('.ts-popup-meng');
+                var $item = $$(this);
+                if($item.hasClass('one')) {
+                    timespace.popup('.ts-popup-meng');
+                } else if($item.hasClass('two')) {
+                    timespace.popup('.ts-popup-jiang');
+                } else if($item.hasClass('three')) {
+                    timespace.popup('.ts-popup-fan');
+                }
             }
         });
 
@@ -88,15 +98,14 @@
         /**
          * second popup menu
          */
-        $$('.ts-data-popup-li').on('click', function() {
-            var notify = timespace.addNotification({
-                title: '时空召唤',
-                message: '该功能即将开放，敬请期待!',
-                closeIcon: false
-            });
-            setTimeout(function() {
-                timespace.closeNotification(notify);
-            }, 1500);
+        //$$('.ts-data-popup-li').on('click', function() {
+        //    var href = $$(this).find('a').attr('href');
+        //    window.location = href;
+        //});
+
+        $$('.ts-popup-zhiliao .item-content').on('click', function(e) {
+            var url = $$(this).data('url');
+            window.location = url;
         });
 
         /*
