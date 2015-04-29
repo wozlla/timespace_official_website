@@ -3,8 +3,10 @@ var settings = require("../setting"),
     Connection = require("mongodb").Connection,
     Server = require("mongodb").Server;
 
-module.exports = new Db(
-    settings.db,
-    new Server(settings.host, settings.dbPort),
-    {safe: true}
-);
+module.exports.createDb = function(){
+    return new Db(
+        settings.db,
+        new Server(settings.host, settings.dbPort),
+        {safe: true}
+    );
+} ;

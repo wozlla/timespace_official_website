@@ -7,6 +7,7 @@ function News(){
 
 //存储一篇文章及其相关信息
 News.prototype.add = function(newsObj, callback) {
+    var db = mongodb.createDb();
     var date = new Date();
     //存储各种时间格式，方便以后扩展
     //todo use moment
@@ -23,22 +24,22 @@ News.prototype.add = function(newsObj, callback) {
     news.time = time.day;
 
     //打开数据库
-    mongodb.open(function (err, db) {
+    db.open(function (err, db) {
         if (err) {
-            mongodb.close();
+            db.close();
             return callback(err);
         }
         //读取 posts 集合
         db.collection("news", function (err, collection) {
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
 
             collection.insert(news, {
                 safe: true
             }, function (err) {
-                mongodb.close();
+                db.close();
                 if (err) {
                     return callback(err);//失败！返回 err
                 }
@@ -49,15 +50,17 @@ News.prototype.add = function(newsObj, callback) {
 };
 
 News.prototype.update = function(id, data, callback){
-    mongodb.open(function (err, db) {
+    var db = mongodb.createDb();
+
+    db.open(function (err, db) {
         if (err) {
-            mongodb.close();
+            db.close();
             return callback(err);
         }
         //读取 posts 集合
         db.collection("news", function (err, collection) {
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
             var query = {};
@@ -68,7 +71,7 @@ News.prototype.update = function(id, data, callback){
             collection.update(query, {
                 $set:data   //only set fields contained in data(e.g: not edit "time" field)
             }, null, function (err) {
-                mongodb.close();
+                db.close();
                 if (err) {
                     return callback(err);//失败！返回 err
                 }
@@ -79,15 +82,17 @@ News.prototype.update = function(id, data, callback){
 };
 
 News.prototype.remove = function(id, callback){
-    mongodb.open(function (err, db) {
+    var db = mongodb.createDb();
+
+    db.open(function (err, db) {
         if (err) {
-            mongodb.close();
+            db.close();
             return callback(err);
         }
         //读取 posts 集合
         db.collection("news", function (err, collection) {
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
             var query = {};
@@ -96,7 +101,7 @@ News.prototype.remove = function(id, callback){
             }
 
             collection.remove(query, null, function (err) {
-                mongodb.close();
+                db.close();
                 if (err) {
                     return callback(err);
                 }
@@ -108,16 +113,18 @@ News.prototype.remove = function(id, callback){
 
 //读取文章及其相关信息
 News.prototype.get = function(id, callback) {
+    var db = mongodb.createDb();
+
     //打开数据库
-    mongodb.open(function (err, db) {
+    db.open(function (err, db) {
         if (err) {
-            mongodb.close();
+            db.close();
             return callback(err);
         }
         //读取 posts 集合
         db.collection("news", function(err, collection) {
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
             var query = {};
@@ -126,7 +133,7 @@ News.prototype.get = function(id, callback) {
             }
             //根据 query 对象查询文章
             collection.findOne(query, function (err, docs) {
-                mongodb.close();
+                db.close();
                 if (err) {
                     return callback(err);//失败！返回 err
                 }
@@ -137,18 +144,19 @@ News.prototype.get = function(id, callback) {
 };
 
 News.prototype.getList = function(pageNumber, pageSize, callback) {
+    var db = mongodb.createDb();
     var skipCount = (pageNumber - 1) * pageSize,
         limitCount = pageSize;
 
-    mongodb.open(function (err, db) {
+    db.open(function (err, db) {
         if (err) {
-            mongodb.close();
+            db.close();
             return callback(err);
         }
         //读取 posts 集合
         db.collection("news", function(err, collection) {
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
 
@@ -160,7 +168,7 @@ News.prototype.getList = function(pageNumber, pageSize, callback) {
                     _id: -1
                 }).skip(skipCount).limit(limitCount)
                     .toArray(function (err, docs) {
-                        mongodb.close();
+                        db.close();
                         if (err) {
                             return callback(err);//失败！返回 err
                         }

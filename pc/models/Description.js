@@ -9,24 +9,25 @@ function Description(){
 Description.prototype.add = function(descriptionObj, callback) {
     //要存入数据库的文档
     var description = descriptionObj;
+    var db = mongodb.createDb();
 
     //打开数据库
-    mongodb.open(function (err, db) {
+    db.open(function (err, db) {
         if (err) {
-            mongodb.close();
+            db.close();
             return callback(err);
         }
         //读取 posts 集合
         db.collection("description", function (err, collection) {
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
 
             collection.insert(description, {
                 safe: true
             }, function (err) {
-                mongodb.close();
+                db.close();
                 if (err) {
                     return callback(err);//失败！返回 err
                 }
@@ -37,15 +38,17 @@ Description.prototype.add = function(descriptionObj, callback) {
 };
 
 Description.prototype.update = function(id, data, callback){
-    mongodb.open(function (err, db) {
+    var db = mongodb.createDb();
+
+    db.open(function (err, db) {
         if (err) {
-            mongodb.close();
+            db.close();
             return callback(err);
         }
         //读取 posts 集合
         db.collection("description", function (err, collection) {
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
             var query = {};
@@ -56,7 +59,7 @@ Description.prototype.update = function(id, data, callback){
             collection.update(query, {
                 $set:data   //only set fields contained in data
             }, null, function (err) {
-                mongodb.close();
+                db.close();
                 if (err) {
                     return callback(err);//失败！返回 err
                 }
@@ -67,15 +70,17 @@ Description.prototype.update = function(id, data, callback){
 };
 
 Description.prototype.updateByCategory = function(category, data, callback){
-    mongodb.open(function (err, db) {
+    var db = mongodb.createDb();
+
+    db.open(function (err, db) {
         if (err) {
-            mongodb.close();
+            db.close();
             return callback(err);
         }
         //读取 posts 集合
         db.collection("description", function (err, collection) {
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
             var query = {};
@@ -91,11 +96,11 @@ Description.prototype.updateByCategory = function(category, data, callback){
                 /*!because this is used in cascade delete case,
                  so close ouside!
 
-                 mongodb.close();
+                 db.close();
                  */
                 if (err) {
                     //if error, should close whether it's in cascade delete case or not;
-                    mongodb.close();
+                    db.close();
                     return callback(err);
                 }
                 callback(null);
@@ -105,15 +110,17 @@ Description.prototype.updateByCategory = function(category, data, callback){
 };
 
 Description.prototype.remove = function(id, callback){
-    mongodb.open(function (err, db) {
+    var db = mongodb.createDb();
+
+    db.open(function (err, db) {
         if (err) {
-            mongodb.close();
+            db.close();
             return callback(err);
         }
         //读取 posts 集合
         db.collection("description", function (err, collection) {
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
             var query = {};
@@ -122,7 +129,7 @@ Description.prototype.remove = function(id, callback){
             }
 
             collection.remove(query, null, function (err) {
-                mongodb.close();
+                db.close();
                 if (err) {
                     return callback(err);
                 }
@@ -134,15 +141,17 @@ Description.prototype.remove = function(id, callback){
 
 
 Description.prototype.removeByCategory = function(category, callback){
-    mongodb.open(function (err, db) {
+    var db = mongodb.createDb();
+
+    db.open(function (err, db) {
         if (err) {
-            mongodb.close();
+            db.close();
             return callback(err);
         }
         //读取 posts 集合
         db.collection("description", function (err, collection) {
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
             var query = {};
@@ -154,11 +163,11 @@ Description.prototype.removeByCategory = function(category, callback){
                 /*!because this is used in cascade delete case,
                 so close ouside!
 
-                 mongodb.close();
+                 db.close();
                  */
                 if (err) {
                     //if error, should close whether it's in cascade delete case or not;
-                    mongodb.close();
+                    db.close();
                     return callback(err);
                 }
                 callback(null);
@@ -169,16 +178,18 @@ Description.prototype.removeByCategory = function(category, callback){
 
 //读取文章及其相关信息
 Description.prototype.get = function(id, callback) {
+    var db = mongodb.createDb();
+
     //打开数据库
-    mongodb.open(function (err, db) {
+    db.open(function (err, db) {
         if (err) {
-            mongodb.close();
+            db.close();
             return callback(err);
         }
         //读取 posts 集合
         db.collection("description", function(err, collection) {
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
             var query = {};
@@ -187,7 +198,7 @@ Description.prototype.get = function(id, callback) {
             }
             //根据 query 对象查询文章
             collection.findOne(query, function (err, doc) {
-                mongodb.close();
+                db.close();
                 if (err) {
                     return callback(err);//失败！返回 err
                 }
@@ -198,14 +209,16 @@ Description.prototype.get = function(id, callback) {
 };
 
 Description.prototype.getList = function(callback) {
-    mongodb.open(function (err, db) {
+    var db = mongodb.createDb();
+
+    db.open(function (err, db) {
         if (err) {
-            mongodb.close();
+            db.close();
             return callback(err);
         }
         db.collection("description", function(err, collection) {
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
 
@@ -222,7 +235,7 @@ Description.prototype.getList = function(callback) {
                         category:-1
                     }
                     }]).toArray(function (err, docs) {
-                        mongodb.close();
+                        db.close();
                         if (err) {
                             return callback(err);//失败！返回 err
                         }

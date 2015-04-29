@@ -10,23 +10,24 @@ function DescriptionCategory(){
 DescriptionCategory.prototype.add = function(descriptionCategoryObj, callback) {
     //要存入数据库的文档
     var descriptionCategory = descriptionCategoryObj;
+    var db = mongodb.createDb();
 
     //打开数据库
-    mongodb.open(function (err, db) {
+    db.open(function (err, db) {
         if (err) {
-            mongodb.close();
+            db.close();
             return callback(err);
         }
         db.collection("descriptionCategory", function (err, collection) {
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
 
             collection.insert(descriptionCategory, {
                 safe: true
             }, function (err) {
-                mongodb.close();
+                db.close();
                 if (err) {
                     return callback(err);//失败！返回 err
                 }
@@ -38,10 +39,11 @@ DescriptionCategory.prototype.add = function(descriptionCategoryObj, callback) {
 
 DescriptionCategory.prototype.update = function(id, data, callback){
     var self = this;
+    var db = mongodb.createDb();
 
-    mongodb.open(function (err, db) {
+    db.open(function (err, db) {
         if (err) {
-            mongodb.close();
+            db.close();
             return callback(err);
         }
 
@@ -51,7 +53,7 @@ DescriptionCategory.prototype.update = function(id, data, callback){
         //then delete descriptionCategory
         self.get(id, function (err, model) {
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
 
@@ -62,7 +64,7 @@ DescriptionCategory.prototype.update = function(id, data, callback){
             }, function (err) {
                 db.collection("descriptionCategory", function (err, collection) {
                     if (err) {
-                        mongodb.close();
+                        db.close();
                         return callback(err);
                     }
                     var query = {};
@@ -73,7 +75,7 @@ DescriptionCategory.prototype.update = function(id, data, callback){
                     collection.update(query, {
                         $set: data   //only set fields contained in data
                     }, null, function (err) {
-                        mongodb.close();
+                        db.close();
                         if (err) {
                             return callback(err);//失败！返回 err
                         }
@@ -87,10 +89,11 @@ DescriptionCategory.prototype.update = function(id, data, callback){
 
 DescriptionCategory.prototype.remove = function(id, callback){
     var self = this;
+    var db = mongodb.createDb();
 
-    mongodb.open(function (err, db) {
+    db.open(function (err, db) {
         if (err) {
-            mongodb.close();
+            db.close();
             return callback(err);
         }
 
@@ -100,7 +103,7 @@ DescriptionCategory.prototype.remove = function(id, callback){
         //then delete descriptionCategory
         self.get(id, function(err, model){
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
 
@@ -109,7 +112,7 @@ DescriptionCategory.prototype.remove = function(id, callback){
             description.removeByCategory(model.name, function(err){
                 db.collection("descriptionCategory", function (err, collection) {
                     if (err) {
-                        mongodb.close();
+                        db.close();
                         return callback(err);
                     }
 
@@ -119,7 +122,7 @@ DescriptionCategory.prototype.remove = function(id, callback){
                     }
 
                     collection.remove(query, null, function (err) {
-                        mongodb.close();
+                        db.close();
                         if (err) {
                             return callback(err);
                         }
@@ -133,15 +136,17 @@ DescriptionCategory.prototype.remove = function(id, callback){
 
 //读取文章及其相关信息
 DescriptionCategory.prototype.get = function(id, callback) {
+    var db = mongodb.createDb();
+
     //打开数据库
-    mongodb.open(function (err, db) {
+    db.open(function (err, db) {
         if (err) {
-            mongodb.close();
+            db.close();
             return callback(err);
         }
         db.collection("descriptionCategory", function(err, collection) {
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
             var query = {};
@@ -149,7 +154,7 @@ DescriptionCategory.prototype.get = function(id, callback) {
                 query._id = new ObjectId(id);
             }
             collection.findOne(query, function (err, doc) {
-                mongodb.close();
+                db.close();
                 if (err) {
                     return callback(err);//失败！返回 err
                 }
@@ -160,20 +165,22 @@ DescriptionCategory.prototype.get = function(id, callback) {
 };
 
 DescriptionCategory.prototype.getList = function(callback) {
-    mongodb.open(function (err, db) {
+    var db = mongodb.createDb();
+
+    db.open(function (err, db) {
         if (err) {
-            mongodb.close();
+            db.close();
             return callback(err);
         }
         db.collection("descriptionCategory", function(err, collection) {
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
             collection.find().sort({
                 name: -1
             }).toArray(function (err, docs) {
-                mongodb.close();
+                db.close();
                 if (err) {
                     return callback(err);//失败！返回 err
                 }
