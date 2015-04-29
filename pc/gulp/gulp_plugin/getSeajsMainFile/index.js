@@ -2,16 +2,17 @@ var through = require('through-gulp'),
     gutil = require('gulp-util'),
     Vinyl = require('vinyl'),
     path = require('path'),
-    fs = require('fs');
+    fs = require('fs'),
+mapOperator = require('../lib/resourceMapOperator');
 
-//var REGEX_MAINFILE_URL = /(seajs\.use\((['"]))(.+)(\2)/mg;
 
 var errorFunc = null;
-var PLUGIN_NAME = "rewriteStaticResourceUrl";
+var PLUGIN_NAME = "getSeajsMainFile";
 
 //todo seajs.use path can be other path(not only the "/pc/js/xxx", but also like "js/xxx"(use base or align config)
 function getFileContent() {
-    // creating a stream through which each file will pass
+    var seajsOperator = mapOperator.seajs;
+
     return through(function (file, encoding, callback) {
         var self = this;
 
@@ -36,32 +37,14 @@ function getFileContent() {
             var dist = null;
 
 
-            //todo common getFile plugin, pass param defined command data
-
-
 
             for(i in map){
                 if(map.hasOwnProperty(i)){
-                    seajsMainData = map[i].filter(function(data){
-                        return data.command === "seajsMain";
-                    })[0];
+                    var data = seajsOperator.parse(map[i]);
+                    var mainFilePath = data.mainFilePath;
 
-
-                    //todo common
-
-                    var mainFilePath = path.join(process.cwd(), seajsMainData.fileUrlArr[0]);
-
-
-                    dist = seajsMainData.dist;
                     fileContent = fs.readFileSync(mainFilePath, "utf8");
 
-                    //var configPath = path.join(process.cwd(), "gulp/buildConfig.json");
-                    //var buildConfig = JSON.parse(fs.readFileSync(configPath,"utf8"));
-
-
-                    //fileContent = fileContent.replace(REGEX_MAINFILE_URL, function(fullMatch, p1, p2, p3, p4){
-                    //    return p1 + convertToGulpCanReadPathByConfig(p3, buildConfig) + p4;
-                    //});
 
                     var newFile = new Vinyl({
                         base: path.dirname(mainFilePath),
@@ -70,7 +53,7 @@ function getFileContent() {
                     });
 
                     //custom attr for gulp-seajs-combo to set dist path
-                    newFile.dist = seajsMainData.dist;
+                    newFile.dist = data.dist;
 
                     this.push(newFile);
                 }
@@ -85,36 +68,11 @@ function getFileContent() {
             return callback();
         }
     }, function (callback) {
-        // just pipe data next, just callback to indicate that the stream's over
-        //this.push(something);
         callback();
     });
 
-    // returning the file stream
     return stream;
 }
-
-//todo move to common lib
-//function convertToGulpCanReadPathByConfig(url, buildConfig){
-//    var result = null;
-//
-//    buildConfig.seajsMainUrlMap.every(function(map){
-//        if(url.indexOf(map.staticResourcePrefix) > -1){
-//            result = url.replace(map.staticResourcePrefix, map.relativePrefix);
-//            return false;
-//        }
-//        result = url;
-//
-//        return true;
-//    });
-//
-//    return result;
-//}
-
-
-
-
-
 
 module.exports = getFileContent;
 
