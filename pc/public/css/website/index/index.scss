@@ -54,12 +54,16 @@
           color:#ffffff;
 
           ul {
-            max-height: 190px;
-            overflow: auto;
+            max-height: 145px;
+            overflow: hidden;
             scrollbar-face-color: #231259;
             padding:10px 10px 0 10px;
             position:relative;
             z-index:1;
+            
+            &:hover{
+              overflow-y:scroll;
+            }
 
             li{
               margin-bottom:15px;

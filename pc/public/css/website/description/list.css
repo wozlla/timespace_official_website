@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .description {
   background-image: url("/pc/image/bg/page_bg.png");
   background-repeat: no-repeat;
@@ -27,6 +28,8 @@
   .description .description-detail .body {
     padding: 10px 10px;
     margin-top: 20px;
-    background-color: white; }
+    background-color: white;
+    font-family: "微软雅黑";
+    font-size: 14px; }
 
 /*# sourceMappingURL=list.css.map */

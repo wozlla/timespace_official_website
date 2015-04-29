@@ -1,51 +1,53 @@
 .container {
   position: relative;
-  margin-top: 460px; }
-  .container .content {
+  margin-top: 310px; }
+  .container .container-body > .left {
     width: 658px; }
-    .container .content .header {
+    .container .container-body > .left .content .header {
       margin-top: 30px; }
-      .container .content .header > div {
+      .container .container-body > .left .content .header > div {
         text-align: right; }
-        .container .content .header > div .breadcrumb {
+        .container .container-body > .left .content .header > div .breadcrumb {
           display: block;
           background-color: transparent;
           margin: 0;
           font-size: 12px; }
-          .container .content .header > div .breadcrumb a {
+          .container .container-body > .left .content .header > div .breadcrumb a {
             color: #5f5667 !important; }
-          .container .content .header > div .breadcrumb > li + li:before {
+          .container .container-body > .left .content .header > div .breadcrumb > li + li:before {
             content: ">" !important; }
-      .container .content .header > ul {
+      .container .container-body > .left .content .header > ul {
         padding-left: 15px;
         padding-bottom: 15px;
         display: block;
         border-bottom: 1px solid #d2d2d2; }
-        .container .content .header > ul .line {
+        .container .container-body > .left .content .header > ul .line {
           border: 5px solid red;
           width: 5px;
           height: 32px;
           height: 32px \9;
           border-top-width: 30px \9; }
-        .container .content .header > ul h1 {
+        .container .container-body > .left .content .header > ul h1 {
           margin: 0;
           margin-left: 5px;
           margin-top: 1px;
           max-width: 600px;
           color: #de6666;
           font-size: 28px; }
-    .container .content #content {
+    .container .container-body > .left .content #content {
       margin-top: 20px \9; }
-  .container .right-column {
-    position: absolute;
-    left: 705px;
-    top: 130px; }
-    .container .right-column > img {
+  .container .container-body > .right {
+    width: 301px; }
+    .container .container-body > .right .right-column {
       width: 254px;
-      height: 120px; }
-    .container .right-column hr {
-      margin-top: 40px;
-      margin-bootom: 40px;
-      border-top: 1px solid #d2d2d2; }
+      margin: 45px 0 0 47px; }
+      .container .container-body > .right .right-column > img {
+        width: 254px;
+        height: 120px;
+        margin-bottom: 20px; }
+      .container .container-body > .right .right-column hr {
+        margin-top: 40px;
+        margin-bootom: 40px;
+        border-top: 1px solid #d2d2d2; }
 
 /*# sourceMappingURL=page.css.map */

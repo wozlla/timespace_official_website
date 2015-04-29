@@ -10,7 +10,7 @@
 
     <% include logoHeader.ejs %>
 
-    <section class="banner-bg" >
+    <section class="banner-bg banner-small" >
         <div id="banner-bg" class="bg" >
             <img src="/pc/image/download/download.png">
         </div>
@@ -21,43 +21,48 @@
             <% include nav.ejs %>
         </header>
 
-        <section class="content">
-            <div id="content-container">
-                <div class="header">
-                    <div>
-                        <ol class="breadcrumb">
-                            <li><a href="/pc/download">游戏下载</a></li>
-                            <li class="active">下载地址</li>
-                        </ol>
+        <section class="container-body clearfix">
+            <section class="left">
+                <section class="content">
+                    <div id="content-container">
+                        <div class="header">
+                            <div>
+                                <ol class="breadcrumb">
+                                    <li><a href="/pc/download">游戏下载</a></li>
+                                    <li class="active">下载地址</li>
+                                </ol>
+                            </div>
+                            <ul class="clearfix">
+                                <li class="line"></li>
+                                <li><h1>下载地址</h1></li>
+                            </ul>
+                        </div>
+
+                        <div id="content">
+                            <div class="body clearfix">
+                                <img src="/pc/image/download/xiazaidizhi.jpg" alt=""/>
+                                <img src="/pc/image/download/weixingongzhonghao.jpg" alt=""/>
+                            </div>
+                        </div>
                     </div>
-                    <ul class="clearfix">
-                        <li class="line"></li>
-                        <li><h1>下载地址</h1></li>
-                    </ul>
-                </div>
-
-                <div id="content">
-                    <div class="body clearfix">
-                        <img src="/pc/image/download/xiazaidizhi.jpg" alt=""/>
-                        <img src="/pc/image/download/weixingongzhonghao.jpg" alt=""/>
-                    </div>
-                </div>
-            </div>
 
 
 
-            <% include shared.ejs %>
+                    <% include shared.ejs %>
 
+                </section>
+            </section>
+
+            <section class="right">
+                <% include rightColumn.ejs %>
+            </section>
         </section>
-
-        <% include right_column.ejs %>
-
     </section>
 
     <% include pageFooter.ejs %>
 </div>
 
-<% include pop_window.ejs %>
+<% include popWindow.ejs %>
 <% include modal.ejs %>
 
 

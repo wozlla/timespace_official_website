@@ -20,17 +20,19 @@
           background-color: #231259;
           color: #ffffff; }
           .index .container .content .first-row .left ul {
-            max-height: 190px;
-            overflow: auto;
+            max-height: 145px;
+            overflow: hidden;
             scrollbar-face-color: #231259;
             padding: 10px 10px 0 10px;
             position: relative;
             z-index: 1; }
+            .index .container .content .first-row .left ul:hover {
+              overflow-y: scroll; }
             .index .container .content .first-row .left ul li {
               margin-bottom: 15px;
               cursor: pointer; }
               .index .container .content .first-row .left ul li h3 {
-                font-size: 20px; }
+                font-size: 14px; }
               .index .container .content .first-row .left ul li span {
                 display: block;
                 font-size: 12px; }

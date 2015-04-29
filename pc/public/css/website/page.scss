@@ -2,11 +2,13 @@
 
 .container{
   position:relative;
-  margin-top:460px;
+  margin-top:310px;
+
+.container-body >.left{
+  width:658px;
 
   .content{
-    width:658px;
-
+  
     .header{
       margin-top:30px;
       //width: 550px;
@@ -68,16 +70,24 @@
       margin-top:20px \9;
     }
   }
+}
+
+.container-body >.right{
+  width:301px;
 
   .right-column{
-    position: absolute;
-    left:705px;
-    top:130px;
-    //width: 215px;
+    //position: absolute;
+    //left:705px;
+    //top:130px;
+    width: 254px;
+    
+    margin:45px 0 0 47px;
+
 
     >img{
       width: 254px;
       height: 120px;
+      margin-bottom:20px;
     }
 
     hr{
@@ -86,6 +96,7 @@
 border-top: 1px solid rgb(210,210,210);
     }
   }
+}
 }
 
 

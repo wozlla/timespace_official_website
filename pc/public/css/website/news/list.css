@@ -47,7 +47,9 @@
   .news .news-detail .body {
     padding: 10px 10px;
     margin-top: 20px;
-    background-color: white; }
+    background-color: white;
+    font-family: "微软雅黑";
+    font-size: 14px; }
     .news .news-detail .body span {
       margin-bottom: 10px;
       display: block; }

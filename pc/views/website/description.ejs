@@ -10,69 +10,75 @@
 
 <% include logoHeader.ejs %>
 
-    <section class="banner-bg" >
+    <section class="banner-bg banner-small" >
         <div id="banner-bg" class="bg" >
             <img src="/pc/image/description/description.png">
         </div>
     </section>
 
-<section class="container">
-    <header class="normal-nav">
-        <% include nav.ejs %>
-    </header>
+    <section class="container">
+        <header class="normal-nav">
+            <% include nav.ejs %>
+        </header>
 
-    <section class="content">
-        <div id="content-container">
-            <% if(model){%>
-            <%include descriptionDetail.ejs%>
-            <% }else{%>
-            <div class="header">
-                <div>
-                    <ol class="breadcrumb">
-                        <li><a href="/pc/description">游戏介绍</a></li>
-                        <li class="active">介绍列表</li>
-                    </ol>
-                </div>
-                <ul class="clearfix">
-                    <li class="line"></li>
-                    <li><h1>游戏介绍</h1></li>
-                </ul>
-            </div>
+        <section class="container-body clearfix">
+            <section class="left">
+                <section class="content">
+                    <div id="content-container">
+                        <% if(model){%>
+                        <%include descriptionDetail.ejs%>
+                        <% }else{%>
+                        <div class="header">
+                            <div>
+                                <ol class="breadcrumb">
+                                    <li><a href="/pc/description">游戏介绍</a></li>
+                                    <li class="active">介绍列表</li>
+                                </ol>
+                            </div>
+                            <ul class="clearfix">
+                                <li class="line"></li>
+                                <li><h1>游戏介绍</h1></li>
+                            </ul>
+                        </div>
 
-            <div id="content">
-                <div class="body">
-                    <% descriptions.forEach(function(categoryData){%>
-                    <div class="item">
-                        <h1><%= categoryData._id %></h1>
+                        <div id="content">
+                            <div class="body">
+                                <% descriptions.forEach(function(categoryData){%>
+                                <div class="item">
+                                    <h1><%= categoryData._id %></h1>
 
-                        <ul class="list clearfix">
-                            <% categoryData.data.forEach(function(model){%>
-                            <li onclick="description.showDetail('/pc/description/detailPage', '<%= model._id %>')">
-                                <%= model.title%>
-                            </li>
-                            <% })%>
-                        </ul>
+                                    <ul class="list clearfix">
+                                        <% categoryData.data.forEach(function(model){%>
+                                        <li onclick="description.showDetail('/pc/description/detailPage', '<%= model._id %>')">
+                                            <%= model.title%>
+                                        </li>
+                                        <% })%>
+                                    </ul>
+                                </div>
+                                <% })%>
+                            </div>
+                        </div>
                     </div>
-                    <% })%>
-                </div>
-            </div>
-        </div>
 
-        <% }%>
+                    <% }%>
 
 
-        <% include shared.ejs %>
+                    <% include shared.ejs %>
 
-    </section>
+                </section>
+            </section>
 
-    <% include right_column.ejs %>
+            <section class="right">
+                <% include rightColumn.ejs %>
+            </section>
 
+        </section>
 </section>
 
     <% include pageFooter.ejs %>
     </div>
 
-<% include pop_window.ejs %>
+<% include popWindow.ejs %>
 <% include modal.ejs %>
 
 

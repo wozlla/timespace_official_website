@@ -15,7 +15,11 @@ module.exports = (function(){
     }
 
     function removeHtmlLabel(string){
-        return String(string).replace(/<[^>]+>|<\/[^>]+>/g, "");
+        var htmlStr = [
+            "&quot;","&amp;","&lt;","&nbsp;", "&gt;", "&#39", "&#x2F"
+        ].join("|");
+
+        return String(string).replace(new RegExp("<[^>]+>|<\/[^>]+>|" + htmlStr, "g"), "");
     }
 
     return {

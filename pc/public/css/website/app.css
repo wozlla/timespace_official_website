@@ -186,7 +186,7 @@ ul.footer {
     z-index: 0; }
   .contact-us-small .right {
     right: -75px;
-    top: 30px;
+    top: 58px;
     width: 200px;
     height: 76px;
     position: absolute;
@@ -479,5 +479,8 @@ footer.page-footer {
   .banner-bg .bg {
     width: 100%;
     height: 100%; }
+
+.banner-small {
+  height: 400px; }
 
 /*# sourceMappingURL=app.css.map */
