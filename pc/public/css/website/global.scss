@@ -135,7 +135,7 @@ ul.footer{
   }
   .pop-out{
     i{
-      @include arrow($color, 2px, -3px, 8px);
+      @include arrow($color, 3px, -2px, 8px);
       top: 3px \9;
       left:-1px \9;
     }
@@ -148,7 +148,7 @@ ul.footer{
   }
   .pop-in{
     i{
-      @include rightArrow($color, 2px, 9px, 8px);
+      @include rightArrow($color, 3px, 9px, 8px);
     }
 
     & ~ .origin{

@@ -102,8 +102,8 @@ ul.footer {
     border: 8px solid;
     border-color: transparent #8899de transparent transparent;
     position: absolute;
-    top: 2px;
-    left: -3px;
+    top: 3px;
+    left: -2px;
     top: 3px \9;
     left: -1px \9; }
   .pop-window .pop-out + .origin {
@@ -117,7 +117,7 @@ ul.footer {
     border: 8px solid;
     border-color: transparent transparent transparent #8899de;
     position: absolute;
-    top: 2px;
+    top: 3px;
     left: 9px; }
   .pop-window .pop-in ~ .origin {
     display: none; }
