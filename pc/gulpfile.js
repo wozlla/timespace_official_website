@@ -139,7 +139,6 @@ gulp.task('packSeajs', function(){
         //just set to cwd path,the dest path is set by dist attr in resourceMap.json
 
         .pipe(gulp.dest('./'));
-    //.pipe(gulp.dest('./test_dist'));
 });
 
 

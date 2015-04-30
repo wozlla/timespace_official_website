@@ -110,7 +110,7 @@ describe("getNoCmdJsFile", function () {
             stream.pipe(through(function (file, encoding, callback) {
                 expect(file.contents.toString()).toEqual(
                     content["jsContent"+index]
-                )
+                );
 
                 index = index + 1;
 

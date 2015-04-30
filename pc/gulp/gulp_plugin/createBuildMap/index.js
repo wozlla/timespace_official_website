@@ -5,8 +5,6 @@ var through = require('through-gulp'),
 buildConfigOperator = require('../lib/buildConfigOperator');
 
 
-var errorFunc = null;
-
 var REGEX_BEGINE= /[^\r\n]+#build:js:([^\s]+)\s([^#]+)[^\r\n]+/gm,
     REGEX_END = /[^\r\n]+#endbuild#[^\r\n]+/gm,
     //[^\1] 匹配失败!!!why?
@@ -18,19 +16,9 @@ var result = {};
 
 //todo filter annotated script
 function createBuildMap() {
-    // creating a stream through which each file will pass
     return through(function(file, encoding,callback) {
-        var self = this;
-
-        errorFunc = function(msg){
-            gutil.log(msg);
-            self.emit('error', new gutil.PluginError(PLUGIN_NAME, msg));
-        }
-
-        // do whatever necessary to process the file
         if (file.isNull()) {
-            errorFunc('Streaming not supported');
-            //this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
+            this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
             return callback();
         }
         if (file.isBuffer()) {
@@ -41,7 +29,7 @@ function createBuildMap() {
             var configPath = path.join(process.cwd(), "gulp/buildConfig.json");
             var buildConfig = JSON.parse(fs.readFileSync(configPath, "utf8"));
 
-            var pageMapArr = parse(fileContent, buildConfig);
+            var pageMapArr = parse(fileContent, buildConfig, this);
 
             convertToGulpCanReadPath(pageMapArr, buildConfig);
 
@@ -54,8 +42,7 @@ function createBuildMap() {
         }
         //todo support stream
         if (file.isStream()) {
-            errorFunc('Streaming not supported');
-            //this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
+            this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
             return callback();
         }
 
@@ -107,7 +94,7 @@ function createBuildMap() {
 }
 
 
-function parse(content, buildConfig){
+function parse(content, buildConfig, stream){
         var endDataArr = null,
         dataArr = null,
         command = null,
@@ -126,7 +113,7 @@ function parse(content, buildConfig){
         endDataArr = REGEX_END.exec(content);
 
         if(endDataArr === null){
-            errorFunc("should define #endbuild#");
+            stream.emit('error', new gutil.PluginError(PLUGIN_NAME, "should define #endbuild#"));
             return;
         }
 

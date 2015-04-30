@@ -13,6 +13,7 @@ var Promise = require( 'promise' ),
     //by yyc
     Vinyl = require('vinyl'),
     path = require('path'),
+    fileOperator = require('../../gulp_plugin/lib/fileOperator'),
 
     rFirstStr = /[\s\r\n\=]/,
     rDefine = /define\(\s*(['"](.+?)['"],)?/,
@@ -640,50 +641,11 @@ var filterIgnore = function( ignore, id, origId ){
 
             return _child;
         }
-        function makeRelativeToCwd(dist){
-            //path is dist path
-            //writePath should be seajsMainData.dist
-
-            //reference:
-            // gulp.dest code:vinyl-fs/lib/dest/index.js:
-
-            //function dest(outFolder, opt) {
-            //    opt = opt || {};
-            //    if (typeof outFolder !== 'string' && typeof outFolder !== 'function') {
-            //        throw new Error('Invalid output folder');
-            //    }
-            //
-            //    var options = defaults(opt, {
-            //        cwd: process.cwd()
-            //    });
-            //
-            //    if (typeof options.mode === 'string') {
-            //        options.mode = parseInt(options.mode, 8);
-            //    }
-            //
-            //    var cwd = path.resolve(options.cwd);
-            //
-            //    function saveFile (file, enc, cb) {
-            //        var basePath;
-            //        if (typeof outFolder === 'string') {
-            //            basePath = path.resolve(cwd, outFolder);
-            //        }
-            //        if (typeof outFolder === 'function') {
-            //            basePath = path.resolve(cwd, outFolder(file));
-            //        }
-            //        var writePath = path.resolve(basePath, file.relative);
-            return {base: process.cwd(),
-                path: path.resolve(process.cwd(), dist)
-            }
-        }
         var backup = extendDeep(o);
 
 
-
-
-
         return through.obj(function( file, enc, callback ){
-            if( file.isBuffer() ){
+            if( file.isBuffer()){
                 //edit by yyc
                 //should restore in multi invoke case
                 o = extendDeep(backup);
@@ -697,13 +659,7 @@ var filterIgnore = function( ignore, id, origId ){
                         //file.contents = contents;
 
 
-                        var pathData = makeRelativeToCwd(file.dist);
-
-                        var newFile = new Vinyl({
-                            base: pathData.base,
-                            path: pathData.path,
-                            contents: contents
-                        });
+                        var newFile = fileOperator.createFile(contents, file.dist);
                         //this.push(newFile);
 
 

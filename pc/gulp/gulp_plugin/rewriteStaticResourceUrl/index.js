@@ -4,23 +4,12 @@ var through = require('through-gulp'),
     fs = require('fs');
 
 
-var errorFunc = null;
 var PLUGIN_NAME = "rewriteStaticResourceUrl";
 
 function rewrite() {
-    // creating a stream through which each file will pass
     return through(function (file, encoding, callback) {
-        var self = this;
-
-        errorFunc = function (msg) {
-            gutil.log(msg);
-            self.emit('error', new gutil.PluginError(PLUGIN_NAME, msg));
-        };
-
-        // do whatever necessary to process the file
         if (file.isNull()) {
-            errorFunc('Streaming not supported');
-            //this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
+            this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
             return callback();
         }
         if (file.isBuffer()) {
@@ -35,8 +24,7 @@ function rewrite() {
         }
         //todo support stream
         if (file.isStream()) {
-            errorFunc('Streaming not supported');
-            //this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
+            this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
             return callback();
         }
     }, function (callback) {

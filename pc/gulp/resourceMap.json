@@ -5,7 +5,7 @@
       "dist": "/aaa/dist/common/no_cmd.js",
       "fileUrlArr": [
         "public/js/bower_components/jquery/dist/jquery.js",
-        "public/js/bower_components/bootstrap/dist/js/bootstrap.min.js",
+        "public/js/bower_components/bootstrap/dist/js/bootstrap.js",
         "public/js/bower_components/seajs/dist/sea.js",
         "public/js/bower_components/seajs-wrap/dist/seajs-wrap.js"
       ],
@@ -18,7 +18,7 @@
       "command": "replace",
       "dist": "/aaa/dist/common/no_cmd2.js",
       "fileUrlArr": [
-        "public/js/bower_components/bootstrap/dist/js/bootstrap.min.js",
+        "public/js/bower_components/bootstrap/dist/js/bootstrap.js",
         "public/js/bower_components/seajs/dist/sea.js"
       ],
       "startLine": 203,

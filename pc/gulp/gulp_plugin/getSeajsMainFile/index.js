@@ -1,13 +1,12 @@
 var through = require('through-gulp'),
     gutil = require('gulp-util'),
-    Vinyl = require('vinyl'),
     path = require('path'),
     fs = require('fs'),
     mapOperator = require('../lib/resourceMapOperator'),
-    buildConfigOperator = require('../lib/buildConfigOperator');
+    buildConfigOperator = require('../lib/buildConfigOperator'),
+fileOperator = require('../lib/fileOperator');
 
 var REGEX_MAINFILE_URL = /(seajs\.use\((['"]))(.+)(\2)/mg;
-var errorFunc = null;
 var PLUGIN_NAME = "getSeajsMainFile";
 
 //todo seajs.use path can be other path(not only the "/pc/js/xxx", but also like "js/xxx"(use base or align config)
@@ -17,29 +16,22 @@ function getFileContent() {
     return through(function (file, encoding, callback) {
         var self = this;
 
-        errorFunc = function (msg) {
-            gutil.log(msg);
-            self.emit('error', new gutil.PluginError(PLUGIN_NAME, msg));
-        };
-
-        // do whatever necessary to process the file
         if (file.isNull()) {
-            errorFunc('Streaming not supported');
-            //this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
+            //errorFunc('Streaming not supported');
+            this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
             return callback();
         }
         if (file.isBuffer()) {
             var fileContent = file.contents.toString();
             var map = JSON.parse(fileContent);
             var fileContent = null;
-            var self = this;
             var buildConfig = buildConfigOperator.read();
 
 
             var seajsDataArr = seajsOperator.getData(map);
 
             if(!seajsDataArr){
-                errorFunc('no seajs data');
+                this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'no seajs data'));
                 return callback();
             }
 
@@ -51,11 +43,7 @@ function getFileContent() {
 
                 fileContent = convertToAbsolutePath(fileContent, buildConfig);
 
-                var newFile = new Vinyl({
-                    base: process.cwd(),
-                    path: mainFilePath,
-                    contents: new Buffer(fileContent)
-                });
+                var newFile = fileOperator.createFile(new Buffer(fileContent), process.cwd(), mainFilePath);
 
 
                 //custom attr for gulp-seajs-combo to set dist path
@@ -68,8 +56,7 @@ function getFileContent() {
         }
         //todo support stream
         if (file.isStream()) {
-            errorFunc('Streaming not supported');
-            //this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
+            this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
             return callback();
         }
     }, function (callback) {
