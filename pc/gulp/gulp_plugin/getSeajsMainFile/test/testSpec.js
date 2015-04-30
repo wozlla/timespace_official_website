@@ -13,6 +13,7 @@ describe("getSeajsMainFile", function () {
     var stream = null;
     var fileContent = null;
     var cwd = null;
+    var buildConfig = null;
 
     beforeEach(function () {
         sandbox = sinon.sandbox.create();
@@ -39,7 +40,6 @@ describe("getSeajsMainFile", function () {
 
     describe("single main file", function(){
         var seajsMainContent = null,
-            buildConfig = null,
             resourceMap = null;
 
         beforeEach(function(){
@@ -132,6 +132,33 @@ describe("getSeajsMainFile", function () {
 
                 expect(newFile.dist).toEqual(
                     "dist/cmd.js"
+                );
+
+                done();
+            });
+
+            var testFile1 = new Vinyl({
+                //cwd: "./",
+                //base: "./file",
+                //path: filePath,
+                contents: new Buffer(
+                    fileContent
+                )
+            });
+
+
+            stream.write(testFile1);
+
+            stream.end();
+
+        });
+        it("file.base is cwd, file.path is absolute path", function(done){
+            stream.on('data', function (newFile) {
+                var contents = newFile.contents.toString();
+
+                expect(newFile.base).toEqual(cwd);
+                expect(newFile.path).toEqual(
+                    cwd + "pc/js/main.js"
                 );
 
                 done();

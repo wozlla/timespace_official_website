@@ -52,7 +52,7 @@ function getFileContent() {
                 fileContent = convertToAbsolutePath(fileContent, buildConfig);
 
                 var newFile = new Vinyl({
-                    base: path.dirname(mainFilePath),
+                    base: process.cwd(),
                     path: mainFilePath,
                     contents: new Buffer(fileContent)
                 });

@@ -7,10 +7,19 @@
         "public/js/bower_components/jquery/dist/jquery.js",
         "public/js/bower_components/bootstrap/dist/js/bootstrap.min.js",
         "public/js/bower_components/seajs/dist/sea.js",
-        "public/js/bower_components/seajs-wrap/dist/seajs-wrap.js",
-        "public/js/website/global.js",
-        "public/js/website/animation.js",
-        "public/js/website/nav.js"
+        "public/js/bower_components/seajs-wrap/dist/seajs-wrap.js"
+      ],
+      "startLine": 203,
+      "endLine": 893
+    }
+  ],
+  "/Users/y/Github/timespace_official_website/pc/gulp/gulp_plugin/createBuildMap/test/file/header.ejs": [
+    {
+      "command": "replace",
+      "dist": "/aaa/dist/common/no_cmd2.js",
+      "fileUrlArr": [
+        "public/js/bower_components/bootstrap/dist/js/bootstrap.min.js",
+        "public/js/bower_components/seajs/dist/sea.js"
       ],
       "startLine": 203,
       "endLine": 893
