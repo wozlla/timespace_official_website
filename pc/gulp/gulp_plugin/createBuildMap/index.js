@@ -1,7 +1,8 @@
 var through = require('through-gulp'),
     gutil = require('gulp-util'),
     path = require('path'),
-    fs = require('fs');
+    fs = require('fs'),
+buildConfigOperator = require('../lib/buildConfigOperator');
 
 
 var errorFunc = null;
@@ -119,7 +120,8 @@ function parse(content, buildConfig){
         segmentData = {};
 
         command = dataArr[1];
-        distUrl = convertToGulpCanReadPathByConfig(dataArr[2], buildConfig);
+        distUrl = buildConfigOperator.convertToPathRelativeToCwd(dataArr[2], buildConfig);
+        //distUrl = convertToGulpCanReadPathByConfig(dataArr[2], buildConfig);
 
         endDataArr = REGEX_END.exec(content);
 
@@ -159,9 +161,6 @@ function _getFileUrlArr(content){
     return result;
 }
 
-
-
-
 function convertToGulpCanReadPath(pageMapArr, buildConfig){
     pageMapArr.forEach(function(mapData){
         if(!mapData.fileUrlArr){
@@ -169,25 +168,9 @@ function convertToGulpCanReadPath(pageMapArr, buildConfig){
         }
 
         mapData.fileUrlArr = mapData.fileUrlArr.map(function(url){
-            return convertToGulpCanReadPathByConfig(url, buildConfig);
+            return buildConfigOperator.convertToPathRelativeToCwd(url, buildConfig);
         });
     });
-}
-
-function convertToGulpCanReadPathByConfig(url, buildConfig){
-    var result = null;
-
-    buildConfig.urlMap.every(function(map){
-        if(url.indexOf(map.staticResourcePrefix) > -1){
-            result = url.replace(map.staticResourcePrefix, map.relativePrefix);
-            return false;
-        }
-        result = url;
-
-        return true;
-    });
-
-    return result;
 }
 
 
