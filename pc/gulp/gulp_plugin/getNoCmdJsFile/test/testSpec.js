@@ -1,12 +1,11 @@
-var fs = require('fs'),
-    plugin = require('../index'),
-    assert = require('stream-assert'),
-    Vinyl = require('vinyl'),
-    path = require('path'),
-    through = require('through-gulp'),
-    convertUtils = require('../../convertUtils'),
-    sinon = require('sinon'),
-buildConfigOperator = require('../../lib/buildConfigOperator');
+var fs = require("fs"),
+    plugin = require("../index"),
+    assert = require("stream-assert"),
+    Vinyl = require("vinyl"),
+    path = require("path"),
+    through = require("through-gulp"),
+    sinon = require("sinon"),
+buildConfigOperator = require("../../lib/buildConfigOperator");
 
 describe("getNoCmdJsFile", function () {
     var sandbox = null;
@@ -116,6 +115,8 @@ describe("getNoCmdJsFile", function () {
 
                 callback();
             }, function(callback){
+                expect(index - 1).toEqual(6);
+
                 callback();
 
                 done();

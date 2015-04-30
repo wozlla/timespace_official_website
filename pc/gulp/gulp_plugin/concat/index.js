@@ -1,54 +1,58 @@
-var through = require('through-gulp'),
-    gutil = require('gulp-util'),
-    path = require('path'),
-    fs = require('fs'),
-fileOperator = require('../lib/fileOperator');
+var through = require("through-gulp"),
+    gutil = require("gulp-util"),
+    path = require("path"),
+    fs = require("fs"),
+    fileOperator = require("../lib/fileOperator");
 
 var PLUGIN_NAME = "concat";
 
 function concat() {
-    var container = {};
     var DELIMITER = "\n\r";
+    var container = {};
 
     return through(function (file, encoding, callback) {
+        var fileContent = null,
+            filePath = null;
+
         if (file.isNull()) {
-            this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
+            this.emit("error", new gutil.PluginError(PLUGIN_NAME, "Streaming not supported"));
             return callback();
         }
         if (file.isBuffer()) {
-            var fileContent = file.contents.toString();
-            var filePath = file.dist;
+            fileContent = file.contents.toString();
+            filePath = file.dist;
 
-            if(!container[filePath]){
+            if (!container[filePath]) {
                 container[filePath] = fileOperator.createFile(new Buffer(fileContent), filePath);
             }
-            else{
-                container[filePath].contents = new Buffer(
-                    container[filePath].contents.toString()
-                    + DELIMITER + fileContent
-                );
+            else {
+                fileOperator.append(container[filePath], file, DELIMITER);
             }
 
             callback();
         }
         //todo support stream
         if (file.isStream()) {
-            this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
+            this.emit("error", new gutil.PluginError(PLUGIN_NAME, "Streaming not supported"));
             return callback();
         }
     }, function (callback) {
-        var i = null;
-
-        for(i in container){
-            if(container.hasOwnProperty(i)){
-               this.push(container[i]);
-            }
-        }
+        _concatStream(container, this);
 
         callback();
     });
 
     return stream;
+}
+
+function _concatStream(container, stream){
+    var i = null;
+
+    for (i in container) {
+        if (container.hasOwnProperty(i)) {
+            stream.push(container[i]);
+        }
+    }
 }
 
 

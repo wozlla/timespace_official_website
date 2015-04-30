@@ -1,80 +1,55 @@
-var through = require('through-gulp'),
-    gutil = require('gulp-util'),
-    path = require('path'),
-    fs = require('fs'),
-buildConfigOperator = require('../lib/buildConfigOperator');
-
+var through = require("through-gulp"),
+    gutil = require("gulp-util"),
+    path = require("path"),
+    fs = require("fs"),
+    buildConfigOperator = require("../lib/buildConfigOperator");
 
 var REGEX_BEGINE= /[^\r\n]+#build:js:([^\s]+)\s([^#]+)[^\r\n]+/gm,
     REGEX_END = /[^\r\n]+#endbuild#[^\r\n]+/gm,
-    //[^\1] 匹配失败!!!why?
-    //REGEX_URL = /src=(['"])([^\1]+)\1/mg,
+//[^\1] 匹配失败!!!why?
+//REGEX_URL = /src=(['"])([^\1]+)\1/mg,
     REGEX_URL = /src=(['"])(.+)\1/mg,
     PLUGIN_NAME = "createBuildMap";
 
-var result = {};
 
 //todo filter annotated script
 function createBuildMap() {
+    var result = {};
+
     return through(function(file, encoding,callback) {
+        var fileContent = null,
+            filePath = null,
+            buildConfig = null;
+
         if (file.isNull()) {
-            this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
+            this.emit("error", new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
             return callback();
         }
         if (file.isBuffer()) {
-            var fileContent = file.contents.toString();
-            var filePath = file.path;
-
-
-            var configPath = path.join(process.cwd(), "gulp/buildConfig.json");
-            var buildConfig = JSON.parse(fs.readFileSync(configPath, "utf8"));
-
-            var pageMapArr = parse(fileContent, buildConfig, this);
-
-            convertToGulpCanReadPath(pageMapArr, buildConfig);
+            fileContent = file.contents.toString();
+            filePath = file.path;
+            buildConfig = buildConfigOperator.read();
 
             //filePath as id
-            result[filePath] = pageMapArr;
+            result[filePath] = _parse(fileContent, buildConfig, this);
 
-            //this.push(file)
             callback();
 
         }
         //todo support stream
         if (file.isStream()) {
-            this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
+            this.emit("error", new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
             return callback();
         }
-
-
-        ////todo judge command:seajs
-        //buildJs(relativeData);
-
-
-        //var content = pp.preprocess(file.contents.toString(), options || {});
-        //file.contents = new Buffer(content);
-
-        // just pipe data next, or just do nothing to process file later in flushFunction
-        // never forget callback to indicate that the file has been processed.
-        //this.push(file);
-        //callback();
     },function(callback) {
         fs.writeFileSync(
             path.join(process.cwd(), "gulp/resourceMap.json"),
             JSON.stringify(result));
 
-        //, function(e){
-        //    if(e){
-        //        gutil.log(e.message);
-        //        self.emit('error', new gutil.PluginError(PLUGIN_NAME, e.message));
-            //}
+        callback();
 
-            callback();
-        //}
-
-
-       //todo why it'll start rewrite task when not invoking callback here
-       // (mean not finishing createBuildMap task!)
+        //todo why it'll start rewrite task when not invoking callback here
+        // (mean not finishing createBuildMap task!)
 
         //fs.writeFile(
         //    path.join(process.cwd(), "gulp/resourceMap.json"),
@@ -82,52 +57,63 @@ function createBuildMap() {
         //, function(e){
         //    if(e){
         //        gutil.log(e.message);
-        //        self.emit('error', new gutil.PluginError(PLUGIN_NAME, e.message));
+        //        self.emit("error", new gutil.PluginError(PLUGIN_NAME, e.message));
         //}
         //
         //        callback();
         //});
     });
 
-    // returning the file stream
     return stream;
 }
 
 
-function parse(content, buildConfig, stream){
-        var endDataArr = null,
-        dataArr = null,
+function _parse(content, buildConfig, stream){
+    var endDataArr = null,
+        buildDataArr = null,
+        buildIndex = null,
+        endIndex = null,
         command = null,
         distUrl = null,
         fileUrlArr = null,
-            segmentData = null,
-            result = [];
+        segmentData = null,
+        result = [];
 
-    while((dataArr = REGEX_BEGINE.exec(content)) !== null) {
+    buildDataArr = REGEX_BEGINE.exec(content);
+
+    while(buildDataArr !== null) {
         segmentData = {};
+        buildIndex = buildDataArr.index;
 
-        command = dataArr[1];
-        distUrl = buildConfigOperator.convertToPathRelativeToCwd(dataArr[2], buildConfig);
-        //distUrl = convertToGulpCanReadPathByConfig(dataArr[2], buildConfig);
+        command = buildDataArr[1];
+        distUrl = buildConfigOperator.convertToPathRelativeToCwd(buildDataArr[2], buildConfig);
 
-        endDataArr = REGEX_END.exec(content);
+        endDataArr = REGEX_END.exec(content.slice(buildDataArr.index));
 
         if(endDataArr === null){
-            stream.emit('error', new gutil.PluginError(PLUGIN_NAME, "should define #endbuild#"));
+            stream.emit("error", new gutil.PluginError(PLUGIN_NAME, "should define #endbuild#"));
             return;
         }
 
-        //REGEX_END.lastIndex = 0;
+        endIndex = buildIndex + endDataArr.index;
 
-        fileUrlArr = _getFileUrlArr(content.slice(dataArr.index + dataArr[0].length, endDataArr.index));
+        fileUrlArr = _getFileUrlArr(
+            content.slice(buildIndex + buildDataArr[0].length, endIndex),
+            buildConfig
+        );
 
         segmentData["command"] = command;
         segmentData["dist"] = distUrl;
         segmentData["fileUrlArr"] = fileUrlArr;
-        segmentData["startLine"] = dataArr.index;
-        segmentData["endLine"] = endDataArr.index + endDataArr[0].length;
+        segmentData["startLine"] = buildIndex;
+        segmentData["endLine"] = endIndex + endDataArr[0].length;
 
         result.push(segmentData);
+
+        buildDataArr = REGEX_BEGINE.exec(content);
+
+        //restore regex
+        REGEX_END.lastIndex = 0;
     }
 
     //restore regex
@@ -137,29 +123,16 @@ function parse(content, buildConfig, stream){
     return result;
 }
 
-function _getFileUrlArr(content){
-        var dataArr = null,
+function _getFileUrlArr(content, buildConfig){
+    var dataArr = null,
         result = [];
 
     while((dataArr = REGEX_URL.exec(content)) !== null) {
-        result.push(dataArr[2]);
+        result.push(buildConfigOperator.convertToPathRelativeToCwd(dataArr[2], buildConfig));
     }
 
     return result;
 }
-
-function convertToGulpCanReadPath(pageMapArr, buildConfig){
-    pageMapArr.forEach(function(mapData){
-        if(!mapData.fileUrlArr){
-            return;
-        }
-
-        mapData.fileUrlArr = mapData.fileUrlArr.map(function(url){
-            return buildConfigOperator.convertToPathRelativeToCwd(url, buildConfig);
-        });
-    });
-}
-
 
 module.exports = createBuildMap;
 

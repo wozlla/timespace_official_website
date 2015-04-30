@@ -1,12 +1,12 @@
-var fs = require('fs'),
-    plugin = require('../index'),
-    assert = require('stream-assert'),
-    Vinyl = require('vinyl'),
-    path = require('path'),
-    through = require('through-gulp'),
-    convertUtils = require('../../convertUtils'),
-    sinon = require('sinon'),
-buildConfigOperator = require('../../lib/buildConfigOperator');
+var fs = require("fs"),
+    plugin = require("../index"),
+    assert = require("stream-assert"),
+    Vinyl = require("vinyl"),
+    path = require("path"),
+    through = require("through-gulp"),
+    convertUtils = require("../../convertUtils"),
+    sinon = require("sinon"),
+buildConfigOperator = require("../../lib/buildConfigOperator");
 
 describe("getSeajsMainFile", function () {
     var sandbox = null;

@@ -183,12 +183,12 @@ gulp.task('packNoCmdJs', function() {
 //});
 
 
-//gulp.task('default', ['createBuildMap']);
+gulp.task('default', ['createBuildMap']);
 
 //gulp.task('default', ['createBuildMap', 'rewriteStaticeResource']);
 //gulp.task('default', ['rewriteStaticeResource']);
 //gulp.task('default', ['packSeajs']);
-gulp.task('default', ['packNoCmdJs']);
+//gulp.task('default', ['packNoCmdJs']);
 
 
 //todo build css

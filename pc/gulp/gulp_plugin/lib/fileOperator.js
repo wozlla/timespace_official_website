@@ -1,31 +1,31 @@
-    var Vinyl = require('vinyl'),
-    path = require('path'),
-    fs = require('fs');
+var Vinyl = require("vinyl"),
+    path = require("path"),
+    fs = require("fs");
 
-    var operator = {
-        createFile: function(args){
-            var pathData = null,
-                contents = null;
+var operator = {
+    createFile: function (args) {
+        var pathData = null,
+            contents = null;
 
-            if(arguments.length === 2){
-                contents = arguments[0];
-                pathData = this._makeRelativeToCwd(arguments[1]);
-            }
-            else if(arguments.length === 3){
-                contents = arguments[0];
-                pathData = {
-                    base:arguments[1],
-                    path: arguments[2]
-                };
-            }
+        if (arguments.length === 2) {
+            contents = arguments[0];
+            pathData = this._makeRelativeToCwd(arguments[1]);
+        }
+        else if (arguments.length === 3) {
+            contents = arguments[0];
+            pathData = {
+                base: arguments[1],
+                path: arguments[2]
+            };
+        }
 
-            return new Vinyl({
-                base: pathData.base,
-                path: pathData.path,
-                contents: contents
-            });
-        },
-        _makeRelativeToCwd:function(url){
+        return new Vinyl({
+            base: pathData.base,
+            path: pathData.path,
+            contents: contents
+        });
+    },
+    _makeRelativeToCwd: function (url) {
         //path is dist path
         //writePath should be seajsMainData.dist
 
@@ -57,10 +57,19 @@
         //            basePath = path.resolve(cwd, outFolder(file));
         //        }
         //        var writePath = path.resolve(basePath, file.relative);
-        return {base: process.cwd(),
+        return {
+            base: process.cwd(),
             path: path.resolve(process.cwd(), url)
         }
-    }
-    };
+    },
+    append: function (file1, file2, delimiter) {
+        var delimiter = delimiter || "\n\r";
 
-    module.exports = operator;
+        file1.contents = new Buffer(
+            file1.contents.toString()
+            + delimiter + file2.contents.toString()
+        );
+    }
+};
+
+module.exports = operator;

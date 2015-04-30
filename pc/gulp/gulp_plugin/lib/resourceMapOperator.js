@@ -1,24 +1,24 @@
-var path = require('path'),
-    fs = require('fs'),
-    buildConfigOperator = require('./buildConfigOperator');
+var path = require("path"),
+    fs = require("fs"),
+    buildConfigOperator = require("./buildConfigOperator");
 
 /*!
-note:
-fileUrl is relative to cwd path
-////dist is relative to dist dir(specified by gulp.dest in gulpfile)
-seajs.use -> path should like "/pc/js/xxx"
+ note:
+ fileUrl is relative to cwd path
+ ////dist is relative to dist dir(specified by gulp.dest in gulpfile)
+ seajs.use -> path should like "/pc/js/xxx"
 
  */
 
 var seajs = {
-    getData: function(mapData){
+    getData: function (mapData) {
         var i = null,
             result = [];
 
-        for(i in mapData){
-            if(mapData.hasOwnProperty(i)){
-                mapData[i].forEach(function(data){
-                    if(data.command === "seajsMain"){
+        for (i in mapData) {
+            if (mapData.hasOwnProperty(i)) {
+                mapData[i].forEach(function (data) {
+                    if (data.command === "seajsMain") {
                         result.push(data)
                     }
                 });
@@ -27,13 +27,13 @@ var seajs = {
 
         return result;
     },
-    parse: function(seajsData){
+    parse: function (seajsData) {
         return {
             dist: this._convertDistPathRelativeToCwd(seajsData.dist),
             mainFilePath: path.join(process.cwd(), seajsData.fileUrlArr[0])
         }
     },
-    _convertDistPathRelativeToCwd: function(dist){
+    _convertDistPathRelativeToCwd: function (dist) {
         var buildConfig = buildConfigOperator.read();
 
         return buildConfigOperator.convertToPathRelativeToCwd(dist, buildConfig);
@@ -41,14 +41,14 @@ var seajs = {
 };
 
 var noCmdJs = {
-    getData: function(mapData){
+    getData: function (mapData) {
         var i = null,
             result = [];
 
-        for(i in mapData){
-            if(mapData.hasOwnProperty(i)){
-                mapData[i].forEach(function(data){
-                    if(data.command !== "seajsMain"){
+        for (i in mapData) {
+            if (mapData.hasOwnProperty(i)) {
+                mapData[i].forEach(function (data) {
+                    if (data.command !== "seajsMain") {
                         result.push(data)
                     }
                 });
@@ -57,10 +57,10 @@ var noCmdJs = {
 
         return result;
     },
-    parse: function(jsData){
+    parse: function (jsData) {
         var pathArr = [];
 
-        jsData.fileUrlArr.forEach(function(url){
+        jsData.fileUrlArr.forEach(function (url) {
             pathArr.push(path.join(process.cwd(), url));
         });
 
@@ -69,7 +69,7 @@ var noCmdJs = {
             filePathArr: pathArr
         }
     },
-    _convertDistPathRelativeToCwd: function(dist){
+    _convertDistPathRelativeToCwd: function (dist) {
         var buildConfig = buildConfigOperator.read();
 
         return buildConfigOperator.convertToPathRelativeToCwd(dist, buildConfig);
@@ -77,6 +77,11 @@ var noCmdJs = {
 };
 
 module.exports = {
+    read: function () {
+        return JSON.parse(
+            fs.readFileSync(path.resolve(process.cwd(), "gulp/resourceMap.json"), "utf8")
+        );
+    },
     seajs: seajs,
     noCmdJs: noCmdJs
 };

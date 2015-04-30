@@ -1,37 +1,11 @@
 {
-  "/Users/y/Github/timespace_official_website/pc/gulp/gulp_plugin/createBuildMap/test/file/footer.ejs": [
-    {
-      "command": "replace",
-      "dist": "/aaa/dist/common/no_cmd.js",
-      "fileUrlArr": [
-        "public/js/bower_components/jquery/dist/jquery.js",
-        "public/js/bower_components/bootstrap/dist/js/bootstrap.js",
-        "public/js/bower_components/seajs/dist/sea.js",
-        "public/js/bower_components/seajs-wrap/dist/seajs-wrap.js"
-      ],
-      "startLine": 203,
-      "endLine": 893
-    }
-  ],
-  "/Users/y/Github/timespace_official_website/pc/gulp/gulp_plugin/createBuildMap/test/file/header.ejs": [
-    {
-      "command": "replace",
-      "dist": "/aaa/dist/common/no_cmd2.js",
-      "fileUrlArr": [
-        "public/js/bower_components/bootstrap/dist/js/bootstrap.js",
-        "public/js/bower_components/seajs/dist/sea.js"
-      ],
-      "startLine": 203,
-      "endLine": 893
-    }
-  ],
-  "/Users/y/Github/timespace_official_website/pc/gulp/gulp_plugin/createBuildMap/test/file/index.ejs": [
+  "/Users/y/Github/timespace_official_website/pc/dist_views/index.ejs": [
     {
       "command": "seajsMain",
-      "dist": "/aaa/dist/index/cmd.js",
+      "dist": "/aaa/cmd.js ",
       "fileUrlArr": ["public/js/website/index/main.js"],
-      "startLine": 1007,
-      "endLine": 1149
+      "startLine": 3212,
+      "endLine": 3323
     }
   ]
 }

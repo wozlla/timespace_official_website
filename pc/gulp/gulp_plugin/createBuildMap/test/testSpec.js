@@ -1,17 +1,15 @@
-var fs = require('fs'),
-    gulp = require('gulp'),
-    gutil = require('gulp-util'),
-    plugin = require('../index'),
-    convertUtils = require('../../convertUtils'),
-    assert = require('stream-assert'),
-    Vinyl = require('vinyl'),
-    path = require('path'),
-    sinon = require('sinon');
+var fs = require("fs"),
+    plugin = require("../index"),
+    convertUtils = require("../../convertUtils"),
+    Vinyl = require("vinyl"),
+    path = require("path"),
+    sinon = require("sinon");
 
 describe("createBuildMap", function () {
     var sandbox = null;
     var stream = null;
     var fileContent = null;
+    var filePath = null;
     var buildConfig = null;
     var cwd = null;
 
@@ -37,6 +35,7 @@ describe("createBuildMap", function () {
         cwd = "/";
         sandbox.stub(process, "cwd").returns(cwd);
 
+        filePath = "./file/footer.ejs";
         fileContent = convertUtils.toString(function () {/*
          <script type="text/javascript" >
          var jiathis_config={
@@ -81,8 +80,6 @@ describe("createBuildMap", function () {
     });
 
     it("can parse replace command", function (done) {
-        var filePath = "./file/footer.ejs";
-
         stream.on('end', function () {
             var args = fs.writeFileSync.args[0];
             expect(args[0]).toEqual(
@@ -150,8 +147,6 @@ describe("createBuildMap", function () {
          */
     });
     it("can parse seajsMain command", function (done) {
-        var filePath = "./file/footer.ejs";
-
         stream.on('end', function () {
             var args = fs.writeFileSync.args[0];
             expect(args[0]).toEqual(
@@ -189,8 +184,13 @@ describe("createBuildMap", function () {
         stream.end();
     });
     it("can build multi page's build map", function (done) {
-        var filePath = "./file/footer.ejs";
         var fileContent2 = convertUtils.toString(function () {/*
+
+         <!--#build:css:page /pc/dist/index.css#-->
+         <link href="/pc/css/website/index/index.css" type="text/css" rel="stylesheet">
+         <link href="/pc/css/website/banner.css" type="text/css" rel="stylesheet">
+         <!--#endbuild#-->
+
 
          <!--no-cmd-module-->
          <!--#build:js:replace dist/no_cmd.js#-->
@@ -234,14 +234,14 @@ describe("createBuildMap", function () {
                         command: 'replace',
                         dist: 'dist/no_cmd.js',
                         fileUrlArr: ['public/js/website/animation.js', 'public/js/website/nav.js'],
-                        startLine: 31,
-                        endLine: 223
+                        startLine: 283,
+                        endLine: 475
                     }, {
                         command: 'seajsMain',
                         dist: 'dist/cmd.js ',
                         fileUrlArr: ['public/js/website/news/main.js'],
-                        startLine: 337,
-                        endLine: 474
+                        startLine: 589,
+                        endLine: 726
                     }]
                 }
             );
@@ -251,16 +251,12 @@ describe("createBuildMap", function () {
 
 
         var testFile1 = new Vinyl({
-            //cwd: "./",
-            //base: "./file",
             path: filePath,
             contents: new Buffer(
                 fileContent
             )
         });
         var testFile2 = new Vinyl({
-            //cwd: "./",
-            //base: "./file",
             path: filePath2,
             contents: new Buffer(
                 fileContent2
