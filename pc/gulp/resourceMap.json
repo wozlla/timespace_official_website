@@ -2,7 +2,7 @@
   "/Users/y/Github/timespace_official_website/pc/gulp/gulp_plugin/createBuildMap/test/file/footer.ejs": [
     {
       "command": "replace",
-      "dist": "/pc/dist/no_cmd.js",
+      "dist": "/aaa/dist/common/no_cmd.js",
       "fileUrlArr": [
         "public/js/bower_components/jquery/dist/jquery.js",
         "public/js/bower_components/bootstrap/dist/js/bootstrap.min.js",
@@ -14,10 +14,12 @@
       ],
       "startLine": 203,
       "endLine": 893
-    },
+    }
+  ],
+  "/Users/y/Github/timespace_official_website/pc/gulp/gulp_plugin/createBuildMap/test/file/index.ejs": [
     {
       "command": "seajsMain",
-      "dist": "/pc/dist/cmd.js ",
+      "dist": "/aaa/dist/index/cmd.js",
       "fileUrlArr": ["public/js/website/index/main.js"],
       "startLine": 1007,
       "endLine": 1149

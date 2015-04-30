@@ -26,7 +26,7 @@ describe("rewriteStaticResourceUrl", function () {
          </script>
 
          <!--no-cmd-module-->
-         <!--#build:js:replace dist/no_cmd.js#-->
+         <!--#build:js:replace /aaa/dist/no_cmd.js#-->
          <script src="/pc/js/bower_components/jquery/dist/jquery.js"></script>
          <script src="/pc/js/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
          <script src="/pc/js/bower_components/seajs/dist/sea.js"></script>
@@ -41,7 +41,7 @@ describe("rewriteStaticResourceUrl", function () {
          <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
 
 
-         <!--#build:js:seajsMain dist/cmd.js #-->
+         <!--#build:js:seajsMain /aaa/dist/cmd.js #-->
          <script src="/pc/js/website/index/main.js"></script>
          <!--#endbuild#-->
          */ });
@@ -57,13 +57,13 @@ describe("rewriteStaticResourceUrl", function () {
             "/footer.ejs": [
                 {
                     command: 'replace',
-                    dist: '../dist/no_cmd.js',
+                    dist: '/aaa/dist/no_cmd.js',
                     startLine: 203,
                     endLine: 893
                 },
                 {
                     command: 'seajsMain',
-                    dist: '../dist/cmd.js ',
+                    dist: '/aaa/dist/cmd.js ',
                     startLine: 1007,
                     endLine: 1149
                 }
@@ -80,10 +80,10 @@ describe("rewriteStaticResourceUrl", function () {
             var contents = newFile.contents.toString();
 
             expect(contents.trim()).toContain(
-            "<script src='../dist/no_cmd.js'></script>"
+            "<script src='/aaa/dist/no_cmd.js'></script>"
             );
             expect(contents.trim()).toContain(
-                "<script src='../dist/cmd.js'></script>"
+                "<script src='/aaa/dist/cmd.js'></script>"
             );
 
             /*!

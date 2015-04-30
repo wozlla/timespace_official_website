@@ -3,9 +3,10 @@ var through = require('through-gulp'),
     Vinyl = require('vinyl'),
     path = require('path'),
     fs = require('fs'),
-mapOperator = require('../lib/resourceMapOperator');
+    mapOperator = require('../lib/resourceMapOperator'),
+    buildConfigOperator = require('../lib/buildConfigOperator');
 
-
+var REGEX_MAINFILE_URL = /(seajs\.use\((['"]))(.+)(\2)/mg;
 var errorFunc = null;
 var PLUGIN_NAME = "getSeajsMainFile";
 
@@ -30,34 +31,38 @@ function getFileContent() {
         if (file.isBuffer()) {
             var fileContent = file.contents.toString();
             var map = JSON.parse(fileContent);
-            var seajsMainData = null;
-
-            var i = null;
             var fileContent = null;
-            var dist = null;
+            var self = this;
+            var buildConfig = buildConfigOperator.read();
 
 
+            var seajsDataArr = seajsOperator.getData(map);
 
-            for(i in map){
-                if(map.hasOwnProperty(i)){
-                    var data = seajsOperator.parse(map[i]);
-                    var mainFilePath = data.mainFilePath;
-
-                    fileContent = fs.readFileSync(mainFilePath, "utf8");
-
-
-                    var newFile = new Vinyl({
-                        base: path.dirname(mainFilePath),
-                        path: mainFilePath,
-                        contents: new Buffer(fileContent)
-                    });
-
-                    //custom attr for gulp-seajs-combo to set dist path
-                    newFile.dist = data.dist;
-
-                    this.push(newFile);
-                }
+            if(!seajsDataArr){
+                errorFunc('no seajs data');
+                return callback();
             }
+
+            seajsDataArr.forEach(function(data){
+                var data = seajsOperator.parse(data);
+                var mainFilePath = data.mainFilePath;
+
+                fileContent = fs.readFileSync(mainFilePath, "utf8");
+
+                fileContent = convertToAbsolutePath(fileContent, buildConfig);
+
+                var newFile = new Vinyl({
+                    base: path.dirname(mainFilePath),
+                    path: mainFilePath,
+                    contents: new Buffer(fileContent)
+                });
+
+
+                //custom attr for gulp-seajs-combo to set dist path
+                newFile.dist = data.dist;
+
+                self.push(newFile);
+            });
 
             callback();
         }
@@ -72,6 +77,13 @@ function getFileContent() {
     });
 
     return stream;
+}
+
+
+function convertToAbsolutePath(fileContent, buildConfig){
+    return fileContent.replace(REGEX_MAINFILE_URL, function(fullMatch, p1, p2, p3, p4){
+        return p1 + path.resolve(process.cwd(), buildConfigOperator.convertToPathRelativeToCwd(p3, buildConfig)) + p4;
+    });
 }
 
 module.exports = getFileContent;

@@ -8,6 +8,9 @@ var errorFunc = null;
 
 var REGEX_BEGINE= /[^\r\n]+#build:js:([^\s]+)\s([^#]+)[^\r\n]+/gm,
     REGEX_END = /[^\r\n]+#endbuild#[^\r\n]+/gm,
+    //[^\1] 匹配失败!!!why?
+    //REGEX_URL = /src=(['"])([^\1]+)\1/mg,
+    REGEX_URL = /src=(['"])(.+)\1/mg,
     PLUGIN_NAME = "createBuildMap";
 
 var result = {};
@@ -146,14 +149,10 @@ function parse(content, buildConfig){
 }
 
 function _getFileUrlArr(content){
-    //[^\1] 匹配失败!!!why?
-    //var regex = /src=(['"])([^\1]+)\1/mg,
-
-    var regex = /src=(['"])(.+)\1/mg,
-        dataArr = null,
+        var dataArr = null,
         result = [];
 
-    while((dataArr = regex.exec(content)) !== null) {
+    while((dataArr = REGEX_URL.exec(content)) !== null) {
         result.push(dataArr[2]);
     }
 

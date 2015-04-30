@@ -54,7 +54,8 @@ gulp.task('copy', function() {
 var createBuildMap = require('./gulp/gulp_plugin/createBuildMap/index.js');
 
 gulp.task('createBuildMap', function(){
-    gulp.src('dist_views/footer.ejs')
+    //gulp.src('dist_views/footer.ejs')
+    gulp.src('dist_views/*.ejs')
         .pipe(createBuildMap());
 });
 
@@ -79,7 +80,6 @@ var gulpGetSeajsMainFile = require('./gulp/gulp_plugin/getSeajsMainFile/index.js
 
 //var  gulpCombo = require('gulp-seajs-combo');
 var gulpCombo = require('./gulp/lib/gulp-seajs-combo/index.js');
-var gulpRename = require('gulp-rename');
 //
 //build seajs-combo dist.js
 gulp.task('packSeajs', function(){
@@ -134,20 +134,30 @@ gulp.task('packSeajs', function(){
 
 
 
+        //todo uglify
 
         //just set to cwd path,the dest path is set by dist attr in resourceMap.json
 
         .pipe(gulp.dest('./'));
+    //.pipe(gulp.dest('./test_dist'));
 });
+
+
+
+//var gulpGetNoCmdJsFile = require('./gulp/gulp_plugin/getNoCmdJsFile/index.js');
+//    gulpConcat = require('gulp-concat');
+////    gulpUglify = require('gulp-uglify'),
+////    //gulpWrap = require('gulp-wrap'),
+////    gulpWrap = require('./gulp_plugin/gulpWrap.js'),
 //
-//
-//
+////var  gulpCombo = require('gulp-seajs-combo');
+//var gulpCombo = require('./gulp/lib/gulp-seajs-combo/index.js');
 //gulp.task('packNoCmdJs', function() {
 //    gulp.src('gulp/resourceMap.json')
 //        //.pipe(buildJs())
-//        .pipe(gulpSrc())
+//        .pipe(gulpGetNoCmdJsFile())
 //        .pipe(gulpConcat())
-//        .pipe(gulpUglify())
+//        //.pipe(gulpUglify())
 //        .pipe(gulp.dest('test_views'));
 //});
 //

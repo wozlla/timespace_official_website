@@ -2,5 +2,9 @@
   "urlMap": [{
     "staticResourcePrefix": "/pc/js",
     "relativePrefix": "public/js"
+  },
+ {
+    "staticResourcePrefix": "/aaa/dist",
+    "relativePrefix": "dist"
   }]
 }
