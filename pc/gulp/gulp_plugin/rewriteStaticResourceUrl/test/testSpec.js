@@ -6,6 +6,7 @@ var fs = require("fs"),
     Vinyl = require("vinyl"),
     path = require("path"),
     convertUtils = require("../../convertUtils"),
+    buildConfigOperator = require("../../lib/buildConfigOperator"),
     sinon = require("sinon");
 
 describe("rewriteStaticResourceUrl", function () {
@@ -41,7 +42,7 @@ describe("rewriteStaticResourceUrl", function () {
          <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
 
 
-         <!--#build:js:seajsMain /aaa/dist/cmd.js #-->
+         <!--#build:js:seajsMain /aaa/dist/cmd.js#-->
          <script src="/pc/js/website/index/main.js"></script>
          <!--#endbuild#-->
          */ });
@@ -57,24 +58,31 @@ describe("rewriteStaticResourceUrl", function () {
             "/footer.ejs": [
                 {
                     command: 'replace',
-                    dist: '/aaa/dist/no_cmd.js',
+                    dist: 'dist/no_cmd.js',
                     startLine: 203,
                     endLine: 893
                 },
                 {
                     command: 'seajsMain',
-                    dist: '/aaa/dist/cmd.js ',
+                    dist: 'dist/cmd.js',
                     startLine: 1007,
                     endLine: 1149
                 }
             ]
         };
-
         sandbox.stub(fs, "readFileSync").returns(
             JSON.stringify(
                 resourceMap
             )
         );
+        var buildConfig =  {
+            "urlMap": [
+            {
+                "staticResourcePrefix": "/aaa/dist",
+                "relativePrefix": "dist"
+            }]
+        };
+        sandbox.stub(buildConfigOperator, "read").returns(buildConfig);
 
         stream.on('data', function (newFile) {
             var contents = newFile.contents.toString();

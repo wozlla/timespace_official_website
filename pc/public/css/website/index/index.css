@@ -1,5 +1,5 @@
 .index {
-  background-image: url("/pc/image/bg/bg.png");
+  background-image: url('/pc/image/bg/bg.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
   position: relative;
@@ -138,5 +138,3 @@
     background-color: #f2f2f2;
     text-align: center;
     height: 82px; }
-
-/*# sourceMappingURL=index.css.map */

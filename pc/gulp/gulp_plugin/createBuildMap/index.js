@@ -2,9 +2,10 @@ var through = require("through-gulp"),
     gutil = require("gulp-util"),
     path = require("path"),
     fs = require("fs"),
-    buildConfigOperator = require("../lib/buildConfigOperator");
+    buildConfigOperator = require("../lib/buildConfigOperator"),
+mapOperator = require("../lib/resourceMapOperator");
 
-var REGEX_BEGINE= /[^\r\n]+#build:js:([^\s]+)\s([^#]+)[^\r\n]+/gm,
+var REGEX_BEGINE= /[^\r\n]+#build:js:([^\s]+)\s([^\s#]+)[^\r\n]+/gm,
     REGEX_END = /[^\r\n]+#endbuild#[^\r\n]+/gm,
 //[^\1] 匹配失败!!!why?
 //REGEX_URL = /src=(['"])([^\1]+)\1/mg,
@@ -42,9 +43,7 @@ function createBuildMap() {
             return callback();
         }
     },function(callback) {
-        fs.writeFileSync(
-            path.join(process.cwd(), "gulp/resourceMap.json"),
-            JSON.stringify(result));
+        mapOperator.write(JSON.stringify(result));
 
         callback();
 

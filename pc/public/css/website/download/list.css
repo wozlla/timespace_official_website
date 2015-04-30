@@ -1,5 +1,5 @@
 .download {
-  background-image: url("/pc/image/bg/page_bg.png");
+  background-image: url('/pc/image/bg/page_bg.png');
   background-repeat: no-repeat;
   background-size: 100% 100%; }
   .download .body {
@@ -14,5 +14,3 @@
       float: right; }
   .download .page-footer {
     margin-top: 100px; }
-
-/*# sourceMappingURL=list.css.map */

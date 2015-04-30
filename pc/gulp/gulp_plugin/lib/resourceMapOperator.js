@@ -82,6 +82,11 @@ module.exports = {
             fs.readFileSync(path.resolve(process.cwd(), "gulp/resourceMap.json"), "utf8")
         );
     },
+    write:function(contents){
+        fs.writeFileSync(
+            path.join(process.cwd(), "gulp/resourceMap.json"),
+            contents);
+    },
     seajs: seajs,
     noCmdJs: noCmdJs
 };

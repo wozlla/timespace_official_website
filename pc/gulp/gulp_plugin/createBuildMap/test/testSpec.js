@@ -158,7 +158,7 @@ describe("createBuildMap", function () {
             expect(json[filePath][1]).toEqual(
                 {
                     command: 'seajsMain',
-                    dist: 'dist/cmd.js ',
+                    dist: 'dist/cmd.js',
                     fileUrlArr: ['public/js/website/index/main.js'],
                     startLine: 1003,
                     endLine: 1141
@@ -225,7 +225,7 @@ describe("createBuildMap", function () {
                         endLine: 889
                     }, {
                         command: 'seajsMain',
-                        dist: 'dist/cmd.js ',
+                        dist: 'dist/cmd.js',
                         fileUrlArr: ['public/js/website/index/main.js'],
                         startLine: 1003,
                         endLine: 1141
@@ -238,7 +238,7 @@ describe("createBuildMap", function () {
                         endLine: 475
                     }, {
                         command: 'seajsMain',
-                        dist: 'dist/cmd.js ',
+                        dist: 'dist/cmd.js',
                         fileUrlArr: ['public/js/website/news/main.js'],
                         startLine: 589,
                         endLine: 726

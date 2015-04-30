@@ -3,7 +3,7 @@ var gulp = require('gulp');
 var clean = require('gulp-clean');
 
 gulp.task('clean', function() {
-    gulp.src('dist/*', {read: false})
+    return gulp.src('dist/*', {read: false})
         .pipe(clean());
 });
 
@@ -12,7 +12,7 @@ var sass = require('gulp-sass');
 
 gulp.task('compile', function() {
     //gulp.src(['public/css/*.scss', 'public/css/**/*.scss'])
-    gulp.src(['public/css/*.scss', 'public/css/**/*.scss'])
+    return gulp.src(['public/css/*.scss', 'public/css/**/*.scss'])
         .pipe(sass())
         .pipe(gulp.dest('public/css/'));
 });
@@ -20,46 +20,31 @@ gulp.task('compile', function() {
 var gulpCopy = require('gulp-copy');
 
 gulp.task('copy', function() {
-    gulp.src('views/**/*')
+    //gulp.src('views/**/*')
+    return gulp.src(['views/website/index.ejs', 'views/website/footer.ejs'])
         .pipe(gulpCopy('dist_views/', {prefix:1}));
 });
 
 
 
 
-//gulp.task('rewriteJs', function(){
-//    gulp.src('dist_views/footer.ejs')
-//        .pipe(gulpRewriteJs())
-//        //.pipe(gulp.dest('dist_views/'));
-//        .pipe(gulp.dest('test_views/'));
-//        //.pipe(gulpGetJsUrlArr())
-//        //.pipe(concat())
-//        //.pipe(uglify())
-//        //.pipe(gulp.dest('dist/'));
-//});
+//todo build css
 
-//var gulpGetJsArr = require('./gulp_plugin/getJsArr'),
-//    gulpConcat = require('gulp-concat'),
-//    gulpUglify = require('gulp-uglify');
-//
-//gulp.task('buildJs', function(){
-//    gulp.src('dist_views/footer.ejs')
-//        .pipe(gulpGetJsArr())
-//        .pipe(gulpConcat('footer.js'))
-//        .pipe(gulpUglify())
-//        .pipe(gulp.dest('dist/'));
-//});
+
+
+gulp.task("prepare", ["clean", "compile", "copy"]);
 
 
 var createBuildMap = require('./gulp/gulp_plugin/createBuildMap/index.js');
+var plumber = require('gulp-plumber');
 
-gulp.task('createBuildMap', function(){
+gulp.task('createBuildMap',["prepare"], function(){
+     //gulp.task('createBuildMap',function(){
     //gulp.src('dist_views/footer.ejs')
-    gulp.src('dist_views/*.ejs')
+    return gulp.src('dist_views/**/*.ejs')
+        .pipe(plumber())
         .pipe(createBuildMap());
 });
-
-
 
 
 
@@ -67,9 +52,12 @@ var gulpRewrite= require('./gulp/gulp_plugin/rewriteStaticResourceUrl/index.js')
 
 
 gulp.task('rewriteStaticeResource',['createBuildMap'], function(){
-    gulp.src('dist_views/footer.ejs')
+    //gulp.task('rewriteStaticeResource', function(){
+    //gulp.task('rewriteStaticeResource',[], function(){
+    return gulp.src('dist_views/**/*.ejs')
+        .pipe(plumber())
         .pipe(gulpRewrite())
-        .pipe(gulp.dest('test_views/'));
+        .pipe(gulp.dest('dist_views/'));
 });
 //
 var gulpGetSeajsMainFile = require('./gulp/gulp_plugin/getSeajsMainFile/index.js');
@@ -82,7 +70,7 @@ var gulpGetSeajsMainFile = require('./gulp/gulp_plugin/getSeajsMainFile/index.js
 var gulpCombo = require('./gulp/lib/gulp-seajs-combo/index.js');
 //
 //build seajs-combo dist.js
-gulp.task('packSeajs', function(){
+gulp.task('packSeajs', ['createBuildMap'], function(){
     //gulp.src('dist_views/*')
     //    .pipe(gulpWrap('define(function(require, exports, module) = { <%=content%> });'))
     //    .pipe(gulp.dest('test_vies/'));
@@ -95,16 +83,17 @@ gulp.task('packSeajs', function(){
     //    .pipe(gulp.dest('test_views'));
     //
     //
-    gulp.src('gulp/resourceMap.json')
+    return gulp.src('gulp/resourceMap.json')
+        .pipe(plumber())
         .pipe(gulpGetSeajsMainFile())
         //.pipe(gulpWrap('define(function(require, exports, module) = { <%=content%> });'))
         //.pipe(gulp.dest('test_views'));
-    //gulp.src('gulp/gulp_plugin/getSeajsFileList/test/main.js')
-    //gulp.src(['gulp/gulp_plugin/getSeajsFileList/test/main.js',
-    //'gulp/main.js'],
-    //    {base:'gulp/'})
-    //gulp.src('gulp/gulp_plugin/getSeajsFileList/test/a.js')
-    //gulp.src('gulp/src/m.js')
+        //gulp.src('gulp/gulp_plugin/getSeajsFileList/test/main.js')
+        //gulp.src(['gulp/gulp_plugin/getSeajsFileList/test/main.js',
+        //'gulp/main.js'],
+        //    {base:'gulp/'})
+        //gulp.src('gulp/gulp_plugin/getSeajsFileList/test/a.js')
+        //gulp.src('gulp/src/m.js')
         .pipe(gulpCombo({
             //add options by yyc
             //mainUrlMap: ['/js', '../public/js'],
@@ -144,19 +133,19 @@ gulp.task('packSeajs', function(){
 
 
 var gulpGetNoCmdJsFile = require('./gulp/gulp_plugin/getNoCmdJsFile/index.js');
-    //gulpConcat = require('gulp-concat');
+//gulpConcat = require('gulp-concat');
 gulpConcat = require('./gulp/gulp_plugin/concat/index.js');
-    var gulpUglify = require('gulp-uglify');
+var gulpUglify = require('gulp-uglify');
 //    //gulpWrap = require('gulp-wrap'),
 //    gulpWrap = require('./gulp_plugin/gulpWrap.js'),
 
 //var  gulpCombo = require('gulp-seajs-combo');
-gulp.task('packNoCmdJs', function() {
-    gulp.src('gulp/resourceMap.json')
+gulp.task('packNoCmdJs',['createBuildMap'], function() {
+    return gulp.src('gulp/resourceMap.json')
+        .pipe(plumber())
         //.pipe(buildJs())
         .pipe(gulpGetNoCmdJsFile())
         .pipe(gulpConcat())
-        //.pipe(gulpUglify())
 
 
         //just set to cwd path,the dest path is set by dist attr in resourceMap.json
@@ -164,34 +153,20 @@ gulp.task('packNoCmdJs', function() {
 });
 
 
-//todo build css
+gulp.task("rewrite", ["rewriteStaticeResource"])
+
+gulp.task("pack", ["packSeajs", "packNoCmdJs"]);
+
+gulp.task("build", ["pack", "rewrite"]);
 
 
+//var gulpsync = require('gulp-sync')(gulp);
 
+//gulp.task('default', gulpsync.sync(['createBuildMap' ,'rewrite']));
 
-
-
-
-//var gulpGetJsUrlArr = require('./gulp_plugin/rewriteJs');
-
-//gulp.task('buildjs', function(){
-//    gulp.src('dist_views/footer.ejs')
-//        .pipe(gulpRewriteJs())
-//        .pipe(gulp)
-//        //.pipe(gulp.dest('dist_views/'));
-//        .pipe(gulp.dest('dist/'));
-//});
-
-
-gulp.task('default', ['createBuildMap']);
-
-//gulp.task('default', ['createBuildMap', 'rewriteStaticeResource']);
-//gulp.task('default', ['rewriteStaticeResource']);
-//gulp.task('default', ['packSeajs']);
-//gulp.task('default', ['packNoCmdJs']);
 
 
 //todo build css
-gulp.task('build', ['clean', 'compile',
-'copy', 'createBuildMap', 'rewriteStaticeResource',
-'packSeajs', 'packNoCmdJs']);
+//gulp.task('build', ['clean', 'compile',
+//'copy', 'createBuildMap', 'rewriteStaticeResource',
+//'packSeajs', 'packNoCmdJs']);

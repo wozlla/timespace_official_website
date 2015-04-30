@@ -1,6 +1,6 @@
 @charset "UTF-8";
 .description {
-  background-image: url("/pc/image/bg/page_bg.png");
+  background-image: url('/pc/image/bg/page_bg.png');
   background-repeat: no-repeat;
   background-size: 100% 100%; }
   .description .body {
@@ -31,5 +31,3 @@
     background-color: white;
     font-family: "微软雅黑";
     font-size: 14px; }
-
-/*# sourceMappingURL=list.css.map */
