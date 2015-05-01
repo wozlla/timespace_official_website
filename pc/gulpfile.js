@@ -152,11 +152,12 @@ gulp.task('packNoCmdJs',['createBuildMap'], function() {
         .pipe(gulp.dest('./'));
 });
 
+var gulpGetCssFile = require('./gulp/gulp_plugin/getCssFile/index.js');
 
 gulp.task('packCss',['createBuildMap'], function() {
     return gulp.src('gulp/resourceMap.json')
         .pipe(plumber())
-        .pipe(gulpGetNoCmdJsFile())
+        .pipe(gulpGetCssFile())
         .pipe(gulpConcat())
 
 
@@ -167,7 +168,7 @@ gulp.task('packCss',['createBuildMap'], function() {
 
 gulp.task("rewrite", ["rewriteStaticeResource"])
 
-gulp.task("pack", ["packSeajs", "packNoCmdJs"]);
+gulp.task("pack", ["packSeajs", "packNoCmdJs", "packCss"]);
 
 gulp.task("build", ["pack", "rewrite"]);
 

@@ -38,10 +38,10 @@ describe("rewriteStaticResourceUrl", function () {
             var contents = newFile.contents.toString();
 
             expect(contents.trim()).toContain(
-            "<script src='/aaa/dist/no_cmd.js'></script>"
+            '<script src="/aaa/dist/no_cmd.js"></script>'
             );
             expect(contents.trim()).toContain(
-                "<script src='/aaa/dist/cmd.js'></script>"
+                '<script src="/aaa/dist/cmd.js"></script>'
             );
 
             /*!
@@ -82,7 +82,7 @@ describe("rewriteStaticResourceUrl", function () {
             var contents = newFile.contents.toString();
 
             expect(contents.trim()).toContain(
-                "<link href='/aaa/dist/a.css'/>"
+                '<link href="/aaa/dist/a.css" type="text/css" rel="stylesheet"/>'
             );
 
             /*!

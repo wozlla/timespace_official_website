@@ -46,7 +46,6 @@ function handleContent(content, mapDataArr, stream) {
             case "seajsMain":
                 result = result + content.slice(startIndex, mapData.startLine)
                         + _buildDistHtml(mapData.type,buildConfigOperator.convertToAbsolutePath(mapData.dist, buildConfig), stream);
-                    + "<script src='" + buildConfigOperator.convertToAbsolutePath(mapData.dist, buildConfig) + "'></script>";
                 break;
             default:
                 break;
@@ -63,10 +62,10 @@ function _buildDistHtml(type, url, stream){
 
     switch(type) {
         case "css":
-            result = "<link href='" + url + "'/>";
+            result = '<link href="' + url + '" type="text/css" rel="stylesheet"/>';
             break;
         case "js":
-            result = "<script src='" + url + "'></script>";
+            result = '<script src="' + url + '"></script>';
             break;
         default:
             stream.emit("error", new gutil.PluginError(PLUGIN_NAME, "unexpected type"));
