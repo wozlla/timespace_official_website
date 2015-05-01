@@ -1,6 +1,6 @@
 var fs = require("fs"),
     plugin = require("../index"),
-    convertUtils = require("../../convertUtils"),
+    fake = require("../../testFake"),
     Vinyl = require("vinyl"),
     path = require("path"),
     sinon = require("sinon");
@@ -17,13 +17,7 @@ describe("createBuildMap", function () {
         sandbox = sinon.sandbox.create();
         stream = plugin();
 
-        buildConfig =
-        {
-            "urlMap": [{
-                "staticResourcePrefix": "/pc/js",
-                "relativePrefix": "public/js"
-            }]
-        };
+        buildConfig = fake.single.getBuildConfig();
 
         sandbox.stub(fs, "readFileSync").returns(
             JSON.stringify(
@@ -32,40 +26,46 @@ describe("createBuildMap", function () {
         );
         sandbox.stub(fs, "writeFileSync");
 
-        cwd = "/";
+        cwd = fake.cwd;
         sandbox.stub(process, "cwd").returns(cwd);
 
-        filePath = "./file/footer.ejs";
-        fileContent = convertUtils.toString(function () {/*
-         <script type="text/javascript" >
-         var jiathis_config={
-         summary:"",
-         shortUrl:false,
-         hideMore:false
-         }
-         </script>
-
-         <!--no-cmd-module-->
-         <!--#build:js:replace dist/no_cmd.js#-->
-         <script src="/pc/js/bower_components/jquery/dist/jquery.js"></script>
-         <script src="/pc/js/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-         <script src="/pc/js/bower_components/seajs/dist/sea.js"></script>
-         <script src='/pc/js/bower_components/seajs-wrap/dist/seajs-wrap.js'></script>
-         <script src="/pc/js/website/global.js"></script>
-         <script src="/pc/js/website/animation.js"></script>
-         <script src="/pc/js/website/nav.js"></script>
-         <!--bower_components-->
-         <!--global init-->
-         <!--custom module with no cmd-->
-         <!--#endbuild#-->
-         <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
-
-
-         <!--#build:js:seajsMain dist/cmd.js #-->
-         <script src="/pc/js/website/index/main.js"></script>
-         <!--#endbuild#-->
-         */
-        });
+        filePath = fake.single.filePath;
+        fileContent = fake.single.getFileContent();
+        //fileContent = convertUtils.toString(function () {/*
+        // <!--#build:css:replace /pc/dist/a.css#-->
+        // <link href="/pc/css/website/index/a.css" type="text/css" rel="stylesheet">
+        // <link href="/pc/css/website/a.css" type="text/css" rel="stylesheet">
+        // <!--#endbuild#-->
+        //
+        // <script type="text/javascript" >
+        // var jiathis_config={
+        // summary:"",
+        // shortUrl:false,
+        // hideMore:false
+        // }
+        // </script>
+        //
+        // <!--no-cmd-module-->
+        // <!--#build:js:replace dist/no_cmd.js#-->
+        // <script src="/pc/js/bower_components/jquery/dist/jquery.js"></script>
+        // <script src="/pc/js/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        // <script src="/pc/js/bower_components/seajs/dist/sea.js"></script>
+        // <script src='/pc/js/bower_components/seajs-wrap/dist/seajs-wrap.js'></script>
+        // <script src="/pc/js/website/global.js"></script>
+        // <script src="/pc/js/website/animation.js"></script>
+        // <script src="/pc/js/website/nav.js"></script>
+        // <!--bower_components-->
+        // <!--global init-->
+        // <!--custom module with no cmd-->
+        // <!--#endbuild#-->
+        // <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+        //
+        //
+        // <!--#build:js:seajsMain dist/cmd.js #-->
+        // <script src="/pc/js/website/index/main.js"></script>
+        // <!--#endbuild#-->
+        // */
+        //});
 
         //attach data event listener can switch the stream into flowing mode,
         // which will trigger the end event!
@@ -90,10 +90,21 @@ describe("createBuildMap", function () {
             expect(json[filePath][0]).toEqual(
                 {
                     command: 'replace',
+                    dist: 'dist/a.css',
+                    fileUrlArr: ['public/css/website/index/a.css', 'public/css/website/a.css'],
+                    startLine: 0,
+                    endLine: 240,
+                    type: 'css'
+                }
+            );
+            expect(json[filePath][1]).toEqual(
+                {
+                    command: 'replace',
                     dist: 'dist/no_cmd.js',
                     fileUrlArr: ['public/js/bower_components/jquery/dist/jquery.js', 'public/js/bower_components/bootstrap/dist/js/bootstrap.min.js', 'public/js/bower_components/seajs/dist/sea.js', 'public/js/bower_components/seajs-wrap/dist/seajs-wrap.js', 'public/js/website/global.js', 'public/js/website/animation.js', 'public/js/website/nav.js'],
-                    startLine: 203,
-                    endLine: 889
+                    startLine: 415,
+                    endLine: 1003,
+                    type: 'js'
                 }
             );
 
@@ -155,13 +166,14 @@ describe("createBuildMap", function () {
             var json = JSON.parse(args[1].toString());
 
             expect(json[filePath]).toBeArray();
-            expect(json[filePath][1]).toEqual(
+            expect(json[filePath][2]).toEqual(
                 {
                     command: 'seajsMain',
                     dist: 'dist/cmd.js',
                     fileUrlArr: ['public/js/website/index/main.js'],
-                    startLine: 1003,
-                    endLine: 1141
+                    startLine: 1118,
+                    endLine: 1261,
+                    type: 'js'
                 }
             );
 
@@ -179,33 +191,12 @@ describe("createBuildMap", function () {
         });
 
         stream.write(testFile1);
-        stream.write(testFile1);
 
         stream.end();
     });
     it("can build multi page's build map", function (done) {
-        var fileContent2 = convertUtils.toString(function () {/*
-
-         <!--#build:css:page /pc/dist/index.css#-->
-         <link href="/pc/css/website/index/index.css" type="text/css" rel="stylesheet">
-         <link href="/pc/css/website/banner.css" type="text/css" rel="stylesheet">
-         <!--#endbuild#-->
-
-
-         <!--no-cmd-module-->
-         <!--#build:js:replace dist/no_cmd.js#-->
-         <script src="/pc/js/website/animation.js"></script>
-         <script src="/pc/js/website/nav.js"></script>
-         <!--#endbuild#-->
-         <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
-
-
-         <!--#build:js:seajsMain dist/cmd.js #-->
-         <script src="/pc/js/website/news/main.js"></script>
-         <!--#endbuild#-->
-         */
-        });
-        var filePath2 = "./2.ejs";
+        var fileContent2 = fake.multi.getFileContent2();
+        var filePath2 = fake.multi.filePath2;
 
         stream.on('end', function () {
             var args = fs.writeFileSync.args[0];
@@ -217,31 +208,49 @@ describe("createBuildMap", function () {
 
             expect(json).toEqual(
                 {
-                    "./file/footer.ejs": [{
+                    "/1.ejs": [{
+                        command: 'replace',
+                        dist: 'dist/a.css',
+                        fileUrlArr: ['public/css/website/index/a.css', 'public/css/website/a.css'],
+                        startLine: 0,
+                        endLine: 240,
+                        type: 'css'
+                    }, {
                         command: 'replace',
                         dist: 'dist/no_cmd.js',
                         fileUrlArr: ['public/js/bower_components/jquery/dist/jquery.js', 'public/js/bower_components/bootstrap/dist/js/bootstrap.min.js', 'public/js/bower_components/seajs/dist/sea.js', 'public/js/bower_components/seajs-wrap/dist/seajs-wrap.js', 'public/js/website/global.js', 'public/js/website/animation.js', 'public/js/website/nav.js'],
-                        startLine: 203,
-                        endLine: 889
+                        startLine: 415,
+                        endLine: 1003,
+                        type: 'js'
                     }, {
                         command: 'seajsMain',
                         dist: 'dist/cmd.js',
                         fileUrlArr: ['public/js/website/index/main.js'],
-                        startLine: 1003,
-                        endLine: 1141
+                        startLine: 1118,
+                        endLine: 1261,
+                        type: 'js'
                     }],
-                    "./2.ejs": [{
+                    "/2.ejs": [{
                         command: 'replace',
-                        dist: 'dist/no_cmd.js',
+                        dist: 'dist/a2.css',
+                        fileUrlArr: ['public/css/website/index/index.css', 'public/css/website/banner.css'],
+                        startLine: 0,
+                        endLine: 250,
+                        type: 'css'
+                    }, {
+                        command: 'replace',
+                        dist: 'dist/no_cmd2.js',
                         fileUrlArr: ['public/js/website/animation.js', 'public/js/website/nav.js'],
-                        startLine: 283,
-                        endLine: 475
+                        startLine: 253,
+                        endLine: 451,
+                        type: 'js'
                     }, {
                         command: 'seajsMain',
-                        dist: 'dist/cmd.js',
+                        dist: 'dist/cmd2.js',
                         fileUrlArr: ['public/js/website/news/main.js'],
-                        startLine: 589,
-                        endLine: 726
+                        startLine: 565,
+                        endLine: 708,
+                        type: 'js'
                     }]
                 }
             );

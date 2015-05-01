@@ -1,6 +1,7 @@
 var fs = require("fs"),
     plugin = require("../index"),
     assert = require("stream-assert"),
+    fake = require("../../testFake"),
     Vinyl = require("vinyl"),
     path = require("path"),
     through = require("through-gulp"),
@@ -11,26 +12,13 @@ describe("getNoCmdJsFile", function () {
     var sandbox = null;
     var stream = null;
     var fileContent = null;
-    var cwd = null;
 
     beforeEach(function () {
         sandbox = sinon.sandbox.create();
         stream = plugin();
 
-        buildConfig = {
-            "urlMap": [{
-                "staticResourcePrefix": "/pc/js",
-                "relativePrefix": "public/js"
-            },
-                {
-                    "staticResourcePrefix": "/aaa/dist",
-                    "relativePrefix": "dist"
-                }]
-        };
+        buildConfig = fake.single.getBuildConfig();
         sandbox.stub(buildConfigOperator, "read").returns(buildConfig);
-
-        cwd = "/User/";
-        sandbox.stub(process, "cwd").returns(cwd);
     });
     afterEach(function () {
         sandbox.restore();
@@ -67,8 +55,7 @@ describe("getNoCmdJsFile", function () {
                 content.jsContent6
             );
 
-            resourceMap =
-            {
+            resourceMap = {
                 "/a.ejs": [
                     {
                         command: 'replace',

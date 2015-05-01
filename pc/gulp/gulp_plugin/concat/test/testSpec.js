@@ -9,64 +9,11 @@ var fs = require("fs"),
 describe("concat", function () {
     var sandbox = null;
     var stream = null;
-    var fileContent = null;
-    var filePath = null;
-    var buildConfig = null;
-    var cwd = null;
 
     beforeEach(function () {
         sandbox = sinon.sandbox.create();
         stream = plugin();
 
-        buildConfig =
-        {
-            "urlMap": [{
-                "staticResourcePrefix": "/pc/js",
-                "relativePrefix": "public/js"
-            }]
-        };
-
-        sandbox.stub(fs, "readFileSync").returns(
-            JSON.stringify(
-                buildConfig
-            )
-        );
-        sandbox.stub(fs, "writeFileSync");
-
-        cwd = "/";
-        sandbox.stub(process, "cwd").returns(cwd);
-
-        filePath = "./file/footer.ejs";
-        fileContent = convertUtils.toString(function () {/*
-         <script type="text/javascript" >
-         var jiathis_config={
-         summary:"",
-         shortUrl:false,
-         hideMore:false
-         }
-         </script>
-
-         <!--no-cmd-module-->
-         <!--#build:js:replace dist/no_cmd.js#-->
-         <script src="/pc/js/bower_components/jquery/dist/jquery.js"></script>
-         <script src="/pc/js/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-         <script src="/pc/js/bower_components/seajs/dist/sea.js"></script>
-         <script src='/pc/js/bower_components/seajs-wrap/dist/seajs-wrap.js'></script>
-         <script src="/pc/js/website/global.js"></script>
-         <script src="/pc/js/website/animation.js"></script>
-         <script src="/pc/js/website/nav.js"></script>
-         <!--bower_components-->
-         <!--global init-->
-         <!--custom module with no cmd-->
-         <!--#endbuild#-->
-         <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
-
-
-         <!--#build:js:seajsMain dist/cmd.js #-->
-         <script src="/pc/js/website/index/main.js"></script>
-         <!--#endbuild#-->
-         */
-        });
 
         //attach data event listener can switch the stream into flowing mode,
         // which will trigger the end event!

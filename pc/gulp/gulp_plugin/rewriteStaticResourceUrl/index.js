@@ -19,7 +19,7 @@ function rewrite() {
             map = mapOperator.read();
 
             file.contents = new Buffer(handleContent(
-                file.contents.toString(), map[file.path]
+                file.contents.toString(), map[file.path], this
             ));
 
             this.push(file);
@@ -35,7 +35,7 @@ function rewrite() {
     return stream;
 }
 
-function handleContent(content, mapDataArr) {
+function handleContent(content, mapDataArr, stream) {
     var result = "",
         startIndex = 0,
         buildConfig = buildConfigOperator.read();
@@ -45,6 +45,7 @@ function handleContent(content, mapDataArr) {
             case "replace":
             case "seajsMain":
                 result = result + content.slice(startIndex, mapData.startLine)
+                        + _buildDistHtml(mapData.type,buildConfigOperator.convertToAbsolutePath(mapData.dist, buildConfig), stream);
                     + "<script src='" + buildConfigOperator.convertToAbsolutePath(mapData.dist, buildConfig) + "'></script>";
                 break;
             default:
@@ -53,6 +54,24 @@ function handleContent(content, mapDataArr) {
 
         startIndex = mapData.endLine;
     });
+
+    return result;
+}
+
+function _buildDistHtml(type, url, stream){
+    var result = null;
+
+    switch(type) {
+        case "css":
+            result = "<link href='" + url + "'/>";
+            break;
+        case "js":
+            result = "<script src='" + url + "'></script>";
+            break;
+        default:
+            stream.emit("error", new gutil.PluginError(PLUGIN_NAME, "unexpected type"));
+            break;
+    }
 
     return result;
 }

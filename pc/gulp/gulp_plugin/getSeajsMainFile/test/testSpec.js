@@ -1,6 +1,6 @@
 var fs = require("fs"),
     plugin = require("../index"),
-    assert = require("stream-assert"),
+    fake = require("../../testFake"),
     Vinyl = require("vinyl"),
     path = require("path"),
     through = require("through-gulp"),
@@ -19,19 +19,10 @@ describe("getSeajsMainFile", function () {
         sandbox = sinon.sandbox.create();
         stream = plugin();
 
-        buildConfig = {
-            "urlMap": [{
-                "staticResourcePrefix": "/pc/js",
-                "relativePrefix": "public/js"
-            },
-                {
-                    "staticResourcePrefix": "/aaa/dist",
-                    "relativePrefix": "dist"
-                }]
-        };
+        buildConfig = fake.single.getBuildConfig();
         sandbox.stub(buildConfigOperator, "read").returns(buildConfig);
 
-        cwd = "/User/";
+        cwd = fake.cwd
         sandbox.stub(process, "cwd").returns(cwd);
     });
     afterEach(function () {
@@ -60,14 +51,8 @@ describe("getSeajsMainFile", function () {
             {
                 "/footer.ejs": [
                     {
-                        command: 'replace',
-                        dist: '/aaa/dist/no_cmd.js',
-                        startLine: 203,
-                        endLine: 893
-                    },
-                    {
                         command: 'seajsMain',
-                        dist: '/aaa/dist/cmd.js',
+                        dist: 'dist/cmd.js',
                         "fileUrlArr": ["/pc/js/main.js"]
                     }
                 ]

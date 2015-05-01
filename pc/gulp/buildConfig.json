@@ -3,6 +3,10 @@
     "staticResourcePrefix": "/pc/js",
     "relativePrefix": "public/js"
   },
+    {
+    "staticResourcePrefix": "/pc/css",
+    "relativePrefix": "public/css"
+  },
  {
     "staticResourcePrefix": "/pc/dist",
     "relativePrefix": "dist"
