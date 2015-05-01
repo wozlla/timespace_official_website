@@ -51,26 +51,29 @@ describe("createBuildMap", function () {
                 path.join(cwd, "gulp/resourceMap.json")
             );
             var json = JSON.parse(args[1].toString());
-            expect(json[filePath]).toBeArray();
-            expect(json[filePath][0]).toEqual(
-                {
+            expect(json[filePath]).toEqual(
+                [{
                     command: 'replace',
                     dist: 'dist/a.css',
                     fileUrlArr: ['public/css/website/index/a.css', 'public/css/website/a.css'],
                     startLine: 0,
                     endLine: 240,
-                    type: 'css'
-                }
-            );
-            expect(json[filePath][1]).toEqual(
-                {
+                    type: 'js'
+                }, {
                     command: 'replace',
                     dist: 'dist/no_cmd.js',
                     fileUrlArr: ['public/js/bower_components/jquery/dist/jquery.js', 'public/js/bower_components/bootstrap/dist/js/bootstrap.min.js'],
                     startLine: 415,
                     endLine: 667,
                     type: 'js'
-                }
+                }, {
+                    command: 'seajsMain',
+                    dist: 'dist/cmd.js',
+                    fileUrlArr: ['public/js/website/index/main.js'],
+                    startLine: 782,
+                    endLine: 925,
+                    type: 'js'
+                }]
             );
 
             done();
@@ -179,7 +182,7 @@ describe("createBuildMap", function () {
                         fileUrlArr: ['public/css/website/index/a.css', 'public/css/website/a.css'],
                         startLine: 0,
                         endLine: 240,
-                        type: 'css'
+                        type: 'js'
                     }, {
                         command: 'replace',
                         dist: 'dist/no_cmd.js',
@@ -201,7 +204,7 @@ describe("createBuildMap", function () {
                         fileUrlArr: ['public/css/website/index/index.css', 'public/css/website/banner.css'],
                         startLine: 0,
                         endLine: 250,
-                        type: 'css'
+                        type: 'js'
                     }, {
                         command: 'replace',
                         dist: 'dist/no_cmd2.js',
