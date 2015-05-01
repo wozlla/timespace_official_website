@@ -9,6 +9,7 @@ function Parse(stream, pluginName){
     this.REGEX_BEGINE = null;
     this.REGEX_END = null;
     this.REGEX_URL = null;
+    this.type = null;
 }
 Parse.prototype.parse = function(content, buildConfig){
     var endDataArr = null,
@@ -50,7 +51,7 @@ Parse.prototype.parse = function(content, buildConfig){
         segmentData["fileUrlArr"] = fileUrlArr;
         segmentData["startLine"] = buildIndex;
         segmentData["endLine"] = endIndex + endDataArr[0].length;
-        segmentData["type"] = "js";
+        segmentData["type"] = this.type;
 
         result.push(segmentData);
 
@@ -85,6 +86,7 @@ function ParseCss(){
     //[^\1] 匹配失败!!!why?
     //REGEX_URL = /src=(['"])([^\1]+)\1/mg,
     this.REGEX_URL = /href=(['"])(.+?)\1/mg;
+    this.type = "css";
 }
 
 extendUtils.inherit(ParseCss, Parse);
@@ -98,6 +100,7 @@ function ParseJs(){
     //[^\1] 匹配失败!!!why?
     //REGEX_URL = /src=(['"])([^\1]+)\1/mg,
     this.REGEX_URL = /src=(['"])(.+?)\1/mg;
+    this.type = "js";
 }
 
 extendUtils.inherit(ParseJs, Parse);

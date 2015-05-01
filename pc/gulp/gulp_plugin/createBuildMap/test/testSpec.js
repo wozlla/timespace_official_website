@@ -47,9 +47,6 @@ describe("createBuildMap", function () {
     it("can parse replace command", function (done) {
         stream.on('end', function () {
             var args = fs.writeFileSync.args[0];
-            expect(args[0]).toEqual(
-                path.join(cwd, "gulp/resourceMap.json")
-            );
             var json = JSON.parse(args[1].toString());
             expect(json[filePath]).toEqual(
                 [{
@@ -58,7 +55,7 @@ describe("createBuildMap", function () {
                     fileUrlArr: ['public/css/website/index/a.css', 'public/css/website/a.css'],
                     startLine: 0,
                     endLine: 240,
-                    type: 'js'
+                    type: 'css'
                 }, {
                     command: 'replace',
                     dist: 'dist/no_cmd.js',
@@ -128,9 +125,6 @@ describe("createBuildMap", function () {
     it("can parse seajsMain command", function (done) {
         stream.on('end', function () {
             var args = fs.writeFileSync.args[0];
-            expect(args[0]).toEqual(
-                path.join(cwd, "gulp/resourceMap.json")
-            );
             var json = JSON.parse(args[1].toString());
 
             expect(json[filePath]).toBeArray();
@@ -168,9 +162,6 @@ describe("createBuildMap", function () {
 
         stream.on('end', function () {
             var args = fs.writeFileSync.args[0];
-            expect(args[0]).toEqual(
-                path.join(cwd, "gulp/resourceMap.json")
-            );
             var json = JSON.parse(args[1].toString());
 
 
@@ -182,7 +173,7 @@ describe("createBuildMap", function () {
                         fileUrlArr: ['public/css/website/index/a.css', 'public/css/website/a.css'],
                         startLine: 0,
                         endLine: 240,
-                        type: 'js'
+                        type: 'css'
                     }, {
                         command: 'replace',
                         dist: 'dist/no_cmd.js',
@@ -204,7 +195,7 @@ describe("createBuildMap", function () {
                         fileUrlArr: ['public/css/website/index/index.css', 'public/css/website/banner.css'],
                         startLine: 0,
                         endLine: 250,
-                        type: 'js'
+                        type: 'css'
                     }, {
                         command: 'replace',
                         dist: 'dist/no_cmd2.js',

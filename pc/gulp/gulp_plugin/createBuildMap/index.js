@@ -45,17 +45,5 @@ function createBuildMap() {
 }
 
 
-
-function _getFileUrlArr(content, buildConfig, regex_url){
-    var dataArr = null,
-        result = [];
-
-    while((dataArr = regex_url.exec(content)) !== null) {
-        result.push(buildConfigOperator.convertToPathRelativeToCwd(dataArr[2], buildConfig));
-    }
-
-    return result;
-}
-
 module.exports = createBuildMap;
 

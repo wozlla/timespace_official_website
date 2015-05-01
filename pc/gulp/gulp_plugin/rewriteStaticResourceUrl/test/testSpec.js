@@ -15,6 +15,14 @@ describe("rewriteStaticResourceUrl", function () {
         resourceMap = null,
         buildConfig = null;
 
+    function setResourceMap(map){
+        fs.readFileSync.returns(
+            JSON.stringify(
+                map
+            )
+        );
+    }
+
     beforeEach(function () {
         sandbox = sinon.sandbox.create();
         stream = plugin();
@@ -118,5 +126,29 @@ describe("rewriteStaticResourceUrl", function () {
 
         stream.end();
     });
+    it("if there is no static resource, not rewrite", function(done){
+        var fileContent = "<p>1111</p>";
+        var testFile1 = new Vinyl({
+            path: filePath,
+            contents: new Buffer(
+                fileContent
+            )
+        });
+        resourceMap[filePath] = [];
+        setResourceMap(resourceMap);
+
+        stream.write(testFile1);
+        stream.end();
+
+        stream.on('data', function (newFile) {
+            var contents = newFile.contents.toString();
+
+            expect(contents.trim()).toContain(
+                fileContent
+            );
+
+            done();
+        });
+    })
 });
 

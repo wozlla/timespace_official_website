@@ -52,7 +52,17 @@ function handleContent(content, mapDataArr, stream) {
         startIndex = mapData.endLine;
     });
 
+    if(_isNoStaticResource(result)){
+        result = content;
+    }
+
     return result;
+
+}
+
+
+function _isNoStaticResource(htmlStr){
+    return htmlStr === "";
 }
 
 function _buildDistHtml(type, url, stream){

@@ -3,6 +3,8 @@ var path = require("path"),
     extendUtils = require("../extendUtils"),
     buildConfigOperator = require("./buildConfigOperator");
 
+var PATH = "gulp/gulp_plugin/resourceMap.json";
+
 /*!
  note:
  fileUrl is relative to cwd path
@@ -102,12 +104,12 @@ CssOperator.prototype.isData = function (data) {
 module.exports = {
     read: function () {
         return JSON.parse(
-            fs.readFileSync(path.resolve(process.cwd(), "gulp/resourceMap.json"), "utf8")
+            fs.readFileSync(path.resolve(process.cwd(), PATH), "utf8")
         );
     },
     write: function (contents) {
         fs.writeFileSync(
-            path.join(process.cwd(), "gulp/resourceMap.json"),
+            path.join(process.cwd(), PATH),
             contents);
     },
     SeajsOperator: SeajsOperator,
