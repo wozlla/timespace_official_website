@@ -31,41 +31,6 @@ describe("createBuildMap", function () {
 
         filePath = fake.single.filePath;
         fileContent = fake.single.getFileContent();
-        //fileContent = convertUtils.toString(function () {/*
-        // <!--#build:css:replace /pc/dist/a.css#-->
-        // <link href="/pc/css/website/index/a.css" type="text/css" rel="stylesheet">
-        // <link href="/pc/css/website/a.css" type="text/css" rel="stylesheet">
-        // <!--#endbuild#-->
-        //
-        // <script type="text/javascript" >
-        // var jiathis_config={
-        // summary:"",
-        // shortUrl:false,
-        // hideMore:false
-        // }
-        // </script>
-        //
-        // <!--no-cmd-module-->
-        // <!--#build:js:replace dist/no_cmd.js#-->
-        // <script src="/pc/js/bower_components/jquery/dist/jquery.js"></script>
-        // <script src="/pc/js/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        // <script src="/pc/js/bower_components/seajs/dist/sea.js"></script>
-        // <script src='/pc/js/bower_components/seajs-wrap/dist/seajs-wrap.js'></script>
-        // <script src="/pc/js/website/global.js"></script>
-        // <script src="/pc/js/website/animation.js"></script>
-        // <script src="/pc/js/website/nav.js"></script>
-        // <!--bower_components-->
-        // <!--global init-->
-        // <!--custom module with no cmd-->
-        // <!--#endbuild#-->
-        // <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
-        //
-        //
-        // <!--#build:js:seajsMain dist/cmd.js #-->
-        // <script src="/pc/js/website/index/main.js"></script>
-        // <!--#endbuild#-->
-        // */
-        //});
 
         //attach data event listener can switch the stream into flowing mode,
         // which will trigger the end event!
@@ -101,9 +66,9 @@ describe("createBuildMap", function () {
                 {
                     command: 'replace',
                     dist: 'dist/no_cmd.js',
-                    fileUrlArr: ['public/js/bower_components/jquery/dist/jquery.js', 'public/js/bower_components/bootstrap/dist/js/bootstrap.min.js', 'public/js/bower_components/seajs/dist/sea.js', 'public/js/bower_components/seajs-wrap/dist/seajs-wrap.js', 'public/js/website/global.js', 'public/js/website/animation.js', 'public/js/website/nav.js'],
+                    fileUrlArr: ['public/js/bower_components/jquery/dist/jquery.js', 'public/js/bower_components/bootstrap/dist/js/bootstrap.min.js'],
                     startLine: 415,
-                    endLine: 1003,
+                    endLine: 667,
                     type: 'js'
                 }
             );
@@ -171,8 +136,8 @@ describe("createBuildMap", function () {
                     command: 'seajsMain',
                     dist: 'dist/cmd.js',
                     fileUrlArr: ['public/js/website/index/main.js'],
-                    startLine: 1118,
-                    endLine: 1261,
+                    startLine: 782,
+                    endLine: 925,
                     type: 'js'
                 }
             );
@@ -218,16 +183,16 @@ describe("createBuildMap", function () {
                     }, {
                         command: 'replace',
                         dist: 'dist/no_cmd.js',
-                        fileUrlArr: ['public/js/bower_components/jquery/dist/jquery.js', 'public/js/bower_components/bootstrap/dist/js/bootstrap.min.js', 'public/js/bower_components/seajs/dist/sea.js', 'public/js/bower_components/seajs-wrap/dist/seajs-wrap.js', 'public/js/website/global.js', 'public/js/website/animation.js', 'public/js/website/nav.js'],
+                        fileUrlArr: ['public/js/bower_components/jquery/dist/jquery.js', 'public/js/bower_components/bootstrap/dist/js/bootstrap.min.js'],
                         startLine: 415,
-                        endLine: 1003,
+                        endLine: 667,
                         type: 'js'
                     }, {
                         command: 'seajsMain',
                         dist: 'dist/cmd.js',
                         fileUrlArr: ['public/js/website/index/main.js'],
-                        startLine: 1118,
-                        endLine: 1261,
+                        startLine: 782,
+                        endLine: 925,
                         type: 'js'
                     }],
                     "/2.ejs": [{

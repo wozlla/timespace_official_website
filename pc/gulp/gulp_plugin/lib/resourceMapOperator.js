@@ -48,7 +48,7 @@ var noCmdJs = {
         for (i in mapData) {
             if (mapData.hasOwnProperty(i)) {
                 mapData[i].forEach(function (data) {
-                    if (data.command !== "seajsMain") {
+                    if (data.type === "js" && data.command !== "seajsMain") {
                         result.push(data)
                     }
                 });
@@ -76,6 +76,43 @@ var noCmdJs = {
     }
 };
 
+var css = {
+    getData: function (mapData) {
+        var i = null,
+            result = [];
+
+        for (i in mapData) {
+            if (mapData.hasOwnProperty(i)) {
+                mapData[i].forEach(function (data) {
+                    if (data.type === "css") {
+                        result.push(data)
+                    }
+                });
+            }
+        }
+
+        return result;
+    },
+    parse: function (jsData) {
+        var pathArr = [];
+
+        jsData.fileUrlArr.forEach(function (url) {
+            pathArr.push(path.join(process.cwd(), url));
+        });
+
+        return {
+            dist: this._convertDistPathRelativeToCwd(jsData.dist),
+            filePathArr: pathArr
+        }
+    },
+    _convertDistPathRelativeToCwd: function (dist) {
+        var buildConfig = buildConfigOperator.read();
+
+        return buildConfigOperator.convertToPathRelativeToCwd(dist, buildConfig);
+    }
+};
+//todo refactor
+
 module.exports = {
     read: function () {
         return JSON.parse(
@@ -88,5 +125,6 @@ module.exports = {
             contents);
     },
     seajs: seajs,
-    noCmdJs: noCmdJs
+    noCmdJs: noCmdJs,
+    css: css
 };

@@ -21,11 +21,6 @@ var single = {
          <!--#build:js:replace /aaa/dist/no_cmd.js#-->
          <script src="/pc/js/bower_components/jquery/dist/jquery.js"></script>
          <script src="/pc/js/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-         <script src="/pc/js/bower_components/seajs/dist/sea.js"></script>
-         <script src='/pc/js/bower_components/seajs-wrap/dist/seajs-wrap.js'></script>
-         <script src="/pc/js/website/global.js"></script>
-         <script src="/pc/js/website/animation.js"></script>
-         <script src="/pc/js/website/nav.js"></script>
          <!--#endbuild#-->
 
          <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
@@ -49,7 +44,7 @@ var single = {
             }, {
                 command: 'replace',
                 dist: 'dist/no_cmd.js',
-                fileUrlArr: ['public/js/bower_components/jquery/dist/jquery.js', 'public/js/bower_components/bootstrap/dist/js/bootstrap.min.js', 'public/js/bower_components/seajs/dist/sea.js', 'public/js/bower_components/seajs-wrap/dist/seajs-wrap.js', 'public/js/website/global.js', 'public/js/website/animation.js', 'public/js/website/nav.js'],
+                fileUrlArr: ['public/js/bower_components/jquery/dist/jquery.js', 'public/js/bower_components/bootstrap/dist/js/bootstrap.min.js'],
                 startLine: 415,
                 endLine: 1003,
                 type: 'js'

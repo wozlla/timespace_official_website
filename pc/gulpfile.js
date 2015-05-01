@@ -153,6 +153,18 @@ gulp.task('packNoCmdJs',['createBuildMap'], function() {
 });
 
 
+gulp.task('packCss',['createBuildMap'], function() {
+    return gulp.src('gulp/resourceMap.json')
+        .pipe(plumber())
+        .pipe(gulpGetNoCmdJsFile())
+        .pipe(gulpConcat())
+
+
+        //just set to cwd path,the dest path is set by dist attr in resourceMap.json
+        .pipe(gulp.dest('./'));
+});
+
+
 gulp.task("rewrite", ["rewriteStaticeResource"])
 
 gulp.task("pack", ["packSeajs", "packNoCmdJs"]);

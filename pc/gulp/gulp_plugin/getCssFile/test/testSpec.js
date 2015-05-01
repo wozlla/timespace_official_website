@@ -1,6 +1,5 @@
 var fs = require("fs"),
     plugin = require("../index"),
-    assert = require("stream-assert"),
     fake = require("../../testFake"),
     Vinyl = require("vinyl"),
     path = require("path"),
@@ -8,10 +7,11 @@ var fs = require("fs"),
     sinon = require("sinon"),
 buildConfigOperator = require("../../lib/buildConfigOperator");
 
-describe("getNoCmdJsFile", function () {
+describe("getCssFile", function () {
     var sandbox = null;
     var stream = null;
     var fileContent = null;
+    var cwd = null;
 
     beforeEach(function () {
         sandbox = sinon.sandbox.create();
@@ -19,6 +19,9 @@ describe("getNoCmdJsFile", function () {
 
         buildConfig = fake.single.getBuildConfig();
         sandbox.stub(buildConfigOperator, "read").returns(buildConfig);
+
+        cwd = fake.cwd;
+        sandbox.stub(process, "cwd").returns(cwd);
     });
     afterEach(function () {
         sandbox.restore();
@@ -30,54 +33,24 @@ describe("getNoCmdJsFile", function () {
 
         beforeEach(function(){
             sandbox.stub(fs, "readFileSync");
-            content.jsContent1 = "1";
-            content.jsContent2 = "2";
-            content.jsContent3 = "3";
-            content.jsContent4 = "4";
+            content.cssContent1 = "1";
+            content.cssContent2 = "2";
+            content.cssContent3 = "3";
+            content.cssContent4 = "4";
             fs.readFileSync.onCall(0).returns(
-                content.jsContent1
+                content.cssContent1
             );
             fs.readFileSync.onCall(1).returns(
-                content.jsContent2
+                content.cssContent2
             );
             fs.readFileSync.onCall(2).returns(
-                content.jsContent3
+                content.cssContent3
             );
             fs.readFileSync.onCall(3).returns(
-                content.jsContent4
+                content.cssContent4
             );
 
             resourceMap = fake.multi.getResourceMap();
-            //resourceMap = {
-            //    "/a.ejs": [
-            //        {
-            //            command: 'replace',
-            //            dist: '/aaa/dist/no_cmd1.js',
-            //            "fileUrlArr": [
-            //                "public/a.js",
-            //                "public/b.js"
-            //            ]
-            //        },
-            //        {
-            //            command: 'replace',
-            //            dist: '/aaa/dist/no_cmd2.js',
-            //            "fileUrlArr": [
-            //                "public/c.js",
-            //                "public/d.js"
-            //            ]
-            //        }
-            //    ],
-            //    "/b.ejs": [
-            //        {
-            //            command: 'replace',
-            //            dist: '/aaa/dist/no_cmd3.js',
-            //            "fileUrlArr": [
-            //                "public/e.js",
-            //                "public/f.js"
-            //            ]
-            //        }
-            //    ]
-            //};
             fileContent = JSON.stringify(
                 resourceMap
             );
@@ -88,7 +61,7 @@ describe("getNoCmdJsFile", function () {
 
             stream.pipe(through(function (file, encoding, callback) {
                 expect(file.contents.toString()).toEqual(
-                    content["jsContent"+index]
+                    content["cssContent"+index]
                 );
 
                 index = index + 1;

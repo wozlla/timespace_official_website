@@ -1,1 +1,24 @@
-{"/Users/y/Github/timespace_official_website/pc/dist_views/website/footer.ejs":[{"command":"replace","dist":"dist/no_cmd_module.js","fileUrlArr":["public/js/bower_components/jquery/dist/jquery.min.js","public/js/bower_components/bootstrap/dist/js/bootstrap.min.js","public/js/bower_components/seajs/dist/sea.js"],"startLine":163,"endLine":455}],"/Users/y/Github/timespace_official_website/pc/dist_views/website/index.ejs":[{"command":"seajsMain","dist":"dist/cmd.js","fileUrlArr":["public/js/website/index/main.js"],"startLine":3232,"endLine":3347}]}
+{
+  "/Users/y/Github/timespace_official_website/pc/dist_views/website/footer.ejs": [
+    {
+      "command": "replace",
+      "dist": "dist/no_cmd_module.js",
+      "fileUrlArr": [
+        "public/js/bower_components/jquery/dist/jquery.min.js",
+        "public/js/bower_components/bootstrap/dist/js/bootstrap.min.js",
+        "public/js/bower_components/seajs/dist/sea.js"
+      ],
+      "startLine": 163,
+      "endLine": 455
+    }
+  ],
+  "/Users/y/Github/timespace_official_website/pc/dist_views/website/index.ejs": [
+    {
+      "command": "seajsMain",
+      "dist": "dist/cmd.js",
+      "fileUrlArr": ["public/js/website/index/main.js"],
+      "startLine": 3232,
+      "endLine": 3347
+    }
+  ]
+}
