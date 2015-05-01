@@ -7,7 +7,7 @@ var through = require("through-gulp"),
 var PLUGIN_NAME = "getCssFile";
 
 function getFileContent() {
-    var operator = mapOperator.css;
+    var operator = new mapOperator.CssOperator();
 
     return fileOperator.getFile(operator, PLUGIN_NAME);
 }

@@ -1,5 +1,6 @@
 var path = require("path"),
     fs = require("fs"),
+    extendUtils = require("../extendUtils"),
     buildConfigOperator = require("./buildConfigOperator");
 
 /*!
@@ -10,108 +11,93 @@ var path = require("path"),
 
  */
 
-var seajs = {
-    getData: function (mapData) {
-        var i = null,
-            result = [];
 
-        for (i in mapData) {
-            if (mapData.hasOwnProperty(i)) {
-                mapData[i].forEach(function (data) {
-                    if (data.command === "seajsMain") {
-                        result.push(data)
-                    }
-                });
-            }
-        }
+function Operator() {
+}
 
-        return result;
-    },
-    parse: function (seajsData) {
-        return {
-            dist: this._convertDistPathRelativeToCwd(seajsData.dist),
-            mainFilePath: path.join(process.cwd(), seajsData.fileUrlArr[0])
-        }
-    },
-    _convertDistPathRelativeToCwd: function (dist) {
-        var buildConfig = buildConfigOperator.read();
 
-        return buildConfigOperator.convertToPathRelativeToCwd(dist, buildConfig);
+Operator.prototype.isData = function (data) {
+    throw new Error("abstract method need override");
+};
+
+
+Operator.prototype.parse = function (data) {
+    var pathArr = [];
+
+    data.fileUrlArr.forEach(function (url) {
+        pathArr.push(path.join(process.cwd(), url));
+    });
+
+    return {
+        dist: this.convertDistPathRelativeToCwd(data.dist),
+        filePathArr: pathArr
     }
 };
 
-var noCmdJs = {
-    getData: function (mapData) {
-        var i = null,
-            result = [];
 
-        for (i in mapData) {
-            if (mapData.hasOwnProperty(i)) {
-                mapData[i].forEach(function (data) {
-                    if (data.type === "js" && data.command !== "seajsMain") {
-                        result.push(data)
-                    }
-                });
-            }
+Operator.prototype.getData = function (mapData) {
+    var i = null,
+        self = this,
+        result = [];
+
+    for (i in mapData) {
+        if (mapData.hasOwnProperty(i)) {
+            mapData[i].forEach(function (data) {
+                if (self.isData(data)) {
+                    result.push(data)
+                }
+            });
         }
+    }
 
-        return result;
-    },
-    parse: function (jsData) {
-        var pathArr = [];
+    return result;
+};
+Operator.prototype.convertDistPathRelativeToCwd = function (dist) {
+    var buildConfig = buildConfigOperator.read();
 
-        jsData.fileUrlArr.forEach(function (url) {
-            pathArr.push(path.join(process.cwd(), url));
-        });
+    return buildConfigOperator.convertToPathRelativeToCwd(dist, buildConfig);
+};
 
-        return {
-            dist: this._convertDistPathRelativeToCwd(jsData.dist),
-            filePathArr: pathArr
-        }
-    },
-    _convertDistPathRelativeToCwd: function (dist) {
-        var buildConfig = buildConfigOperator.read();
 
-        return buildConfigOperator.convertToPathRelativeToCwd(dist, buildConfig);
+function SeajsOperator() {
+    Operator.apply(this, arguments);
+}
+
+extendUtils.inherit(SeajsOperator, Operator);
+
+SeajsOperator.prototype.isData = function (data) {
+    return data.command === "seajsMain";
+};
+SeajsOperator.prototype.parse = function (data) {
+    return {
+        dist: this.convertDistPathRelativeToCwd(data.dist),
+        mainFilePath: path.join(process.cwd(), data.fileUrlArr[0])
     }
 };
 
-var css = {
-    getData: function (mapData) {
-        var i = null,
-            result = [];
 
-        for (i in mapData) {
-            if (mapData.hasOwnProperty(i)) {
-                mapData[i].forEach(function (data) {
-                    if (data.type === "css") {
-                        result.push(data)
-                    }
-                });
-            }
-        }
+function NoCmdJsOperator() {
+    Operator.apply(this, arguments);
+}
 
-        return result;
-    },
-    parse: function (jsData) {
-        var pathArr = [];
+extendUtils.inherit(NoCmdJsOperator, Operator);
 
-        jsData.fileUrlArr.forEach(function (url) {
-            pathArr.push(path.join(process.cwd(), url));
-        });
-
-        return {
-            dist: this._convertDistPathRelativeToCwd(jsData.dist),
-            filePathArr: pathArr
-        }
-    },
-    _convertDistPathRelativeToCwd: function (dist) {
-        var buildConfig = buildConfigOperator.read();
-
-        return buildConfigOperator.convertToPathRelativeToCwd(dist, buildConfig);
-    }
+NoCmdJsOperator.prototype.isData = function (data) {
+    return data.type === "js" && data.command === "replace";
 };
-//todo refactor
+
+
+
+function CssOperator() {
+    Operator.apply(this, arguments);
+}
+
+extendUtils.inherit(CssOperator, Operator);
+
+CssOperator.prototype.isData = function (data) {
+    return data.type === "css";
+};
+
 
 module.exports = {
     read: function () {
@@ -119,12 +105,12 @@ module.exports = {
             fs.readFileSync(path.resolve(process.cwd(), "gulp/resourceMap.json"), "utf8")
         );
     },
-    write:function(contents){
+    write: function (contents) {
         fs.writeFileSync(
             path.join(process.cwd(), "gulp/resourceMap.json"),
             contents);
     },
-    seajs: seajs,
-    noCmdJs: noCmdJs,
-    css: css
+    SeajsOperator: SeajsOperator,
+    NoCmdJsOperator: NoCmdJsOperator,
+    CssOperator: CssOperator
 };

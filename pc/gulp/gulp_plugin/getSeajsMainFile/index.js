@@ -11,7 +11,7 @@ var REGEX_MAINFILE_URL = /(seajs\.use\((['"]))(.+)(\2)/mg,
 
 //todo seajs.use path can be other path(not only the "/pc/js/xxx", but also like "js/xxx"(use base or align config)
 function getFileContent() {
-    var seajsOperator = mapOperator.seajs;
+    var seajsOperator = new mapOperator.SeajsOperator();
 
     return through(function (file, encoding, callback) {
         var self = this,

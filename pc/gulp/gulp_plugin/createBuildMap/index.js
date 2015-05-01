@@ -4,7 +4,7 @@ var through = require("through-gulp"),
     fs = require("fs"),
     buildConfigOperator = require("../lib/buildConfigOperator"),
     mapOperator = require("../lib/resourceMapOperator"),
-    Parse = require("../lib/Parse");
+    parse = require("../lib/parse");
 
 var PLUGIN_NAME = "createBuildMap";
 
@@ -27,8 +27,8 @@ function createBuildMap() {
             filePath = file.path;
             buildConfig = buildConfigOperator.read();
 
-            result[filePath] = new Parse.ParseCss(this, PLUGIN_NAME).parse(fileContent, buildConfig)
-                .concat(new Parse.ParseJs(this, PLUGIN_NAME).parse(fileContent, buildConfig));
+            result[filePath] = new parse.ParseCss(this, PLUGIN_NAME).parse(fileContent, buildConfig)
+                .concat(new parse.ParseJs(this, PLUGIN_NAME).parse(fileContent, buildConfig));
 
             callback();
         }

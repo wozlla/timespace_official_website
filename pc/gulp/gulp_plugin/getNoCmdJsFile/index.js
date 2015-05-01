@@ -8,7 +8,7 @@ var through = require("through-gulp"),
 var PLUGIN_NAME = "getNoCmdJsFile";
 
 function getFileContent() {
-    var operator = mapOperator.noCmdJs;
+    var operator = new mapOperator.NoCmdJsOperator();
 
     return fileOperator.getFile(operator, PLUGIN_NAME);
 }
