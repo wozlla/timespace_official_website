@@ -41,8 +41,6 @@ function concat() {
 
         callback();
     });
-
-    return stream;
 }
 
 function _concatStream(container, stream){

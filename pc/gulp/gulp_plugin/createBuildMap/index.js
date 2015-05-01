@@ -41,24 +41,7 @@ function createBuildMap() {
         mapOperator.write(JSON.stringify(result));
 
         callback();
-
-        //todo why it'll start rewrite task when not invoking callback here
-        // (mean not finishing createBuildMap task!)
-
-        //fs.writeFile(
-        //    path.join(process.cwd(), "gulp/resourceMap.json"),
-        //    JSON.stringify(result)
-        //, function(e){
-        //    if(e){
-        //        gutil.log(e.message);
-        //        self.emit("error", new gutil.PluginError(PLUGIN_NAME, e.message));
-        //}
-        //
-        //        callback();
-        //});
     });
-
-    return stream;
 }
 
 

@@ -31,8 +31,6 @@ function rewrite() {
             return callback();
         }
     });
-
-    return stream;
 }
 
 function handleContent(content, mapDataArr, stream) {

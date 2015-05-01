@@ -1,5 +1,7 @@
 var Vinyl = require("vinyl"),
     path = require("path"),
+    gutil = require("gulp-util"),
+    through = require("through-gulp"),
     fs = require("fs");
 
 var operator = {
@@ -69,6 +71,53 @@ var operator = {
             file1.contents.toString()
             + delimiter + file2.contents.toString()
         );
+    },
+    getFile: function (operator, pulginName) {
+        var fileOperator = this;
+
+        return through(function (file, encoding, callback) {
+            var self = this,
+                dataArr = null;
+
+            if (file.isNull()) {
+                this.emit("error", new gutil.PluginError(pulginName, 'Streaming not supported'));
+                return callback();
+            }
+            if (file.isBuffer()) {
+                dataArr = operator.getData(JSON.parse(file.contents.toString()));
+
+                if (!dataArr) {
+                    this.emit("error", new gutil.PluginError(pulginName, 'no js data'));
+                    return callback();
+                }
+
+                dataArr.forEach(function (data) {
+                    var data = operator.parse(data);
+
+                    data.filePathArr.forEach(function (filePath) {
+                        var newFile = null,
+                            fileContent = null;
+
+                        fileContent = fs.readFileSync(filePath, "utf8");
+                        newFile = fileOperator.createFile(new Buffer(fileContent), filePath);
+                        //custom attr for gulp-js-combo to set dist path
+                        newFile.dist = data.dist;
+
+                        self.push(newFile);
+                    });
+                });
+
+                callback();
+            }
+            //todo support stream
+            if (file.isStream()) {
+                this.emit("error", new gutil.PluginError(pulginName, 'Streaming not supported'));
+                return callback();
+            }
+        }, function (callback) {
+            callback();
+        });
+
     }
 };
 

@@ -58,8 +58,6 @@ function getFileContent() {
     }, function (callback) {
         callback();
     });
-
-    return stream;
 }
 
 
