@@ -1,9 +1,11 @@
-var extendUtils = require("../extendUtils"),
+var gutil = require("gulp-util"),
+    extendUtils = require("../extendUtils"),
     buildConfigOperator = require("./buildConfigOperator");
 
-function Parse(stream, pluginName){
+function Parse(stream, pluginName, filePath) {
     this._stream = stream;
     this._pluginName = pluginName;
+    this._filePath = filePath;
 
     //abstract attr
     this.REGEX_BEGINE = null;
@@ -11,7 +13,7 @@ function Parse(stream, pluginName){
     this.REGEX_URL = null;
     this.type = null;
 }
-Parse.prototype.parse = function(content, buildConfig){
+Parse.prototype.parse = function (content, buildConfig) {
     var endDataArr = null,
         buildDataArr = null,
         buildIndex = null,
@@ -24,7 +26,7 @@ Parse.prototype.parse = function(content, buildConfig){
 
     buildDataArr = this.REGEX_BEGINE.exec(content);
 
-    while(buildDataArr !== null) {
+    while (buildDataArr !== null) {
         segmentData = {};
         buildIndex = buildDataArr.index;
 
@@ -33,8 +35,8 @@ Parse.prototype.parse = function(content, buildConfig){
 
         endDataArr = this.REGEX_END.exec(content.slice(buildDataArr.index));
 
-        if(endDataArr === null){
-            this._stream.emit("error", new gutil.PluginError(this._pluginName, "should define #endbuild#"));
+        if (endDataArr === null) {
+            this._stream.emit("error", new gutil.PluginError(this._pluginName, this._filePath + ":should define #endbuild#"));
 
             return;
         }
@@ -67,39 +69,39 @@ Parse.prototype.parse = function(content, buildConfig){
 
     return result;
 };
-Parse.prototype._getFileUrlArr = function(content, buildConfig){
+Parse.prototype._getFileUrlArr = function (content, buildConfig) {
     var dataArr = null,
         result = [];
 
-    while((dataArr = this.REGEX_URL.exec(content)) !== null) {
+    while ((dataArr = this.REGEX_URL.exec(content)) !== null) {
         result.push(buildConfigOperator.convertToPathRelativeToCwd(dataArr[2], buildConfig));
     }
 
     return result;
 };
 
-function ParseCss(){
+function ParseCss() {
     Parse.apply(this, arguments);
 
-    this.REGEX_BEGINE= /[^\r\n]+#build:css:([^\s]+)\s([^\s#]+)[^\r\n]+/gm,
-    this.REGEX_END = /[^\r\n]+#endbuild#[^\r\n]+/gm,
-    //[^\1] 匹配失败!!!why?
-    //REGEX_URL = /src=(['"])([^\1]+)\1/mg,
-    this.REGEX_URL = /href=(['"])(.+?)\1/mg;
+    this.REGEX_BEGINE = /[^\r\n]+#build:css:([^\s]+)\s([^\s#]+)[^\r\n]+/gm,
+        this.REGEX_END = /[^\r\n]+#endbuild#[^\r\n]+/gm,
+        //[^\1] 匹配失败!!!why?
+        //REGEX_URL = /src=(['"])([^\1]+)\1/mg,
+        this.REGEX_URL = /href=(['"])(.+?)\1/mg;
     this.type = "css";
 }
 
 extendUtils.inherit(ParseCss, Parse);
 
 
-function ParseJs(){
+function ParseJs() {
     Parse.apply(this, arguments);
 
-    this.REGEX_BEGINE= /[^\r\n]+#build:js:([^\s]+)\s([^\s#]+)[^\r\n]+/gm,
-    this.REGEX_END = /[^\r\n]+#endbuild#[^\r\n]+/gm,
-    //[^\1] 匹配失败!!!why?
-    //REGEX_URL = /src=(['"])([^\1]+)\1/mg,
-    this.REGEX_URL = /src=(['"])(.+?)\1/mg;
+    this.REGEX_BEGINE = /[^\r\n]+#build:js:([^\s]+)\s([^\s#]+)[^\r\n]+/gm,
+        this.REGEX_END = /[^\r\n]+#endbuild#[^\r\n]+/gm,
+        //[^\1] 匹配失败!!!why?
+        //REGEX_URL = /src=(['"])([^\1]+)\1/mg,
+        this.REGEX_URL = /src=(['"])(.+?)\1/mg;
     this.type = "js";
 }
 

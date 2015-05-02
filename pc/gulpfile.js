@@ -4,3 +4,4 @@ require("./gulp/gulp_task/rewrite");
 require("./gulp/gulp_task/pack");
 
 gulp.task("build", ["pack", "rewrite"]);
+gulp.task("default", ["rewrite"]);

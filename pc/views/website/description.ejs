@@ -1,9 +1,10 @@
 
 <% include header.ejs %>
 
+<!--#build:css:replace /pc/dist/description/index.css#-->
     <link href="/pc/css/website/page.css" type="text/css" rel="stylesheet">
-
     <link href="/pc/css/website/description/list.css" type="text/css" rel="stylesheet">
+<!--#endbuild#-->
 
 
 <div class="description">
@@ -83,9 +84,14 @@
 
 
 <% include footer.ejs %>
+
+<!--#build:js:replace /pc/dist/description/no_cmd.js#-->
 <script src="/pc/js/website/description/description.js"></script>
+<!--#endbuild#-->
 
 
+<!--#build:js:seajsMain /pc/dist/description/cmd.js#-->
 <script src="/pc/js/website/description/main.js"></script>
+<!--#endbuild#-->
 
 <% include footerHtml.ejs %>

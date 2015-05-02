@@ -1,9 +1,10 @@
 
 <% include header.ejs %>
 
+<!--#build:css:replace /pc/dist/download/index.css#-->
 <link href="/pc/css/website/page.css" type="text/css" rel="stylesheet">
-
 <link href="/pc/css/website/download/list.css" type="text/css" rel="stylesheet">
+<!--#endbuild#-->
 
 
 <div class="download">
@@ -69,6 +70,8 @@
 
 <% include footer.ejs %>
 
+<!--#build:js:seajsMain /pc/dist/download/cmd.js#-->
 <script src="/pc/js/website/download/main.js"></script>
+<!--#endbuild#-->
 
 <% include footerHtml.ejs %>

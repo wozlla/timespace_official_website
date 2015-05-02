@@ -27,8 +27,8 @@ function createBuildMap() {
             filePath = file.path;
             buildConfig = buildConfigOperator.read();
 
-            result[filePath] = new parse.ParseCss(this, PLUGIN_NAME).parse(fileContent, buildConfig)
-                .concat(new parse.ParseJs(this, PLUGIN_NAME).parse(fileContent, buildConfig));
+            result[filePath] = new parse.ParseCss(this, PLUGIN_NAME, file.path).parse(fileContent, buildConfig)
+                .concat(new parse.ParseJs(this, PLUGIN_NAME, file.path).parse(fileContent, buildConfig));
 
             callback();
         }

@@ -1,7 +1,9 @@
 <% include header.ejs %>
 
+<!--#build:css:replace /pc/dist/news/index.css#-->
     <link href="/pc/css/website/page.css" type="text/css" rel="stylesheet">
     <link href="/pc/css/website/news/list.css" type="text/css" rel="stylesheet">
+<!--#endbuild#-->
 
 
 <div class="news">
@@ -70,9 +72,15 @@
 
 
 <% include footer.ejs %>
+
+<!--#build:js:replace /pc/dist/news/no_cmd.js#-->
 <script src="/pc/js/website/news/news.js"></script>
+<!--#endbuild#-->
 
 
+<!--#build:js:seajsMain /pc/dist/news/cmd.js#-->
 <script src="/pc/js/website/news/main.js"></script>
+<!--#endbuild#-->
+
 <% include footerHtml.ejs %>
 
