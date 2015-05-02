@@ -18,8 +18,8 @@ function rewrite() {
         if (file.isBuffer()) {
             map = mapOperator.read();
 
-            file.contents = new Buffer(handleContent(
-                file.contents.toString(), map[file.path], this
+            file.contents = new Buffer(_handleContent(
+                file.contents.toString(), map[file.path], file.path, this
             ));
 
             this.push(file);
@@ -33,10 +33,15 @@ function rewrite() {
     });
 }
 
-function handleContent(content, mapDataArr, stream) {
+function _handleContent(content, mapDataArr, filePath, stream) {
     var result = "",
         startIndex = 0,
         buildConfig = buildConfigOperator.read();
+
+    if(!mapDataArr){
+        stream.emit("error", new gutil.PluginError(PLUGIN_NAME, "resourceMap[" + filePath + "]"));
+        return;
+    }
 
     mapDataArr.forEach(function (mapData) {
         switch (mapData.command) {

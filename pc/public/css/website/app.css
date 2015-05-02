@@ -201,7 +201,7 @@ ul.footer {
   .modal .modal-content .modal-body {
     margin: 0 auto;
     margin-top: 100px;
-    background-image: url('/pc/image/index/pic/building.png');
+    background-image: url("/pc/image/index/pic/building.png");
     background-size: 100% 100%;
     width: 400px;
     height: 120px; }
@@ -252,8 +252,7 @@ share plugin
     text-align: center;
     display: table;
     margin-right: 20px;
-    float: left;
-    cursor: pointer; }
+    float: left; }
     .normal-nav nav > ul > li a {
       height: 90px; }
   .normal-nav nav > ul.clearfix {
@@ -482,3 +481,5 @@ footer.page-footer {
 
 .banner-small {
   height: 400px; }
+
+/*# sourceMappingURL=app.css.map */
