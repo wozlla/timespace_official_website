@@ -1,12 +1,12 @@
 var mongodb = require("./db");
 var ObjectId = require('mongodb').ObjectID;
 
-function Description(){
+function Description() {
 }
 
 
 //存储一篇文章及其相关信息
-Description.prototype.add = function(descriptionObj, callback) {
+Description.prototype.add = function (descriptionObj, callback) {
     //要存入数据库的文档
     var description = descriptionObj;
     var db = mongodb.createDb();
@@ -37,7 +37,7 @@ Description.prototype.add = function(descriptionObj, callback) {
     });
 };
 
-Description.prototype.update = function(id, data, callback){
+Description.prototype.update = function (id, data, callback) {
     var db = mongodb.createDb();
 
     db.open(function (err, db) {
@@ -57,7 +57,7 @@ Description.prototype.update = function(id, data, callback){
             }
 
             collection.update(query, {
-                $set:data   //only set fields contained in data
+                $set: data   //only set fields contained in data
             }, null, function (err) {
                 db.close();
                 if (err) {
@@ -69,7 +69,7 @@ Description.prototype.update = function(id, data, callback){
     });
 };
 
-Description.prototype.updateByCategory = function(category, data, callback){
+Description.prototype.updateByCategory = function (category, data, callback) {
     var db = mongodb.createDb();
 
     db.open(function (err, db) {
@@ -89,7 +89,7 @@ Description.prototype.updateByCategory = function(category, data, callback){
             }
 
             collection.update(query, {
-                $set:data   //only set fields contained in data
+                $set: data   //only set fields contained in data
             }, {
                 multi: true
             }, function (err) {
@@ -109,7 +109,7 @@ Description.prototype.updateByCategory = function(category, data, callback){
     });
 };
 
-Description.prototype.remove = function(id, callback){
+Description.prototype.remove = function (id, callback) {
     var db = mongodb.createDb();
 
     db.open(function (err, db) {
@@ -140,7 +140,7 @@ Description.prototype.remove = function(id, callback){
 };
 
 
-Description.prototype.removeByCategory = function(category, callback){
+Description.prototype.removeByCategory = function (category, callback) {
     var db = mongodb.createDb();
 
     db.open(function (err, db) {
@@ -161,7 +161,7 @@ Description.prototype.removeByCategory = function(category, callback){
 
             collection.remove(query, null, function (err) {
                 /*!because this is used in cascade delete case,
-                so close ouside!
+                 so close ouside!
 
                  db.close();
                  */
@@ -177,7 +177,7 @@ Description.prototype.removeByCategory = function(category, callback){
 };
 
 //读取文章及其相关信息
-Description.prototype.get = function(id, callback) {
+Description.prototype.get = function (id, callback) {
     var db = mongodb.createDb();
 
     //打开数据库
@@ -187,7 +187,7 @@ Description.prototype.get = function(id, callback) {
             return callback(err);
         }
         //读取 posts 集合
-        db.collection("description", function(err, collection) {
+        db.collection("description", function (err, collection) {
             if (err) {
                 db.close();
                 return callback(err);
@@ -208,7 +208,7 @@ Description.prototype.get = function(id, callback) {
     });
 };
 
-Description.prototype.getList = function(callback) {
+Description.prototype.getList = function (callback) {
     var db = mongodb.createDb();
 
     db.open(function (err, db) {
@@ -216,32 +216,62 @@ Description.prototype.getList = function(callback) {
             db.close();
             return callback(err);
         }
-        db.collection("description", function(err, collection) {
+        db.collection("description", function (err, collection) {
             if (err) {
                 db.close();
                 return callback(err);
             }
 
             collection.aggregate([{
-                $group:{
-                    _id:"$category",
-                    data:{
-                        $push:"$$ROOT"
+                $group: {
+                    _id: "$category",
+                    data: {
+                        $push: "$$ROOT"
                     }
                 }
             },
                 {
-                    $sort:{
-                        category:-1
+                    $sort: {
+                        category: -1
                     }
-                    }]).toArray(function (err, docs) {
-                        db.close();
-                        if (err) {
-                            return callback(err);//失败！返回 err
-                        }
-                        callback(null, docs);//成功！以数组形式返回查询的结果
+                }]).toArray(function (err, docs) {
+                db.close();
+                if (err) {
+                    return callback(err);//失败！返回 err
+                }
+                callback(null, docs);//成功！以数组形式返回查询的结果
             });
 
+        });
+    });
+};
+
+Description.prototype.getListByCategory = function (category, callback) {
+    var db = mongodb.createDb();
+
+    db.open(function (err, db) {
+        if (err) {
+            db.close();
+            return callback(err);
+        }
+        db.collection("description", function (err, collection) {
+            if (err) {
+                db.close();
+                return callback(err);
+            }
+
+            collection.find({
+                category: category
+            })
+                .toArray(function (err, docs) {
+                    db.close();
+
+                    if (err) {
+                        return callback(err);//失败！返回 err
+                    }
+
+                    callback(null, docs);//成功！以数组形式返回查询的结果
+                });
         });
     });
 };

@@ -7,7 +7,7 @@
             <a href="/pc/description"><img src="/pc/image/nav/description.png"/></a>
             <ul class="dropdown">
                 <% for(var i = 0, len = descriptionCategorys.length; i < len; i++){%>
-                <li><a href="/pc/description"><%= descriptionCategorys[i].name%></a></li>
+                <li><a href="/pc/description?category=<%= descriptionCategorys[i].name %>"><%= descriptionCategorys[i].name%></a></li>
                 <% }%>
             </ul>
         </li>

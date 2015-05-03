@@ -1,0 +1,26 @@
+<div class="header">
+    <div>
+        <ol class="breadcrumb">
+            <li><a href="/pc/description">游戏介绍</a></li>
+            <li class="active"><%= category %></li>
+        </ol>
+    </div>
+    <ul class="clearfix">
+        <li class="line"></li>
+        <li><h1><%= category %></h1></li>
+    </ul>
+</div>
+
+<div id="content">
+    <div class="body">
+        <div class="item">
+            <ul class="list clearfix">
+                <% descriptionsByCategory.forEach(function(model){%>
+                <li onclick="description.showDetail('/pc/description/detailPage', '<%= model._id %>')">
+                    <%= model.title%>
+                </li>
+                <% })%>
+            </ul>
+        </div>
+    </div>
+</div>

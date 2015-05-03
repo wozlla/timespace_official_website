@@ -3,8 +3,8 @@
         <div>
             <ol class="breadcrumb">
                 <li><a href="/pc/description">游戏介绍</a></li>
-                <li><%= model.title%></li>
-                <li class="active">正文</li>
+                <li><a href="/pc/description?category=<%=model.category %>"><%= model.category%></a></li>
+                <li class="active"><%= model.title%></li>
             </ol>
         </div>
         <ul class="clearfix">
