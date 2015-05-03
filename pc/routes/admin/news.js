@@ -3,8 +3,7 @@ var path = require("path");
 var router = express.Router();
 var safe = require("../../bll/safe");
 var News = require("../../models/News");
-var file = require("../lib/file");
-var yTool = require("../../public/js/bower_components/yyctoolbox/tool/yTool");
+var fileUploader = require("../../public/js/bower_components/yyctoolbox/fileOperator/upload/server/main");
 var PAGESIZE = 10;
 
 router.get("/", function (req, res, next) {
@@ -48,22 +47,12 @@ router.get("/updatePage", function (req, res, next) {
 
 //todo manage img:replace existed img
 router.post("/uploadIcon", function (req, res, next) {
-    //var iconBase64Data = yTool.code.base64.decode(req.param("icon")),
-    var iconBase64Data = req.param("icon"),
-        ext = req.param("ext"),
-        uploadFilePath = path.resolve(__dirname + "/../../public/upload/newsIcon/"),
-    //todo md5?
-        fileName = "icon_" + +new Date() + ext,
-        writePath = path.join(uploadFilePath, fileName),
-        urlForFrontEnd = path.join("/pc/upload/newsIcon/", fileName);
+    var iconBase64Data = req.param("base64Data"),
+        fileName = req.param("fileName"),
+        clientDirname = "/pc/upload/newsIcon/",
+        uploadFilePath = path.resolve(__dirname + "/../../public/upload/newsIcon/");
 
-
-    //过滤data:URL
-    var base64Data = iconBase64Data.replace(/^data:image\/\w+;base64,/, "");
-    var dataBuffer = new Buffer(base64Data, 'base64');
-
-
-    file.writeFile(writePath, dataBuffer, function (err, data) {
+    fileUploader.saveUploadImage(uploadFilePath, clientDirname, iconBase64Data, fileName, function (err, clientPath) {
         if (err) {
             res.send({
                 isSuccess: false,
@@ -73,7 +62,7 @@ router.post("/uploadIcon", function (req, res, next) {
         }
 
         res.send({
-            url: urlForFrontEnd,
+            url: clientPath,
             isSuccess: true
         });
     });

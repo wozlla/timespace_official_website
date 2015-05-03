@@ -86,15 +86,20 @@
                 h3{
                   @include font-header-small;
                   font-weight:bold;
-                  color:c0a7f0;
+                  color:#c0a7f0;
+
+                  &:hover{
+                    text-decoration:underline;
+                  }
                 }
                 span{
                   display:block;
                   @include font-small;
-                  color:a28bd1;
-                }
-                a{
-                  color:#ffffff;
+                  color:#a28bd1;
+
+                     &:hover{
+                    text-decoration:underline;
+                  }
                 }
               }
             }
