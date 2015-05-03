@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var safe = require("../../bll/safe");
+var convert = require("../../bll/convert");
 var Description = require("../../models/Description");
 var Category = require("../../models/DescriptionCategory");
 
@@ -42,6 +43,7 @@ router.post("/", function(req, res, next) {
     description.add({
         category: req.body.category,
         title:req.body.title,
+        isShow: convert.toBool(req.body.isShow),
         //todo escape?
         body: req.body.body
     },function (err) {
@@ -50,7 +52,7 @@ router.post("/", function(req, res, next) {
             res.send("error");
             return;
         }
-        res.redirect("/pc/admin");
+        res.send("/pc/admin")
     });
 });
 router.put("/", function(req, res, next) {
@@ -58,6 +60,7 @@ router.put("/", function(req, res, next) {
     description.update(req.param("id"), {
         category: req.param("category"),
         title:req.param("title"),
+        isShow: convert.toBool(req.param("isShow")),
         //todo escape?
         body: req.param("body")
     },function (err) {

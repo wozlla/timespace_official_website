@@ -3,14 +3,14 @@ $(function(){
       var title = $("#title").val(),
           body = $("#body").val(),
           isShow = !!$("#isShow").prop("checked"),
-          icon = $("#icon-url").val(),
+          category = $("#category").val(),
           id = $("#id").val();
 
-       $.post("/pc/admin/news", {
+       $.post("/pc/admin/description", {
            id: id,
+           category: category,
+           isShow:isShow,
            title: title,
-           icon:icon,
-           isShow: isShow,
            body: body
       }, function(url){
          location.href = url;

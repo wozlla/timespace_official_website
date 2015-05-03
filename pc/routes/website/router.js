@@ -6,6 +6,7 @@ var tryPlayRouter = require("./tryPlay");
 var newsRouter = require("./news") ;
 var descriptionRouter = require("./description");
 var downloadRouter = require("./download") ;
+var contactUsRouter = require("./contactUs") ;
 
 router.use("/", indexRouter);
 router.use("/index", indexRouter);
@@ -18,6 +19,7 @@ router.use("/tryPlay", tryPlayRouter);
 router.use("/news", newsRouter);
 router.use("/description", descriptionRouter);
 router.use("/download", downloadRouter);
+router.use("/contactUs", contactUsRouter);
 
 module.exports = router;
 

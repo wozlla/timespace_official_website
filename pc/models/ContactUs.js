@@ -1,12 +1,11 @@
 var mongodb = require("./db");
 var ObjectId = require('mongodb').ObjectID;
 
-function News(){
+function ContactUs(){
 }
 
 
-//存储一篇文章及其相关信息
-News.prototype.add = function(newsObj, callback) {
+ContactUs.prototype.add = function(contactUsObj, callback) {
     var db = mongodb.createDb();
     var date = new Date();
     //存储各种时间格式，方便以后扩展
@@ -20,8 +19,8 @@ News.prototype.add = function(newsObj, callback) {
         date.getHours() + ":" + (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes())
     };
     //要存入数据库的文档
-    var news = newsObj;
-    news.time = time.day;
+    var contactUs = contactUsObj;
+    contactUs.time = time.day;
 
     //打开数据库
     db.open(function (err, db) {
@@ -30,13 +29,13 @@ News.prototype.add = function(newsObj, callback) {
             return callback(err);
         }
         //读取 posts 集合
-        db.collection("news", function (err, collection) {
+        db.collection("contactUs", function (err, collection) {
             if (err) {
                 db.close();
                 return callback(err);
             }
 
-            collection.insert(news, {
+            collection.insert(contactUs, {
                 safe: true
             }, function (err) {
                 db.close();
@@ -49,70 +48,8 @@ News.prototype.add = function(newsObj, callback) {
     });
 };
 
-News.prototype.update = function(id, data, callback){
-    var db = mongodb.createDb();
-
-    db.open(function (err, db) {
-        if (err) {
-            db.close();
-            return callback(err);
-        }
-        //读取 posts 集合
-        db.collection("news", function (err, collection) {
-            if (err) {
-                db.close();
-                return callback(err);
-            }
-            var query = {};
-            if (id) {
-                query._id = new ObjectId(id);
-            }
-
-            collection.update(query, {
-                $set:data   //only set fields contained in data(e.g: not edit "time" field)
-            }, null, function (err) {
-                db.close();
-                if (err) {
-                    return callback(err);//失败！返回 err
-                }
-                callback(null);//返回 err 为 null
-            });
-        });
-    });
-};
-
-News.prototype.remove = function(id, callback){
-    var db = mongodb.createDb();
-
-    db.open(function (err, db) {
-        if (err) {
-            db.close();
-            return callback(err);
-        }
-        //读取 posts 集合
-        db.collection("news", function (err, collection) {
-            if (err) {
-                db.close();
-                return callback(err);
-            }
-            var query = {};
-            if (id) {
-                query._id = new ObjectId(id);
-            }
-
-            collection.remove(query, null, function (err) {
-                db.close();
-                if (err) {
-                    return callback(err);
-                }
-                callback(null);
-            });
-        });
-    });
-};
-
 //读取文章及其相关信息
-News.prototype.get = function(id, callback) {
+ContactUs.prototype.get = function(id, callback) {
     var db = mongodb.createDb();
 
     //打开数据库
@@ -122,7 +59,7 @@ News.prototype.get = function(id, callback) {
             return callback(err);
         }
         //读取 posts 集合
-        db.collection("news", function(err, collection) {
+        db.collection("contactUs", function(err, collection) {
             if (err) {
                 db.close();
                 return callback(err);
@@ -143,7 +80,7 @@ News.prototype.get = function(id, callback) {
     });
 };
 
-News.prototype.getList = function(pageNumber, pageSize, callback) {
+ContactUs.prototype.getList = function(pageNumber, pageSize, callback) {
     var db = mongodb.createDb();
     var skipCount = (pageNumber - 1) * pageSize,
         limitCount = pageSize;
@@ -154,7 +91,7 @@ News.prototype.getList = function(pageNumber, pageSize, callback) {
             return callback(err);
         }
         //读取 posts 集合
-        db.collection("news", function(err, collection) {
+        db.collection("contactUs", function(err, collection) {
             if (err) {
                 db.close();
                 return callback(err);
@@ -182,10 +119,8 @@ News.prototype.getList = function(pageNumber, pageSize, callback) {
     });
 };
 
-News.prototype.getListByCondition = function(pageNumber, pageSize, filter, callback) {
+ContactUs.prototype.remove = function(id, callback){
     var db = mongodb.createDb();
-    var skipCount = (pageNumber - 1) * pageSize,
-        limitCount = pageSize;
 
     db.open(function (err, db) {
         if (err) {
@@ -193,32 +128,25 @@ News.prototype.getListByCondition = function(pageNumber, pageSize, filter, callb
             return callback(err);
         }
         //读取 posts 集合
-        db.collection("news", function(err, collection) {
+        db.collection("contactUs", function (err, collection) {
             if (err) {
                 db.close();
                 return callback(err);
             }
+            var query = {};
+            if (id) {
+                query._id = new ObjectId(id);
+            }
 
-            collection.count(function(err, count){
-                var pageCount = Math.ceil(count / pageSize);
-
-                collection.find(filter).sort({
-                    time: -1,
-                    _id: -1
-                }).skip(skipCount).limit(limitCount)
-                    .toArray(function (err, docs) {
-                        db.close();
-                        if (err) {
-                            return callback(err);//失败！返回 err
-                        }
-                        callback(null, docs, {
-                            pageNumber: Number(pageNumber),
-                            pageCount: Number(pageCount)
-                        });//成功！以数组形式返回查询的结果
-                    });
+            collection.remove(query, null, function (err) {
+                db.close();
+                if (err) {
+                    return callback(err);
+                }
+                callback(null);
             });
         });
     });
 };
 
-module.exports = News;
+module.exports = ContactUs;

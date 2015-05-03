@@ -4,6 +4,13 @@
     标题：<br />
     <input type="text" id="title" name="title" value="<%=description.title%>" /><br />
 
+    <% if(description.isShow === true){%>
+    是否显示:<input type="checkbox" id="isShow" name="isShow" checked="checked"/>
+    <%}else{%>
+    是否显示:<input type="checkbox" id="isShow" name="isShow"/>
+    <%}%>
+    <br/>
+
     类别：<br/>
     <select id="category" name="category">
         <% for(var i = 0, len = categorys.length; i < len; i++){%>

@@ -36,7 +36,9 @@ router.get("/", function (req, res, next) {
         return;
     }
 
-    description.getList(function (error, list) {
+    description.getListByCondition({
+        isShow:true
+    },function (error, list) {
         category.getList(function (error, categorys) {
             res.render("website/description/description", {
                 descriptions: list,

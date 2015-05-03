@@ -9,7 +9,9 @@ router.get("/", function(req, res, next) {
   var category = new DescriptionCategory();
   var news = new News();
 
-  news.getList(1, PAGESIZE, function(error, newsList){
+  news.getListByCondition(1, PAGESIZE, {
+    isShow:true
+  }, function(error, newsList){
     category.getList(function(error, list){
       res.render("website/index", {
         descriptionCategorys: list,

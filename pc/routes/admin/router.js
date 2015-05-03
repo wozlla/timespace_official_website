@@ -2,14 +2,15 @@ var express = require("express");
 var router = express.Router();
 var loginRouter = require("./login");
 var indexRouter = require("./index");
-var newsRouter = require("./news") ;
-var descriptionRouter = require("./description") ;
-var descriptionCategoryRouter = require("./descriptionCategory") ;
+var newsRouter = require("./news");
+var descriptionRouter = require("./description");
+var descriptionCategoryRouter = require("./descriptionCategory");
+var contactUsRouter = require("./contactUs");
 var isDev = require("../../setting").isDev;
 
-if(!isDev){
-    router.use("/", function(req, res, next){
-        if(req.url === "/login" || req.session.user){
+if (!isDev) {
+    router.use("/", function (req, res, next) {
+        if (req.url === "/login" || req.session.user) {
             next();
             return;
         }
@@ -23,5 +24,6 @@ router.use("/login", loginRouter);
 router.use("/news", newsRouter);
 router.use("/description", descriptionRouter);
 router.use("/descriptionCategory", descriptionCategoryRouter);
+router.use("/contactUs", contactUsRouter);
 
 module.exports = router;

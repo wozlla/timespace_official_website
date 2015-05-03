@@ -246,6 +246,48 @@ Description.prototype.getList = function (callback) {
     });
 };
 
+Description.prototype.getListByCondition = function (filter, callback) {
+    var db = mongodb.createDb();
+
+    db.open(function (err, db) {
+        if (err) {
+            db.close();
+            return callback(err);
+        }
+        db.collection("description", function (err, collection) {
+            if (err) {
+                db.close();
+                return callback(err);
+            }
+
+            collection.aggregate([
+               {
+                $match:filter
+            },
+                {
+                $group: {
+                    _id: "$category",
+                    data: {
+                        $push: "$$ROOT"
+                    }
+                }
+            },
+                {
+                    $sort: {
+                        category: -1
+                    }
+                }]).toArray(function (err, docs) {
+                db.close();
+                if (err) {
+                    return callback(err);//失败！返回 err
+                }
+                callback(null, docs);//成功！以数组形式返回查询的结果
+            });
+
+        });
+    });
+};
+
 Description.prototype.getListByCategory = function (category, callback) {
     var db = mongodb.createDb();
 
@@ -261,7 +303,8 @@ Description.prototype.getListByCategory = function (category, callback) {
             }
 
             collection.find({
-                category: category
+                category: category,
+                isShow:true
             })
                 .toArray(function (err, docs) {
                     db.close();

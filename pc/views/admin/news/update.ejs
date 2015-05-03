@@ -14,6 +14,15 @@
     <%}%>
     <input type="hidden" id="icon-url" value="<%= news.icon%>"/>
 
+
+
+    <% if(news.isShow === true){%>
+    是否显示:<input type="checkbox" id="isShow" name="isShow" checked="checked"/>
+    <%}else{%>
+    是否显示:<input type="checkbox" id="isShow" name="isShow"/>
+    <%}%>
+    <br/>
+
     正文：<br />
   <textarea id="body" name="body">
      <%= news.body %>

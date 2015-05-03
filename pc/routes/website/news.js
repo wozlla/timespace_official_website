@@ -25,7 +25,9 @@ router.get("/", function(req, res, next) {
     }
 
 
-    news.getList(1, PAGESIZE, function(error, list, pageData){
+    news.getListByCondition(1, PAGESIZE, {
+        isShow:true
+    },function(error, list, pageData){
         //todo optimize!remove in front end
         _handleBody(list);
 
@@ -43,7 +45,9 @@ router.get("/", function(req, res, next) {
 });
 
 router.get("/content", function(req, res, next) { var news = new News();
-    news.getList(req.param("pageNumber"), PAGESIZE, function(error, list, pageData){
+    news.getListByCondition(req.param("pageNumber"), PAGESIZE, {
+        isShow: true
+    }, function(error, list, pageData){
         _handleBody(list);
 
         res.render("website/newsContent", {

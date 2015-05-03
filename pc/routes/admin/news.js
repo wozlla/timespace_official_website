@@ -2,6 +2,7 @@ var express = require("express");
 var path = require("path");
 var router = express.Router();
 var safe = require("../../bll/safe");
+var convert = require("../../bll/convert");
 var News = require("../../models/News");
 var fileUploader = require("../../public/js/bower_components/yyctoolbox/fileOperator/upload/server/main");
 var PAGESIZE = 10;
@@ -20,7 +21,7 @@ router.get("/", function (req, res, next) {
 router.get("/content", function (req, res, next) {
     var news = new News();
     news.getList(req.param("pageNumber"), PAGESIZE, function (error, list, pageData) {
-        res.render("admin/news/newsContent", {
+        res.render("admin/news/content", {
             news: list,
             pageData: pageData
         });
@@ -74,6 +75,7 @@ router.post("/", function (req, res, next) {
     news.add({
         title: req.body.title,
         icon: req.body.icon,
+        isShow: convert.toBool(req.body.isShow),
         //todo escape?
         body: req.body.body
     }, function (err) {
@@ -85,7 +87,7 @@ router.post("/", function (req, res, next) {
             return;
         }
         //req.flash("success", "发布成功!");
-        //res.redirect("/");//发表成功跳转到主页
+        //res.redirect("/pc/admin");
         res.send("/pc/admin")
     });
 });
@@ -94,6 +96,7 @@ router.put("/", function (req, res, next) {
     news.update(req.param("id"), {
         title: req.param("title"),
         icon: req.param("icon"),
+        isShow: convert.toBool(req.param("isShow")),
         //todo escape?
         body: req.param("body")
     }, function (err) {
