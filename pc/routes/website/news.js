@@ -63,7 +63,7 @@ router.get("/detailPage", function(req, res, next) {
 });
 
 function _handleBody(list){
-    var MAXLENGTH = 110;
+    var MAXLENGTH = 80;
 
     list.forEach(function(model){
         model.body = safe.removeHtmlLabel(model.body);

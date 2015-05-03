@@ -3,11 +3,18 @@
         <ul>
             <% for(var i = 0, len = news.length; i < len; i++){%>
             <li class="item" onclick="news.showDetail('/pc/news/detailPage', '<%= news[i]._id %>')">
-                <h3><%= news[i].title%></h3>
-                <p>
-                    <%= news[i].body %>
-                </p>
-                <span><%= news[i].time %></span>
+                <dl class="clearfix">
+                    <dt>
+                        <img src="<%=news[i].icon%>"/>
+                    </dt>
+                    <dd>
+                        <h3><%= news[i].title%></h3>
+                        <p>
+                            <%= news[i].body %>
+                        </p>
+                        <span><%= news[i].time %></span>
+                    </dd>
+                </dl>
             </li>
             <% }%>
         </ul>

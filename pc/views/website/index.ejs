@@ -28,9 +28,18 @@
         <li class="left">
           <ul>
             <% for(var i = 0, len = newsList.length; i < len; i++){%>
-            <li>
-             <a href="/pc/news?id=<%=newsList[i]._id%>"> <h3 class="ellipsis"><%= newsList[i].title%></h3></a>
-              <a href="/pc/news?id=<%=newsList[i]._id%>"><span class="ellipsis"><%= safe.removeHtmlLabel(newsList[i].body)%></span></a>
+            <li class="clearfix">
+
+              <%if(newsList[i].icon){%>
+              <div class="icon">
+                <img src="<%= newsList[i].icon %>"/>
+              </div>
+              <%}%>
+
+              <div class="text">
+                <a href="/pc/news?id=<%=newsList[i]._id%>"> <h3 class="ellipsis"><%= newsList[i].title%></h3></a>
+                <a href="/pc/news?id=<%=newsList[i]._id%>"><span class="ellipsis"><%= safe.removeHtmlLabel(newsList[i].body)%></span></a>
+              </div>
             </li>
             <% }%>
           </ul>

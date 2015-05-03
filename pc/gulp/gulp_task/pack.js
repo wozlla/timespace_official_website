@@ -1,7 +1,7 @@
+require("./createBuildMap");
 var gulp = require('gulp');
 var gulpUglify = require('gulp-uglify');
 var plumber = require('gulp-plumber');
-require("./createBuildMap");
 
 
 var gulpGetSeajsMainFile = require('../gulp_plugin/getSeajsMainFile/index.js');
@@ -13,9 +13,7 @@ gulp.task('packSeajs', ['createBuildMap'], function () {
         .pipe(plumber())
         .pipe(gulpGetSeajsMainFile())
         .pipe(gulpCombo({}))
-
-
-        //todo uglify
+        .pipe(gulpUglify())
 
         //just set to cwd path,the dest path is set by dist attr in resourceMap.json
 
@@ -29,9 +27,9 @@ var gulpGetNoCmdJsFile = require('../gulp_plugin/getNoCmdJsFile/index.js'),
 gulp.task('packNoCmdJs', ['createBuildMap'], function () {
     return gulp.src('gulp/gulp_plugin/resourceMap.json')
         .pipe(plumber())
-        //.pipe(buildJs())
         .pipe(gulpGetNoCmdJsFile())
         .pipe(gulpConcat())
+        .pipe(gulpUglify())
 
 
         //just set to cwd path,the dest path is set by dist attr in resourceMap.json
@@ -45,7 +43,7 @@ gulp.task('packCss', ['createBuildMap'], function () {
         .pipe(plumber())
         .pipe(gulpGetCssFile())
         .pipe(gulpConcat())
-
+        .pipe(gulpUglify())
 
         //just set to cwd path,the dest path is set by dist attr in resourceMap.json
         .pipe(gulp.dest('./'));

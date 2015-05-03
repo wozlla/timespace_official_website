@@ -16,6 +16,7 @@
     "serve-favicon": "~2.2.0"
   },
   "devDependencies": {
+    "browser-sync": "^2.6.9",
     "connect": "^3.3.5",
     "connect-flash": "^0.1.1",
     "consolidate": "^0.11.0",

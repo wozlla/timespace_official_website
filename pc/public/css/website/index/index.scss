@@ -80,12 +80,18 @@
 
               .text{
                 margin-left:10px;
+                  max-width:150px;
+
+
                 h3{
                   @include font-header-small;
+                  font-weight:bold;
+                  color:c0a7f0;
                 }
                 span{
                   display:block;
                   @include font-small;
+                  color:a28bd1;
                 }
                 a{
                   color:#ffffff;

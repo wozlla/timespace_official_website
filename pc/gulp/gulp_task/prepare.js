@@ -1,3 +1,5 @@
+require("./compile/sass");
+
 var gulp = require('gulp');
 
 var clean = require('gulp-clean');
@@ -8,16 +10,6 @@ gulp.task('clean', function () {
 });
 
 
-var sass = require('gulp-sass'),
-    sourcemaps = require('gulp-sourcemaps');
-
-gulp.task('compile', function () {
-    return gulp.src(['public/css/*.scss', 'public/css/**/*.scss'])
-        .pipe(sourcemaps.init())
-        .pipe(sass())
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest('public/css/'));
-});
 
 var gulpCopy = require('gulp-copy');
 
