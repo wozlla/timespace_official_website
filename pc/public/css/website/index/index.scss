@@ -69,19 +69,31 @@
               margin-bottom:15px;
               cursor:pointer;
 
-              h3{
-                @include font-header-small;
+              .icon{
+                  width:36px;
+                  height:36px;
+                img{
+                  width:36px;
+                  height:36px;
+                }
               }
-              span{
-                display:block;
-                @include font-small;
-              }
-              a{
-                color:#ffffff;
+
+              .text{
+                margin-left:10px;
+                h3{
+                  @include font-header-small;
+                }
+                span{
+                  display:block;
+                  @include font-small;
+                }
+                a{
+                  color:#ffffff;
+                }
               }
             }
           }
-          img {
+          >img {
             width: 100%;
             height: 100px;
             position: absolute;

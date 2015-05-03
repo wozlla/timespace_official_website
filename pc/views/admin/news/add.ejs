@@ -1,8 +1,17 @@
 <% include ../header.ejs %>
 
-<form method="post" action="/pc/admin/news">
+<form>
   标题：<br />
-  <input type="text" name="title"/><br />
+  <input type="text" id="title" name="title"/><br />
+
+  icon：<br/>
+  <input type="file" accept="image/*"
+         onchange="news.handleFiles(this.files)">
+  <!--<a href="#" id="fileSelect">Select some files</a>-->
+  <img id="icon"/>
+  <input type="hidden" id="icon-url"/>
+
+
   正文：<br />
   <textarea id="body" name="body"></textarea>
   <br />
@@ -11,5 +20,9 @@
 
 <% include ../kindeditorJs.ejs %>
 
-<% include ../footer.ejs %>
+<% include footer.ejs %>
+<script src="/pc/js/admin/news/add.js"></script>
+
+
+
 <% include ../footerHtml.ejs %>

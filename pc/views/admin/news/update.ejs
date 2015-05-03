@@ -1,8 +1,19 @@
 <% include ../header.ejs %>
 
-<form action="/pc/admin/news">
+<form>
     标题：<br />
     <input type="text" id="title" name="title" value="<%=news.title%>" /><br />
+
+    icon：<br/>
+    <input type="file" accept="image/*"
+           onchange="news.handleFiles(this.files)">
+    <% if(news.icon){%>
+    <img id="icon" src="<%= news.icon%>" style="display:block;"/>
+    <%}else{%>
+    <img id="icon" src="<%= news.icon%>" style="display:none;"/>
+    <%}%>
+    <input type="hidden" id="icon-url" value="<%= news.icon%>"/>
+
     正文：<br />
   <textarea id="body" name="body">
      <%= news.body %>
@@ -15,7 +26,7 @@
 
 <% include ../kindeditorJs.ejs %>
 
-<% include ../footer.ejs %>
+<% include footer.ejs %>
 
 <script src="/pc/js/admin/news/update.js"></script>
 <% include ../footerHtml.ejs %>
