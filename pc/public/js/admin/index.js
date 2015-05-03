@@ -22,11 +22,14 @@ var index = (function(){
                 var e = e || window.event,
                 target = e.srcElement || e.target;
 
+$(target).parents("li").next(".body").remove();
                 $(target).parents("li").after(
-                    "<li class='body'><span>"
+                    "<li class='body'>" +
+                    "<p>"
                     + body
-                    + "</span></li>"
-                    + "<li><button onclick='javascript:$(this).prev().remove();$(this).remove();'>关闭</button></li>"
+                    + "</p>"
+                    + "<button style='display:block;' onclick='javascript:$(this).prev().remove();$(this).remove();'>关闭</button>" +
+                    "</li>"
                 );
             }
         }

@@ -20,7 +20,7 @@ ContactUs.prototype.add = function(contactUsObj, callback) {
     };
     //要存入数据库的文档
     var contactUs = contactUsObj;
-    contactUs.time = time.day;
+    contactUs.time = time.minute;
 
     //打开数据库
     db.open(function (err, db) {
