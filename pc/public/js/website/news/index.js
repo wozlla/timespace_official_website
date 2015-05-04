@@ -1,5 +1,6 @@
 define(function(require, exports, module) {
-    var global = require("../global");
+    var global = require("../global"),
+        jump = require("../jumpToTop");
 
     //function limitText(){
     //    var MAXLENGTH = 130;
@@ -16,6 +17,7 @@ define(function(require, exports, module) {
 
     exports.init = function(){
         global.init();
+        jump.init();
         //
         //limitText();
     };

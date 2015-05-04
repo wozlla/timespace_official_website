@@ -1,4 +1,13 @@
 @mixin absolute($width:0, $height:0, $top:0, $left:null, $right:null, $zIndex:0){
+  position:absolute;
+  @include _pos($width, $height, $top, $left, $right, $zIndex);
+}
+
+@mixin fixed($width:0, $height:0, $top:0, $left:null, $right:null, $zIndex:0){
+  position:fixed;
+  @include _pos($width, $height, $top, $left, $right, $zIndex);
+}
+@mixin _pos($width:0, $height:0, $top:0, $left:null, $right:null, $zIndex:0){
   @if($left != null){
     left:$left;
   }
@@ -8,6 +17,5 @@
   top:$top;
   width:$width;
   height:$height;
-  position:absolute;
   z-index: $zIndex;
 }

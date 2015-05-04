@@ -26,7 +26,7 @@ define(function(require, exports, module) {
                 textFlag = null;
             var distance = 70,
                 placeLeftPos = 110,
-                speed = 2;
+                speed = 4;
 
             if (e.target.tagName === "DIV") {
                 dom = $(e.target).children();

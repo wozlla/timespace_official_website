@@ -1,40 +1,7 @@
 define(function (require, exports, module) {
     var animation = require("./animation");
 
-    var isAnimating = false;
-
-    exports.init = function () {
-        $(".pop-window div").on("click", function () {
-            var obj = $(this),
-                width = 210,
-                speed = 10;
-
-            if (isAnimating) {
-                return;
-            }
-
-            if (obj.hasClass("pop-out")) {
-                animation.popOut(obj.parent(), width, speed, function () {
-                    isAnimating = true;
-                    obj.removeClass("pop-out");
-                    obj.addClass("pop-in");
-                }, function () {
-                    isAnimating = false;
-                });
-
-                return;
-            }
-
-            animation.popIn(obj.parent(), speed, function () {
-                isAnimating = true;
-                obj.removeClass("pop-in");
-                obj.addClass("pop-out");
-            }, function () {
-                isAnimating = false;
-            });
-        });
-
-
+    function _initModal(){
         $(
             //".contact-us-small," +
             ".first-row .middle, .first-row .right"
@@ -50,7 +17,9 @@ define(function (require, exports, module) {
 
             e.preventDefault();
         });
+    }
 
+    function _submitContactUs(){
         $("#contact-form").on("submit", function (e) {
             var name = $("#name").val(),
                 email = $("#email").val(),
@@ -90,5 +59,43 @@ define(function (require, exports, module) {
                 alert("发送失败,请稍候再试");
             });
         });
+    }
+
+    exports.init = function () {
+        var isAnimating = false;
+
+        $(".pop-window div").on("click", function () {
+            var obj = $(this),
+                width = 210,
+                speed = 10;
+
+            if (isAnimating) {
+                return;
+            }
+
+            if (obj.hasClass("pop-out")) {
+                animation.popOut(obj.parent(), width, speed, function () {
+                    isAnimating = true;
+                    obj.removeClass("pop-out");
+                    obj.addClass("pop-in");
+                }, function () {
+                    isAnimating = false;
+                });
+
+                return;
+            }
+
+            animation.popIn(obj.parent(), speed, function () {
+                isAnimating = true;
+                obj.removeClass("pop-in");
+                obj.addClass("pop-out");
+            }, function () {
+                isAnimating = false;
+            });
+        });
+
+        _initModal();
+
+        _submitContactUs();
     };
 });
