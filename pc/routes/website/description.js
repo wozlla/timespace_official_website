@@ -22,13 +22,13 @@ router.get("/", function (req, res, next) {
     }
     else if (req.param("category")) {
         category.getList(function (error, categorys) {
-            description.getListByCategory(req.param("category"), function (error, list) {
+            description.getListByCategory(decodeURIComponent(req.param("category")), function (error, list) {
                 res.render("website/description/description", {
                     descriptionCategorys: categorys,
                     //if not set model attri, ejs will throw error in "<% if(model){ %>" code:model is not defined
                     model:null,
                     descriptionsByCategory:list,
-                    category: req.param("category")
+                    category: decodeURIComponent(req.param("category"))
                 });
             });
         });

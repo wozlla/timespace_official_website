@@ -7,7 +7,7 @@
             <a href="/pc/description"><img src="/pc/image/nav/description.png"/></a>
             <ul class="dropdown">
                 <% for(var i = 0, len = descriptionCategorys.length; i < len; i++){%>
-                <li><a href="/pc/description?category=<%= descriptionCategorys[i].name %>"><%= descriptionCategorys[i].name%></a></li>
+                <li onclick="javascript:location.href='/pc/description?category=' + window.encodeURIComponent('<%=descriptionCategorys[i].name %>')"><a href="#"><%= descriptionCategorys[i].name%></a></li>
                 <% }%>
             </ul>
         </li>
@@ -40,7 +40,7 @@
 <ul class="download-dropdown" onclick="javascripti:location.href='/pc/download';">
     <li class="icon">
         <a>
-            <img src="/pc/image/icon.png"/>
+            <img src="/pc/image/icon_big.png"/>
         </a>
     </li>
     <li class="text"><span>时空召唤:英雄计划</span></li>

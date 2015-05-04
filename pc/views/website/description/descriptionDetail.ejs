@@ -3,7 +3,7 @@
         <div>
             <ol class="breadcrumb">
                 <li><a href="/pc/description">游戏介绍</a></li>
-                <li><a href="/pc/description?category=<%=model.category %>"><%= model.category%></a></li>
+                <li onclick="javascript:location.href='/pc/description?category=' + window.encodeURIComponent('<%=model.category %>')"><a href="#"><%= model.category%></a></li>
                 <li class="active"><%= model.title%></li>
             </ol>
         </div>

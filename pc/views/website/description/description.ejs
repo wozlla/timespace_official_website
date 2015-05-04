@@ -47,7 +47,7 @@
                             <div class="body">
                                 <% descriptions.forEach(function(categoryData){%>
                                 <div class="item">
-                                    <h1 onclick="javascript:location.href='/pc/description?category=<%=categoryData._id %>'"><%= categoryData._id %></h1>
+                                    <h1 onclick="javascript:location.href='/pc/description?category=' + window.encodeURIComponent('<%=categoryData._id %>')"><%= categoryData._id %></h1>
 
                                     <ul class="list clearfix">
                                         <% categoryData.data.forEach(function(model){%>

@@ -55,12 +55,22 @@ define(function (require, exports, module) {
             var name = $("#name").val(),
                 email = $("#email").val(),
                 body = $("#body").val(),
+                form = this,
                 url = "/pc/contactUs";
+
+            e.preventDefault();
+            e.stopPropagation();
 
             if (!/^[0-9a-zA-Z-_.]+@[0-9a-zA-Z-_]+\.[0-9a-zA-Z-_]+$/.test(email)) {
                 alert("您的邮箱不正确,请重新填写");
-                e.preventDefault();
-                e.stopPropagation();
+                return;
+            }
+            if(name.length === 0){
+                alert("姓名不能为空");
+                return;
+            }
+            if(body.length === 0){
+                alert("内容不能为空");
                 return;
             }
 
@@ -69,6 +79,9 @@ define(function (require, exports, module) {
                 email: email,
                 body: body
             }, function (isSuccess) {
+                form.reset();
+                $("#contact-modal").modal("hide");
+
                 if (isSuccess) {
                     alert("我们收到了您的宝贵意见,谢谢您的关注");
                     return;

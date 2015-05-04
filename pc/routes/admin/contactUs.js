@@ -3,6 +3,7 @@ var path = require("path");
 var router = express.Router();
 var safe = require("../../bll/safe");
 var ContactUs = require("../../models/ContactUs");
+var News = require("../../models/News");
 var fileUploader = require("../../public/js/bower_components/yyctoolbox/fileOperator/upload/server/main");
 var PAGESIZE = 10;
 
@@ -28,8 +29,8 @@ router.get("/content", function (req, res, next) {
 });
 
 router.delete("/", function (req, res, next) {
-    var news = new News();
-    news.remove(req.param("id"), function (err) {
+    var contactUs = new ContactUs();
+    contactUs.remove(req.param("id"), function (err) {
         if (err) {
             //req.flash("error", err);
 
