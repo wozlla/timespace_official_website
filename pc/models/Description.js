@@ -222,17 +222,18 @@ Description.prototype.getList = function (callback) {
                 return callback(err);
             }
 
-            collection.aggregate([{
-                $group: {
-                    _id: "$category",
-                    data: {
-                        $push: "$$ROOT"
-                    }
-                }
-            },
+            collection.aggregate([
                 {
                     $sort: {
-                        category: -1
+                        index:-1
+                    }
+                },
+                {
+                    $group: {
+                        _id: "$category",
+                        data: {
+                            $push: "$$ROOT"
+                        }
                     }
                 }]).toArray(function (err, docs) {
                 db.close();
@@ -265,18 +266,18 @@ Description.prototype.getListByCondition = function (filter, callback) {
                 $match:filter
             },
                 {
+                    $sort: {
+                        index:-1
+                    }
+                },
+                {
                 $group: {
                     _id: "$category",
                     data: {
                         $push: "$$ROOT"
                     }
                 }
-            },
-                {
-                    $sort: {
-                        category: -1
-                    }
-                }]).toArray(function (err, docs) {
+            } ]).toArray(function (err, docs) {
                 db.close();
                 if (err) {
                     return callback(err);//失败！返回 err
@@ -306,6 +307,9 @@ Description.prototype.getListByCategory = function (category, callback) {
                 category: category,
                 isShow:true
             })
+                .sort({
+                    index:1
+                })
                 .toArray(function (err, docs) {
                     db.close();
 

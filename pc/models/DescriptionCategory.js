@@ -2,12 +2,12 @@ var mongodb = require("./db");
 var ObjectId = require('mongodb').ObjectID;
 var Description = require("./Description");
 
-function DescriptionCategory(){
+function DescriptionCategory() {
 }
 
 
 //存储一篇文章及其相关信息
-DescriptionCategory.prototype.add = function(descriptionCategoryObj, callback) {
+DescriptionCategory.prototype.add = function (descriptionCategoryObj, callback) {
     //要存入数据库的文档
     var descriptionCategory = descriptionCategoryObj;
     var db = mongodb.createDb();
@@ -37,7 +37,7 @@ DescriptionCategory.prototype.add = function(descriptionCategoryObj, callback) {
     });
 };
 
-DescriptionCategory.prototype.update = function(id, data, callback){
+DescriptionCategory.prototype.update = function (id, data, callback) {
     var self = this;
     var db = mongodb.createDb();
 
@@ -87,7 +87,50 @@ DescriptionCategory.prototype.update = function(id, data, callback){
     });
 };
 
-DescriptionCategory.prototype.remove = function(id, callback){
+DescriptionCategory.prototype.updateByName = function (name, data, callback) {
+    var db = mongodb.createDb();
+
+    db.open(function (err, db) {
+        if (err) {
+            db.close();
+            return callback(err);
+        }
+
+        //todo promise
+
+        var description = new Description();
+
+        description.updateByCategory(name, data, function (err) {
+            if (err) {
+                db.close();
+                return callback(err);
+            }
+
+            db.collection("descriptionCategory", function (err, collection) {
+                if (err) {
+                    db.close();
+                    return callback(err);
+                }
+                var query = {};
+                if (name) {
+                    query.name = name;
+                }
+
+                collection.update(query, {
+                    $set: data   //only set fields contained in data
+                }, null, function (err) {
+                    db.close();
+                    if (err) {
+                        return callback(err);//失败！返回 err
+                    }
+                    callback(null);//返回 err 为 null
+                });
+            });
+        });
+    });
+};
+
+DescriptionCategory.prototype.remove = function (id, callback) {
     var self = this;
     var db = mongodb.createDb();
 
@@ -101,7 +144,7 @@ DescriptionCategory.prototype.remove = function(id, callback){
 
         //cascade delete description where description.category === descriptionCategory.name
         //then delete descriptionCategory
-        self.get(id, function(err, model){
+        self.get(id, function (err, model) {
             if (err) {
                 db.close();
                 return callback(err);
@@ -109,7 +152,7 @@ DescriptionCategory.prototype.remove = function(id, callback){
 
             var description = new Description();
 
-            description.removeByCategory(model.name, function(err){
+            description.removeByCategory(model.name, function (err) {
                 db.collection("descriptionCategory", function (err, collection) {
                     if (err) {
                         db.close();
@@ -135,7 +178,7 @@ DescriptionCategory.prototype.remove = function(id, callback){
 };
 
 //读取文章及其相关信息
-DescriptionCategory.prototype.get = function(id, callback) {
+DescriptionCategory.prototype.get = function (id, callback) {
     var db = mongodb.createDb();
 
     //打开数据库
@@ -144,7 +187,7 @@ DescriptionCategory.prototype.get = function(id, callback) {
             db.close();
             return callback(err);
         }
-        db.collection("descriptionCategory", function(err, collection) {
+        db.collection("descriptionCategory", function (err, collection) {
             if (err) {
                 db.close();
                 return callback(err);
@@ -164,7 +207,7 @@ DescriptionCategory.prototype.get = function(id, callback) {
     });
 };
 
-DescriptionCategory.prototype.getList = function(callback) {
+DescriptionCategory.prototype.getList = function (callback) {
     var db = mongodb.createDb();
 
     db.open(function (err, db) {
@@ -172,13 +215,13 @@ DescriptionCategory.prototype.getList = function(callback) {
             db.close();
             return callback(err);
         }
-        db.collection("descriptionCategory", function(err, collection) {
+        db.collection("descriptionCategory", function (err, collection) {
             if (err) {
                 db.close();
                 return callback(err);
             }
             collection.find().sort({
-                name: -1
+                index:1
             }).toArray(function (err, docs) {
                 db.close();
                 if (err) {

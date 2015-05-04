@@ -23,5 +23,6 @@
     "seajs-wrap": "https://github.com/seajs/seajs-wrap.git"
   },
   "devDependencies": {
+    "jquery-sortable": "~0.9.12"
   }
 }

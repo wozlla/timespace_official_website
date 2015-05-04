@@ -1,27 +1,40 @@
-ul{
-  list-style:none;
+ul {
+  list-style: none;
 
-  span{
-    padding-right:30px;
+  span {
+    padding-right: 30px;
   }
-  .time{
+  .time {
   }
 
-  div{
-    margin-left:100px;
-    float:left;
+  div {
+    margin-left: 100px;
+    float: left;
   }
 }
-h3{
-  margin:0;
+
+h3 {
+  margin: 0;
 }
-
-
 
 //news
 
-#icon{
-  width:128px;
-  height:128px;
-  display:none;
+#icon {
+  width: 128px;
+  height: 128px;
+  display: none;
+}
+
+
+
+
+//sortable
+
+body.dragging, body.dragging * {
+  cursor: move !important;
+}
+
+.dragged {
+  position: absolute; top:0;
+  opacity:.5; z-index:2000
 }

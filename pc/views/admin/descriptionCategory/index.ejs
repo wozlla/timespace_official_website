@@ -1,6 +1,6 @@
 <% include ../header.ejs %>
 <h1>游戏介绍类别</h1>
-<ul>
+<ul class="category-list">
     <% for(var i = 0, len = descriptionCategory.length; i < len; i++){%>
     <li class="clearfix">
         <span><%= descriptionCategory[i].name %></span>
@@ -18,4 +18,8 @@
     </li>
 </ul>
 <% include ../footer.ejs %>
+
+<script src="/pc/js/bower_components/jquery-sortable/source/js/jquery-sortable.js"></script>
+<script src="/pc/js/admin/descriptionCategory/index.js"></script>
+
 <% include ../footerHtml.ejs %>
