@@ -219,13 +219,15 @@ module.exports= {
         //todo skill.jpg
         ["/pc/image/index/pic/3.jpg", "/pc/image/index/batton/skill.jpg", "/pc/image/index/batton/skill_h.jpg"]
     ],
-    switchImg: function(imgDom, titles){
+    _anim: null,
+
+    switchImg: function(imgDom, titles, initIndex){
         var self = this,
-            index = 0,
+            index = initIndex || 0,
             count = this._data.length,
             interval = 2000;
 
-        setInterval(function(){
+        this._anim = setInterval(function(){
             if(index < count - 1){
                 index += 1;
             }
@@ -235,6 +237,9 @@ module.exports= {
 
             self.select(imgDom, titles, index)
         }, interval);
+    },
+    stopSwitch: function(){
+        clearInterval(this._anim);
     },
     _restoreTitle: function(titles){
         var self = this;

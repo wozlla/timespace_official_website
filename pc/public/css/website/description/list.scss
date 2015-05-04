@@ -30,6 +30,9 @@
           padding-left:10px;
           padding-right:10px;
           cursor:pointer;
+          &:hover{
+            text-decoration:underline;
+          }
         }
         li:last-of-type{
           border:0;

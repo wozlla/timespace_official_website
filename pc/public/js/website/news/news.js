@@ -2,11 +2,13 @@
 var news = (function(){
    return {
        showDetail: function(url, id){
-           $.get(url, {
-               id: id
-           }, function(htmlContent){
-               $("#content-container").html(htmlContent);
-           });
+           //$.get(url, {
+           //    id: id
+           //}, function(htmlContent){
+           //    $("#content-container").html(htmlContent);
+           //});
+           //
+           window.open("/pc/news?id=" + id);
        },
        getListByPage:function(e, pageNumber){
            e = e || window.event;

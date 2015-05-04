@@ -60,6 +60,24 @@ define(function(require, exports, module) {
 
         var titles = $("#switch-title").find("li");
 
+        titles.on("mouseover", function(e){
+            animation.stopSwitch();
+
+            animation.select(
+                $("#switch-img").children("img"),
+                titles,
+                getTitleIndex($(e.target))
+            );
+        });
+        titles.on("mouseout", function(e){
+            animation.switchImg(
+                $("#switch-img").children("img"),
+                titles,
+                getTitleIndex($(e.target))
+            );
+        });
+
+
 //todo click
         titles.on("click", function () {
         });
@@ -67,6 +85,29 @@ define(function(require, exports, module) {
         animation.switchImg($("#switch-img").children("img"), titles);
 
 
+        function getTitleIndex(title){
+            var className = title.attr("class"),
+                index = null;
+
+            switch(className){
+                case "first":
+                    index = 0;
+                    break;
+                case "second":
+                    index = 1;
+                    break;
+                case "third":
+                    index = 2;
+                    break;
+                default:
+                    throw new Error("error index");
+                    break;
+            }
+
+            return index;
+
+
+        }
 //$(document).snowfall('clear');
 //$(document).snowfall({
 //    images :["/pc/image/index/banner/flower_1.png", "/pc/image/index/banner/flower_2.png"],
