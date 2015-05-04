@@ -2,6 +2,8 @@ require("./createBuildMap");
 var gulp = require('gulp');
 var gulpUglify = require('gulp-uglify');
 var plumber = require('gulp-plumber');
+var gulpMinifyCss = require('gulp-minify-css');
+//var gulpMinifyHtml = require('gulp-minify-html');
 
 
 var gulpGetSeajsMainFile = require('../gulp_plugin/getSeajsMainFile/index.js');
@@ -43,11 +45,29 @@ gulp.task('packCss', ['createBuildMap'], function () {
         .pipe(plumber())
         .pipe(gulpGetCssFile())
         .pipe(gulpConcat())
-        .pipe(gulpUglify())
+        .pipe(gulpMinifyCss())
 
         //just set to cwd path,the dest path is set by dist attr in resourceMap.json
         .pipe(gulp.dest('./'));
 });
+
+//var gulpEjsMin = require('gulp-ejsmin')
+//
+//gulp.task('packHtml', ['createBuildMap'], function () {
+//    var opts = {
+//        //conditionals: true
+//        //loose:true,
+//        //spare:true,
+//        //empty:true,
+//        //cdata:true
+//    };
+//
+//    return gulp.src('dist_views/**/*.ejs')
+//        .pipe(plumber())
+//        .pipe(gulpMinifyHtml(opts))
+//
+//        .pipe(gulp.dest('dist_views'));
+//});
 
 gulp.task("pack", ["packSeajs", "packNoCmdJs", "packCss"]);
 

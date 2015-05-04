@@ -199,7 +199,8 @@ News.prototype.getListByCondition = function(pageNumber, pageSize, filter, callb
                 return callback(err);
             }
 
-            collection.count(function(err, count){
+            //todo optimize:reduce query number
+            collection.find(filter).count(function(err, count){
                 var pageCount = Math.ceil(count / pageSize);
 
                 collection.find(filter).sort({

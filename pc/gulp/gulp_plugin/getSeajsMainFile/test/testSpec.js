@@ -6,7 +6,7 @@ var fs = require("fs"),
     through = require("through-gulp"),
     convertUtils = require("../../convertUtils"),
     sinon = require("sinon"),
-buildConfigOperator = require("../../lib/buildConfigOperator");
+    buildConfigOperator = require("../../lib/buildConfigOperator");
 
 describe("getSeajsMainFile", function () {
     var sandbox = null;
@@ -22,25 +22,21 @@ describe("getSeajsMainFile", function () {
         buildConfig = fake.single.getBuildConfig();
         sandbox.stub(buildConfigOperator, "read").returns(buildConfig);
 
-        cwd = fake.cwd
+        cwd = fake.cwd;
         sandbox.stub(process, "cwd").returns(cwd);
     });
     afterEach(function () {
         sandbox.restore();
     });
 
-    describe("single main file", function(){
+    describe("single main file", function () {
         var seajsMainContent = null,
             resourceMap = null;
 
-        beforeEach(function(){
+        beforeEach(function () {
             sandbox.stub(fs, "readFileSync");
-            seajsMainContent = convertUtils.toString(function(){
-                seajs.config({
-                    "base": "/pc"
-                });
-
-                seajs.use('js/website/index/index.js',function(index){
+            seajsMainContent = convertUtils.toString(function () {
+                seajs.use('/pc/js/website/index/index.js', function (index) {
                     index.init();
                 });
             }).trim();
@@ -85,12 +81,12 @@ describe("getSeajsMainFile", function () {
 
             stream.end();
         });
-        it("convert main file src to absolute path", function(done){
+        it("convert main file src to absolute path", function (done) {
             stream.on('data', function (newFile) {
                 var contents = newFile.contents.toString();
 
                 expect(contents.trim()).toContain(
-                    "seajs.use('" + cwd + "'/public/js/website/index/index.js',function(index){"
+                    "seajs.use('" + cwd + "public/js/website/index/index.js'"
                 );
 
                 done();
@@ -111,7 +107,7 @@ describe("getSeajsMainFile", function () {
             stream.end();
 
         });
-        it("file.dist is relative to cwd", function(done){
+        it("file.dist is relative to cwd", function (done) {
             stream.on('data', function (newFile) {
                 var contents = newFile.contents.toString();
 
@@ -137,7 +133,7 @@ describe("getSeajsMainFile", function () {
             stream.end();
 
         });
-        it("file.base is cwd, file.path is absolute path", function(done){
+        it("file.base is cwd, file.path is absolute path", function (done) {
             stream.on('data', function (newFile) {
                 var contents = newFile.contents.toString();
 
@@ -166,14 +162,14 @@ describe("getSeajsMainFile", function () {
         });
     });
 
-    describe("multi main file.", function(){
+    describe("multi page has main file.", function () {
         var seajsMain1Content = null,
-            seajsMain2Content = null,
+            seajsMainContent2 = null,
             resourceMap = null;
 
-        beforeEach(function(){
+        beforeEach(function () {
             seajsMain1Content = "main1 content";
-            seajsMain2Content = "main2 content";
+            seajsMainContent2 = "main2 content";
 
             sandbox.stub(fs, "readFileSync");
 
@@ -181,7 +177,7 @@ describe("getSeajsMainFile", function () {
                 seajsMain1Content
             );
             fs.readFileSync.onCall(1).returns(
-                seajsMain2Content
+                seajsMainContent2
             );
             resourceMap =
             {
@@ -217,33 +213,32 @@ describe("getSeajsMainFile", function () {
             );
         });
 
-        it("get multi seajs main file content.", function(done){
+        it("get multi seajs main file content.", function (done) {
             var index = 1;
 
             //order:getSeajsMainFile(file1) -> this -> getSeajsMainFile(file2) -> this
 
             stream.pipe(through(function (file, encoding, callback) {
-                if(index === 1){
+                if (index === 1) {
                     expect(file.contents.toString()).toEqual(
                         seajsMain1Content
                     )
                 }
-                else{
+                else {
                     expect(file.contents.toString()).toEqual(
-                        seajsMain2Content
+                        seajsMainContent2
                     )
                 }
                 index = index + 1;
 
                 callback();
-            }, function(callback){
+            }, function (callback) {
                 expect(index - 1).toEqual(2);
 
                 callback();
 
                 done();
             }));
-
 
 
             var testFile1 = new Vinyl({
@@ -261,4 +256,103 @@ describe("getSeajsMainFile", function () {
             stream.end();
         });
     });
+
+   describe("multi main entrance", function(){
+       //var seajsMainContent2 = null,
+       //    seajsMainContent3 = null;
+
+       beforeEach(function(){
+           seajsMainContent = convertUtils.toString(function () {
+               seajs.use(['/pc/js/website/index/a.js', '/pc/js/website/index/b.js'], function (index) {
+                   index.init();
+               });
+           }).trim();
+           sandbox.stub(fs, "readFileSync");
+           fs.readFileSync.onCall(0).returns(
+               seajsMainContent
+           );
+           //seajsMainContent2 = "a";
+           //seajsMainContent3 = "b";
+           //fs.readFileSync.onCall(1).returns(
+           //    seajsMainContent2
+           //);
+           //fs.readFileSync.onCall(2).returns(
+           //    seajsMainContent3
+           //);
+
+           resourceMap =
+           {
+               "/footer.ejs": [
+                   {
+                       command: 'seajsMain',
+                       dist: 'dist/cmd.js',
+                       "fileUrlArr": ["/pc/js/main.js"]
+                   }
+               ]
+           };
+           fileContent = JSON.stringify(
+               resourceMap
+           );
+       });
+
+       it("convert to absolute path", function(done){
+           stream.on('data', function (newFile) {
+               var contents = newFile.contents.toString();
+
+               expect(contents.trim()).toContain(
+                   "seajs.use(['"  + cwd + "public/js/website/index/a.js', '" + cwd + "public/js/website/index/b.js']"
+               );
+
+               done();
+           });
+
+           var testFile1 = new Vinyl({
+               //cwd: "./",
+               //base: "./file",
+               //path: filePath,
+               contents: new Buffer(
+                   fileContent
+               )
+           });
+
+
+           stream.write(testFile1);
+
+           stream.end();
+       });
+       //it("split into separate main file which only contain one entrance", function(done){
+       //    var index = 1;
+       //
+       //    stream.pipe(through(function (file, encoding, callback) {
+       //        if (index === 1) {
+       //            expect(file.contents.toString()).toEqual(
+       //                seajsMainContent2
+       //            )
+       //        }
+       //        else {
+       //            expect(file.contents.toString()).toEqual(
+       //                seajsMainContent3
+       //            )
+       //        }
+       //        index = index + 1;
+       //
+       //        callback();
+       //    }, function (callback) {
+       //        expect(index - 1).toEqual(2);
+       //
+       //        callback();
+       //
+       //        done();
+       //    }));
+       //    var testFile1 = new Vinyl({
+       //        contents: new Buffer(
+       //            fileContent
+       //        )
+       //    });
+       //
+       //    stream.write(testFile1);
+       //
+       //    stream.end();
+       //});
+   });
 });

@@ -11,7 +11,6 @@ var Promise = require( 'promise' ),
     gutil = require( 'gulp-util' ),
     execPlugins = require( './lib/execplugins' ),
     //by yyc
-    Vinyl = require('vinyl'),
     path = require('path'),
     fileOperator = require('../../gulp_plugin/lib/fileOperator'),
 

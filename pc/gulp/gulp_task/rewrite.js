@@ -7,6 +7,7 @@ var gulpRewrite= require('../gulp_plugin/rewriteStaticResourceUrl/index.js');
 
 gulp.task('rewriteStaticeResource',['createBuildMap'], function(){
     return gulp.src('dist_views/**/*.ejs')
+    //return gulp.src('dist_views/website/index.ejs')
         .pipe(plumber())
         .pipe(gulpRewrite())
         .pipe(gulp.dest('dist_views/'));

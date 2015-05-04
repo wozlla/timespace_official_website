@@ -1,4 +1,4 @@
-require("./compile/sass");
+require("./compile/compile");
 
 var gulp = require('gulp');
 
