@@ -18,20 +18,38 @@ Description.prototype.add = function (descriptionObj, callback) {
             return callback(err);
         }
         //读取 posts 集合
-        db.collection("description", function (err, collection) {
+        db.collection("description", function (err, describeCollection) {
             if (err) {
                 db.close();
                 return callback(err);
             }
 
-            collection.insert(description, {
-                safe: true
-            }, function (err) {
-                db.close();
+            db.collection("descriptionCategory", function(err, collection){
                 if (err) {
-                    return callback(err);//失败！返回 err
+                    db.close();
+                    return callback(err);
                 }
-                callback(null);//返回 err 为 null
+
+                collection.find({
+                    name: description.category
+                }).toArray(function(err, docs){
+                    if (err) {
+                        db.close();
+                        return callback(err);
+                    }
+
+                    description.index = docs[0].index;
+
+                    describeCollection.insert(description, {
+                        safe: true
+                    }, function (err) {
+                        db.close();
+                        if (err) {
+                            return callback(err);//失败！返回 err
+                        }
+                        callback(null);//返回 err 为 null
+                    });
+                });
             });
         });
     });

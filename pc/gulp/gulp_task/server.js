@@ -3,12 +3,13 @@ var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
 var reload = browserSync.reload;
+var port = require("../../setting").serverPort;
 
 // Static Server + watching scss/html files
 gulp.task('server', ['sass'], function () {
 
     browserSync.init({
-        proxy: "localhost:3024/pc"
+        proxy: "localhost:" + port + "/pc"
     });
 
     gulp.watch(["public/css/*.scss", "public/css/**/*.scss"], ['sass'])

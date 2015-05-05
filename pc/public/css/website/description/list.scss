@@ -15,9 +15,11 @@
         @include font-header-middle;
         color:#de6666;
         padding-left:20px;
+        padding-right:20px;
         padding-bottom:5px;
         border-bottom:2px solid #de6666;
-        width:150px;
+        //width:150px;
+        display:inline-block;
         cursor:pointer;
       }
 

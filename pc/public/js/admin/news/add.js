@@ -18,10 +18,4 @@ $(function(){
 
       return false;
    });
-
-    $("#body").on("paste", function(e){
-        var clipboardData = e.originalEvent.clipboardData;
-
-        console.log(clipboardData);
-    })
 });

@@ -18,21 +18,31 @@ DescriptionCategory.prototype.add = function (descriptionCategoryObj, callback) 
             db.close();
             return callback(err);
         }
+
+
+
         db.collection("descriptionCategory", function (err, collection) {
             if (err) {
                 db.close();
                 return callback(err);
             }
 
-            collection.insert(descriptionCategory, {
-                safe: true
-            }, function (err) {
-                db.close();
-                if (err) {
-                    return callback(err);//失败！返回 err
-                }
-                callback(null);//返回 err 为 null
+            collection.find().sort({
+                index:-1
+            }).limit(1).toArray(function(err, docs){
+                descriptionCategory.index = docs[0].index + 1;
+
+                collection.insert(descriptionCategory, {
+                    safe: true
+                }, function (err) {
+                    db.close();
+                    if (err) {
+                        return callback(err);//失败！返回 err
+                    }
+                    callback(null);//返回 err 为 null
+                });
             });
+
         });
     });
 };
