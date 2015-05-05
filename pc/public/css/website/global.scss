@@ -39,24 +39,6 @@ ul {
 }
 
 
-.shared{
-  display: table;
-  margin: 30px auto 0px auto;
-  font-size: 0;
-  -webkit-text-size-adjust:none;
-  color:rgb(91,95,172);
-
-  span,.jiathis_style_32x32{
-    @include font-middle;
-    font-weight:900;
-    display:inline-block;
-    vertical-align: middle;
-
-    &>a>span{
-      margin-right:20px;
-    }
-  }
-}
 
 
 .ellipsis{
@@ -158,50 +140,4 @@ ul.footer{
 
 
 
-
-/*!
-share plugin
-*/
-
-
-
-//remove share plugin info
-.ckepopBottom{
-  display:none;
-}
-.centerBottom{
-  display:none;
-}
-
-.shared{
-.jiathis_style_32x32{
-  span.jtico{
-  }
-
-  .jiathis_button_weixin span{
-    background: url(/pc/image/shared/4_h.png) no-repeat left !important;
-    background-size:32px 32px !important;
-  }
-  .jiathis_button_t163 span{
-    background: url("/pc/image/shared/5_h.png") no-repeat left !important;
-    background-size:32px 32px !important;
-  }
-  .jiathis_button_xiaoyou span{
-    background: url("/pc/image/shared/1_h.png") no-repeat left !important;
-    background-size:32px 32px !important;
-  }
-  .jiathis_button_tsina span{
-    background: url("/pc/image/shared/2_h.png") no-repeat left !important;
-    background-size:32px 32px !important;
-  }
-  .jiathis_button_qzone span{
-    background: url("/pc/image/shared/3_h.png") no-repeat left !important;
-    background-size:32px 32px !important;
-  }
-  .jtico_jiathis{
-    background: url("/pc/image/shared/6.png") no-repeat left !important;
-    background-size:32px 32px !important;
-  }
-}
-}
 

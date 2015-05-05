@@ -124,7 +124,10 @@ nav{
       cursor:pointer;
 
        &:hover{
-            color:#ffffff;
+         span{
+              color:#ffffff;
+         }
+         
             text-decoration:none;
              background-color:rgb(87, 52, 173);
           }
@@ -140,9 +143,6 @@ nav{
       display:block;
       float:left;
        color:#c0a7f0;
-       &:hover{
-           color:#ffffff;
-       }
     }
     }
     .icon {
@@ -175,7 +175,7 @@ nav{
   .bird{
     display:block;
     position:absolute;
-    @include absolute(100px, 100px, -20px, -30px);
+    @include absolute(110px, 130px, -20px, -30px);
 
     img{
       width:100%;
