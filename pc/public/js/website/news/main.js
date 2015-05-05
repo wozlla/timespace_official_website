@@ -1,5 +1,4 @@
-seajs.use(['/pc/js/website/news/index.js', '/pc/js/website/jumpToTop.js'], function (index, jump) {
+seajs.use('/pc/js/website/news/index.js', function (index) {
     index.init();
-    jump.init();
 });
 

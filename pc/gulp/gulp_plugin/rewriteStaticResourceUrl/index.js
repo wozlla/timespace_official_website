@@ -39,7 +39,7 @@ function _handleContent(content, mapDataArr, filePath, stream) {
         buildConfig = buildConfigOperator.read();
 
     if(!mapDataArr){
-        stream.emit("error", new gutil.PluginError(PLUGIN_NAME, "resourceMap[" + filePath + "]"));
+        stream.emit("error", new gutil.PluginError(PLUGIN_NAME, "resourceMap[" + filePath + "] not exist"));
         return;
     }
 

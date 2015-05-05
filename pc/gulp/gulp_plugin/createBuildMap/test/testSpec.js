@@ -15,7 +15,6 @@ describe("createBuildMap", function () {
 
     beforeEach(function () {
         sandbox = sinon.sandbox.create();
-        stream = plugin();
 
         buildConfig = fake.single.getBuildConfig();
 
@@ -31,6 +30,8 @@ describe("createBuildMap", function () {
 
         filePath = fake.single.filePath;
         fileContent = fake.single.getFileContent();
+
+        stream = plugin();
 
         //attach data event listener can switch the stream into flowing mode,
         // which will trigger the end event!

@@ -45,7 +45,10 @@ gulp.task('packCss', ['createBuildMap'], function () {
         .pipe(plumber())
         .pipe(gulpGetCssFile())
         .pipe(gulpConcat())
-        .pipe(gulpMinifyCss())
+        .pipe(gulpMinifyCss({
+            aggressiveMerging: false,
+            compatibility: "*"
+        }))
 
         //just set to cwd path,the dest path is set by dist attr in resourceMap.json
         .pipe(gulp.dest('./'));
@@ -70,4 +73,5 @@ gulp.task('packCss', ['createBuildMap'], function () {
 //});
 
 gulp.task("pack", ["packSeajs", "packNoCmdJs", "packCss"]);
+//gulp.task("pack", ["packSeajs"]);
 

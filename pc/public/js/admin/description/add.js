@@ -3,11 +3,9 @@ $(function(){
       var title = $("#title").val(),
           body = $("#body").val(),
           isShow = !!$("#isShow").prop("checked"),
-          category = $("#category").val(),
-          id = $("#id").val();
+          category = $("#category").val();
 
        $.post("/pc/admin/description", {
-           id: id,
            category: category,
            isShow:isShow,
            title: title,

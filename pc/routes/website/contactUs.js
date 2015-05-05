@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var ContactUs = require("../../models/contactUs");
+var ContactUs = require("../../models/ContactUs");
 
 router.post("/", function(req, res, next) {
     var contact = new ContactUs();

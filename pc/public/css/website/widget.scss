@@ -82,7 +82,7 @@
   $leftToCenter: - $width / 2 + ($leftContentWidth - $containerWidth / 2) + $width / 2;
 
   //todo replace
-  @include backImg("/pc/image/icon.png", $width,$height);
+  @include backImg("/pc/image/top/top.jpg", $width,$height);
 
   @include fixed($width, $height, 400px, 50%, null, 1000);
   margin-left:$leftToCenter;

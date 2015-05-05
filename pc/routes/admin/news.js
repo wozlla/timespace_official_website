@@ -9,7 +9,6 @@ var PAGESIZE = 10;
 
 router.get("/", function (req, res, next) {
     var news = new News();
-    var news = new News();
 
     news.getList(1, PAGESIZE, function (error, list, pageData) {
         res.render("admin/news/index", {

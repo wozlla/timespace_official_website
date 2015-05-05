@@ -20,52 +20,52 @@ module.exports = function (grunt) {
                 banner: banner,
                 stripBanners:true
             },
-            basic:{
-                src: [
-                    'public/js/bower_components/jquery/dist/jquery.min.js',
-                    'public/js/bower_components/bootstrap/dist/js/bootstrap.min.js',
-                    'public/js/bower_components/seajs/dist/sea.js'
-
-                    //'public/js/website/global.js',
-                    //'public/js/website/animation.js'
-                    //'public/js/website/nav.js'
-                ],
-                dest: 'dist/footer.js'
-            },
-            extra:{
-                src: [
-                    //'public/js/website/lib/fss.min.js',
-                    //'public/js/website/lib/example.js',
-                    //'public/js/website/lib/snowfall.jquery.js',
-                    'public/js/website/index/index.js'
-                ],
-                dest: 'dist/index.js'
-            },
+            //basic:{
+            //    src: [
+            //        'public/js/bower_components/jquery/dist/jquery.min.js',
+            //        'public/js/bower_components/bootstrap/dist/js/bootstrap.min.js',
+            //        'public/js/bower_components/seajs/dist/sea.js'
+            //
+            //        //'public/js/website/global.js',
+            //        //'public/js/website/animation.js'
+            //        //'public/js/website/nav.js'
+            //    ],
+            //    dest: 'dist/footer.js'
+            //},
+            //extra:{
+            //    src: [
+            //        //'public/js/website/lib/fss.min.js',
+            //        //'public/js/website/lib/example.js',
+            //        //'public/js/website/lib/snowfall.jquery.js',
+            //        'public/js/website/index/index.js'
+            //    ],
+            //    dest: 'dist/index.js'
+            //},
             builda:{
                 src: [
                     'public/js/website/tryPlay/tryPlay.js'
                 ],
                 dest: 'dist/tryPlay.js'
             },
-            buildb:{
-                options:{
-                   //sourceMap:true
-                },
-                files: {
-                    'dist/header.css': ['public/js/bower_components/bootstrap/dist/css/bootstrap.css',
-                        'public/css/website/app.css']
-                }
-            },
-            buildc:{
-                options:{
-                    //sourceMap:true
-                },
-                files: {
-                    'dist/index.css': ['public/css/website/index/index.css',
-                    'public/css/website/banner.css'
-                    ]
-                }
-            },
+            //buildb:{
+            //    options:{
+            //       //sourceMap:true
+            //    },
+            //    files: {
+            //        'dist/header.css': ['public/js/bower_components/bootstrap/dist/css/bootstrap.css',
+            //            'public/css/website/app.css']
+            //    }
+            //},
+            //buildc:{
+            //    options:{
+            //        //sourceMap:true
+            //    },
+            //    files: {
+            //        'dist/index.css': ['public/css/website/index/index.css',
+            //        'public/css/website/banner.css'
+            //        ]
+            //    }
+            //},
 
             buildd:{
                 options:{
@@ -135,5 +135,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-concat-css');
 //    grunt.loadNpmTasks('grunt-contrib-jshint');
 //    grunt.registerTask('build', ['clean', 'concat']);
-    grunt.registerTask('build', ['clean', 'concat', 'uglify', 'cssmin']);
+//    grunt.registerTask('build', ['clean', 'concat', 'uglify', 'cssmin']);
+    grunt.registerTask('build', ['concat', 'uglify', 'cssmin']);
 };

@@ -3,11 +3,9 @@ $(function(){
       var title = $("#title").val(),
           body = $("#body").val(),
           isShow = !!$("#isShow").prop("checked"),
-          icon = $("#icon-url").val(),
-          id = $("#id").val();
+          icon = $("#icon-url").val();
 
        $.post("/pc/admin/news", {
-           id: id,
            title: title,
            icon:icon,
            isShow: isShow,

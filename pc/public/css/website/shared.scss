@@ -75,6 +75,7 @@ $backColor:rgba(157,143,189, 0.5);
     &:after{
       content:"";
       @include downArrow($backColor, 68px, 26px, 8px);
+      border:0 \9;
     }
   }
 }

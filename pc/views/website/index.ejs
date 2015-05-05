@@ -60,25 +60,25 @@
       <div class="second-row clearfix">
         <ul >
           <!--todo specify the category param-->
-          <li class="first" onclick="javascript:location.href='/pc/description';">
+          <li class="first" onclick="javascript:window.open('/pc/tutorial/detailPage?name=' +window.encodeURIComponent('入门'));">
             <img src="/pc/image/index/batton/first.png"/>
             <div>
               <span>入门</span>
             </div>
           </li>
-          <li class="second" onclick="javascript:location.href='/pc/description';">
+          <li class="second" onclick="javascript:window.open('/pc/tutorial/detailPage?name=' +window.encodeURIComponent('进阶'));">
             <img src="/pc/image/index/batton/second.png"/>
             <div>
               <span>进阶</span>
             </div>
           </li>
-          <li class="third" onclick="javascript:location.href='/pc/description';">
+          <li class="third" onclick="javascript:window.open('/pc/tutorial/detailPage?name=' +window.encodeURIComponent('装备'));">
             <img src="/pc/image/index/batton/third.png"/>
             <div>
               <span>装备</span>
             </div>
           </li>
-          <li class="fourth" onclick="javascript:location.href='/pc/description';">
+          <li class="fourth" onclick="javascript:window.open('/pc/tutorial/detailPage?name=' +window.encodeURIComponent('组合'));">
             <img src="/pc/image/index/batton/fourth.png"/>
             <div>
               <span>组合</span>
@@ -109,6 +109,7 @@
 </div>
 
 <% include popWindow.ejs %>
+<% include modal.ejs %>
 
 
 

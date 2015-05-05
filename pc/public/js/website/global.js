@@ -2,15 +2,15 @@ define(function (require, exports, module) {
     var animation = require("./animation");
 
     function _initModal(){
-        $(
-            //".contact-us-small," +
-            ".first-row .middle, .first-row .right"
-            //".second-row .contact-us-big"
-        ).on("click", function (e) {
-                $("#myModal").modal();
-
-                e.preventDefault();
-            });
+        //$(
+        //    //".contact-us-small," +
+        //    ".first-row .middle, .first-row .right"
+        //    //".second-row .contact-us-big"
+        //).on("click", function (e) {
+        //        $("#myModal").modal();
+        //
+        //        e.preventDefault();
+        //    });
 
         $(".contact-us-small,.contact-us-big").on("click", function (e) {
             $("#contact-modal").modal();

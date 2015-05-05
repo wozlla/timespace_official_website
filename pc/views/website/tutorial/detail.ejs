@@ -1,0 +1,21 @@
+<a name="top"></a>
+<div class="news-detail">
+    <div class="header">
+        <ul class="clearfix">
+            <li class="line"></li>
+            <li><h1><%= model.name %></h1></li>
+        </ul>
+    </div>
+
+
+
+    <div id="content">
+        <div class="body">
+            <span><%= model.time%></span>
+            <p>
+                <%- model.body %>
+            </p>
+        </div>
+    </div>
+</div>
+<% include ../jumpToTop.ejs %>

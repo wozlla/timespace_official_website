@@ -6,6 +6,7 @@ var newsRouter = require("./news");
 var descriptionRouter = require("./description");
 var descriptionCategoryRouter = require("./descriptionCategory");
 var contactUsRouter = require("./contactUs");
+var tutorialRouter = require("./tutorial");
 var isDev = require("../../setting").isDev;
 
 if (!isDev) {
@@ -24,6 +25,7 @@ router.use("/login", loginRouter);
 router.use("/news", newsRouter);
 router.use("/description", descriptionRouter);
 router.use("/descriptionCategory", descriptionCategoryRouter);
+router.use("/tutorial", tutorialRouter);
 router.use("/contactUs", contactUsRouter);
 
 module.exports = router;

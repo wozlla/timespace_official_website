@@ -11,12 +11,14 @@ var PLUGIN_NAME = "createBuildMap";
 
 //todo filter annotated script
 function createBuildMap() {
-    var result = {};
+    var result = {},
+        buildConfig = null;
 
-    return through(function(file, encoding,callback) {
+    buildConfig = buildConfigOperator.read();
+
+    return through(function (file, encoding, callback) {
         var fileContent = null,
-            filePath = null,
-            buildConfig = null;
+            filePath = null;
 
         if (file.isNull()) {
             this.emit("error", new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
@@ -25,19 +27,18 @@ function createBuildMap() {
         if (file.isBuffer()) {
             fileContent = file.contents.toString();
             filePath = file.path;
-            buildConfig = buildConfigOperator.read();
 
             result[filePath] = new parse.ParseCss(this, PLUGIN_NAME, file.path).parse(fileContent, buildConfig)
                 .concat(new parse.ParseJs(this, PLUGIN_NAME, file.path).parse(fileContent, buildConfig));
 
-            callback();
+            return callback();
         }
         //todo support stream
         if (file.isStream()) {
             this.emit("error", new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
             return callback();
         }
-    },function(callback) {
+    }, function (callback) {
         mapOperator.write(JSON.stringify(result));
 
         callback();

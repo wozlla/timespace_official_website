@@ -1,0 +1,28 @@
+<% include ../header.ejs %>
+
+<form>
+  分类：<br/>
+  <select id="name" name="name">
+    <option value="入门">入门</option>
+    <option value="进阶">进阶</option>
+    <option value="装备">装备</option>
+    <option value="组合">组合</option>
+    <option value="玩看点">玩看点</option>
+    <option value="特看点">特看点</option>
+    <option value="技看点">技看点</option>
+  </select>
+
+  正文：<br />
+  <textarea id="body" name="body"></textarea>
+  <br />
+  <input type="submit" value="添加" />
+</form>
+
+<% include ../kindeditorJs.ejs %>
+
+<% include footer.ejs %>
+<script src="/pc/js/admin/tutorial/add.js"></script>
+
+
+
+<% include ../footerHtml.ejs %>

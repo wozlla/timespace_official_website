@@ -1,14 +1,9 @@
 var express = require("express");
-var path = require("path");
 var router = express.Router();
-var safe = require("../../bll/safe");
 var ContactUs = require("../../models/ContactUs");
-var News = require("../../models/News");
-var fileUploader = require("../../public/js/bower_components/yyctoolbox/fileOperator/upload/server/main");
 var PAGESIZE = 10;
 
 router.get("/", function (req, res, next) {
-    var contactUs = new ContactUs();
     var contactUs = new ContactUs();
 
     contactUs.getList(1, PAGESIZE, function (error, list, pageData) {

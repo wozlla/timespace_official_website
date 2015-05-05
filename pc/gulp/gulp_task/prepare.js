@@ -14,7 +14,7 @@ gulp.task('clean', function () {
 var gulpCopy = require('gulp-copy');
 
 gulp.task('copy', function () {
-    gulp.src('views/**/*')
+    return gulp.src('views/**/*')
         .pipe(gulpCopy('dist_views/', {prefix: 1}));
 });
 

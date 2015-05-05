@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define(function (require, exports, module) {
     var animation = require("../animation");
     var global = require("../global");
 
@@ -60,36 +60,68 @@ define(function(require, exports, module) {
 
         var titles = $("#switch-title").find("li");
 
-        titles.on("mouseover", function(e){
+        titles.on("mouseover", function (e) {
             animation.stopSwitch();
 
             animation.select(
                 $("#switch-img").children("img"),
                 titles,
-                getTitleIndex($(e.target))
+                getIndexByTitle($(e.target))
             );
         });
-        titles.on("mouseout", function(e){
+        titles.on("mouseout", function (e) {
             animation.switchImg(
                 $("#switch-img").children("img"),
                 titles,
-                getTitleIndex($(e.target))
+                getIndexByTitle($(e.target))
             );
         });
 
 
-//todo click
-        titles.on("click", function () {
+        $("#switch-img").children("img").on("click", function (e) {
+            var name = getNameByIndex(
+                $(e.target).data("index") || 0
+            );
+
+            window.open('/pc/tutorial/detailPage?name=' + window.encodeURIComponent(name));
+        });
+        titles.on("click", function (e) {
+            var name = getNameByIndex(
+                getIndexByTitle($(e.target))
+            );
+
+            window.open('/pc/tutorial/detailPage?name=' + window.encodeURIComponent(name));
         });
 
         animation.switchImg($("#switch-img").children("img"), titles);
 
 
-        function getTitleIndex(title){
+        function getNameByIndex(index) {
+            var name = null;
+
+            switch (index) {
+                case 0:
+                    name = "玩看点";
+                    break;
+                case 1:
+                    name = "特看点";
+                    break;
+                case 2:
+                    name = "技看点";
+                    break;
+                default:
+                    throw new Error("error index");
+                    break;
+            }
+
+            return name;
+        }
+
+        function getIndexByTitle(title) {
             var className = title.attr("class"),
                 index = null;
 
-            switch(className){
+            switch (className) {
                 case "first":
                     index = 0;
                     break;
@@ -100,7 +132,7 @@ define(function(require, exports, module) {
                     index = 2;
                     break;
                 default:
-                    throw new Error("error index");
+                    throw new Error("error title");
                     break;
             }
 
@@ -108,6 +140,7 @@ define(function(require, exports, module) {
 
 
         }
+
 //$(document).snowfall('clear');
 //$(document).snowfall({
 //    images :["/pc/image/index/banner/flower_1.png", "/pc/image/index/banner/flower_2.png"],

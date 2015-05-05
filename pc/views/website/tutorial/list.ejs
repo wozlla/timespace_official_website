@@ -1,0 +1,60 @@
+<% include ../header.ejs %>
+
+<!--#build:css:replace /pc/dist/news/index.css#-->
+    <link href="/pc/css/website/page.css" type="text/css" rel="stylesheet">
+<!--#endbuild#-->
+
+
+<div class="news">
+    <% include ../logoHeader.ejs %>
+
+    <section class="banner-bg banner-small" >
+        <div id="banner-bg" class="bg" >
+            <img src="/pc/image/news/news.png">
+        </div>
+    </section>
+
+<section class="container">
+    <header class="normal-nav">
+        <% include ../nav.ejs %>
+    </header>
+
+    <section class="container-body clearfix">
+        <section class="left">
+            <section class="content">
+                <div id="content-container">
+                    <%include detail.ejs%>
+                </div>
+
+
+                <% include ../shared.ejs %>
+
+            </section>
+        </section>
+
+        <section class="right">
+            <% include ../rightColumn.ejs %>
+        </section>
+
+    </section>
+
+</section>
+
+
+    <% include ../pageFooter.ejs %>
+    </div>
+<% include ../popWindow.ejs %>
+<% include ../modal.ejs %>
+
+
+
+
+<% include ../footer.ejs %>
+
+
+<!--#build:js:seajsMain /pc/dist/news/cmd.js#-->
+<script src="/pc/js/website/tutorial/main.js"></script>
+<!--#endbuild#-->
+
+<% include ../footerHtml.ejs %>
+
