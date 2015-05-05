@@ -239,7 +239,7 @@ Tutorial.prototype.check = function(id, name, callback) {
 
             collection.find(query).count(function(err, count) {
                 if(count >= 1){
-                    return callback("already exist");
+                    return callback("这个分类已经有了,不能再添加了");
                 }
 
                 callback(null);

@@ -24,7 +24,7 @@ Description.prototype.add = function (descriptionObj, callback) {
                 return callback(err);
             }
 
-            db.collection("descriptionCategory", function(err, collection){
+            db.collection("descriptionCategory", function (err, collection) {
                 if (err) {
                     db.close();
                     return callback(err);
@@ -32,7 +32,7 @@ Description.prototype.add = function (descriptionObj, callback) {
 
                 collection.find({
                     name: description.category
-                }).toArray(function(err, docs){
+                }).toArray(function (err, docs) {
                     if (err) {
                         db.close();
                         return callback(err);
@@ -242,18 +242,19 @@ Description.prototype.getList = function (callback) {
 
             collection.aggregate([
                 {
-                    $sort: {
-                        index:-1
-                    }
-                },
-                {
                     $group: {
                         _id: "$category",
                         data: {
                             $push: "$$ROOT"
                         }
                     }
-                }]).toArray(function (err, docs) {
+                },
+                {
+                    $sort: {
+                        "data.index": 1
+                    }
+                }
+            ]).toArray(function (err, docs) {
                 db.close();
                 if (err) {
                     return callback(err);//失败！返回 err
@@ -269,43 +270,50 @@ Description.prototype.getListByCondition = function (filter, callback) {
     var db = mongodb.createDb();
 
     db.open(function (err, db) {
-        if (err) {
-            db.close();
-            return callback(err);
-        }
-        db.collection("description", function (err, collection) {
             if (err) {
                 db.close();
                 return callback(err);
             }
-
-            collection.aggregate([
-               {
-                $match:filter
-            },
-                {
-                    $sort: {
-                        index:-1
-                    }
-                },
-                {
-                $group: {
-                    _id: "$category",
-                    data: {
-                        $push: "$$ROOT"
-                    }
-                }
-            } ]).toArray(function (err, docs) {
-                db.close();
+            db.collection("description", function (err, collection) {
                 if (err) {
-                    return callback(err);//失败！返回 err
+                    db.close();
+                    return callback(err);
                 }
-                callback(null, docs);//成功！以数组形式返回查询的结果
-            });
 
-        });
-    });
-};
+                collection.aggregate([
+                    {
+                        $match: filter
+                    },
+                    {
+                        $group: {
+                            _id: "$category",
+                            data: {
+                                $push: "$$ROOT"
+                            }
+                        }
+                    },
+                    //When you $group after a $sort in the pipeline, the previous sort is lost.
+                    // You'd have to do something like this instead so that the date you want to sort by is available after the grouping
+                    {
+                        $sort: {
+                            "data.index": 1
+                        }
+                    }
+                ]).
+                    toArray(function (err, docs) {
+                        db.close();
+                        if (err) {
+                            return callback(err);//失败！返回 err
+                        }
+                        callback(null, docs);//成功！以数组形式返回查询的结果
+                    });
+
+            });
+        }
+    )
+    ;
+}
+;
 
 Description.prototype.getListByCategory = function (category, callback) {
     var db = mongodb.createDb();
@@ -323,10 +331,10 @@ Description.prototype.getListByCategory = function (category, callback) {
 
             collection.find({
                 category: category,
-                isShow:true
+                isShow: true
             })
                 .sort({
-                    index:1
+                    index: 1
                 })
                 .toArray(function (err, docs) {
                     db.close();
