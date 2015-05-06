@@ -165,7 +165,6 @@ describe("createBuildMap", function () {
             var args = fs.writeFileSync.args[0];
             var json = JSON.parse(args[1].toString());
 
-
             expect(json).toEqual(
                 {
                     "/1.ejs": [{

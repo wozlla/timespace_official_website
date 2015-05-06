@@ -10,5 +10,7 @@
  {
     "staticResourcePrefix": "/pc/dist",
     "relativePrefix": "dist"
-  }]
+  }],
+  "jasmineNodeTestDir": "gulp/gulp_plugin/",
+  "karmaConfPath": "/test/karma.conf.js"
 }
