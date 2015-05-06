@@ -5,7 +5,7 @@ function Description() {
 }
 
 
-//存储一篇文章及其相关信息
+//todo extract to Action
 Description.prototype.add = function (descriptionObj, callback) {
     //要存入数据库的文档
     var description = descriptionObj;

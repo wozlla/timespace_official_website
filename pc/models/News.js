@@ -1,5 +1,5 @@
 var mongodb = require("./db");
-var ObjectId = require('mongodb').ObjectID;
+var Action = require("./action/Action");
 
 function News(){
 }
@@ -7,7 +7,6 @@ function News(){
 
 //存储一篇文章及其相关信息
 News.prototype.add = function(newsObj, callback) {
-    var db = mongodb.createDb();
     var date = new Date();
     //存储各种时间格式，方便以后扩展
     //todo use moment
@@ -23,203 +22,28 @@ News.prototype.add = function(newsObj, callback) {
     var news = newsObj;
     news.time = time.day;
 
-    //打开数据库
-    db.open(function (err, db) {
-        if (err) {
-            db.close();
-            return callback(err);
-        }
-        //读取 posts 集合
-        db.collection("news", function (err, collection) {
-            if (err) {
-                db.close();
-                return callback(err);
-            }
-
-            collection.insert(news, {
-                safe: true
-            }, function (err) {
-                db.close();
-                if (err) {
-                    return callback(err);//失败！返回 err
-                }
-                callback(null);//返回 err 为 null
-            });
-        });
-    });
+    new Action.Add("news").execute(news, callback);
 };
 
 News.prototype.update = function(id, data, callback){
-    var db = mongodb.createDb();
-
-    db.open(function (err, db) {
-        if (err) {
-            db.close();
-            return callback(err);
-        }
-        //读取 posts 集合
-        db.collection("news", function (err, collection) {
-            if (err) {
-                db.close();
-                return callback(err);
-            }
-            var query = {};
-            if (id) {
-                query._id = new ObjectId(id);
-            }
-
-            collection.update(query, {
-                $set:data   //only set fields contained in data(e.g: not edit "time" field)
-            }, null, function (err) {
-                db.close();
-                if (err) {
-                    return callback(err);//失败！返回 err
-                }
-                callback(null);//返回 err 为 null
-            });
-        });
-    });
+    new Action.Update("news").execute(id, data, callback);
 };
 
 News.prototype.remove = function(id, callback){
-    var db = mongodb.createDb();
-
-    db.open(function (err, db) {
-        if (err) {
-            db.close();
-            return callback(err);
-        }
-        //读取 posts 集合
-        db.collection("news", function (err, collection) {
-            if (err) {
-                db.close();
-                return callback(err);
-            }
-            var query = {};
-            if (id) {
-                query._id = new ObjectId(id);
-            }
-
-            collection.remove(query, null, function (err) {
-                db.close();
-                if (err) {
-                    return callback(err);
-                }
-                callback(null);
-            });
-        });
-    });
+    new Action.Remove("news").execute(id, callback);
 };
 
 //读取文章及其相关信息
 News.prototype.get = function(id, callback) {
-    var db = mongodb.createDb();
-
-    //打开数据库
-    db.open(function (err, db) {
-        if (err) {
-            db.close();
-            return callback(err);
-        }
-        //读取 posts 集合
-        db.collection("news", function(err, collection) {
-            if (err) {
-                db.close();
-                return callback(err);
-            }
-            var query = {};
-            if (id) {
-                query._id = new ObjectId(id);
-            }
-            //根据 query 对象查询文章
-            collection.findOne(query, function (err, docs) {
-                db.close();
-                if (err) {
-                    return callback(err);//失败！返回 err
-                }
-                callback(null, docs);//成功！以数组形式返回查询的结果
-            });
-        });
-    });
+    new Action.Get("news").execute(id, callback);
 };
 
 News.prototype.getList = function(pageNumber, pageSize, callback) {
-    var db = mongodb.createDb();
-    var skipCount = (pageNumber - 1) * pageSize,
-        limitCount = pageSize;
-
-    db.open(function (err, db) {
-        if (err) {
-            db.close();
-            return callback(err);
-        }
-        //读取 posts 集合
-        db.collection("news", function(err, collection) {
-            if (err) {
-                db.close();
-                return callback(err);
-            }
-
-            collection.count(function(err, count){
-                var pageCount = Math.ceil(count / pageSize);
-
-                collection.find().sort({
-                    time: -1,
-                    _id: -1
-                }).skip(skipCount).limit(limitCount)
-                    .toArray(function (err, docs) {
-                        db.close();
-                        if (err) {
-                            return callback(err);//失败！返回 err
-                        }
-                        callback(null, docs, {
-                            pageNumber: Number(pageNumber),
-                            pageCount: Number(pageCount)
-                        });//成功！以数组形式返回查询的结果
-                    });
-            });
-        });
-    });
+    new Action.GetList("news").execute(pageNumber, pageSize, callback);
 };
 
 News.prototype.getListByCondition = function(pageNumber, pageSize, filter, callback) {
-    var db = mongodb.createDb();
-    var skipCount = (pageNumber - 1) * pageSize,
-        limitCount = pageSize;
-
-    db.open(function (err, db) {
-        if (err) {
-            db.close();
-            return callback(err);
-        }
-        //读取 posts 集合
-        db.collection("news", function(err, collection) {
-            if (err) {
-                db.close();
-                return callback(err);
-            }
-
-            //todo optimize:reduce query number
-            collection.find(filter).count(function(err, count){
-                var pageCount = Math.ceil(count / pageSize);
-
-                collection.find(filter).sort({
-                    time: -1,
-                    _id: -1
-                }).skip(skipCount).limit(limitCount)
-                    .toArray(function (err, docs) {
-                        db.close();
-                        if (err) {
-                            return callback(err);//失败！返回 err
-                        }
-                        callback(null, docs, {
-                            pageNumber: Number(pageNumber),
-                            pageCount: Number(pageCount)
-                        });//成功！以数组形式返回查询的结果
-                    });
-            });
-        });
-    });
+    new Action.GetListByCondition("news").execute(pageNumber, pageSize, filter, callback);
 };
 
 module.exports = News;

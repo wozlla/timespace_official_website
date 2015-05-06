@@ -6,8 +6,9 @@ function DescriptionCategory() {
 }
 
 
-//存储一篇文章及其相关信息
+//todo extract to Action
 DescriptionCategory.prototype.add = function (descriptionCategoryObj, callback) {
+    new Action.Add("descriptionCategory").execute(descriptionCategoryObj, callback);
     //要存入数据库的文档
     var descriptionCategory = descriptionCategoryObj;
     var db = mongodb.createDb();
@@ -18,8 +19,6 @@ DescriptionCategory.prototype.add = function (descriptionCategoryObj, callback) 
             db.close();
             return callback(err);
         }
-
-
 
         db.collection("descriptionCategory", function (err, collection) {
             if (err) {
@@ -220,7 +219,7 @@ DescriptionCategory.prototype.get = function (id, callback) {
 DescriptionCategory.prototype.getList = function (callback) {
     var db = mongodb.createDb();
 
-    db.open(function (err, db) {
+    db.open(function (err) {
         if (err) {
             db.close();
             return callback(err);
