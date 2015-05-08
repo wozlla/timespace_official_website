@@ -45,29 +45,6 @@ router.get("/updatePage", function (req, res, next) {
 //});
 
 
-//todo manage img:replace existed img
-router.post("/uploadIcon", function (req, res, next) {
-    var iconBase64Data = req.param("base64Data"),
-        fileName = req.param("fileName"),
-        clientDirname = "/pc/upload/newsIcon/",
-        uploadFilePath = path.resolve(__dirname + "/../../public/upload/newsIcon/");
-
-    fileUploader.saveUploadImage(uploadFilePath, clientDirname, iconBase64Data, fileName, function (err, clientPath) {
-        if (err) {
-            res.send({
-                isSuccess: false,
-                message: err.message
-            });
-            return;
-        }
-
-        res.send({
-            url: clientPath,
-            isSuccess: true
-        });
-    });
-});
-
 
 router.post("/", function (req, res, next) {
     var news = new News();
