@@ -2,7 +2,7 @@ $(function(){
    $("form").on("submit", function(e){
       var title = $("#title").val(),
           name = $("#name").val(),
-          body = $("#body").val(),
+          body = $("#body").html(),
           id = $("#id").val();
 
        $.put("/pc/admin/tutorial", {

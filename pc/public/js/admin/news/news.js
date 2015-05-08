@@ -14,7 +14,7 @@ var news = (function () {
         handleFiles: function (files) {
             //upload single file
             var file = files[0],
-                url = "/pc/admin/upload/uploadIcon",
+                url = "/pc/admin/upload/icon",
                 limit = 100; //100kb
 
             fileUploader.send(file, url, limit, function (data, base64Data) {
