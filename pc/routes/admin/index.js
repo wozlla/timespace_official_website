@@ -20,6 +20,7 @@ router.use("/descriptionCategory", descriptionCategoryRouter);
 //    res.render("admin/descriptionCategory/index");
 //});
 
+//    var dom = $(this.edit.doc.getElementsByClassName(this.bodyClass));
 router.post("/upload", function(req, res, next) {
     var form = new formidable.IncomingForm();
     form.keepExtensions = true;
