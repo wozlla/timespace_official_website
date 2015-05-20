@@ -1,0 +1,132 @@
+@import "mixin/position";
+@import "mixin/image";
+
+#myModal{
+  //height:100px !important;
+
+  .modal-dialog{
+    margin-top:10%;
+    //height:400px;
+  }
+  .modal-content{
+    //margin-top:150px !important;
+    background-color:rgba(0,0,0,0.6);
+    //height:400px;
+
+
+    .modal-header{
+      border: 0 !important;
+    }
+
+    .modal-body{
+      margin:0 auto;
+      margin-top:100px;
+      //height:300px !important;
+
+      @include backImg("/pc/image/index/pic/building.png", 400px, 120px);
+    }
+
+    .modal-footer{
+      height: 150px !important;
+      border:0 !important;
+    }
+
+    .close{
+      color:white;
+    }
+  }
+}
+
+
+#contact-modal{
+  //height:100px !important;
+
+  .modal-dialog{
+    //margin-top:10%;
+    //height:400px;
+    width:980px;
+    height:550px;
+  }
+  .modal-content{
+    //margin-top:150px !important;
+    //background-color:rgba(0,0,0,0.6);
+    //height:400px;
+    @include backImg("/pc/image/pop_box/pop_contact_us.png", 980px, 550px);
+    position:relative;
+
+
+    .modal-header{
+      border: 0 !important;
+    }
+
+    .modal-body{
+      margin:0 auto;
+      //margin-top:100px;
+   
+      position:static;
+
+     
+      input, textarea{
+        background-color:rgb(133,141,197);
+      }
+
+       $iconWidth:20px;
+      $iconHeight:25px;
+      $top1:185px;
+      $left1:136px;
+      $top2:260px;
+      $left2:573px;
+      
+
+      #name{
+        @include absolute(320px,50px,$top1,$left1,null,1);
+        padding-left:40px;
+      }
+      #email{
+        @include absolute(320px,50px,$top1,$left2,null,1);
+        padding-left:50px;
+      }
+      #body{
+          @include absolute(750px,180px,$top2,$left1,null,1);
+          padding-left:40px;
+          padding-top:10px;
+          overflow-y:auto;
+      }
+      #submit{
+        @include absolute(150px,40px,472px,405px,null,1);
+      }
+
+i{
+  display:block;
+}
+     
+      .name-icon{
+        @include backImg("/pc/image/pop_box/people.png", $iconWidth, $iconHeight);
+           @include absolute($iconWidth, $iconHeight,$top1+12px,$left1+10px,null,2);
+      }
+      .email-icon{
+        @include backImg("/pc/image/pop_box/email.png", $iconWidth, $iconHeight);
+         @include absolute(30px, 25px,$top1+12px,$left2+10px,null,2);
+      }
+      .body-icon{
+        @include backImg("/pc/image/pop_box/contact.png", $iconWidth, $iconHeight);
+         @include absolute($iconWidth, $iconHeight,$top2+12px,$left1+10px,null,2);
+      }
+    }
+
+    .modal-footer{
+      height: 150px !important;
+      border:0 !important;
+    }
+
+    .close{
+      color: rgb(255,8,0);
+      text-shadow: none;
+      font-size: 60px;
+      opacity: 1;
+      float: left;
+      margin-left: -7px;
+      margin-top: -12px;
+    }
+  }
+}

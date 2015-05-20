@@ -1,0 +1,143 @@
+@import "mixin/position";
+@import "mixin/geometry";
+@import "mixin/global";
+@import "mixin/image";
+
+h3 {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  padding: 0;
+  margin:0;
+  font-size: 16px;
+  font-family: Arial, '黑体';
+  //top: 0;
+  //left: 0;
+  //z-index: -100;
+  //background-size: 100% 100%;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+
+
+
+.container{
+  width: 960px;
+  //border: 1px solid red;
+  margin: 0 auto;
+  padding:0;
+  position: relative;
+  z-index:100;
+  //z-index: -199;
+}
+
+
+
+
+.ellipsis{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+
+
+ul.footer{
+  height: 82px;
+  display: table;
+  margin:0 auto;
+
+  .logo{
+    background-image: url("/pc/image/logo/logo.png");
+    width: 130px;
+    height:75px;
+    margin-top:5px;
+    background-size: 100% 100%;
+  }
+  .spliter{
+    border-left: 1px solid rgb(183,183,183);
+    height:70px;
+    /* vertical-align: middle; */
+    /* margin-top: 6px; */
+    margin: 6px 30px;
+
+  }
+  .game-name{
+    background-image: url("/pc/image/logo/game_name.png");
+    width: 160px;
+    height:82px;
+    background-size: 100% 100%;
+  }
+}
+
+.logo-header{
+  background-color: rgb(242,242,242);
+  cursor:pointer;
+
+  .footer{
+    margin-left:20% !important;
+  }
+
+  .text{
+    height: 100%;
+    line-height: 82px;
+    margin-left: 400px;
+    font-size: 16px;
+    color: rgb(99,99,99);
+  }
+}
+
+
+
+
+.contact-us-big{
+  background-image:url("/pc/image/button/contact_us.png");
+  cursor:pointer;
+
+    width: 338px;
+    height: 110px;
+    margin-left: 20px;
+    margin-top: 34px;
+    position: relative;
+    background-size: 100% 100%;
+
+    .left{
+      @include absolute(150px, 40px, -30px, -57px);
+    }
+
+    .right{
+      @include absolute(255px, 86px, 34px, null, -82px);
+    }
+}
+.contact-us-small{
+  background-image:url("/pc/image/button/contact_us.png");
+  background-size:100% 100%;
+  position:relative;
+  cursor:pointer;
+
+  width: 254px;
+  height:120px;
+  left: 0;
+  margin-top: 64px;
+
+  .left{
+    @include absolute(120px, 30px, -20px, -47px);
+  }
+
+  .right{
+    @include absolute(200px, 76px, 58px, null, -75px);
+  }
+}
+
+
+
+
+

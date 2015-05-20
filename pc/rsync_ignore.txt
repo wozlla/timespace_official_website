@@ -1,0 +1,9 @@
+.sass-cache
+node_modules
+temp
+test
+**/bower_components/
+.git
+public/upload/
+.idea
+

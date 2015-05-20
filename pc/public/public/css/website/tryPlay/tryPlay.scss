@@ -1,0 +1,49 @@
+@import "../mixin/position";
+
+.try-play{
+  background-image: url('/pc/image/bg/bg.png');
+  background-repeat: no-repeat;
+  background-size:100% 100%;
+  position: relative;
+  z-index:0;
+
+  .logo-header{
+    position: relative;
+    z-index:100;
+
+    .text{
+      height: 100%;
+      line-height: 82px;
+      margin-left: 400px;
+      font-size: 16px;
+      color: rgb(99,99,99);
+    }
+  }
+  //.banner{
+  //  top:-127px;
+  //
+  //
+  //  .title {
+  //    @include absolute(420px, 288px, 71px, 118px, null, 3);
+  //    z-index:6;
+  //  }
+  //}
+  .container{
+    top:199px;
+
+
+    .play{
+      height:640px;
+      width:960px;
+      left: 50%;
+      margin-top:12px;
+      border:2px solid #342791;
+    }
+  }
+
+  .page-footer{
+    position:relative;
+    z-index:100;
+    margin-top:300px;
+  }
+}

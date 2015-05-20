@@ -1,0 +1,30 @@
+<% include ../header.ejs %>
+
+<form>
+    分类：<br/>
+    <select id="name" name="name">
+        <% for(var i = 0, len = categorys.length; i < len; i++){%>
+        <% if(tutorial.name === categorys[i].name){%>
+        <option selected="selected" value="<%= categorys[i].name%>"><%=categorys[i].name%></option>
+        <% }else{%>
+        <option value="<%= categorys[i].name%>"><%=categorys[i].name%></option>
+        <% }%>
+        <% }%>
+    </select>
+
+    正文：<br />
+  <textarea id="body" name="body">
+     <%= tutorial.body %>
+  </textarea>
+    <br />
+    <input type="submit" value="提交" />
+
+    <input id="id" type="hidden" value="<%=tutorial._id%>"/>
+</form>
+
+
+<% include footer.ejs %>
+
+<script src="/pc/js/admin/tutorial/update.js"></script>
+<% include ../kindeditorJs.ejs %>
+<% include ../footerHtml.ejs %>

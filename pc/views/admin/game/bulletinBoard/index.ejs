@@ -1,0 +1,19 @@
+<% include ../../header.ejs %>
+<h1>公告板</h1>
+
+<div id="content">
+    <% include content.ejs %>
+</div>
+
+<% if(bulletinBoard.length === 0 ){%>
+<ul>
+    <li class="add">
+        <a href="/pc/admin/game/bulletinBoard/addPage">添加</a>
+    </li>
+</ul>
+<% }%>
+
+
+
+<% include footer.ejs %>
+<% include ../../footerHtml.ejs %>

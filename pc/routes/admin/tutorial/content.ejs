@@ -1,0 +1,30 @@
+<ul>
+    <% for(var i = 0, len = tutorial.length; i < len; i++){ %>
+    <li class="clearfix">
+
+        <span class="title"><a href="#" onclick="javascript:window.open('/pc/tutorial/detailPage?name=' +window.encodeURIComponent('<%= tutorial[i].name %>'));"><%= tutorial[i].name %></a></span>
+            <span class="time">
+                <%= tutorial[i].time %>
+            </span>
+        <div>
+            <a class="update" href="#" onclick="index.showUpdatePage('/pc/admin/tutorial/updatePage','<%= tutorial[i]._id %>')">修改</a>
+            <!--<a class="update" href="/pc/admin/tutorial/updatePage?id=<%= tutorial[i]._id %>">修改</a>-->
+            <a class="delete" href="#" onclick="index.delete('/pc/admin/tutorial','<%= tutorial[i]._id %>')">删除</a>
+        </div>
+    </li>
+    <% } %>
+</ul>
+
+<div class="page">
+    <ul class="pagination">
+        <li onclick="tutorial.getListByPage(event, 1)"><a href="#">首页</a></li>
+        <% for (var i = 1; i <= pageData.pageCount; i++){ %>
+        <% if(i === pageData.pageNumber){ %>
+        <li class="active"><a><%= i %></a></li>
+        <% }else{ %>
+        <li onclick="tutorial.getListByPage(event, <%= i %>)"><a href="#"><%= i %></a></li>
+        <% } %>
+        <% } %>
+        <li onclick="tutorial.getListByPage(event, <%= pageData.pageCount %>)"><a href="#">尾页</a></li>
+    </ul>
+</div>

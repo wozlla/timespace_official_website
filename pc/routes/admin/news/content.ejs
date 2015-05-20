@@ -1,0 +1,33 @@
+<ul>
+    <% for(var i = 0, len = news.length; i < len; i++){ %>
+    <li class="clearfix">
+
+        <span class="title"><a href="/pc/news?id=<%= news[i]._id %>" target="_blank"><%= news[i].title %></a></span>
+            <span class="time">
+                <%= news[i].time %>
+            </span>
+            <span class="">
+                <%= news[i].isShow === true ? "显示" : "不显示" %></span>
+        </span>
+        <div>
+            <a class="update" href="#" onclick="index.showUpdatePage('/pc/admin/news/updatePage','<%= news[i]._id %>')">修改</a>
+            <!--<a class="update" href="/pc/admin/news/updatePage?id=<%= news[i]._id %>">修改</a>-->
+            <a class="delete" href="#" onclick="index.delete('/pc/admin/news','<%= news[i]._id %>')">删除</a>
+        </div>
+    </li>
+    <% } %>
+</ul>
+
+<div class="page">
+    <ul class="pagination">
+        <li onclick="news.getListByPage(event, 1)"><a href="#">首页</a></li>
+        <% for (var i = 1; i <= pageData.pageCount; i++){ %>
+        <% if(i === pageData.pageNumber){ %>
+        <li class="active"><a><%= i %></a></li>
+        <% }else{ %>
+        <li onclick="news.getListByPage(event, <%= i %>)"><a href="#"><%= i %></a></li>
+        <% } %>
+        <% } %>
+        <li onclick="news.getListByPage(event, <%= pageData.pageCount %>)"><a href="#">尾页</a></li>
+    </ul>
+</div>

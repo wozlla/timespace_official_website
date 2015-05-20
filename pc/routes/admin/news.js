@@ -40,6 +40,7 @@ router.get("/updatePage", function (req, res, next) {
         });
     });
 });
+
 //router.get("/deletePage", function(req, res, next) {
 //    res.render("admin/news/delete");
 //});

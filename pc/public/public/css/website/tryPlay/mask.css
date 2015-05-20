@@ -1,0 +1,11 @@
+.mask {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 5; }
+
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnNpdGUvdHJ5UGxheS9tYXNrLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxBQUFNO0VBQ04sQUFBTztFQUNQLEFBQVM7RUFDVCxBQUFJO0VBQ0osQUFBSztFQUNMLEFBQWlCO0VBQ2pCLEFBQVMiLCJmaWxlIjoid2Vic2l0ZS90cnlQbGF5L21hc2suY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm1hc2t7XG4gIHdpZHRoOjEwMCU7XG4gIGhlaWdodDoxMDAlO1xuICBwb3NpdGlvbjphYnNvbHV0ZTtcbiAgdG9wOjA7XG4gIGxlZnQ6MDtcbiAgYmFja2dyb3VuZC1jb2xvcjpyZ2JhKDAsMCwwLDAuNSk7XG4gIHotaW5kZXg6IDU7XG59Il0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9 */

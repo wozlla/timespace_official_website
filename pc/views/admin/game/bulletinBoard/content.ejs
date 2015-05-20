@@ -1,0 +1,15 @@
+<ul>
+    <% for(var i = 0, len = bulletinBoard.length; i < len; i++){ %>
+    <li class="clearfix">
+
+        <span class="title"><a href="#" onclick="javascript:window.open('/pc/game/bulletinBoard/detailPage')"><%= bulletinBoard[i].title %></a></span>
+            <span class="time">
+                <%= bulletinBoard[i].time %>
+            </span>
+        <div>
+            <a class="update" href="#" onclick="index.showUpdatePage('/pc/admin/game/bulletinBoard/updatePage','<%= bulletinBoard[i]._id %>')">修改</a>
+            <a class="delete" href="#" onclick="index.delete('/pc/admin/game/bulletinBoard','<%= bulletinBoard[i]._id %>')">删除</a>
+        </div>
+    </li>
+    <% } %>
+</ul>

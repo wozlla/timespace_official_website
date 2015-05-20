@@ -1,0 +1,30 @@
+<% include ../header.ejs %>
+
+<form>
+  标题：<br />
+  <input type="text" id="title" name="title"/><br />
+
+  <br/>
+  是否显示:<input type="checkbox" id="isShow" name="isShow" checked="checked"/>
+  <br/>
+
+  类别：<br/>
+  <select id="category" name="category">
+    <% for(var i = 0, len = categorys.length; i < len; i++){%>
+    <option value="<%= categorys[i].name%>"><%=categorys[i].name%></option>
+    <% }%>
+  </select>
+
+  正文：<br />
+  <textarea id="body" name="body"></textarea>
+  <br />
+  <input type="submit" value="添加" />
+</form>
+
+
+<% include ../footer.ejs %>
+<script src="/pc/js/admin/description/add.js"></script>
+
+<% include ../kindeditorJs.ejs %>
+
+<% include ../footerHtml.ejs %>

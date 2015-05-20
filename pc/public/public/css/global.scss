@@ -1,0 +1,14 @@
+.clearfix>*{
+  float:left;
+}
+
+.clearfix:after{
+  content:"";
+  display:table;
+  clear:both;
+}
+
+textarea{
+  width: 600px;
+  height:400px;
+}

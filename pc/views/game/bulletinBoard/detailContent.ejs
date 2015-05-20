@@ -1,0 +1,32 @@
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>游戏公告</title>
+
+<link href="/pc/css/game/app.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div id="form">
+    <div class="top">
+        <h1>
+            <%= model.title %>
+        </h1>
+        <button id="close"></button>
+    </div>
+    <div class="content">
+        <!--<header>-->
+            <!--<%= model.time%>-->
+        <!--</header>-->
+        <section>
+            <%- model.body %>
+        </section>
+    </div>
+    <!--<div class="fields">-->
+    <!--<div class="tips"><div id="tipsText">帐号或密码不正确</div></div>-->
+    <!--<div class="field">输入帐号：<input id="account" type="text"/></div>-->
+    <!--<div class="field">输入密码：<input id="password" type="password"/></div>-->
+    <!--<div class="buttons"><button id="toRegister">注册</button><button id="login">登录</button></div>-->
+    <!--</div>-->
+</div>
+<script src="/pc/js/lib/cocoon.js"></script>
+<script src="/pc/js/game/bulletinBoard/detail.js"></script>
+</body>
+</html>

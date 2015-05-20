@@ -1,0 +1,25 @@
+<% include ../../header.ejs %>
+
+<form>
+    <p>
+        标题：<br/>
+        <input type="text" id="title" name="title" value="<%= bulletinBoard.title %>"/>
+    </p>
+
+    <p>
+    正文：<br />
+  <textarea id="body" name="body">
+     <%= bulletinBoard.body %>
+  </textarea>
+</p>
+    <input type="submit" value="提交" />
+
+    <input id="id" type="hidden" value="<%=bulletinBoard._id%>"/>
+</form>
+
+
+<% include footer.ejs %>
+
+<script src="/pc/js/admin/game/bulletinBoard/update.js"></script>
+<% include ../../kindeditorJs.ejs %>
+<% include ../../footerHtml.ejs %>

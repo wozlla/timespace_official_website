@@ -1,0 +1,58 @@
+@import "../mixin/position";
+@import "../mixin/image";
+
+.try-play-nav{
+  position: relative;
+
+  nav{
+    a{
+      display:block;
+
+      img{
+        width:100%;
+        height:100%;
+      }
+    }
+
+    li.hotnews a{
+      //@include backImg("/pc/image/nav/hotnews.png", 100%, 100%);
+    }
+    li.description a{
+      //@include backImg("/pc/image/nav/description.png", 100%, 100%);
+    }
+    li.comment a{
+      //@include backImg("/pc/image/nav/comment.png", 100%, 100%);
+    }
+    >ul {
+      > li {
+        width: 210px;
+        height: 90px;
+        text-align: center;
+        display: table;
+        margin-right: 20px;
+        float: left;
+        cursor: pointer;
+
+        a{
+          height:90px;
+        }
+      }
+    }
+    >ul.clearfix{
+      height:100%;
+    }
+
+
+  }
+  .try-play-button{
+    cursor: pointer;
+    display:block;
+    @include absolute(254px, 112px, -10px, 705px);
+
+    img{
+      width:100%;
+      height:100%;
+    }
+  }
+}
+

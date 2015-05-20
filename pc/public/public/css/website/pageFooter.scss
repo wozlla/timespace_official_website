@@ -1,0 +1,47 @@
+footer.page-footer{
+  background-color: rgb(224,224,224);
+  text-align: center;
+  margin-top:50px;
+  padding-bottom:30px;
+  height:140px;
+
+  >ul{
+    display:table;
+    margin:0 auto;
+    padding-top: 10px;
+
+    dl{
+      dt,dd{
+      }
+      dd{
+        ul{
+          width:300px;
+        }
+      }
+      ul{
+        li{
+          margin-left:20px;
+        }
+        .left{
+          width: 380px;
+        }
+
+        .right{
+          margin-left: 100px;
+        }
+      }
+    }
+    .right{
+      margin-left:80px;
+      li:after{
+        content:"";
+        border-left:1px solid rgb(139,142,154);
+        height:10px;
+        margin-left:20px;
+        margin-right:20px;
+      }
+    }
+  }
+}
+
+

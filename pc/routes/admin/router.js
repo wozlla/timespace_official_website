@@ -7,6 +7,7 @@ var descriptionRouter = require("./description");
 var descriptionCategoryRouter = require("./descriptionCategory");
 var contactUsRouter = require("./contactUs");
 var tutorialRouter = require("./tutorial");
+var gameRouter = require("./game");
 var isDev = require("../../setting").isDev;
 
 if (!isDev) {
@@ -27,5 +28,6 @@ router.use("/description", descriptionRouter);
 router.use("/descriptionCategory", descriptionCategoryRouter);
 router.use("/tutorial", tutorialRouter);
 router.use("/contactUs", contactUsRouter);
+router.use("/game", gameRouter);
 
 module.exports = router;

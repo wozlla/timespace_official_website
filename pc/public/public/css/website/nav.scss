@@ -1,0 +1,261 @@
+@import "mixin/image";
+
+.normal-nav{
+  position: relative;
+
+nav{
+  a{
+    display:block;
+
+    img{      
+      width:100%;
+      height:100%;
+    }
+  }
+
+  li.hotnews a{
+    //@include backImg("/pc/image/nav/hotnews.png", 100%, 100%);
+  }
+  li.description a{
+    //@include backImg("/pc/image/nav/description.png", 100%, 100%);
+  }
+  li.comment a{
+    //@include backImg("/pc/image/nav/comment.png", 100%, 100%);
+  }
+  >ul {
+    > li {
+      width: 210px;
+      height: 90px;
+      text-align: center;
+      display: table;
+      margin-right: 20px;
+      float: left;
+
+      a{
+        height:90px;
+      }
+    }
+
+  }
+  >ul.clearfix{
+    height:100%;
+  }
+
+
+  .description:hover > .dropdown{
+    display:block;
+  }
+
+  .dropdown{
+      position:absolute;
+      z-index:1000;
+      left:230px;
+      top:90px;
+      width:210px;
+      //border:1px solid red;
+      display:none;
+      background-image:url("/pc/image/bg/dropdown.png");
+      background-repeat: no-repeat;
+      background-size:100% 100%;
+      font-size:20px;
+
+      li{
+        width:100%;
+        height: 50px;
+        line-height:50px;
+        cursor:pointer;
+
+        &:hover{
+          background-color:rgb(87, 52, 173);
+        }
+
+        a{
+          font-weight:bolder;
+          display:block;
+          width:100%;
+          height:100%;
+          //color:rgb(43,35,91);
+ color:#c0a7f0;
+
+          &:hover{
+            color:#ffffff;
+            text-decoration:none;
+          }
+        }
+      }
+    }
+
+  .comment:hover >.comment-dropdown {
+    display:block;
+  }
+
+  .comment-dropdown {
+    position: absolute;
+    z-index: 1000;
+    left: 460px;
+    top: 90px;
+    width: 210px;
+    background-image: url("/pc/image/bg/dropdown.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    //padding-top: 10px;
+    font-size:20px;
+        font-weight: bolder;
+       
+        color: rgb(43, 35, 91);
+    display: none;
+
+
+    li {
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+
+ 
+   
+      span {
+        display: block;
+      }
+    }
+    .link{
+      text-align:center;
+      padding-left:40px;
+      cursor:pointer;
+
+       &:hover{
+         span{
+              color:#ffffff;
+         }
+         
+            text-decoration:none;
+             background-color:rgb(87, 52, 173);
+          }
+
+      img{
+      float:left;
+      width:30px;
+      height:30px;
+      margin-top:10px;
+      margin-right:5px;
+    }
+    span{
+      display:block;
+      float:left;
+       color:#c0a7f0;
+    }
+    }
+    .icon {
+      height: 100px;
+      img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+    .code {
+      height: 150px;
+      img {
+        width: 140px;
+        height: 140px;
+      }
+    }
+    .text {
+      height: 50px;
+      margin-top:10px;
+
+      span {
+        color: white;
+        //font-size: 20px;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+  .bird{
+    display:block;
+    position:absolute;
+    @include absolute(110px, 130px, -20px, -30px);
+
+    img{
+      width:100%;
+      height:100%;
+    }
+  }
+
+  .download, .go-try-play{
+    display:block;
+    @include absolute(254px, 112px, -10px, 705px);
+
+    img{
+      width:100%;
+      height:100%;
+    }
+  }
+
+  .go-try-play{
+    cursor: pointer;
+  }
+
+  .download:hover + .download-dropdown{
+    display:block;
+  }
+  .download-dropdown {
+    position: absolute;
+    z-index: 1000;
+    right: 1px;
+    top: 90px;
+    width: 254px;
+    background-image: url("/pc/image/bg/dropdown.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding-top:10px;
+    display:none;
+    cursor:pointer;
+
+    &:hover{
+      display:block;
+    }
+
+    li {
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      text-align:center;
+
+      a {
+        font-weight: bolder;
+        display: block;
+        width: 100%;
+        height: 100%;
+        color: rgb(43, 35, 91);
+      }
+      span{
+        display:block;
+      }
+    }
+    .icon{
+      height:100px;
+      img{
+        width:100px;
+        height:100px;
+      }
+    }
+    .code{
+      height:100px;
+      img{
+        width:100px;
+        height:100px;
+      }
+    }
+    .text{
+      height:50px;
+
+      span{
+        color:white;
+        font-size:20px;
+        font-weight: bold;
+      }
+    }
+  }
+}

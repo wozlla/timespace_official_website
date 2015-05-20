@@ -1,0 +1,39 @@
+@mixin arrow($color, $top:36px, $left:20px, $size:10px){
+  display: block;
+  width: 0; height:0; border:$size solid;
+  border-color: transparent $color transparent transparent;
+  position: absolute;
+  top: $top;
+  left: $left;
+}
+@mixin rightArrow($color, $top:40px, $left:20px, $size:10px){
+  display: block;
+  width: 0; height:0; border:$size solid;
+  border-color: transparent transparent transparent $color ;
+  position: absolute;
+  top: $top;
+  left: $left;
+}
+@mixin downArrow($color, $top:40px, $left:20px, $size:10px){
+  display: block;
+  width: 0; height:0; border:$size solid;
+  border-color: $color transparent transparent transparent ;
+  position: absolute;
+  top: $top;
+  left: $left;
+}
+@mixin radius($radius, $color){
+  $rad: $radius + 10;
+  -webkit-border-radius: $rad;
+  -moz-border-radius: $rad;
+  border-radius: $rad;
+  width: $radius * 2;
+  height: $radius * 2;
+  border:2px solid $color;
+}
+
+@mixin setRadius($radius){
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}

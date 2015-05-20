@@ -1,0 +1,49 @@
+@charset "UTF-8";
+html {
+  height: 100%; }
+
+body {
+  overflow: hidden;
+  background-color: #FFFFFF;
+  margin: 0;
+  padding: 0;
+  height: 100%; }
+  body #form {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background-image: url(/pc/image/game/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%; }
+    body #form .top {
+      height: 61px;
+      padding: 20px 20px 20px 20px;
+      background-image: url(/pc/image/game/logo.png);
+      background-repeat: no-repeat;
+      background-position: 30px 20px;
+      border-bottom: 1px solid #aaa; }
+      body #form .top h1 {
+        display: block;
+        height: 61px;
+        margin: 0 auto;
+        text-align: center;
+        padding-top: 10px;
+        color: #808080;
+        font-weight: bold;
+        max-wdith: 60%; }
+      body #form .top #close {
+        width: 54px;
+        height: 54px;
+        background-image: url(/pc/image/game/close.png);
+        float: right;
+        position: relative;
+        top: -70px; }
+    body #form .content {
+      padding: 20px 20px; }
+      body #form .content section {
+        font-family: "微软雅黑";
+        font-size: 14px;
+        margin: 20px auto 0 auto;
+        width: 638px; }
+
+/*# sourceMappingURL=app.css.map */

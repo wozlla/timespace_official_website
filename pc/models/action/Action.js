@@ -294,7 +294,8 @@ var IsExist = yoop.Class(Action, {
     },
     Public: {
         execute: function (id, filter, callback) {
-            var db = mongodb.createDb();
+            var db = mongodb.createDb(),
+                self = this;
 
             db.open(function (err) {
                 if (err) {
@@ -302,7 +303,7 @@ var IsExist = yoop.Class(Action, {
                     return callback(err);
                 }
                 //读取 posts 集合
-                db.collection("tutorial", function(err, collection) {
+                db.collection(self._collectionName, function(err, collection) {
                     if (err) {
                         db.close();
                         return callback(err);

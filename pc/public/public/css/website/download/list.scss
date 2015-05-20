@@ -1,0 +1,28 @@
+@import "../mixin/global";
+
+.download{
+  background-image: url('/pc/image/bg/page_bg.png');
+  background-repeat: no-repeat;
+  background-size:100% 100%;
+
+  .body{
+    background-color: white;
+    margin-top:20px;
+    padding:20px 100px;
+
+    img:first-of-type{
+display:block;
+      float:left;
+    }
+    img:last-of-type{
+      //margin-:100px;
+      display:block;
+      float:right;
+    }
+  }
+
+  .page-footer{
+    margin-top:100px;
+  }
+}
+

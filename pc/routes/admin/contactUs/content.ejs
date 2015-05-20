@@ -1,0 +1,31 @@
+<ul>
+    <% for(var i = 0, len = contactUs.length; i < len; i++){%>
+    <li class="clearfix">
+        <span class="title"><%= contactUs[i].name%></span>
+            <span class="email">
+                <%= contactUs[i].email %>
+            </span>
+            <span class="time">
+                <%= contactUs[i].time %>
+            </span>
+        <div>
+            <a class="showDetail" href="#" onclick="index.contactUs.showDetail('<%=contactUs[i].body%>', event)">查看</a>
+            <a class="delete" href="#" onclick="index.delete('/pc/admin/contactUs','<%= contactUs[i]._id %>')">删除</a>
+        </div>
+    </li>
+    <% }%>
+</ul>
+
+<div class="page">
+    <ul class="pagination">
+        <li onclick="contactUs.getListByPage(event, 1)"><a href="#">首页</a></li>
+        <% for (var i = 1; i <= pageData.pageCount; i ++){%>
+        <% if(i === pageData.pageNumber){%>
+        <li class="active"><a><%=i%></a></li>
+        <%}else{%>
+        <li onclick="contactUs.getListByPage(event, <%=i%>)"><a href="#"><%=i%></a></li>
+        <% }%>
+        <% }%>
+        <li onclick="contactUs.getListByPage(event, <%=pageData.pageCount%>)"><a href="#">尾页</a></li>
+    </ul>
+</div>

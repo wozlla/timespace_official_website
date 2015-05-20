@@ -1,0 +1,90 @@
+@import "mixin/image";
+@import "mixin/geometry";
+@import "mixin/position";
+
+.pop-window{
+  position: fixed;
+  width:400px;
+  height:240px;
+  top: 30%;
+  right: -330px;
+  z-index:1000;
+  background-image: url("/pc/image/pop_box/suspend.png");
+  background-repeat:no-repeat;
+  background-size:100% 100%;
+
+  $color:rgb(136,153,222);
+  div{
+    @include radius(13px, $color);
+    position: relative;
+    top: 6px;
+    left: 8px;
+    cursor:pointer;
+  }
+  .pop-out{
+    i{
+      @include arrow($color, 3px, -2px, 8px);
+      top: 3px \9;
+      left:-1px \9;
+    }
+    & + .origin{
+      display:block;
+    }
+    & + .change{
+      display:none;
+    }
+  }
+  .pop-in{
+    i{
+      @include rightArrow($color, 3px, 9px, 8px);
+    }
+
+    & ~ .origin{
+      display:none;
+    }
+    & ~ .change{
+      display:block;
+    }
+  }
+
+  img.origin{
+    width: 50px;
+    height: 163px;
+    position: relative;
+    top: 27px;
+    left: 13px;
+  }
+  img.change{
+    width: 147px;
+    height: 40px;
+    position: relative;
+    top: -13px;
+    left: 57px;
+    display:none;
+  }
+
+  span{
+    display: block;
+    position: absolute;
+    font-size: 14px;
+    top: 79px;
+    left: 50px;
+    color: #ffffff;
+  }
+}
+
+
+.jump-to-top{
+  $width:40px;
+  $height:40px;
+  $containerWidth:960px;
+  $leftContentWidth:658px;
+  $leftToCenter: - $width / 2 + ($leftContentWidth - $containerWidth / 2) + $width / 2;
+
+  //todo replace
+  @include backImg("/pc/image/top/top.jpg", $width,$height);
+
+  @include fixed($width, $height, 400px, 50%, null, 1000);
+  margin-left:$leftToCenter;
+  display:none;
+}

@@ -1,0 +1,16 @@
+@import "position";
+
+@mixin backImg($url, $width, $height){
+  background-image: url('#{$url}');
+  background-size: 100% 100%;
+  width:$width;
+  height:$height;
+}
+
+@mixin backImgWithPosition($url, $width, $height, $top:0px, $left:0px, $zIndex:0){
+  background-image: url('#{$url}');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  @include absolute($width, $height, $top, $left);
+  z-index:$zIndex;
+}

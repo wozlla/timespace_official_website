@@ -1,0 +1,14 @@
+{
+  "name": "kindeditor",
+  "homepage": "https://github.com/kindsoft/kindeditor",
+  "version": "4.1.10",
+  "_release": "4.1.10",
+  "_resolution": {
+    "type": "version",
+    "tag": "v4.1.10",
+    "commit": "42523d1011f9345fa1ab495ccbea26d50ab05be8"
+  },
+  "_source": "https://github.com/kindsoft/kindeditor.git",
+  "_target": "4.1.10",
+  "_originalSource": "https://github.com/kindsoft/kindeditor.git"
+}

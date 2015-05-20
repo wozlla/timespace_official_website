@@ -1,0 +1,42 @@
+<% include ../header.ejs %>
+
+<form>
+    标题：<br />
+    <input type="text" id="title" name="title" value="<%=news.title%>" /><br />
+
+    icon：<br/>
+    <input type="file" accept="image/*"
+           onchange="news.handleFiles(this.files)">
+    <% if(news.icon){%>
+    <img id="icon" src="<%= news.icon%>" style="display:block;"/>
+    <%}else{%>
+    <img id="icon" src="<%= news.icon%>" style="display:none;"/>
+    <%}%>
+    <input type="hidden" id="icon-url" value="<%= news.icon%>"/>
+
+
+
+    <br/>
+    <% if(news.isShow === true){%>
+    是否显示:<input type="checkbox" id="isShow" name="isShow" checked="checked"/>
+    <%}else{%>
+    是否显示:<input type="checkbox" id="isShow" name="isShow"/>
+    <%}%>
+    <br/>
+
+    正文：<br />
+  <textarea id="body" name="body">
+     <%= news.body %>
+  </textarea>
+    <br />
+    <input type="submit" value="提交" />
+
+    <input id="id" type="hidden" value="<%=news._id%>"/>
+</form>
+
+
+<% include footer.ejs %>
+
+<script src="/pc/js/admin/news/update.js"></script>
+<% include ../kindeditorJs.ejs %>
+<% include ../footerHtml.ejs %>

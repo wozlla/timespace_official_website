@@ -1,0 +1,16 @@
+<% include ../header.ejs %>
+
+<form>
+    类别：<br />
+    <input type="text" id="name" name="title" value="<%=descriptionCategory.name%>" /><br />
+
+    <input type="submit" value="提交" />
+
+    <input id="id" type="hidden" value="<%=descriptionCategory._id%>"/>
+</form>
+
+
+<% include ../footer.ejs %>
+
+<script src="/pc/js/admin/descriptionCategory/update.js"></script>
+<% include ../footerHtml.ejs %>
